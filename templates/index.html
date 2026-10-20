@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMIRXTNA - الرئيسية</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #0d1117; color: #fff; text-align: center; padding-bottom: 120px; }
+        
+        /* الهيدر والشعار */
+        header { padding: 30px; background: #161b22; border-bottom: 2px solid #00f2fe; }
+        h1 { color: #00f2fe; font-size: 2.5rem; text-shadow: 0 0 10px rgba(0,242,254,0.5); }
+        p.subtitle { color: #8b949e; margin-top: 5px; }
+
+        /* شبكة الخدمات */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; padding: 40px 20px; max-width: 1000px; margin: 0 auto; }
+        .card { background: #21262d; border: 1px solid #30363d; border-radius: 12px; padding: 25px; transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); border-color: #00f2fe; box-shadow: 0 0 15px rgba(0,242,254,0.3); }
+        .card h3 { color: #e6edf3; margin-bottom: 10px; }
+        .card p { color: #8b949e; font-size: 0.9rem; }
+
+        /* الإعلان في الزاوية السفلى (Ad Unit) */
+        .corner-ad {
+            position: fixed;
+            bottom: 15px;
+            left: 15px;
+            width: 250px;
+            height: 90px;
+            background-color: #161b22;
+            border: 1px solid #00f2fe;
+            border-radius: 10px;
+            padding: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.7);
+            z-index: 999;
+        }
+        .ad-title { font-size: 10px; color: #8b949e; text-align: right; }
+        .ad-content { display: flex; align-items: center; justify-content: center; height: 65px; color: #484f58; font-size: 12px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>AMIRXTNA</h1>
+        <p class="subtitle">بوابتك التفاعلية للألعاب، الأدوات، والنماذج الذكية</p>
+    </header>
+
+    <main class="services-grid">
+        <div class="card">
+            <h3>🎮 AmirX Arcade</h3>
+            <p>العاب متصفح ممتعة وسريعة</p>
+        </div>
+        <div class="card">
+            <h3>📋 Quick Forms</h3>
+            <p>انشئ استبياناتك واختباراتك بسهولة</p>
+        </div>
+        <div class="card">
+            <h3>🛠️ Dev & Cyber Tools</h3>
+            <p>أدوات برمجية وفحص كلمة المرور</p>
+        </div>
+        <div class="card">
+            <h3>📬 التواصل والدعم</h3>
+            <p>أرسل اقتراحاتك ورسائلك مباشرة</p>
+        </div>
+    </main>
+
+    <!-- مكان الإعلان المخصص في الزاوية -->
+    <div class="corner-ad">
+        <div class="ad-title">إعلان</div>
+        <div class="ad-content">
+            <!-- هنا سيتم وضع كود الإعلانات لاحقاً (AdSense / Monetag) -->
+            <span>مساحة إعلانية $$$</span>
+        </div>
+    </div>
+
+</body>
+</html>
