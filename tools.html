@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMIRXTNA - الأدوات التقنية والسيبرانية</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #0d1117; color: #fff; text-align: center; padding: 20px; }
+        h1 { color: #00f2fe; margin-bottom: 20px; text-shadow: 0 0 10px rgba(0,242,254,0.5); }
+        
+        .tools-container { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+        .tool-box { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 20px; text-align: right; }
+        .tool-box h2 { color: #00f2fe; font-size: 1.2rem; margin-bottom: 10px; }
+        
+        input, select, textarea {
+            width: 100%; padding: 10px; margin: 10px 0; background: #0d1117; border: 1px solid #30363d;
+            border-radius: 6px; color: #fff; font-size: 1rem;
+        }
+        
+        button {
+            background: #00f2fe; color: #0d1117; font-weight: bold; border: none; padding: 10px 20px;
+            border-radius: 6px; cursor: pointer; transition: 0.3s; width: 100%;
+        }
+        button:hover { background: #00b8d4; }
+        
+        .result-box { margin-top: 10px; padding: 10px; background: #21262d; border-radius: 6px; color: #00f2fe; word-break: break-all; }
+        .btn-back { display: inline-block; margin-top: 20px; padding: 10px 20px; color: #00f2fe; text-decoration: none; border: 1px solid #00f2fe; border-radius: 8px; }
+    </style>
+</head>
+<body>
+
+    <h1>🛠️ Dev & Cyber Tools</h1>
+
+    <div class="tools-container">
+        <!-- أداة فحص كلمة المرور -->
+        <div class="tool-box">
+            <h2>🔒 أداة فحص قوة كلمة المرور</h2>
+            <input type="password" id="passInput" placeholder="أدخل كلمة المرور لتجربتها..." oninput="checkPassword()">
+            <div id="passResult" class="result-box">اكتب كلمة مرور لمعرفة مستواها</div>
+        </div>
+
+        <!-- أداة التشفير -->
+        <div class="tool-box">
+            <h2>⚡ مشفر ومفكك النصوص (Base64)</h2>
+            <textarea id="textInput" rows="3" placeholder="أدخل النص هنا..."></textarea>
+            <div style="display: flex; gap: 10px;">
+                <button onclick="encodeText()">تشفير 🔒</button>
+                <button onclick="decodeText()" style="background:#21262d; color:#00f2fe; border:1px solid #00f2fe;">فك التشفير 🔓</button>
+            </div>
+            <div id="cipherResult" class="result-box">النتيجة ستظهر هنا</div>
+        </div>
+    </div>
+
+    <a href="/" class="btn-back">⬅️ العودة للرئيسية</a>
+
+    <script>
+        function checkPassword() {
+            let pass = document.getElementById('passInput').value;
+            let result = document.getElementById('passResult');
+            if (!pass) { result.innerText = "اكتب كلمة مرور لمعرفة مستواها"; result.style.color = "#00f2fe"; return; }
+            
+            let score = 0;
+            if (pass.length >= 8) score++;
+            if (/[A-Z]/.test(pass)) score++;
+            if (/[0-9]/.test(pass)) score++;
+            if (/[^A-Za-z0-9]/.test(pass)) score++;
+
+            if (score <= 1) { result.innerText = "ضعيفة جداً ❌"; result.style.color = "#ff4d4d"; }
+            else if (score == 2) { result.innerText = "متوسطة ⚠️"; result.style.color = "#ffaa00"; }
+            else if (score == 3) { result.innerText = "قوية ✅"; result.style.color = "#00e676"; }
+            else { result.innerText = "خارقة وأمنة جداً 🛡️🔥"; result.style.color = "#00f2fe"; }
+        }
+
+        function encodeText() {
+            let text = document.getElementById('textInput').value;
+            if(!text) return;
+            document.getElementById('cipherResult').innerText = btoa(unescape(encodeURIComponent(text)));
+        }
+
+        function decodeText() {
+            let text = document.getElementById('textInput').value;
+            if(!text) return;
+            try {
+                document.getElementById('cipherResult').innerText = decodeURIComponent(escape(atob(text)));
+            } catch(e) {
+                document.getElementById('cipherResult').innerText = "كود غير صالح لفك التشفير!";
+            }
+        }
+    </script>
+</body>
+</html>
