@@ -9,10 +9,9 @@
         body { background-color: #0d1117; color: #fff; text-align: center; padding-bottom: 120px; }
         
         /* الهيدر والشعار */
-        header { padding: 25px; background: #161b22; border-bottom: 2px solid #00f2fe; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .logo-img { width: 90px; height: 90px; border-radius: 50%; border: 2px solid #00f2fe; margin-bottom: 10px; box-shadow: 0 0 15px rgba(0,242,254,0.4); }
-        h1 { color: #00f2fe; font-size: 2.2rem; text-shadow: 0 0 10px rgba(0,242,254,0.5); }
-        p.subtitle { color: #8b949e; margin-top: 5px; font-size: 0.95rem; }
+        header { padding: 30px; background: #161b22; border-bottom: 2px solid #00f2fe; }
+        h1 { color: #00f2fe; font-size: 2.5rem; text-shadow: 0 0 10px rgba(0,242,254,0.5); }
+        p.subtitle { color: #8b949e; margin-top: 5px; }
 
         /* شبكة الخدمات */
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; padding: 40px 20px; max-width: 1000px; margin: 0 auto; }
@@ -45,11 +44,19 @@
 
     <header>
         <h1>AMIRXTNA</h1>
-        <p class="subtitle">بوابتك التفاعلية للألعاب، الأدوات، والنماذج الذكية</p>
+        <p class="subtitle">بوابتك التفاعلية للألعاب، البرمجة، والأدوات الذكية</p>
     </header>
 
     <main class="services-grid">
-        <!-- 1. رابط الألعاب -->
+        <!-- 1. أكاديمية البرمجة -->
+        <a href="/learn" class="card-link">
+            <div class="card">
+                <h3>🚀 أكاديمية البرمجة</h3>
+                <p>تعلم Python و HTML و C++ من الصفر حتى الاحتراف</p>
+            </div>
+        </a>
+
+        <!-- 2. الألعاب -->
         <a href="/arcade" class="card-link">
             <div class="card">
                 <h3>🎮 AmirX Arcade</h3>
@@ -57,15 +64,7 @@
             </div>
         </a>
 
-        <!-- 2. رابط الاستبيانات -->
-        <a href="/forms" class="card-link">
-            <div class="card">
-                <h3>📋 Quick Forms</h3>
-                <p>أنشئ استبياناتك واختباراتك بسهولة</p>
-            </div>
-        </a>
-
-        <!-- 3. رابط الأدوات التقنية -->
+        <!-- 3. الأدوات التقنية -->
         <a href="/tools" class="card-link">
             <div class="card">
                 <h3>🛠️ Dev & Cyber Tools</h3>
@@ -73,7 +72,15 @@
             </div>
         </a>
 
-        <!-- 4. رابط التواصل -->
+        <!-- 4. الاستبيانات -->
+        <a href="/forms" class="card-link">
+            <div class="card">
+                <h3>📋 Quick Forms</h3>
+                <p>أنشئ استبياناتك واختباراتك بسهولة</p>
+            </div>
+        </a>
+
+        <!-- 5. التواصل والدعم -->
         <a href="/contact" class="card-link">
             <div class="card">
                 <h3>📬 التواصل والدعم</h3>
