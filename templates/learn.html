@@ -3,70 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMIRXTNA - أكاديمية البرمجة من الصفر</title>
+    <title>AMIRXTNA - أكاديمية البرمجة من الصفر حتى الاحتراف</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
-        body { background-color: #0d1117; color: #fff; padding: 20px; text-align: center; }
-        h1 { color: #00f2fe; margin-bottom: 10px; text-shadow: 0 0 10px rgba(0,242,254,0.5); }
-        p.desc { color: #8b949e; margin-bottom: 30px; }
-
-        .courses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; text-align: right; }
-        .course-card { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 20px; transition: 0.3s; }
-        .course-card:hover { border-color: #00f2fe; box-shadow: 0 0 15px rgba(0,242,254,0.2); }
-        .course-card h2 { color: #00f2fe; margin-bottom: 10px; font-size: 1.3rem; }
-        .level-tag { display: inline-block; padding: 3px 8px; background: #21262d; border: 1px solid #00f2fe; border-radius: 5px; font-size: 0.75rem; color: #00f2fe; margin-bottom: 10px; }
+        body { background-color: #0d1117; color: #fff; padding: 20px; }
         
-        ul.roadmap { list-style: none; padding: 0; margin: 10px 0; }
-        ul.roadmap li { padding: 6px 0; border-bottom: 1px solid #21262d; color: #c9d1d9; font-size: 0.9rem; }
-        ul.roadmap li::before { content: "🔹 "; }
+        header { text-align: center; margin-bottom: 30px; }
+        h1 { color: #00f2fe; margin-bottom: 10px; text-shadow: 0 0 10px rgba(0,242,254,0.5); }
+        p.desc { color: #8b949e; }
 
-        .btn-back { display: inline-block; margin-top: 30px; padding: 10px 20px; color: #00f2fe; text-decoration: none; border: 1px solid #00f2fe; border-radius: 8px; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        
+        /* أزرار التنقل بين اللغات */
+        .tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 25px; flex-wrap: wrap; }
+        .tab-btn { background: #161b22; color: #8b949e; border: 1px solid #30363d; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .tab-btn.active, .tab-btn:hover { background: #00f2fe; color: #0d1117; border-color: #00f2fe; }
+
+        /* المحتوى التعليمي */
+        .course-section { display: none; background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 25px; margin-bottom: 20px; }
+        .course-section.active { display: block; }
+        
+        .lesson-title { color: #00f2fe; border-right: 4px solid #00f2fe; padding-right: 10px; margin: 20px 0 10px 0; font-size: 1.2rem; }
+        .code-box { background: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 15px; font-family: monospace; color: #00f2fe; text-align: left; dir: ltr; margin: 10px 0; overflow-x: auto; }
+        
+        /* صندوق التمرين */
+        .exercise-box { background: #21262d; border: 1px solid #00f2fe; border-radius: 8px; padding: 15px; margin-top: 15px; }
+        .exercise-title { color: #ffaa00; font-weight: bold; margin-bottom: 5px; }
+
+        .btn-back { display: block; width: max-content; margin: 30px auto 0 auto; padding: 10px 25px; color: #00f2fe; text-decoration: none; border: 1px solid #00f2fe; border-radius: 8px; text-align: center; }
+        .btn-back:hover { background: #00f2fe; color: #0d1117; }
     </style>
 </head>
 <body>
 
-    <h1>🚀 أكاديمية البرمجة والاحتراف</h1>
-    <p class="desc">شروحات ومسارات مجهزة من الصفر حتى احتراف بناء المشاريع الحقيقية</p>
+    <header>
+        <h1>🚀 أكاديمية البرمجة والاحتراف (AMIRXTNA)</h1>
+        <p class="desc">شرح تفصيلي من الصفر المطلق حتى احتراف التطوير وتصميم المشاريع مع تدريبات عملية</p>
+    </header>
 
-    <div class="courses-grid">
-        <!-- مسار بايثون -->
-        <div class="course-card">
-            <span class="level-tag">مسار كامل</span>
-            <h2>🐍 Python Masterclass</h2>
-            <ul class="roadmap">
-                <li><strong>المبتدئ:</strong> المتغيرات، الشروط `if/else` والحلقات.</li>
-                <li><strong>المتوسط:</strong> الدوال `def` والقوائم ومعالجة النصوص.</li>
-                <li><strong>المتقدم:</strong> البرمجة الكائنية OOP وبناء سيرفرات Web.</li>
-                <li><strong>مشروع ختامي:</strong> بناء بوت أو سيرفر Flask بنفسك!</li>
-            </ul>
+    <div class="container">
+        <!-- أزرار الاختيار -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showLang('python')">🐍 مسار Python الشامل</button>
+            <button class="tab-btn" onclick="showLang('html')">🌐 مسار HTML & CSS</button>
+            <button class="tab-btn" onclick="showLang('cpp')">⚡ مسار C++ المتقدم</button>
         </div>
 
-        <!-- مسار HTML & CSS -->
-        <div class="course-card">
-            <span class="level-tag">مسار كامل</span>
-            <h2>🌐 HTML & CSS Web Dev</h2>
-            <ul class="roadmap">
-                <li><strong>المبتدئ:</strong> عناصر الهيكل الأساسية، العناوين، والروابط.</li>
-                <li><strong>المتوسط:</strong> ألوان، خطوط، وتنسيق الأزرار والنماذج.</li>
-                <li><strong>المتقدم:</strong> Flexbox & Grid وتصاميم الهواتف المتجاوبة.</li>
-                <li><strong>مشروع ختامي:</strong> تصميم موقع متكامل مثل AMIRXTNA!</li>
-            </ul>
+        <!-- ==================== مسار بايثون ==================== -->
+        <div id="python" class="course-section active">
+            <h2 style="color: #00f2fe;">🐍 مسار تعلم Python من الصفر حتى الاحتراف</h2>
+            
+            <div class="lesson-title">المستوى 1: من الصفر (المتغيرات وأنواع البيانات)</div>
+            <p>المتغير هو مكان في الذاكرة لتخزين البيانات (أرقام، نصوص، أو قيم منطقية):</p>
+            <div class="code-box">
+name = "Amir"<br>
+age = 12<br>
+is_developer = True<br>
+print("مرحباً يا", name)
+            </div>
+
+            <div class="exercise-box">
+                <div class="exercise-title">🎯 تدريب رقم 1:</div>
+                <p>قم بإنشاء متغير يحمل اسم مدرستك ومتغير آخر يحمل صفك الدراسي، ثم اطبع جملة تجمع بينهما باستخدام <code>print()</code>.</p>
+            </div>
+
+            <div class="lesson-title">المستوى 2: الشروط والتحكم بالحساب (if / elif / else)</div>
+            <p>اتخاذ القرارات البرمجية بناءً على الشروط:</p>
+            <div class="code-box">
+score = 85<br>
+if score >= 90:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print("ممتاز 🌟")<br>
+elif score >= 50:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print("ناجح ✅")<br>
+else:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print("راسب ❌")
+            </div>
+
+            <div class="exercise-box">
+                <div class="exercise-title">🎯 تدريب رقم 2:</div>
+                <p>اكتب برنامجاً يفحص درجة حرارة الطقس: إذا كانت أكبر من 30 يطبع "الجو حار"، وإذا كانت أقل يطبع "الجو لطيف".</p>
+            </div>
+
+            <div class="lesson-title">المستوى 3: الاحتراف والتطوير (الدوال والسيرفرات)</div>
+            <p>تجميع الكود في دالة وإعادة استخدامه، ثم بناء سيرفرات الويب بـ Flask:</p>
+            <div class="code-box">
+def check_pass(password):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if len(password) > 8:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "كلمة مرور قوية"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return "ضعيفة"<br>
+<br>
+print(check_pass("Amir12345"))
+            </div>
+
+            <div class="exercise-box">
+                <div class="exercise-title">🔥 التحدي الختامي لبايثون:</div>
+                <p>قم ببرمجة دالة حاسبة تأخذ رقمين والعملية (+ أو -) وترجع الناتج الصحيح للمستخدم.</p>
+            </div>
         </div>
 
-        <!-- مسار C++ -->
-        <div class="course-card">
-            <span class="level-tag">مسار كامل</span>
-            <h2>⚡ C++ Systems & Games</h2>
-            <ul class="roadmap">
-                <li><strong>المبتدئ:</strong> المدخلات والمخرجات وهيكل البرنامج الأساسي.</li>
-                <li><strong>المتوسط:</strong> المصفوفات، الدوال، والمؤشرات (Pointers).</li>
-                <li><strong>المتقدم:</strong> إدارة الذاكرة اليدوية والـ OOP المتقدم.</li>
-                <li><strong>مشروع ختامي:</strong> بناء لعبة نصية عالية السرعة.</li>
-            </ul>
+        <!-- ==================== مسار HTML & CSS ==================== -->
+        <div id="html" class="course-section">
+            <h2 style="color: #00f2fe;">🌐 مسار تصميم المواقع (HTML & CSS)</h2>
+            
+            <div class="lesson-title">المستوى 1: هيكلة الصفحات (HTML)</div>
+            <p>بناء العناصر الأساسية مثل العناوين والأزرار والروابط:</p>
+            <div class="code-box">
+&lt;h1&gt;أهلاً بكم في موقعي&lt;/h1&gt;<br>
+&lt;p&gt;هذا أول موقع أقوم بتصميمه.&lt;/p&gt;<br>
+&lt;button&gt;اضغط هنا&lt;/button&gt;
+            </div>
+
+            <div class="exercise-box">
+                <div class="exercise-title">🎯 تدريب رقم 1:</div>
+                <p>أنشئ صفحة فيها عنوان باسمك، وتحته زر ينقل الزائر إلى موقع جوجل <code>&lt;a href="..."&gt;</code>.</p>
+            </div>
+
+            <div class="lesson-title">المستوى 2: التنسيق والتصميم (CSS)</div>
+            <p>إضافة الألوان والخلفيات والمؤثرات الضوئية (النيون):</p>
+            <div class="code-box">
+button {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background-color: #00f2fe;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color: #000;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border-radius: 8px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;box-shadow: 0 0 10px #00f2fe;<br>
+}
+            </div>
+
+            <div class="exercise-box">
+                <div class="exercise-title">🎯 تدريب رقم 2:</div>
+                <p>قم بتغيير لون خلفية الصفحة إلى الأسود <code>#000</code> مع جعل لون جميع النصوص أخضر نيون <code>#00ff00</code>.</p>
+            </div>
         </div>
+
+        <!-- ==================== مسار C++ ==================== -->
+        <div id="cpp" class="course-section">
+            <h2 style="color: #00f2fe;">⚡ مسار C++ للأنظمة والألعاب</h2>
+            
+            <div class="lesson-title">المستوى 1: الهيكل الأساسي والمخرجات</div>
+            <p>أول برنامج بلغة C++ لعرض النصوص على الشاشة السوداء:</p>
+            <div class="code-box">
+#include &lt;iostream&gt;<br>
+using namespace std;<br>
+<br>
+int main() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; "Hello C++ World!" &lt;&lt; endl;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br>
+}
+            </div>
+
+            <div class="exercise-box">
+                <div class="exercise-title">🎯 تدريب رقم 1:</div>
+                <p>اكتب برنامجاً يستقبل عمر المستخدم باستخدام <code>cin</code> ويطبع له سنة ميلاده على الشاشة.</p>
+            </div>
+        </div>
+
+        <a href="/" class="btn-back">⬅️ العودة للرئيسية</a>
     </div>
 
-    <a href="/" class="btn-back">⬅️ العودة للرئيسية</a>
+    <script>
+        function showLang(langId) {
+            let sections = document.querySelectorAll('.course-section');
+            let buttons = document.querySelectorAll('.tab-btn');
+            
+            sections.forEach(sec => sec.classList.remove('active'));
+            buttons.forEach(btn => btn.classList.remove('active'));
 
+            document.getElementById(langId).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 </html>
