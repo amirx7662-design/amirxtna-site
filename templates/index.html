@@ -8,1728 +8,976 @@
 
 <style>
 :root {
-  --bg: #080b16;
-  --panel: #101629;
-  --panel2: #17213a;
-  --text: #f2f5ff;
-  --muted: #aab4d0;
-  --cyan: #38e5ff;
-  --purple: #a78bfa;
-  --green: #5ef0b2;
-  --pink: #ff75bd;
-  --border: rgba(151,176,255,.18);
-}
-
-* { box-sizing: border-box; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  margin: 0;
-  background:
-    radial-gradient(ellipse at 80% 0%, #29205a55, transparent 35%),
-    radial-gradient(ellipse at 0% 30%, #12bede17, transparent 30%),
-    var(--bg);
-  color: var(--text);
-  font-family: Tahoma, Arial, sans-serif;
-  line-height: 1.8;
-}
-
-button, input { font: inherit; }
-button { cursor: pointer; }
-a { color: inherit; text-decoration: none; }
-
-.container {
-  width: min(1180px, calc(100% - 30px));
-  margin: auto;
-}
-
-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: #080b16eF;
-  backdrop-filter: blur(15px);
-  border-bottom: 1px solid var(--border);
-}
-
-.nav {
-  min-height: 75px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 1.15rem;
-  font-weight: 900;
-  letter-spacing: 1px;
-}
-
-.brand-icon {
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  border-radius: 13px;
-  background: linear-gradient(135deg, var(--cyan), var(--purple));
-  color: #080b16;
-}
-
-.nav-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.nav-btn, .btn {
-  padding: 10px 14px;
-  color: var(--text);
-  background: #ffffff08;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  transition: .2s;
-}
-
-.nav-btn:hover, .nav-btn.active {
-  border-color: var(--cyan);
-  background: #38e5ff15;
-}
-
-.btn-primary {
-  background: linear-gradient(100deg, var(--cyan), #9c9dff);
-  color: #07101c;
-  font-weight: 900;
-  border: none;
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.08);
-}
-
-.btn-secondary:hover {
-  border-color: var(--purple);
-}
-
-.mobile-menu { display: none; }
-
-.page {
-  display: none;
-  padding: 35px 0 75px;
-  min-height: 70vh;
-}
-
-.page.active {
-  display: block;
-  animation: appear .25s ease;
-}
-
-@keyframes appear {
-  from { opacity: .35; transform: translateY(5px); }
-  to { opacity: 1; transform: none; }
-}
-
-.hero {
-  padding: 55px 0 35px;
-  display: grid;
-  grid-template-columns: 1.2fr .8fr;
-  align-items: center;
-  gap: 35px;
-}
-
-.eyebrow {
-  color: var(--cyan);
-  font-size: .88rem;
-  font-weight: 800;
-  letter-spacing: 1px;
-}
-
-h1, h2, h3 { line-height: 1.4; }
-
-.hero h1 {
-  margin: 12px 0;
-  font-size: clamp(2.2rem, 5.5vw, 4.2rem);
-  line-height: 1.2;
-}
-
-.gradient {
-  background: linear-gradient(90deg, var(--cyan), #c1a6ff, var(--pink));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.lead {
-  color: var(--muted);
-  font-size: 1.06rem;
-  max-width: 680px;
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 25px;
-}
-
-.hero-art {
-  position: relative;
-  min-height: 300px;
-  border: 1px solid var(--border);
-  border-radius: 28px;
-  display: grid;
-  place-items: center;
-  background: linear-gradient(145deg, #38e5ff12, #a78bfa12);
-  overflow: hidden;
-}
-
-.orb {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  border: 2px solid #38e5ff88;
-  display: grid;
-  place-items: center;
-  box-shadow: 0 0 60px #38e5ff22, inset 0 0 40px #a78bfa22;
-  position: relative;
-}
-
-.orb::before, .orb::after {
-  content: "";
-  position: absolute;
-  inset: -25px;
-  border: 1px dashed #a78bfa99;
-  border-radius: 50%;
-}
-
-.orb::after {
-  inset: -48px;
-  border-color: #38e5ff55;
-}
-
-.orb span {
-  color: var(--cyan);
-  font-size: 2rem;
-  font-weight: 1000;
-}
-
-.float-tag {
-  position: absolute;
-  padding: 7px 12px;
-  border: 1px solid var(--border);
-  background: var(--panel);
-  border-radius: 12px;
-  font-size: .8rem;
-}
-
-.tag-one { top: 22px; right: 18px; }
-.tag-two { bottom: 25px; left: 18px; }
-.tag-three { bottom: 32px; right: 18px; }
-
-.stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin: 15px 0 50px;
-}
-
-.stat, .card, .roadmap-item {
-  padding: 19px;
-  border: 1px solid var(--border);
-  background: #101629b8;
-  border-radius: 17px;
-}
-
-.stat b {
-  display: block;
-  color: var(--cyan);
-  font-size: 1.6rem;
-}
-
-.stat span, .muted, .small {
-  color: var(--muted);
-}
-
-.section-head { margin: 30px 0 18px; }
-.section-head h2 { margin: 0; }
-.section-head p { color: var(--muted); margin: 5px 0 0; }
-
-.track-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.card {
-  background: linear-gradient(155deg, #131c33, #0c111f);
-  transition: .2s;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  border-color: #38e5ff77;
-}
-
-.card-icon {
-  width: 53px;
-  height: 53px;
-  display: grid;
-  place-items: center;
-  font-size: 1.6rem;
-  border-radius: 16px;
-  background: #38e5ff12;
-  border: 1px solid var(--border);
-}
-
-.card h3 { margin-bottom: 5px; }
-.card p { color: var(--muted); }
-.card .btn { margin-top: 10px; }
-
-.progress-track {
-  height: 7px;
-  background: #26304b;
-  border-radius: 50px;
-  overflow: hidden;
-  margin: 12px 0;
-}
-
-.progress-track span {
-  height: 100%;
-  display: block;
-  width: 0;
-  background: linear-gradient(90deg, var(--cyan), var(--purple));
-}
-
-.roadmap {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  margin: 22px 0 35px;
-}
-
-.roadmap-item b {
-  display: block;
-  color: var(--purple);
-}
-
-.notice {
-  padding: 18px;
-  border: 1px solid #5ef0b244;
-  border-radius: 15px;
-  background: #5ef0b20b;
-}
-
-.notice strong { color: var(--green); }
-
-.page-title {
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  margin: 5px 0 10px;
-}
-
-.course-layout {
-  display: grid;
-  grid-template-columns: 300px minmax(0, 1fr);
-  gap: 17px;
-  align-items: start;
-}
-
-.lesson-sidebar, .lesson-content {
-  border: 1px solid var(--border);
-  background: #0d1325e8;
-  border-radius: 19px;
-  overflow: hidden;
-}
-
-.lesson-sidebar {
-  position: sticky;
-  top: 95px;
-}
-
-.sidebar-head {
-  padding: 17px;
-  border-bottom: 1px solid var(--border);
-}
-
-.sidebar-head h3 { margin: 0 0 10px; }
-
-.searchbox {
-  width: 100%;
-  background: #080d19;
-  color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 10px;
-  outline: none;
-}
-
-.searchbox:focus { border-color: var(--cyan); }
-
-.lesson-list {
-  padding: 8px;
-  max-height: 65vh;
-  overflow: auto;
-}
-
-.lesson-item {
-  display: flex;
-  width: 100%;
-  text-align: right;
-  gap: 10px;
-  align-items: flex-start;
-  padding: 11px;
-  margin-bottom: 4px;
-  border: 1px solid transparent;
-  border-radius: 11px;
-  background: transparent;
-  color: var(--text);
-}
-
-.lesson-item:hover { background: #ffffff08; }
-
-.lesson-item.active {
-  background: #38e5ff10;
-  border-color: #38e5ff55;
-}
-
-.lesson-item.done .lesson-number {
-  background: #5ef0b222;
-  color: var(--green);
-}
-
-.lesson-number {
-  flex: 0 0 30px;
-  height: 30px;
-  display: grid;
-  place-items: center;
-  border-radius: 9px;
-  background: #1c2641;
-}
-
-.lesson-meta strong { display: block; }
-.lesson-meta small { color: var(--muted); }
-
-.lesson-content {
-  padding: clamp(17px, 3vw, 30px);
-  min-height: 500px;
-}
-
-.lesson-content h2 { margin: 0; }
-
-.pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 15px 0 23px;
-}
-
-.pill {
-  font-size: .8rem;
-  border: 1px solid var(--border);
-  padding: 3px 10px;
-  border-radius: 50px;
-  color: var(--muted);
-}
-
-.pill.cyan {
-  color: var(--cyan);
-  border-color: #38e5ff55;
-}
-
-.lesson-section { margin: 24px 0; }
-.lesson-section h3 { margin-bottom: 8px; }
-
-.lesson-text {
-  color: #d4dcf0;
-  white-space: pre-line;
-}
-
-.code-wrap { position: relative; }
-
-.code-block {
-  direction: ltr;
-  text-align: left;
-  white-space: pre;
-  overflow: auto;
-  background: #060a13;
-  border: 1px solid #91a9ff22;
-  border-radius: 13px;
-  padding: 20px;
-  color: #9ff5e4;
-  font: .9rem/1.7 Consolas, monospace;
-}
-
-.copy-btn {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  padding: 5px 10px;
-  font-size: .76rem;
-  color: var(--text);
-  border: 1px solid var(--border);
-  background: var(--panel);
-  border-radius: 8px;
-}
-
-.line-list { padding-right: 22px; color: var(--muted); }
-.line-list li { margin-bottom: 7px; }
-
-.task-box {
-  padding: 16px;
-  border-radius: 14px;
-  border: 1px solid #a78bfa55;
-  background: #a78bfa0c;
-}
-
-.quiz-box {
-  padding: 17px;
-  border-radius: 15px;
-  border: 1px solid var(--border);
-  background: #0a1020;
-}
-
-.quiz-option {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 11px;
-  margin: 9px 0;
-  border: 1px solid var(--border);
-  border-radius: 11px;
-  cursor: pointer;
-}
-
-.quiz-option:has(input:checked) {
-  border-color: var(--cyan);
-  background: #38e5ff0b;
-}
-
-.feedback {
-  min-height: 30px;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-.lesson-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  border-top: 1px solid var(--border);
-  margin-top: 25px;
-  padding-top: 20px;
-}
-
-.lesson-footer-nav {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  margin-top: 15px;
-}
-
-.games-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.game-art {
-  display: grid;
-  place-items: center;
-  height: 140px;
-  border-radius: 14px;
-  border: 1px solid var(--border);
-  background: radial-gradient(circle, #38e5ff25, transparent 55%), #15132a;
-  font-size: 3rem;
-}
-
-.status { color: var(--pink); font-size: .82rem; }
-
-.footer {
-  border-top: 1px solid var(--border);
-  padding: 28px 0 35px;
-  color: var(--muted);
-}
-
-.footer-inner {
-  display: flex;
-  justify-content: space-between;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
-.ad-slot {
-  position: fixed;
-  bottom: 14px;
-  left: 14px;
-  z-index: 20;
-  width: 175px;
-  min-height: 75px;
-  padding: 12px;
-  border: 1px dashed #91a9ff55;
-  border-radius: 14px;
-  background: #101629ed;
-  font-size: .78rem;
-}
-
-.ad-slot strong { display: block; color: var(--purple); }
-
-.modal {
-  position: fixed;
-  inset: 0;
-  z-index: 200;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 18px;
-  background: #000a;
-}
-
-.modal.open { display: flex; }
-
-.modal-content {
-  width: min(420px, 100%);
-  padding: 22px;
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  background: var(--panel);
-}
-
-@media (max-width: 900px) {
-  .hero { grid-template-columns: 1fr; }
-  .track-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .course-layout { grid-template-columns: 1fr; }
-  .lesson-sidebar { position: static; }
-  .lesson-list { max-height: 300px; }
-}
-
-@media (max-width: 650px) {
-  .container { width: calc(100% - 22px); }
-  .nav { padding: 10px 0; }
-  .mobile-menu { display: block; }
-  .nav-links { display: none; width: 100%; }
-  .nav-links.open { display: flex; }
-  .nav-links button { flex: 1; }
-  .hero { padding-top: 30px; }
-  .hero-art { min-height: 260px; }
-  .track-grid, .games-grid { grid-template-columns: 1fr; }
-  .stats { grid-template-columns: 1fr; }
-  .roadmap { grid-template-columns: repeat(2, 1fr); }
-  .ad-slot { position: static; width: auto; margin: 15px 11px; }
-  .lesson-footer-nav button { font-size: .85rem; }
+  --bg:#080b16;--panel:#101629;--panel2:#17213a;
+  --text:#f2f5ff;--muted:#aab4d0;--cyan:#38e5ff;
+  --purple:#a78bfa;--green:#5ef0b2;--pink:#ff75bd;
+  --border:rgba(151,176,255,.18);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;background:
+ radial-gradient(ellipse at 80% 0%,#29205a55,transparent 35%),
+ radial-gradient(ellipse at 0% 30%,#12bede17,transparent 30%),var(--bg);
+ color:var(--text);font-family:Tahoma,Arial,sans-serif;line-height:1.8
+}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+.container{width:min(1180px,calc(100% - 30px));margin:auto}
+header{
+ position:sticky;top:0;z-index:100;background:#080b16ef;
+ backdrop-filter:blur(15px);border-bottom:1px solid var(--border)
+}
+.nav{min-height:75px;display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-size:1.15rem;font-weight:900;letter-spacing:1px}
+.brand-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:linear-gradient(135deg,var(--cyan),var(--purple));color:#080b16}
+.nav-links{display:flex;flex-wrap:wrap;gap:8px}
+.nav-btn,.btn{padding:10px 14px;color:var(--text);background:#ffffff08;border:1px solid var(--border);border-radius:12px;transition:.2s}
+.nav-btn:hover,.nav-btn.active{border-color:var(--cyan);background:#38e5ff15}
+.btn-primary{background:linear-gradient(100deg,var(--cyan),#9c9dff);color:#07101c;font-weight:900;border:none}
+.btn-primary:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.btn-secondary:hover{border-color:var(--purple)}
+.mobile-menu{display:none}
+.page{display:none;padding:35px 0 75px;min-height:70vh}
+.page.active{display:block;animation:appear .25s ease}
+@keyframes appear{from{opacity:.35;transform:translateY(5px)}to{opacity:1;transform:none}}
+.hero{padding:55px 0 35px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:35px}
+.eyebrow{color:var(--cyan);font-size:.88rem;font-weight:800;letter-spacing:1px}
+h1,h2,h3{line-height:1.4}
+.hero h1{margin:12px 0;font-size:clamp(2.2rem,5.5vw,4.2rem);line-height:1.2}
+.gradient{background:linear-gradient(90deg,var(--cyan),#c1a6ff,var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);font-size:1.06rem;max-width:680px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:25px}
+.hero-art{position:relative;min-height:300px;border:1px solid var(--border);border-radius:28px;display:grid;place-items:center;background:linear-gradient(145deg,#38e5ff12,#a78bfa12);overflow:hidden}
+.orb{width:180px;height:180px;border-radius:50%;border:2px solid #38e5ff88;display:grid;place-items:center;box-shadow:0 0 60px #38e5ff22,inset 0 0 40px #a78bfa22;position:relative}
+.orb:before,.orb:after{content:"";position:absolute;inset:-25px;border:1px dashed #a78bfa99;border-radius:50%}
+.orb:after{inset:-48px;border-color:#38e5ff55}
+.orb span{color:var(--cyan);font-size:2rem;font-weight:1000}
+.float-tag{position:absolute;padding:7px 12px;border:1px solid var(--border);background:var(--panel);border-radius:12px;font-size:.8rem}
+.tag-one{top:22px;right:18px}.tag-two{bottom:25px;left:18px}.tag-three{bottom:32px;right:18px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:15px 0 50px}
+.stat,.card,.roadmap-item{padding:19px;border:1px solid var(--border);background:#101629b8;border-radius:17px}
+.stat b{display:block;color:var(--cyan);font-size:1.6rem}
+.stat span,.muted,.small{color:var(--muted)}
+.section-head{margin:30px 0 18px}
+.section-head h2{margin:0}.section-head p{color:var(--muted);margin:5px 0 0}
+.track-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{background:linear-gradient(155deg,#131c33,#0c111f);transition:.2s}
+.card:hover{transform:translateY(-4px);border-color:#38e5ff77}
+.card-icon{width:53px;height:53px;display:grid;place-items:center;font-size:1.6rem;border-radius:16px;background:#38e5ff12;border:1px solid var(--border)}
+.card h3{margin-bottom:5px}.card p{color:var(--muted)}.card .btn{margin-top:10px}
+.progress-track{height:7px;background:#26304b;border-radius:50px;overflow:hidden;margin:12px 0}
+.progress-track span{height:100%;display:block;width:0;background:linear-gradient(90deg,var(--cyan),var(--purple))}
+.roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0 35px}
+.roadmap-item b{display:block;color:var(--purple)}
+.notice{padding:18px;border:1px solid #5ef0b244;border-radius:15px;background:#5ef0b20b}
+.notice strong{color:var(--green)}
+.page-title{font-size:clamp(1.8rem,4vw,2.6rem);margin:5px 0 10px}
+.course-layout{display:grid;grid-template-columns:300px minmax(0,1fr);gap:17px;align-items:start}
+.lesson-sidebar,.lesson-content{border:1px solid var(--border);background:#0d1325e8;border-radius:19px;overflow:hidden}
+.lesson-sidebar{position:sticky;top:95px}
+.sidebar-head{padding:17px;border-bottom:1px solid var(--border)}
+.sidebar-head h3{margin:0 0 10px}
+.searchbox{width:100%;background:#080d19;color:var(--text);border:1px solid var(--border);border-radius:10px;padding:10px;outline:none}
+.searchbox:focus{border-color:var(--cyan)}
+.lesson-list{padding:8px;max-height:65vh;overflow:auto}
+.lesson-item{display:flex;width:100%;text-align:right;gap:10px;align-items:flex-start;padding:11px;margin-bottom:4px;border:1px solid transparent;border-radius:11px;background:transparent;color:var(--text)}
+.lesson-item:hover{background:#ffffff08}
+.lesson-item.active{background:#38e5ff10;border-color:#38e5ff55}
+.lesson-item.done .lesson-number{background:#5ef0b222;color:var(--green)}
+.lesson-number{flex:0 0 30px;height:30px;display:grid;place-items:center;border-radius:9px;background:#1c2641}
+.lesson-meta strong{display:block}.lesson-meta small{color:var(--muted)}
+.lesson-content{padding:clamp(17px,3vw,30px);min-height:500px}
+.lesson-content h2{margin:0}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin:15px 0 23px}
+.pill{font-size:.8rem;border:1px solid var(--border);padding:3px 10px;border-radius:50px;color:var(--muted)}
+.pill.cyan{color:var(--cyan);border-color:#38e5ff55}
+.lesson-section{margin:24px 0}.lesson-section h3{margin-bottom:8px}
+.lesson-text{color:#d4dcf0;white-space:pre-line}
+.code-wrap{position:relative}
+.code-block{direction:ltr;text-align:left;white-space:pre;overflow:auto;background:#060a13;border:1px solid #91a9ff22;border-radius:13px;padding:20px;color:#9ff5e4;font:.9rem/1.7 Consolas,monospace}
+.copy-btn{position:absolute;top:8px;left:8px;padding:5px 10px;font-size:.76rem;color:var(--text);border:1px solid var(--border);background:var(--panel);border-radius:8px}
+.line-list{padding-right:22px;color:var(--muted)}.line-list li{margin-bottom:7px}
+.task-box{padding:16px;border-radius:14px;border:1px solid #a78bfa55;background:#a78bfa0c}
+.quiz-box{padding:17px;border-radius:15px;border:1px solid var(--border);background:#0a1020}
+.quiz-option{display:flex;align-items:flex-start;gap:10px;padding:11px;margin:9px 0;border:1px solid var(--border);border-radius:11px;cursor:pointer}
+.quiz-option:has(input:checked){border-color:var(--cyan);background:#38e5ff0b}
+.feedback{min-height:30px;font-weight:bold;margin-top:10px}
+.lesson-actions{display:flex;flex-wrap:wrap;gap:10px;border-top:1px solid var(--border);margin-top:25px;padding-top:20px}
+.lesson-footer-nav{display:flex;justify-content:space-between;gap:10px;margin-top:15px}
+.games-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.game-art{display:grid;place-items:center;height:140px;border-radius:14px;border:1px solid var(--border);background:radial-gradient(circle,#38e5ff25,transparent 55%),#15132a;font-size:3rem}
+.status{color:var(--pink);font-size:.82rem}
+.footer{border-top:1px solid var(--border);padding:28px 0 35px;color:var(--muted)}
+.footer-inner{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.ad-slot{position:fixed;bottom:14px;left:14px;z-index:20;width:175px;min-height:75px;padding:12px;border:1px dashed #91a9ff55;border-radius:14px;background:#101629ed;font-size:.78rem}
+.ad-slot strong{display:block;color:var(--purple)}
+.modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:18px;background:#000a}
+.modal.open{display:flex}
+.modal-content{width:min(420px,100%);padding:22px;border:1px solid var(--border);border-radius:18px;background:var(--panel)}
+textarea{width:100%;min-height:140px;background:#060a13;color:var(--text);border:1px solid var(--border);border-radius:12px;padding:13px;direction:ltr;text-align:left;font-family:Consolas,monospace}
+.preview{width:100%;height:280px;background:white;border:0;border-radius:12px}
+.terminal{background:#050811;border:1px solid #26304b;border-radius:14px;padding:15px;font-family:Consolas,monospace;direction:ltr;text-align:left}
+.terminal-output{color:var(--green);white-space:pre-wrap;min-height:100px}
+.terminal input{width:100%;background:transparent;color:var(--cyan);border:0;outline:0;direction:ltr}
+@media(max-width:900px){
+ .hero{grid-template-columns:1fr}.track-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .course-layout{grid-template-columns:1fr}.lesson-sidebar{position:static}.lesson-list{max-height:300px}
+}
+@media(max-width:650px){
+ .container{width:calc(100% - 22px)}.nav{padding:10px 0}
+ .mobile-menu{display:block}.nav-links{display:none;width:100%}.nav-links.open{display:flex}
+ .nav-links button{flex:1}.hero{padding-top:30px}.hero-art{min-height:260px}
+ .track-grid,.games-grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr}
+ .roadmap{grid-template-columns:repeat(2,1fr)}.ad-slot{position:static;width:auto;margin:15px 11px}
+ .lesson-footer-nav button{font-size:.85rem}
 }
 </style>
 </head>
 
 <body>
-
 <header>
-  <div class="container nav">
-    <a href="#" class="brand" onclick="showPage('home'); return false;">
-      <span class="brand-icon">AX</span>
-      <span>AMIR<span class="gradient">XTNA</span></span>
-    </a>
-
-    <button class="nav-btn mobile-menu" onclick="toggleMenu()">
-      ☰ القائمة
-    </button>
-
-    <nav class="nav-links" id="navLinks">
-      <button class="nav-btn active" data-page="home">الرئيسية</button>
-      <button class="nav-btn" data-page="programming">البرمجة</button>
-      <button class="nav-btn" data-page="games">الألعاب</button>
-      <button class="nav-btn" data-page="about">عن الأكاديمية</button>
-    </nav>
-  </div>
+ <div class="container nav">
+  <a class="brand" href="#" onclick="showPage('home');return false">
+   <span class="brand-icon">AX</span>
+   <span>AMIRXTNA <span class="gradient">ACADEMY</span></span>
+  </a>
+  <button class="btn mobile-menu" onclick="toggleMenu()">☰ القائمة</button>
+  <nav class="nav-links" id="navLinks">
+   <button class="nav-btn active" data-page="home" onclick="showPage('home')">الرئيسية</button>
+   <button class="nav-btn" data-page="programming" onclick="showPage('programming')">البرمجة</button>
+   <button class="nav-btn" data-page="lab" onclick="showPage('lab')">مختبر الأكواد</button>
+   <button class="nav-btn" data-page="terminal" onclick="showPage('terminal')">محطة الأوامر</button>
+   <button class="nav-btn" data-page="games" onclick="showPage('games')">الألعاب</button>
+   <button class="nav-btn" data-page="progress" onclick="showPage('progress')">إنجازاتي</button>
+  </nav>
+ </div>
 </header>
 
 <main>
-
-<!-- الرئيسية -->
 <section class="page active" id="home">
-  <div class="container">
-
-    <div class="hero">
-      <div>
-        <div class="eyebrow">تعلم • طبّق • ابنِ مشروعك</div>
-        <h1>
-          تعلّم البرمجة<br>
-          من <span class="gradient">الصفر إلى الإبداع</span>
-        </h1>
-        <p class="lead">
-          مرحبًا بك في AMIRXTNA، أكاديمية تساعدك على تعلم البرمجة
-          خطوة بخطوة، مع أمثلة عملية وتحديات ومشاريع وأساسيات
-          الأمن السيبراني.
-        </p>
-
-        <div class="hero-actions">
-          <button class="btn btn-primary" onclick="showPage('programming')">
-            ابدأ رحلة التعلم ←
-          </button>
-          <button class="btn" onclick="showPage('games')">
-            اكتشف الألعاب 🎮
-          </button>
-        </div>
-      </div>
-
-      <div class="hero-art">
-        <span class="float-tag tag-one">PYTHON</span>
-        <span class="float-tag tag-two">BUILD YOUR FUTURE</span>
-        <span class="float-tag tag-three">CYBER LAB</span>
-        <div class="orb"><span>AX</span></div>
-      </div>
+ <div class="container">
+  <div class="hero">
+   <div>
+    <div class="eyebrow">من مبتدئ إلى مطوّر يصنع مشاريعه</div>
+    <h1>اصنع مستقبلك<br><span class="gradient">سطرًا بعد سطر</span></h1>
+    <p class="lead">تعلّم البرمجة بطريقة عملية، افهم كيف تعمل التطبيقات والمواقع والألعاب، واختبر مهاراتك في رحلة تعليمية تبدأ من الصفر وتزداد تحديًا مع كل درس.</p>
+    <div class="hero-actions">
+     <button class="btn btn-primary" onclick="showPage('programming')">ابدأ رحلة التعلّم ←</button>
+     <button class="btn btn-secondary" onclick="showPage('lab')">جرّب مختبر الأكواد</button>
     </div>
-
-    <div class="stats">
-      <div class="stat">
-        <b id="statLessons">0</b>
-        <span>درس في النسخة الحالية</span>
-      </div>
-      <div class="stat">
-        <b id="statDone">0</b>
-        <span>درس أكملته</span>
-      </div>
-      <div class="stat">
-        <b>5</b>
-        <span>مسارات تعليمية</span>
-      </div>
-    </div>
-
-    <div class="section-head">
-      <h2>ابدأ بأحد المسارات</h2>
-      <p>اختر المسار الذي تريد تعلمه.</p>
-    </div>
-
-    <div class="track-grid" id="homeTracks"></div>
-
-    <div class="section-head">
-      <h2>كيف تتعلم داخل الأكاديمية؟</h2>
-    </div>
-
-    <div class="roadmap">
-      <div class="roadmap-item">
-        <b>01 — افهم</b>
-        <span>اقرأ الشرح والأمثلة بهدوء.</span>
-      </div>
-      <div class="roadmap-item">
-        <b>02 — جرّب</b>
-        <span>اكتب الكود بنفسك على جهازك.</span>
-      </div>
-      <div class="roadmap-item">
-        <b>03 — اختبر</b>
-        <span>حل الأسئلة واكتشف أخطاءك.</span>
-      </div>
-      <div class="roadmap-item">
-        <b>04 — ابنِ</b>
-        <span>استخدم ما تعلمته في المشاريع.</span>
-      </div>
-    </div>
-
-    <div class="notice">
-      <strong>تذكّر:</strong>
-      الاحتراف يحتاج إلى التدريب المستمر، وبناء مشاريع حقيقية،
-      وتصحيح الأخطاء. الدروس بداية رحلتك وليست بديلًا عن التطبيق.
-    </div>
-
+   </div>
+   <div class="hero-art">
+    <span class="float-tag tag-one">⚡ تعلّم بالتطبيق</span>
+    <span class="float-tag tag-two">⌨️ اكتب الكود بنفسك</span>
+    <span class="float-tag tag-three">🚀 ابنِ مشروعك</span>
+    <div class="orb"><span>&lt;AX/&gt;</span></div>
+   </div>
   </div>
+
+  <div class="stats">
+   <div class="stat"><b id="statXP">0 XP</b><span>نقاط التعلّم</span></div>
+   <div class="stat"><b id="statDone">0</b><span>دروس مكتملة</span></div>
+   <div class="stat"><b id="statTracks">5</b><span>مسارات تقنية</span></div>
+  </div>
+
+  <div class="section-head">
+   <h2>🎯 اختر مسارك</h2>
+   <p>ابدأ بلغة واحدة، تعلّم الأساسيات، ثم انتقل إلى المشاريع المتقدمة.</p>
+  </div>
+  <div class="track-grid" id="homeTracks"></div>
+
+  <div class="section-head"><h2>🗺️ خريطة الرحلة</h2><p>كل مستوى يبني على المهارات التي اكتسبتها في المستوى السابق.</p></div>
+  <div class="roadmap">
+   <div class="roadmap-item"><b>01 — البداية</b><span class="muted">المتغيرات، الأنواع، الطباعة، الإدخال.</span></div>
+   <div class="roadmap-item"><b>02 — المنطق</b><span class="muted">الشروط، الحلقات، الدوال، حل المشكلات.</span></div>
+   <div class="roadmap-item"><b>03 — البناء</b><span class="muted">الملفات، البيانات، الواجهات، المشاريع.</span></div>
+   <div class="roadmap-item"><b>04 — الاحتراف</b><span class="muted">الاختبار، التصميم، الأداء، مشاريع أكبر.</span></div>
+  </div>
+  <div class="notice"><strong>💡 قاعدة المطوّر:</strong> لا تكتفِ بمشاهدة الأمثلة. اكتب الكود بنفسك، غيّر القيم، تعمّد تجربة الأخطاء، ثم أصلحها. الوصول إلى مستوى متقدم يحتاج وقتًا وممارسة ومشاريع حقيقية.</div>
+ </div>
 </section>
 
-<!-- مسارات البرمجة -->
 <section class="page" id="programming">
-  <div class="container">
-    <div class="eyebrow">LEARNING PATHS</div>
-    <h1 class="page-title">مسارات البرمجة</h1>
-    <p class="muted">
-      اختر لغة أو مجالًا، ثم افتح دروسه من القائمة.
-    </p>
-    <div class="track-grid" id="allTracks"></div>
-  </div>
+ <div class="container">
+  <div class="eyebrow">PROGRAMMING CENTER</div>
+  <h1 class="page-title">مركز البرمجة</h1>
+  <p class="lead">اختر اللغة التي تريد تعلّمها. ستظهر دروس المسار داخل صفحة مستقلة بدل ازدحام الصفحة الرئيسية.</p>
+  <div class="track-grid" id="allTracks"></div>
+ </div>
 </section>
 
-<!-- صفحة الدروس -->
 <section class="page" id="course">
-  <div class="container">
-    <div class="back-row">
-      <button class="btn" onclick="showPage('programming')">
-        ← كل المسارات
-      </button>
-      <span class="muted" id="courseProgressText">التقدم: 0%</span>
-    </div>
-
-    <div class="progress-track">
-      <span id="courseProgressBar"></span>
-    </div>
-
-    <div class="section-head">
-      <div>
-        <div class="eyebrow" id="courseEyebrow"></div>
-        <h1 class="page-title" id="courseTitle"></h1>
-        <p class="muted" id="courseDescription"></p>
-      </div>
-    </div>
-
-    <div class="course-layout">
-      <aside class="lesson-sidebar">
-        <div class="sidebar-head">
-          <h3>دروس المسار</h3>
-          <input
-            class="searchbox"
-            id="lessonSearch"
-            placeholder="ابحث عن درس..."
-            oninput="renderLessonList()"
-          >
-          <p class="small" id="lessonCount"></p>
-        </div>
-        <div class="lesson-list" id="lessonList"></div>
-      </aside>
-
-      <article class="lesson-content" id="lessonContent">
-        <h2>اختر درسًا للبدء</h2>
-      </article>
-    </div>
+ <div class="container">
+  <button class="btn" onclick="showPage('programming')">← العودة إلى المسارات</button>
+  <div class="section-head">
+   <div class="eyebrow" id="courseEyebrow">LEARNING PATH</div>
+   <h1 class="page-title" id="courseTitle">مسار التعلّم</h1>
+   <p class="lead" id="courseDescription"></p>
   </div>
+  <div class="course-layout">
+   <aside class="lesson-sidebar">
+    <div class="sidebar-head">
+     <h3>📚 محتويات المسار</h3>
+     <input class="searchbox" id="lessonSearch" placeholder="ابحث عن درس..." oninput="renderLessonList()">
+     <div class="progress-track"><span id="courseProgress"></span></div>
+     <div class="small" id="courseProgressText">0% مكتمل</div>
+    </div>
+    <div class="lesson-list" id="lessonList"></div>
+   </aside>
+   <article class="lesson-content" id="lessonContent"></article>
+  </div>
+ </div>
 </section>
 
-<!-- الألعاب -->
+<section class="page" id="lab">
+ <div class="container">
+  <div class="eyebrow">LIVE CODE LAB</div>
+  <h1 class="page-title">🧪 مختبر الأكواد</h1>
+  <p class="lead">اكتب HTML وCSS وJavaScript وشاهد النتيجة في المعاينة. يعمل المختبر داخل المتصفح ولا يشغّل برامج نظام التشغيل.</p>
+  <div class="card">
+   <h3>محرّر HTML</h3>
+   <textarea id="htmlEditor" spellcheck="false"><!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  font-family: Arial;
+  text-align: center;
+  padding: 40px;
+  background: #101629;
+  color: white;
+}
+button {
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 10px;
+  background: #38e5ff;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+<h1>مرحبًا بك في مختبر AMIRXTNA!</h1>
+<p>عدّل الكود وتعلّم بالتجربة.</p>
+<button onclick="alert('أحسنت!')">اضغط هنا</button>
+</body>
+</html></textarea>
+   <div class="hero-actions">
+    <button class="btn btn-primary" onclick="runHTML()">▶ تشغيل المعاينة</button>
+    <button class="btn" onclick="resetHTML()">إعادة المثال</button>
+   </div>
+   <h3>المعاينة</h3>
+   <iframe class="preview" id="previewFrame" title="معاينة الكود" sandbox="allow-scripts"></iframe>
+  </div>
+ </div>
+</section>
+
+<section class="page" id="terminal">
+ <div class="container">
+  <div class="eyebrow">COMMAND SIMULATOR</div>
+  <h1 class="page-title">⌨️ محطة الأوامر التعليمية</h1>
+  <p class="lead">تدرّب على أوامر تعليمية وهمية. هذه المحطة ليست طرفية Windows أو Linux حقيقية ولا تنفّذ أوامر نظام فعلية.</p>
+  <div class="terminal">
+   <div style="color:#a78bfa">AMIRXTNA Learning Shell v1.0</div>
+   <div class="terminal-output" id="terminalOutput">مرحبًا! اكتب help لعرض الأوامر التعليمية.
+</div>
+   <form onsubmit="runCommand(event)">
+    <label style="color:#5ef0b2" for="terminalInput">student@amirxtna:~$ </label>
+    <input id="terminalInput" autocomplete="off" placeholder="اكتب help ثم اضغط Enter">
+   </form>
+  </div>
+  <div class="section-head"><h2>أوامر للتجربة</h2></div>
+  <div class="track-grid">
+   <div class="card"><code>help</code><p>عرض قائمة الأوامر.</p></div>
+   <div class="card"><code>about</code><p>معلومات عن المحطة.</p></div>
+   <div class="card"><code>clear</code><p>مسح النص الظاهر.</p></div>
+   <div class="card"><code>skills</code><p>عرض المهارات التي ستتعلّمها.</p></div>
+  </div>
+ </div>
+</section>
+
 <section class="page" id="games">
-  <div class="container">
-    <div class="eyebrow">GAMES LAB</div>
-    <h1 class="page-title">مختبر الألعاب</h1>
-    <p class="muted">
-      مساحة لعرض ألعابك الحالية والمشاريع التي ستطوّرها مستقبلًا.
-    </p>
-
-    <div class="games-grid">
-      <article class="card">
-        <div class="game-art">⚔️</div>
-        <h3>THRONE ZERO</h3>
-        <p>
-          مشروع لعبة ثلاثية الأبعاد بعالم خيالي واسع، وقتال وقدرات خاصة.
-        </p>
-        <span class="status">قيد التطوير</span>
-      </article>
-
-      <article class="card">
-        <div class="game-art">🎮</div>
-        <h3>مشروع اللعبة القادمة</h3>
-        <p>
-          أضف هنا وصف لعبتك القادمة، وأهدافها وصورها عندما تصبح جاهزة.
-        </p>
-        <span class="status">فكرة مستقبلية</span>
-      </article>
-    </div>
+ <div class="container">
+  <div class="eyebrow">GAME DEVELOPMENT</div>
+  <h1 class="page-title">🎮 عالم تطوير الألعاب</h1>
+  <p class="lead">تعرّف على صناعة الألعاب وتابع مشاريعك البرمجية.</p>
+  <div class="games-grid">
+   <article class="card">
+    <div class="game-art">🌌</div>
+    <h2>THRONE ZERO</h2>
+    <p>مشروع لعبة ثلاثية الأبعاد بطابع خيالي ومستقبلي، مع قتال وأعداء ومناطق للاستكشاف.</p>
+    <span class="status">● قيد التطوير</span>
+    <p class="small">المحرك: Godot 4</p>
+   </article>
+   <article class="card">
+    <div class="game-art">🧩</div>
+    <h2>تحدّي المبرمج</h2>
+    <p>تعلّم كيف تقسم المشكلة إلى خطوات، وتختبر الحلول، وتحول الفكرة إلى مشروع قابل للتشغيل.</p>
+    <button class="btn btn-primary" onclick="showPage('programming')">ابدأ تعلّم البرمجة</button>
+   </article>
   </div>
+ </div>
 </section>
 
-<!-- عن الأكاديمية -->
-<section class="page" id="about">
-  <div class="container">
-    <div class="eyebrow">ABOUT AMIRXTNA</div>
-    <h1 class="page-title">نبني المهارة خطوة بخطوة</h1>
-
-    <div class="card">
-      <h3>هدف الأكاديمية</h3>
-      <p>
-        مساعدة المبتدئين على فهم البرمجة بدلًا من حفظ الأوامر فقط.
-        نبدأ بالمبادئ، ثم ننتقل إلى بناء البرامج والمواقع والمشاريع.
-      </p>
-
-      <h3>ماذا ستتعلم؟</h3>
-      <p>
-        Python، وHTML وCSS، وJavaScript، وC++، بالإضافة إلى مبادئ
-        الأمن السيبراني وحماية التطبيقات والتعلم داخل مختبرات آمنة.
-      </p>
-
-      <h3>الأمن السيبراني المسؤول</h3>
-      <p>
-        التدرب الأمني يجب أن يكون على أجهزتك أو مختبرات تدريبية
-        أو أنظمة تملك إذنًا صريحًا لاختبارها. لا تختبر حسابات
-        أو أجهزة الآخرين دون إذن.
-      </p>
-    </div>
+<section class="page" id="progress">
+ <div class="container">
+  <div class="eyebrow">YOUR JOURNEY</div>
+  <h1 class="page-title">🏆 إنجازاتي</h1>
+  <p class="lead">يتابع الموقع تقدّم الدروس والنقاط على هذا المتصفح باستخدام التخزين المحلي.</p>
+  <div class="stats">
+   <div class="stat"><b id="progressXP">0</b><span>نقاط XP</span></div>
+   <div class="stat"><b id="progressDone">0</b><span>دروس مكتملة</span></div>
+   <div class="stat"><b id="progressLevel">1</b><span>مستواك الحالي</span></div>
   </div>
+  <div class="card">
+   <h2>📈 تقدمك حسب المسار</h2>
+   <div id="progressTracks"></div>
+  </div>
+  <div class="card" style="margin-top:16px">
+   <h2>إدارة التقدم</h2>
+   <p class="muted">يمكنك الاحتفاظ بتقدمك في هذا المتصفح أو إعادة ضبطه عند الحاجة.</p>
+   <button class="btn" onclick="exportProgress()">تصدير التقدم</button>
+   <button class="btn" onclick="confirmReset()">إعادة ضبط التقدم</button>
+  </div>
+ </div>
 </section>
-
 </main>
 
+<div class="ad-slot"><strong>مساحة إعلانية</strong><span>يمكن إضافة إعلان مناسب هنا لاحقًا.</span></div>
+
 <footer class="footer">
-  <div class="container footer-inner">
-    <span>© <span id="year"></span> AMIRXTNA</span>
-    <span>تعلم اليوم، وابنِ مشروعك غدًا 🚀</span>
-  </div>
+ <div class="container footer-inner">
+  <div><b class="gradient">AMIRXTNA ACADEMY</b><div>تعلّم. طبّق. ابنِ شيئًا جديدًا.</div></div>
+  <div>المحتوى التعليمي لا يغني عن الممارسة والمشاريع الواقعية.</div>
+ </div>
 </footer>
 
-<aside class="ad-slot">
-  <strong>مساحة إعلانية</strong>
-  <span>مكان مخصص لإعلان مستقبلي.</span>
-</aside>
-
-<div class="modal" id="resetModal">
-  <div class="modal-content">
-    <h3>إعادة ضبط التقدم؟</h3>
-    <p class="muted">
-      سيُحذف سجل الدروس المكتملة المحفوظ في هذا المتصفح.
-    </p>
-    <button class="btn btn-primary" onclick="confirmReset()">نعم، أعد الضبط</button>
-    <button class="btn" onclick="closeReset()">إلغاء</button>
-  </div>
+<div class="modal" id="modal">
+ <div class="modal-content">
+  <h2 id="modalTitle">تنبيه</h2>
+  <p id="modalText"></p>
+  <button class="btn btn-primary" onclick="closeModal()">حسنًا</button>
+ </div>
 </div>
 
 <script>
-/* ====================================
-   بيانات الدروس
-   ==================================== */
+"use strict";
 
-function lesson(title, level, goal, explanation, code, lines,
-                task, question, options, answer, why) {
-  return {
-    title, level, goal, explanation, code, lines,
-    task, question, options, answer, why
-  };
-}
-
-const courses = {
-  python: {
-    title: "Python — بايثون",
-    icon: "🐍",
-    tag: "PYTHON",
-    desc: "ابدأ تعلم البرمجة باستخدام لغة مناسبة للمبتدئين.",
-    lessons: [
-      lesson(
-        "أول برنامج",
-        "المستوى 1 · البداية",
-        "فهم طريقة طباعة رسالة.",
-        "البرنامج مجموعة أوامر ينفذها الكمبيوتر. في Python نستخدم print() لعرض النصوص على الشاشة. النص يوضع بين علامتي اقتباس.",
-        'print("Hello, world!")\nprint("أتعلم بايثون")',
-        [
-          "print هي الدالة التي تعرض النتيجة.",
-          "الأقواس تحتوي على ما نريد طباعته.",
-          'النص "Hello, world!" مكتوب بين علامتي اقتباس.',
-          "كل سطر هنا يعرض رسالة مستقلة."
-        ],
-        'اكتب برنامجًا يطبع اسمك ورسالة تقول فيها إنك بدأت تعلم البرمجة.',
-        "ما وظيفة print()؟",
-        ["حذف الملفات", "طباعة قيمة على الشاشة", "إيقاف الكمبيوتر"],
-        1,
-        "تُستخدم print() لعرض نص أو قيمة على الشاشة."
-      ),
-
-      lesson(
-        "المتغيرات",
-        "المستوى 1 · الأساسيات",
-        "تخزين البيانات داخل أسماء.",
-        "المتغير اسم نستخدمه للوصول إلى قيمة. في Python يمكن إنشاء متغير بكتابة اسمه ثم علامة = ثم القيمة. النص يوضع بين اقتباسين، والأعداد يمكن كتابتها من دون اقتباس.",
-        'name = "Amir"\nage = 14\nprint(name)\nprint(age)',
-        [
-          'name متغير يحتوي على النص "Amir".',
-          "age متغير يحتوي على العدد 14.",
-          "علامة = تعطي المتغير قيمة.",
-          "print(name) يعرض محتوى متغير الاسم."
-        ],
-        "أنشئ متغيرًا لاسم لعبتك المفضلة وآخر لعدد ساعات التدريب، ثم اطبع قيمتيهما.",
-        "أي سطر ينشئ متغيرًا اسمه score وقيمته 100؟",
-        ['score == 100', 'score = 100', '100 = score'],
-        1,
-        "نستخدم علامة = لإسناد القيمة إلى المتغير."
-      ),
-
-      lesson(
-        "العمليات الحسابية",
-        "المستوى 1 · الحساب",
-        "إجراء الحسابات الأساسية.",
-        "يدعم Python الجمع + والطرح - والضرب * والقسمة /. أما % فيعطي باقي القسمة. نستخدم هذه العمليات في الآلات الحاسبة والألعاب والبرامج.",
-        'a = 10\nb = 3\nprint(a + b)\nprint(a * b)\nprint(a % b)',
-        [
-          "a يحتوي على العدد 10.",
-          "b يحتوي على العدد 3.",
-          "a + b نتيجته 13.",
-          "a * b نتيجته 30.",
-          "a % b نتيجته 1، لأنه باقي قسمة 10 على 3."
-        ],
-        "أنشئ برنامجًا يجمع عددين من اختيارك ويعرض الناتج.",
-        "ما ناتج 10 % 3؟",
-        ["0", "1", "3"],
-        1,
-        "قسمة 10 على 3 تعطي 3 ويتبقى 1."
-      ),
-
-      lesson(
-        "الشروط",
-        "المستوى 2 · اتخاذ القرار",
-        "تنفيذ أمر حسب تحقق شرط.",
-        "تسمح if للبرنامج باتخاذ قرار. إذا كان الشرط صحيحًا ينفذ الكود الموجود تحتها. ويمكن استعمال else لتنفيذ خيار آخر. المسافات البادئة مهمة في Python.",
-        'age = 18\n\nif age >= 18:\n    print("Adult")\nelse:\n    print("Under 18")',
-        [
-          "age يحتوي على العدد 18.",
-          "الرمز >= يعني أكبر من أو يساوي.",
-          "إذا تحقق الشرط تنفذ الأوامر تحت if.",
-          "else تمثل الخيار الآخر إذا لم يتحقق الشرط."
-        ],
-        "اكتب شرطًا يفحص درجة طالب: إذا كانت الدرجة 60 أو أكثر اطبع ناجح، وإلا اطبع يحتاج إلى تحسين.",
-        "ماذا تفعل else؟",
-        ["تكرر الأوامر", "تقدم خيارًا بديلًا", "تحول النص إلى صورة"],
-        1,
-        "تعمل else عندما لا يتحقق الشرط السابق."
-      ),
-
-      lesson(
-        "الحلقات",
-        "المستوى 2 · التكرار",
-        "تكرار أمر دون كتابته مرات عديدة.",
-        "تستخدم for للتكرار على عناصر أو نطاق من الأعداد. الدالة range(5) تنتج الأعداد من 0 إلى 4، أي خمس مرات.",
-        'for i in range(5):\n    print(i)',
-        [
-          "for تبدأ حلقة التكرار.",
-          "i يستقبل القيمة الحالية في كل مرة.",
-          "range(5) ينتج خمس قيم تبدأ من 0.",
-          "المسافة البادئة تحدد الأمر الذي سيتكرر."
-        ],
-        "اكتب حلقة تطبع الأعداد من 1 إلى 10.",
-        "كم مرة تعمل for i in range(5)؟",
-        ["4 مرات", "5 مرات", "6 مرات"],
-        1,
-        "تنتج range(5) خمس قيم: من 0 إلى 4."
-      )
-    ]
-  },
-
-  web: {
-    title: "HTML + CSS",
-    icon: "🌐",
-    tag: "WEB DESIGN",
-    desc: "تعلم بناء صفحات الويب وتنسيقها.",
-    lessons: [
-      lesson(
-        "هيكل صفحة HTML",
-        "المستوى 1 · HTML",
-        "معرفة الأجزاء الرئيسية لصفحة ويب.",
-        "HTML تحدد محتوى الصفحة ومعناه. نستخدم html لجمع عناصر الصفحة، وhead للمعلومات، وbody للمحتوى الذي يظهر للزائر.",
-        '<!DOCTYPE html>\n<html lang="ar" dir="rtl">\n<head>\n  <meta charset="UTF-8">\n  <title>صفحتي</title>\n</head>\n<body>\n  <h1>مرحبًا!</h1>\n  <p>هذه أول صفحة لي.</p>\n</body>\n</html>',
-        [
-          "DOCTYPE يعرّف المتصفح على نوع المستند.",
-          "html هو العنصر الأساسي للصفحة.",
-          "head يحتوي على معلومات الصفحة.",
-          "body يحتوي على ما يظهر للمستخدم.",
-          "h1 عنوان رئيسي وp فقرة نصية."
-        ],
-        "أنشئ صفحة فيها عنوان باسمك وفقرة تتحدث عن هدفك.",
-        "أين نضع المحتوى المرئي للصفحة عادة؟",
-        ["داخل body", "داخل title فقط", "داخل doctype"],
-        0,
-        "عناصر المحتوى المرئي توضع داخل body."
-      ),
-
-      lesson(
-        "العناوين والروابط",
-        "المستوى 1 · عناصر HTML",
-        "إضافة عناوين وروابط.",
-        "توجد ستة مستويات للعناوين من h1 إلى h6. ونستخدم a لإنشاء رابط، وتحدد الخاصية href عنوان الصفحة التي سينتقل إليها الزائر.",
-        '<h1>موقعي</h1>\n<h2>عنّي</h2>\n<p>تعلم البرمجة ممتع.</p>\n<a href="https://example.com">افتح الموقع</a>',
-        [
-          "h1 عنوان رئيسي.",
-          "h2 عنوان فرعي.",
-          "p لكتابة فقرة.",
-          "a ينشئ رابطًا قابلًا للضغط.",
-          "href يحدد وجهة الرابط."
-        ],
-        "أضف عنوانًا وفقرة ورابطًا إلى صفحة HTML من إنشائك.",
-        "ما الخاصية التي تحدد وجهة الرابط؟",
-        ["src", "href", "color"],
-        1,
-        "تحتوي href على عنوان وجهة الرابط."
-      ),
-
-      lesson(
-        "أساسيات CSS",
-        "المستوى 1 · تنسيق الصفحات",
-        "تغيير شكل عناصر HTML.",
-        "CSS مسؤولة عن مظهر صفحة الويب. يمكن تحديد العنصر الذي تريد تنسيقه ثم كتابة القواعد بين الأقواس المعقوفة. اللون يُكتب في color، والخلفية في background-color.",
-        '<style>\nbody {\n  background-color: #080b16;\n  color: white;\n  font-family: Arial;\n}\n\nh1 {\n  color: cyan;\n}\n</style>\n\n<h1>أهلًا بك</h1>',
-        [
-          "style يحتوي على قواعد CSS.",
-          "body يحدد العنصر الذي سننسقه.",
-          "background-color يغير لون الخلفية.",
-          "color يغير لون النص.",
-          "h1 يستهدف العناوين الرئيسية."
-        ],
-        "اجعل خلفية صفحتك داكنة والعنوان باللون السماوي.",
-        "ما الخاصية التي تغير لون النص؟",
-        ["color", "font-size فقط", "href"],
-        0,
-        "color هي خاصية لون النص."
-      ),
-
-      lesson(
-        "Flexbox",
-        "المستوى 2 · التخطيط",
-        "ترتيب العناصر بجانب بعضها.",
-        "Flexbox أداة في CSS لترتيب العناصر داخل حاوية مرنة. نستخدم display: flex لتفعيلها، وgap لإضافة مسافة بين العناصر.",
-        '<style>\n.cards {\n  display: flex;\n  gap: 16px;\n  flex-wrap: wrap;\n}\n\n.card {\n  padding: 20px;\n  border: 1px solid cyan;\n}\n</style>\n\n<div class="cards">\n  <div class="card">الأول</div>\n  <div class="card">الثاني</div>\n</div>',
-        [
-          "class اسم نستخدمه لاستهداف العناصر في CSS.",
-          "display: flex يفعّل التخطيط المرن.",
-          "gap يحدد المسافة بين العناصر.",
-          "flex-wrap يسمح للعناصر بالانتقال إلى سطر جديد عند الحاجة."
-        ],
-        "أنشئ حاوية فيها ثلاث بطاقات، واجعل المسافات بينها 12 بكسل.",
-        "ما فائدة gap؟",
-        ["إضافة مسافة بين العناصر", "تغيير عنوان الصفحة", "تشغيل JavaScript"],
-        0,
-        "تحدد gap المسافة بين عناصر الحاوية."
-      )
-    ]
-  },
-
-  javascript: {
-    title: "JavaScript — جافاسكربت",
-    icon: "⚡",
-    tag: "JAVASCRIPT",
-    desc: "اجعل صفحات الويب تفاعلية.",
-    lessons: [
-      lesson(
-        "أول برنامج JavaScript",
-        "المستوى 1 · البداية",
-        "طباعة رسالة في أدوات المطور.",
-        "JavaScript تضيف السلوك والتفاعل إلى صفحات الويب. يمكن تجربة console.log في أدوات المطور، أو تضمين JavaScript داخل عنصر script في الصفحة.",
-        '<script>\nconsole.log("Hello, world!");\nconsole.log("أتعلم JavaScript");\n<\/script>',
-        [
-          "script يحتوي على كود JavaScript.",
-          "console.log تعرض قيمة في وحدة التحكم.",
-          "النصوص توضع بين علامات اقتباس.",
-          "الفاصلة المنقوطة اختيارية في كثير من الحالات لكنها شائعة."
-        ],
-        "اطبع ثلاث رسائل مختلفة داخل console.log.",
-        "أين تظهر نتيجة console.log عادة؟",
-        ["في وحدة التحكم", "في اسم الملف", "داخل لوحة المفاتيح"],
-        0,
-        "تظهر النتيجة في وحدة تحكم المتصفح."
-      ),
-
-      lesson(
-        "let وconst",
-        "المستوى 1 · المتغيرات",
-        "إنشاء متغيرات في JavaScript.",
-        "نستخدم let لإنشاء متغير يمكن تغيير قيمته. أما const فتستخدم لقيمة لا يعاد إسنادها إلى متغير آخر. اختر النوع المناسب حسب الحاجة.",
-        'let score = 10;\nscore = 20;\n\nconst player = "Amir";\n\nconsole.log(score);\nconsole.log(player);',
-        [
-          "let تنشئ متغيرًا يمكن إعادة إسناد قيمته.",
-          "score بدأ بقيمة 10 ثم أصبح 20.",
-          "const تنشئ متغيرًا لا يمكن إعادة إسناد قيمته.",
-          "console.log تعرض المتغيرين."
-        ],
-        "أنشئ متغيرًا للعبة وآخر لدرجتك، ثم اعرضهما.",
-        "أي كلمة تناسب متغيرًا لا تريد إعادة إسناد قيمته؟",
-        ["const", "if", "for"],
-        0,
-        "const تمنع إعادة إسناد قيمة جديدة إلى المتغير."
-      ),
-
-      lesson(
-        "الشروط",
-        "المستوى 2 · المنطق",
-        "اتخاذ قرار حسب قيمة.",
-        "تستخدم if لاختبار شرط. إذا كان الشرط صحيحًا ينفذ البرنامج الكود التابع له، وإلا يمكن استخدام else لتنفيذ مسار بديل.",
-        'let score = 85;\n\nif (score >= 60) {\n  console.log("ناجح");\n} else {\n  console.log("حاول مرة أخرى");\n}',
-        [
-          "score يخزن درجة الطالب.",
-          ">= تعني أكبر من أو يساوي.",
-          "الأقواس تحيط بالشرط.",
-          "تنفذ كتلة if إذا كان الشرط صحيحًا.",
-          "else تمثل الخيار البديل."
-        ],
-        "اكتب شرطًا يفحص هل عدد ما أكبر من صفر أم لا.",
-        "ما وظيفة if؟",
-        ["اتخاذ قرار", "تغيير لون الشاشة دائمًا", "حذف المتغير"],
-        0,
-        "تجعل if تنفيذ الكود يعتمد على نتيجة الشرط."
-      ),
-
-      lesson(
-        "التفاعل مع الصفحة",
-        "المستوى 2 · DOM",
-        "تغيير محتوى عنصر HTML.",
-        "يسمح DOM لجافاسكربت بالوصول إلى عناصر HTML. نستخدم getElementById للحصول على عنصر يحمل معرّفًا محددًا، ثم يمكن تغيير textContent.",
-        '<h2 id="message">رسالة قديمة</h2>\n<button onclick="changeMessage()">اضغط هنا</button>\n\n<script>\nfunction changeMessage() {\n  document.getElementById("message").textContent = "تم التغيير!";\n}\n<\/script>',
-        [
-          "id يعرّف عنصرًا باسم message.",
-          "button ينشئ زرًا.",
-          "onclick يستدعي الدالة عند الضغط في هذا المثال.",
-          "getElementById يبحث عن العنصر بواسطة المعرّف.",
-          "textContent يغير النص الذي يظهر داخل العنصر."
-        ],
-        "أنشئ زرًا يغيّر نص فقرة عندما تضغط عليه.",
-        "ما وظيفة getElementById؟",
-        ["البحث عن عنصر بواسطة id", "حفظ ملف Python", "تغيير عنوان الموقع مباشرة"],
-        0,
-        "تستخدم للحصول على عنصر HTML بواسطة id."
-      )
-    ]
-  },
-
-  cpp: {
-    title: "C++ — سي بلس بلس",
-    icon: "⚙️",
-    tag: "C++",
-    desc: "تعلم أساسيات لغة قوية لبناء البرامج.",
-    lessons: [
-      lesson(
-        "أول برنامج C++",
-        "المستوى 1 · البداية",
-        "فهم شكل برنامج C++.",
-        "تستخدم C++ في أنواع متعددة من البرامج والألعاب. تشمل البرامج البسيطة عادة ملف المكتبة iostream، ودالة main التي يبدأ التنفيذ منها.",
-        '#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << "Hello, world!";\n    return 0;\n}',
-        [
-          "include تضمين مكتبة نحتاجها.",
-          "iostream توفر أدوات الإدخال والإخراج.",
-          "main هي نقطة بداية البرنامج.",
-          "cout تطبع النص على الشاشة.",
-          "return 0 تشير عادة إلى انتهاء طبيعي للبرنامج."
-        ],
-        "غيّر النص ليطبع اسمك ورسالة ترحيبية.",
-        "ما وظيفة cout؟",
-        ["طباعة المخرجات", "إنشاء صورة", "حذف البرنامج"],
-        0,
-        "cout تُستخدم لعرض المخرجات."
-      ),
-
-      lesson(
-        "المتغيرات والأنواع",
-        "المستوى 1 · الأساسيات",
-        "تخزين أعداد ونصوص.",
-        "في C++ نكتب نوع المتغير قبل اسمه. int للأعداد الصحيحة، double للأعداد العشرية، وstring للنصوص بعد تضمين المكتبة المناسبة.",
-        '#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    int score = 100;\n    double height = 1.75;\n    string name = "Amir";\n\n    cout << score << endl;\n    cout << name << endl;\n    return 0;\n}',
-        [
-          "int مناسب للأعداد الصحيحة.",
-          "double يسمح بتخزين أعداد عشرية.",
-          "string يخزن نصًا.",
-          "endl ينقل الطباعة إلى سطر جديد.",
-          "يجب إعلان المتغير بنوع مناسب."
-        ],
-        "أنشئ متغيرًا للعمر وآخر لاسم لعبة، ثم اطبعهما.",
-        "أي نوع يناسب العدد الصحيح 42؟",
-        ["int", "string", "bool فقط"],
-        0,
-        "int هو النوع المعتاد للأعداد الصحيحة."
-      ),
-
-      lesson(
-        "الشروط",
-        "المستوى 2 · اتخاذ القرار",
-        "استخدام if وelse.",
-        "تسمح الشروط بتغيير مسار البرنامج حسب القيم. نقارن باستخدام عوامل مثل == للمساواة و> للأكبر من.",
-        '#include <iostream>\nusing namespace std;\n\nint main() {\n    int score = 75;\n\n    if (score >= 60) {\n        cout << "Pass";\n    } else {\n        cout << "Try again";\n    }\n\n    return 0;\n}',
-        [
-          "score يخزن الدرجة.",
-          ">= تختبر إن كانت القيمة أكبر من أو تساوي 60.",
-          "إذا تحقق الشرط ينفذ cout الأول.",
-          "else تنفذ عند عدم تحقق الشرط."
-        ],
-        "اكتب شرطًا يفحص إن كان العدد يساوي 10.",
-        "أي عامل يقارن المساواة في C++؟",
-        ["=", "==", "!="],
-        1,
-        "== للمقارنة، أما = فهي لإسناد قيمة."
-      ),
-
-      lesson(
-        "الحلقات",
-        "المستوى 2 · التكرار",
-        "تكرار الأوامر باستخدام for.",
-        "تستخدم حلقة for عند معرفة طريقة التكرار المطلوبة. تتكون غالبًا من بداية المتغير، وشرط الاستمرار، ثم تحديث المتغير.",
-        '#include <iostream>\nusing namespace std;\n\nint main() {\n    for (int i = 1; i <= 5; i++) {\n        cout << i << endl;\n    }\n    return 0;\n}',
-        [
-          "int i = 1 يبدأ العداد من 1.",
-          "i <= 5 هو شرط استمرار الحلقة.",
-          "i++ يزيد العداد واحدًا في كل مرة.",
-          "تطبع الحلقة الأعداد من 1 إلى 5."
-        ],
-        "عدّل المثال ليطبع الأعداد من 1 إلى 10.",
-        "ماذا تفعل i++؟",
-        ["تنقص العداد", "تزيد العداد واحدًا", "توقف البرنامج"],
-        1,
-        "i++ تزيد قيمة i واحدًا."
-      )
-    ]
-  },
-
-  cyber: {
-    title: "الأمن السيبراني والاختراق الأخلاقي",
-    icon: "🛡️",
-    tag: "CYBER LAB",
-    desc: "تعلم حماية الأنظمة والتدرب الأمني بطريقة قانونية.",
-    lessons: [
-      lesson(
-        "الأخلاقيات والإذن",
-        "المستوى 1 · أساسي",
-        "معرفة حدود الاختبار الأمني.",
-        "الأمن السيبراني يشمل حماية الأنظمة والبيانات واكتشاف نقاط الضعف وإصلاحها. أي اختبار فعلي يجب أن يكون ضمن نطاق مصرح به، مثل جهازك الشخصي أو مختبر تدريبي.",
-        'قبل الاختبار:\n1. حدد النظام الذي تملكه أو لديك إذن لاختباره.\n2. اكتب نطاق الاختبار.\n3. استخدم بيانات تجريبية.\n4. وثّق النتائج والإصلاحات.',
-        [
-          "الإذن يحدد ما يسمح لك باختباره.",
-          "النطاق يوضح الأنظمة المشمولة في الاختبار.",
-          "البيانات التجريبية تقلل احتمال الإضرار بالآخرين.",
-          "التوثيق يساعد على إصلاح المشاكل والتحقق منها."
-        ],
-        "اكتب قواعد مختبر تدريبي محلي ستستخدمه للتعلم، وحدد ما يقع خارج نطاقه.",
-        "أين تتدرب على اختبار أمني عملي؟",
-        ["على حساب شخص آخر دون إذن", "في مختبر تملكه أو لديك إذن لاختباره", "على أي موقع عشوائي"],
-        1,
-        "الاختبار العملي يجب أن يكون ضمن بيئة تملكها أو لديك إذن واضح لاختبارها."
-      ),
-
-      lesson(
-        "أساسيات الشبكات",
-        "المستوى 1 · الشبكات",
-        "فهم مفاهيم IP وDNS والمنافذ.",
-        "عنوان IP يساعد على تحديد الجهاز ضمن شبكة. وDNS يحول أسماء النطاقات مثل example.com إلى معلومات تساعد على الوصول إلى وجهتها. أما المنفذ فيحدد خدمة على الجهاز.",
-        'مفاهيم أساسية:\nIP      = عنوان شبكة\nDNS     = نظام أسماء النطاقات\nPort    = منفذ خدمة\nHTTPS   = اتصال ويب مشفر',
-        [
-          "IP عنوان يستخدم للتواصل عبر الشبكات.",
-          "DNS يساعد على حل اسم النطاق.",
-          "المنفذ يحدد نقطة اتصال لخدمة.",
-          "HTTPS يستخدم تشفير الاتصال بين المتصفح والخادم."
-        ],
-        "اكتب تعريفًا بكلماتك لكل من IP وDNS والمنفذ، ثم أعط مثالًا على استخدام يومي لكل مفهوم.",
-        "ما وظيفة DNS الأساسية؟",
-        ["تحويل أسماء النطاقات إلى معلومات الوصول المناسبة", "زيادة سرعة المعالج", "تغيير كلمة مرور الجهاز"],
-        0,
-        "يساعد DNS على العثور على الوجهة المرتبطة باسم النطاق."
-      ),
-
-      lesson(
-        "حماية كلمات المرور",
-        "المستوى 2 · حماية الحسابات",
-        "تعلم ممارسات أفضل للحسابات.",
-        "استخدم كلمة مرور طويلة وفريدة لكل حساب، واستعن بمدير كلمات مرور موثوق عند الحاجة. تفعيل المصادقة متعددة العوامل يضيف طبقة حماية أخرى. لا تشارك رموز التحقق مع أحد.",
-        'قائمة حماية الحساب:\n- كلمة مرور طويلة وفريدة.\n- تفعيل المصادقة متعددة العوامل.\n- عدم مشاركة رموز التحقق.\n- تحديث البريد ووسائل الاسترداد.\n- الانتباه لرسائل التصيد.',
-        [
-          "كلمة المرور الفريدة تقلل أثر تسرب كلمة مرور من خدمة أخرى.",
-          "المصادقة متعددة العوامل تضيف خطوة تحقق.",
-          "رموز التحقق أسرار مؤقتة لا ينبغي مشاركتها.",
-          "رسائل التصيد قد تحاول خداعك للحصول على بياناتك."
-        ],
-        "ضع قائمة من خمس خطوات لحماية حساب جديد دون كتابة كلمة مرورك الفعلية.",
-        "لماذا من الأفضل استخدام كلمة مرور مختلفة لكل حساب؟",
-        ["لتقليل أثر تسرب واحدة منها", "لأنها تسهل مشاركة كلمات المرور", "لأن كل المواقع تطلب كلمة المرور نفسها"],
-        0,
-        "إذا تسربت كلمة مرور واحدة، فلا يستطيع المهاجم استخدامها تلقائيًا لتسجيل الدخول إلى جميع حساباتك الأخرى."
-      ),
-
-      lesson(
-        "التحقق من المدخلات",
-        "المستوى 2 · أمان التطبيقات",
-        "فهم أهمية التحقق من البيانات.",
-        "يجب ألا يفترض التطبيق أن البيانات القادمة من المستخدم صحيحة أو آمنة. تحقق من النوع والطول والنطاق، وطبّق الصلاحيات في جهة الخادم، واستخدم الأدوات المناسبة للتعامل مع البيانات.",
-        'أمثلة على التحقق:\n- هل الحقل مطلوب؟\n- هل الطول ضمن الحد المسموح؟\n- هل القيمة من النوع المتوقع؟\n- هل يملك المستخدم الصلاحية؟\n- هل تُعرض البيانات كنص آمن؟',
-        [
-          "كل مدخلات المستخدم تحتاج تحققًا مناسبًا.",
-          "تحديد الحد الأقصى للطول يساعد على ضبط البيانات.",
-          "لا تعتمد على إخفاء الأزرار في الواجهة لحماية الصلاحيات.",
-          "يجب تطبيق فحوصات الصلاحيات في المكان الصحيح بالخادم."
-        ],
-        "صمم قائمة تحقق لنموذج تسجيل مستخدم تجريبي، دون جمع كلمات مرور حقيقية.",
-        "أين يجب تطبيق فحوصات الصلاحيات المهمة؟",
-        ["في واجهة الصفحة فقط", "في جهة الخادم أيضًا وبصورة صحيحة", "لا داعي لها"],
-        1,
-        "يجب أن يفرض الخادم الصلاحيات؛ فلا يكفي الاعتماد على الواجهة وحدها."
-      )
-    ]
-  }
-};
-
-/* ====================================
-   إدارة الصفحات والتقدم
-   ==================================== */
-
-const courseKeys = Object.keys(courses);
-const STORAGE_KEY = "amirxtna_progress_v1";
-
+const STORE_KEY = "amirxtna_academy_progress_v1";
 let progress = loadProgress();
-let currentCourse = null;
+let currentTrack = "python";
 let currentLessonIndex = 0;
-
-const descriptions = {
-  python: "أساسيات Python والحساب والشروط والحلقات.",
-  web: "إنشاء صفحات ويب وتنسيقها.",
-  javascript: "بناء صفحات تفاعلية.",
-  cpp: "مبادئ C++ والخوارزميات.",
-  cyber: "أساسيات الأمن السيبراني الدفاعي."
-};
+let quizPassed = {};
 
 function loadProgress() {
   try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
-  } catch (error) {
-    return {};
+    const data = JSON.parse(localStorage.getItem(STORE_KEY) || "{}");
+    return {
+      xp: Number(data.xp) || 0,
+      done: Array.isArray(data.done) ? data.done : [],
+      quizzes: data.quizzes && typeof data.quizzes === "object" ? data.quizzes : {}
+    };
+  } catch {
+    return { xp: 0, done: [], quizzes: {} };
   }
 }
 
 function saveProgress() {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
-  } catch (error) {
-    console.warn("تعذر حفظ التقدم في المتصفح.");
-  }
+  localStorage.setItem(STORE_KEY, JSON.stringify(progress));
   updateStats();
 }
 
-function doneCount(key) {
-  return (progress[key] || []).length;
-}
+function showPage(id) {
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  const page = document.getElementById(id);
+  if (page) page.classList.add("active");
 
-function isDone(key, index) {
-  return (progress[key] || []).includes(index);
-}
-
-function totalLessons() {
-  return courseKeys.reduce((sum, key) => {
-    return sum + courses[key].lessons.length;
-  }, 0);
-}
-
-function completedLessons() {
-  return courseKeys.reduce((sum, key) => {
-    return sum + doneCount(key);
-  }, 0);
-}
-
-function escapeHTML(value) {
-  return String(value).replace(/[&<>"']/g, char => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;"
-  })[char]);
-}
-
-function renderCard(key) {
-  const course = courses[key];
-  const total = course.lessons.length;
-  const done = doneCount(key);
-  const pct = Math.round((done / total) * 100);
-
-  return `
-    <article class="card">
-      <div class="card-icon">${course.icon}</div>
-      <div class="eyebrow">${escapeHTML(course.tag)}</div>
-      <h3>${escapeHTML(course.title)}</h3>
-      <p>${escapeHTML(descriptions[key] || course.desc)}</p>
-      <div class="small">
-        ${total} دروس في هذه النسخة · ${pct}% مكتمل
-      </div>
-      <div class="progress-track">
-        <span style="width:${pct}%"></span>
-      </div>
-      <button class="btn btn-primary" onclick="openCourse('${key}')">
-        افتح المسار ←
-      </button>
-    </article>
-  `;
-}
-
-function initCards() {
-  document.getElementById("homeTracks").innerHTML =
-    ["python", "web", "javascript"].map(renderCard).join("");
-
-  document.getElementById("allTracks").innerHTML =
-    courseKeys.map(renderCard).join("");
-}
-
-function updateStats() {
-  document.getElementById("statLessons").textContent = totalLessons();
-  document.getElementById("statDone").textContent = completedLessons();
-}
-
-function showPage(pageId) {
-  document.querySelectorAll(".page").forEach(page => {
-    page.classList.toggle("active", page.id === pageId);
-  });
-
-  document.querySelectorAll("[data-page]").forEach(button => {
-    button.classList.toggle("active", button.dataset.page === pageId);
+  document.querySelectorAll(".nav-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.page === id);
   });
 
   document.getElementById("navLinks").classList.remove("open");
   window.scrollTo({ top: 0, behavior: "smooth" });
+  if (id === "progress") renderProgress();
+  if (id === "programming") renderTracks();
 }
 
 function toggleMenu() {
   document.getElementById("navLinks").classList.toggle("open");
 }
 
-document.querySelectorAll("[data-page]").forEach(button => {
-  button.addEventListener("click", () => showPage(button.dataset.page));
-});
-
-function openCourse(key) {
-  currentCourse = key;
-  currentLessonIndex = 0;
-
-  const course = courses[key];
-
-  document.getElementById("courseTitle").textContent = course.title;
-  document.getElementById("courseEyebrow").textContent = course.tag;
-  document.getElementById("courseDescription").textContent = course.desc;
-  document.getElementById("lessonSearch").value = "";
-
-  renderLessonList();
-  updateCourseProgress();
-  showPage("course");
-  renderLesson(0);
+function modal(title, message) {
+  document.getElementById("modalTitle").textContent = title;
+  document.getElementById("modalText").textContent = message;
+  document.getElementById("modal").classList.add("open");
+}
+function closeModal() {
+  document.getElementById("modal").classList.remove("open");
 }
 
-function updateCourseProgress() {
-  if (!currentCourse) return;
+const tracks = {
+ python: {
+  title:"Python",
+  icon:"🐍",
+  color:"#5ef0b2",
+  level:"من الصفر إلى المشاريع",
+  description:"تعلّم أساسيات Python، ثم الشروط والحلقات والدوال والبيانات والملفات وبناء المشاريع.",
+  lessons:[
+   {
+    title:"أول برنامج لك",
+    level:"مبتدئ",
+    explanation:"تُستخدم print() لعرض النصوص والقيم في نافذة الإخراج. النص يوضع بين علامتي اقتباس.",
+    example:'print("Hello, world!")\nprint("أنا أتعلم Python")',
+    steps:["افتح محرر Python أو IDLE.","اكتب سطر print كما في المثال.","شغّل البرنامج ولاحظ النتيجة."],
+    task:"اكتب برنامجًا يعرض اسمك وجملة تقول فيها إنك تتعلم البرمجة.",
+    question:"أي أمر يعرض نصًا على الشاشة؟",
+    options:["show('Hello')","print('Hello')","echo = Hello"],
+    answer:1
+   },
+   {
+    title:"المتغيرات",
+    level:"مبتدئ",
+    explanation:"المتغير اسم نستخدمه للاحتفاظ بقيمة. نستخدم علامة = لإسناد القيمة إلى المتغير.",
+    example:'name = "Amir"\nage = 14\nprint(name)\nprint(age)',
+    steps:["اختر اسمًا واضحًا للمتغير.","ضع علامة = ثم القيمة.","استخدم اسم المتغير عند الحاجة إلى قيمته."],
+    task:"أنشئ متغيرًا لاسمك وآخر لمدينتك ثم اطبعهما.",
+    question:"ما وظيفة علامة = في هذا المثال؟ name = 'Amir'",
+    options:["مقارنة قيمتين فقط","إسناد قيمة إلى متغير","طباعة المتغير"],
+    answer:1
+   },
+   {
+    title:"العمليات الحسابية",
+    level:"مبتدئ",
+    explanation:"تستطيع Python تنفيذ العمليات الحسابية باستخدام + للجمع، - للطرح، * للضرب، / للقسمة، // للقسمة الصحيحة، و % لباقي القسمة.",
+    example:"a = 12\nb = 5\nprint(a + b)\nprint(a * b)\nprint(a % b)",
+    steps:["غيّر قيمة a وb.","جرّب كل عامل حسابي.","توقّع النتيجة قبل تشغيل البرنامج."],
+    task:"أنشئ برنامجًا يحسب مجموع سعر منتجين ثم يطبع الناتج.",
+    question:"ما نتيجة 10 % 3 ؟",
+    options:["3","1","0"],
+    answer:1
+   },
+   {
+    title:"النصوص والسلاسل",
+    level:"مبتدئ",
+    explanation:"نوع str يخزن النصوص. تستطيع جمع نصين باستخدام + أو تنسيق النص باستخدام f-string.",
+    example:'first = "Amir"\nlast = "X"\nprint(first + " " + last)\nprint(f"أهلًا {first}")',
+    steps:["ضع النص داخل اقتباس.","جرّب دمج نصين.","استخدم f قبل النص لإدراج قيمة متغير."],
+    task:"اطبع رسالة ترحيب تتضمن اسمك باستخدام f-string.",
+    question:"أي نوع بيانات يمثل النصوص في Python؟",
+    options:["str","int","bool"],
+    answer:0
+   },
+   {
+    title:"الإدخال والتحويل",
+    level:"مبتدئ",
+    explanation:"تتيح input() للمستخدم إدخال نص. إذا أردت حساب رقم، حوّل الإدخال إلى int أو float.",
+    example:'name = input("ما اسمك؟ ")\nage = int(input("كم عمرك؟ "))\nprint(f"أهلًا {name}")\nprint(age + 1)',
+    steps:["استخدم input لقراءة الإدخال.","حوّل الأرقام باستخدام int أو float.","تذكّر أن input تعيد نصًا في البداية."],
+    task:"اطلب رقمين من المستخدم ثم اطبع مجموعهما.",
+    question:"ما نوع القيمة التي تعيدها input() عادةً؟",
+    options:["عدد صحيح","نص","قائمة"],
+    answer:1
+   },
+   {
+    title:"الشروط if وelse",
+    level:"مبتدئ",
+    explanation:"تسمح الشروط بتنفيذ تعليمات مختلفة بحسب تحقق شرط. انتبه إلى المسافات البادئة في Python.",
+    example:'score = 85\nif score >= 60:\n    print("ناجح")\nelse:\n    print("حاول مرة أخرى")',
+    steps:["اكتب if ثم الشرط.","ضع نقطتين في نهاية السطر.","اكتب الأوامر داخل الشرط بمسافة بادئة."],
+    task:"اكتب برنامجًا يفحص هل العدد موجب أم غير موجب.",
+    question:"ما الرمز المستخدم للمقارنة بمعنى أكبر من أو يساوي؟",
+    options:["=>",">=","=="],
+    answer:1
+   },
+   {
+    title:"الشروط المتعددة",
+    level:"مبتدئ",
+    explanation:"استخدم elif لفحص حالة أخرى عندما لا يتحقق الشرط السابق. يمكن أن يحتوي البرنامج على عدة حالات.",
+    example:'mark = 78\nif mark >= 90:\n    print("ممتاز")\nelif mark >= 60:\n    print("جيد")\nelse:\n    print("تحتاج إلى تدريب")',
+    steps:["ابدأ بالحالة الأكثر تحديدًا.","أضف elif للحالات التالية.","استخدم else للحالة المتبقية."],
+    task:"صنّف رقمًا إلى موجب أو سالب أو صفر.",
+    question:"متى ينفّذ Python كتلة else؟",
+    options:["دائمًا","عندما لا يتحقق أي شرط سابق في السلسلة","قبل if"],
+    answer:1
+   },
+   {
+    title:"الحلقات for",
+    level:"مبتدئ",
+    explanation:"تكرر حلقة for تنفيذ التعليمات لكل عنصر في مجموعة أو لكل قيمة ينتجها range().",
+    example:"for number in range(1, 6):\n    print(number)",
+    steps:["حدّد المتغير الذي يمثل كل دورة.","استخدم range لتوليد الأرقام.","لاحظ أن الحد النهائي في range لا يدخل في النتائج."],
+    task:"اطبع الأرقام من 1 إلى 10 باستخدام for.",
+    question:"ما الأرقام التي ينتجها range(1, 4)؟",
+    options:["1 و2 و3","1 و2 و3 و4","0 و1 و2 و3"],
+    answer:0
+   },
+   {
+    title:"الحلقات while",
+    level:"متوسط",
+    explanation:"تكرر while الأوامر ما دام الشرط صحيحًا. يجب تعديل الحالة داخل الحلقة لتجنب التكرار غير المنتهي.",
+    example:"count = 1\nwhile count <= 3:\n    print(count)\n    count += 1",
+    steps:["اكتب شرط الاستمرار.","حدّث المتغير داخل الحلقة.","اختبر أن الشرط سيصبح غير صحيح."],
+    task:"اكتب عدّادًا يبدأ من 5 ويتناقص حتى يصل إلى 1.",
+    question:"ماذا قد يحدث إذا ظل شرط while صحيحًا دائمًا؟",
+    options:["تتوقف فورًا","قد تستمر إلى ما لا نهاية","تتحول إلى for"],
+    answer:1
+   },
+   {
+    title:"القوائم Lists",
+    level:"متوسط",
+    explanation:"القائمة تخزن عدة قيم داخل متغير واحد. الفهرسة تبدأ من الصفر، ويمكن إضافة عناصر باستخدام append().",
+    example:'games = ["Minecraft", "Chess", "Racing"]\nprint(games[0])\ngames.append("Puzzle")\nprint(games)',
+    steps:["أنشئ قائمة بين أقواس مربعة.","استخدم الفهرس للوصول إلى عنصر.","جرّب append لإضافة عنصر."],
+    task:"أنشئ قائمة بثلاثة أطعمة ثم أضف طعامًا رابعًا واطبع القائمة.",
+    question:"ما فهرس أول عنصر في القائمة؟",
+    options:["0","1","-2"],
+    answer:0
+   },
+   {
+    title:"القواميس Dictionaries",
+    level:"متوسط",
+    explanation:"القاموس يخزن البيانات على شكل مفتاح وقيمة. تصل إلى القيمة باستخدام المفتاح.",
+    example:'player = {"name": "Amir", "level": 3}\nprint(player["name"])\nplayer["level"] = 4\nprint(player)',
+    steps:["استخدم الأقواس المعقوفة.","افصل المفتاح عن القيمة بنقطتين.","اقرأ القيم وعدّلها باستخدام المفتاح."],
+    task:"أنشئ قاموسًا يحوي اسم لعبة ونوعها وسنة إصدار افتراضية.",
+    question:"كيف تصل إلى قيمة المفتاح name؟",
+    options:["player.name","player['name']","player(0)"],
+    answer:1
+   },
+   {
+    title:"الدوال",
+    level:"متوسط",
+    explanation:"تجمع الدالة تعليمات يمكن إعادة استخدامها. نعرّف الدالة باستخدام def ثم نستدعيها باسمها.",
+    example:'def greet(name):\n    print(f"أهلًا {name}")\n\ngreet("Amir")\ngreet("Ali")',
+    steps:["اكتب def واسم الدالة.","ضع المعاملات بين قوسين.","استدعِ الدالة عند الحاجة."],
+    task:"أنشئ دالة تستقبل اسم لعبة وتطبع رسالة عنها.",
+    question:"أي كلمة تُستخدم لتعريف دالة؟",
+    options:["function","define","def"],
+    answer:2
+   },
+   {
+    title:"القيمة المرجعة return",
+    level:"متوسط",
+    explanation:"تُرجع return نتيجة من الدالة إلى المكان الذي استدعاها. هذا يختلف عن طباعة النتيجة فقط.",
+    example:"def add(a, b):\n    return a + b\n\nresult = add(4, 6)\nprint(result)",
+    steps:["حدّد نتيجة الدالة.","استخدم return لإرجاعها.","خزّن النتيجة أو استخدمها مباشرة."],
+    task:"أنشئ دالة تحسب مربع عدد وتعيد النتيجة.",
+    question:"ما فائدة return؟",
+    options:["إرجاع نتيجة من الدالة","إيقاف الكمبيوتر","إنشاء قائمة تلقائيًا"],
+    answer:0
+   },
+   {
+    title:"التعامل مع الأخطاء",
+    level:"متوسط",
+    explanation:"تسمح try وexcept بالتعامل مع أخطاء متوقعة حتى لا يتوقف البرنامج بطريقة غير مناسبة.",
+    example:'try:\n    number = int(input("أدخل عددًا: "))\n    print(number * 2)\nexcept ValueError:\n    print("المدخل ليس عددًا صحيحًا")',
+    steps:["ضع التعليمات المحتمل أن تخطئ داخل try.","التقط نوع الخطأ المتوقع في except.","اعرض رسالة واضحة للمستخدم."],
+    task:"تعامل مع محاولة تحويل نص غير رقمي إلى عدد.",
+    question:"أي جزء يتعامل مع الخطأ في المثال؟",
+    options:["except","input","print فقط"],
+    answer:0
+   },
+   {
+    title:"الملفات",
+    level:"متوسط",
+    explanation:"يمكن قراءة الملفات وكتابتها. استخدم with open لإدارة فتح الملف وإغلاقه بطريقة مناسبة.",
+    example:'with open("notes.txt", "w", encoding="utf-8") as file:\n    file.write("أول ملاحظة")\n\nwith open("notes.txt", "r", encoding="utf-8") as file:\n    print(file.read())',
+    steps:["اختر اسم الملف ووضع الفتح.","استخدم encoding='utf-8' للنص العربي.","جرّب القراءة بعد الكتابة."],
+    task:"أنشئ ملفًا يحفظ اسم مشروعك ثم اقرأ محتواه.",
+    question:"ما وضع الفتح المستخدم عادةً للكتابة؟",
+    options:['"r"','"w"','"read"'],
+    answer:1
+   },
+   {
+    title:"استيراد المكتبات",
+    level:"متوسط",
+    explanation:"تضيف المكتبات أدوات جاهزة إلى برنامجك. استخدم import لاستيراد مكتبة مثل math أو random.",
+    example:"import random\nnumber = random.randint(1, 10)\nprint(number)",
+    steps:["استورد المكتبة المطلوبة.","راجع الدالة المناسبة لها.","جرّب استخدامها في مثال صغير."],
+    task:"أنشئ برنامجًا يختار رقمًا عشوائيًا من 1 إلى 20.",
+    question:"ما الكلمة المستخدمة لاستيراد مكتبة؟",
+    options:["include","import","using"],
+    answer:1
+   },
+   {
+    title:"البرمجة كائنية التوجه",
+    level:"متقدم",
+    explanation:"تساعد الأصناف classes على جمع البيانات والسلوك في بنية واحدة. الكائن هو نسخة من الصنف.",
+    example:'class Player:\n    def __init__(self, name, health):\n        self.name = name\n        self.health = health\n\nhero = Player("Amir", 100)\nprint(hero.name)\nprint(hero.health)',
+    steps:["عرّف الصنف باستخدام class.","استخدم __init__ لإعداد الكائن.","أنشئ كائنًا واستخدم خصائصه."],
+    task:"أنشئ صنفًا للعبة يحتوي اسم الشخصية وعدد نقاطها.",
+    question:"ماذا تمثل hero في المثال؟",
+    options:["مكتبة","كائن من الصنف Player","حلقة تكرار"],
+    answer:1
+   },
+   {
+    title:"مشروع مدير المهام",
+    level:"مشروع",
+    explanation:"اجمع ما تعلمته لبناء برنامج صغير لإضافة المهام وعرضها. ابدأ بنسخة بسيطة ثم طوّرها.",
+    example:'tasks = []\n\ndef add_task(task):\n    tasks.append(task)\n\ndef show_tasks():\n    for i, task in enumerate(tasks, start=1):\n        print(f"{i}. {task}")\n\nadd_task("تعلم Python")\nadd_task("بناء مشروع")\nshow_tasks()',
+    steps:["أنشئ قائمة فارغة للمهام.","أضف دالة لإضافة مهمة.","أضف دالة تعرض جميع المهام.","طوّر المشروع لاحقًا لحفظ المهام في ملف."],
+    task:"أضف ميزة لحذف مهمة أو حفظ المهام داخل ملف.",
+    question:"لماذا نقسم المشروع إلى دوال؟",
+    options:["لجعل الكود أوضح وأسهل لإعادة الاستخدام","لمنع تشغيله","لإلغاء المتغيرات"],
+    answer:0
+   }
+  ]
+ },
+ html: {
+  title:"HTML وCSS",
+  icon:"🌐",
+  level:"تصميم المواقع",
+  description:"تعلّم بناء صفحات الويب باستخدام HTML، ثم تنسيقها وجعلها متجاوبة باستخدام CSS.",
+  lessons:[
+   {title:"هيكل صفحة HTML",level:"مبتدئ",explanation:"HTML تحدد بنية محتوى الصفحة. يبدأ المستند عادةً بـ DOCTYPE ثم html وhead وbody.",example:'<!DOCTYPE html>\n<html lang="ar" dir="rtl">\n<head>\n  <meta charset="UTF-8">\n  <title>صفحتي</title>\n</head>\n<body>\n  <h1>أهلًا بالعالم</h1>\n  <p>هذه أول صفحة لي.</p>\n</body>\n</html>',steps:["أنشئ ملف index.html.","أضف هيكل الصفحة الأساسي.","افتح الملف في المتصفح."],task:"أنشئ صفحة فيها عنوان وفقرة عن نفسك.",question:"أين نضع المحتوى الظاهر غالبًا؟",options:["داخل body","داخل title فقط","بعد إغلاق html"],answer:0},
+   {title:"العناوين والفقرات",level:"مبتدئ",explanation:"تستخدم h1 إلى h6 للعناوين حسب الأهمية، بينما تستخدم p للفقرات النصية.",example:"<h1>عنوان رئيسي</h1>\n<h2>عنوان فرعي</h2>\n<p>هذه فقرة توضيحية.</p>",steps:["استخدم عنوانًا رئيسيًا واحدًا واضحًا.","رتب العناوين حسب المستوى.","قسّم النص الطويل إلى فقرات."],task:"اكتب عنوانًا رئيسيًا وعنوانًا فرعيًا وفقرتين.",question:"أي عنصر يمثل فقرة؟",options:["<p>","<img>","<head>"],answer:0},
+   {title:"الروابط والصور",level:"مبتدئ",explanation:"يستخدم a للروابط وimg للصور. أضف وصف alt للصور لتحسين الوصولية عند عدم ظهور الصورة.",example:'<a href="https://example.com">زيارة الموقع</a>\n<img src="photo.jpg" alt="وصف الصورة" width="300">',steps:["ضع الرابط في href.","ضع مسار الصورة في src.","اكتب وصفًا مفيدًا في alt."],task:"أضف رابطًا وصورة إلى صفحة تجريبية.",question:"ما الخاصية التي تصف الصورة نصيًا؟",options:["href","alt","target"],answer:1},
+   {title:"القوائم والجداول",level:"مبتدئ",explanation:"تستخدم ul للقائمة غير المرتبة وol للمرتبة، ويستخدم li لكل عنصر. تستخدم الجداول لعرض البيانات الجدولية.",example:"<ul>\n  <li>Python</li>\n  <li>HTML</li>\n</ul>\n<table>\n  <tr><th>اللغة</th><th>المستوى</th></tr>\n  <tr><td>Python</td><td>مبتدئ</td></tr>\n</table>",steps:["اختر نوع القائمة.","ضع كل عنصر داخل li.","استخدم th للعناوين وtd للخلايا."],task:"أنشئ قائمة باللغات التي تريد تعلمها.",question:"ما العنصر المستخدم لعنصر القائمة؟",options:["li","tr","meta"],answer:0},
+   {title:"النماذج والإدخال",level:"متوسط",explanation:"تستخدم form لتجميع حقول الإدخال. يجب تسمية الحقول بوضوح، والتحقق من البيانات عند الحاجة.",example:'<form>\n  <label for="username">اسم المستخدم</label>\n  <input id="username" name="username" required>\n  <button type="submit">إرسال</button>\n</form>',steps:["اربط label بحقل الإدخال.","اختر نوع الحقل المناسب.","استخدم required عند الحاجة."],task:"أنشئ نموذجًا يحتوي الاسم والبريد وزر إرسال.",question:"ما فائدة label؟",options:["تسمية حقل الإدخال","تغيير لون الصفحة فقط","إضافة صورة"],answer:0},
+   {title:"العناصر الدلالية",level:"متوسط",explanation:"توضح عناصر مثل header وnav وmain وsection وarticle وfooter معنى أجزاء الصفحة للمتصفح والمطور.",example:"<header>رأس الصفحة</header>\n<nav>روابط التنقل</nav>\n<main>\n  <section><h2>القسم</h2></section>\n</main>\n<footer>التذييل</footer>",steps:["استخدم header للمقدمة.","ضع التنقل داخل nav.","استخدم main للمحتوى الأساسي."],task:"حوّل صفحة بسيطة إلى أقسام دلالية.",question:"أي عنصر يعبّر عن المحتوى الأساسي؟",options:["main","small","br"],answer:0},
+   {title:"أساسيات CSS",level:"مبتدئ",explanation:"CSS تتحكم في ألوان العناصر وأحجامها ومسافاتها. يمكن كتابة القواعد داخل ملف CSS أو وسم style.",example:"body {\n  background: #101629;\n  color: white;\n  font-family: Arial, sans-serif;\n}\nh1 { color: #38e5ff; }",steps:["اختر العنصر أو الصنف.","اكتب الخاصية والقيمة.","احفظ وشاهد التغييرات."],task:"غيّر لون العنوان والخلفية في صفحة HTML.",question:"ما وظيفة CSS؟",options:["تنسيق مظهر الصفحة","تخزين قواعد البيانات وحدها","تشغيل نظام التشغيل"],answer:0},
+   {title:"محددات CSS والألوان",level:"متوسط",explanation:"يستهدف اسم العنصر كل العناصر من نوعه، ويستهدف .class العناصر ذات الصنف، بينما يستهدف #id العنصر الذي يحمل ذلك المعرّف.",example:".card { background: #17213a; }\n#main-title { color: #38e5ff; }\np { line-height: 1.8; }",steps:["أضف class للعنصر.","استخدم نقطة قبل اسم الصنف في CSS.","استخدم # قبل المعرّف."],task:"نسّق بطاقة وصنفًا خاصًا لعنوان.",question:"كيف نكتب محدد الصنف في CSS؟",options:[".card","#card فقط","card()"],answer:0},
+   {title:"Box Model",level:"متوسط",explanation:"يتكوّن نموذج الصندوق من المحتوى والـ padding والحدود border والهامش الخارجي margin.",example:".card {\n  width: 250px;\n  padding: 20px;\n  border: 1px solid white;\n  margin: 12px;\n  box-sizing: border-box;\n}",steps:["جرّب تغيير padding.","لاحظ تأثير margin بين العناصر.","استخدم box-sizing لتسهيل حساب الأبعاد."],task:"صمم بطاقة لها حشوة وحدود وهامش.",question:"أي خاصية تتحكم في المسافة الداخلية؟",options:["padding","margin","outline فقط"],answer:0},
+   {title:"التصميم المتجاوب",level:"متوسط",explanation:"يساعد التصميم المتجاوب الصفحة على التكيّف مع شاشات الهاتف والكمبيوتر. تستخدم media queries لتغيير القواعد بحسب عرض الشاشة.",example:".grid { display: grid; grid-template-columns: repeat(3, 1fr); }\n@media (max-width: 700px) {\n  .grid { grid-template-columns: 1fr; }\n}",steps:["ابدأ بتصميم واضح.","اختبر الصفحة على شاشة صغيرة.","أضف media query عند الحاجة."],task:"اجعل ثلاث بطاقات تتحول إلى عمود واحد على الهاتف.",question:"ما وظيفة media query؟",options:["تطبيق CSS حسب شروط الشاشة","إنشاء قاعدة بيانات","تشغيل Python"],answer:0},
+   {title:"Flexbox وGrid",level:"متوسط",explanation:"Flexbox مناسب لترتيب العناصر على محور، بينما Grid مناسب لبناء تخطيطات صفوف وأعمدة.",example:".nav { display: flex; gap: 12px; align-items: center; }\n.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }",steps:["جرّب display:flex للتنقل.","جرّب display:grid للبطاقات.","أضف gap للمسافة بين العناصر."],task:"أنشئ شبكة من أربع بطاقات تتوزع بالتساوي.",question:"أي نظام مناسب لشبكة صفوف وأعمدة؟",options:["Grid","alt","href"],answer:0},
+   {title:"الانتقالات والتفاعل البصري",level:"متوسط",explanation:"تضيف transition سلاسة لتغير الخصائص عندما يتفاعل المستخدم مع عنصر مثل زر أو بطاقة.",example:".btn { transition: transform .2s, background .2s; }\n.btn:hover { transform: translateY(-3px); }",steps:["اختر الخاصية التي تتغير.","حدد مدة الانتقال.","جرّب hover باستخدام مؤشر الفأرة."],task:"أضف تأثيرًا بسيطًا إلى زر عند المرور فوقه.",question:"ما وظيفة transition؟",options:["تنعيم تغيّر الخصائص","إرسال بريد تلقائيًا","إخفاء كل العناصر نهائيًا"],answer:0},
+   {title:"مشروع صفحة شخصية",level:"مشروع",explanation:"اجمع بنية HTML وتنسيق CSS لبناء صفحة شخصية تعرض نبذة عنك ومهاراتك ومشاريعك وروابط التواصل المناسبة.",example:'<main class="profile">\n  <h1>ملفي الشخصي</h1>\n  <p>أنا أتعلم تطوير المواقع.</p>\n  <h2>مهاراتي</h2>\n  <ul><li>HTML</li><li>CSS</li></ul>\n</main>',steps:["خطط أقسام الصفحة.","أضف تنسيقًا متناسقًا.","اختبرها على الهاتف والكمبيوتر.","راجع النصوص وإمكانية الوصول."],task:"ابنِ صفحة شخصية كاملة مع بطاقة مشروع واحدة.",question:"ما أفضل طريقة لتعلّم تصميم المواقع؟",options:["بناء صفحة وتجربتها وتطويرها","حفظ أسماء الخصائص فقط","عدم تشغيل الكود"],answer:0}
+  ]
+ },
+ cpp: {
+  title:"C++",
+  icon:"⚙️",
+  level:"من الأساسيات إلى المنطق",
+  description:"تعرّف على بناء برامج C++، وأنواع البيانات والشروط والحلقات والدوال وهياكل البيانات.",
+  lessons:[
+   {title:"أول برنامج C++",level:"مبتدئ",explanation:"تبدأ برامج C++ عادةً بتضمين مكتبة iostream وتعريف الدالة main. تعرض cout النصوص على الشاشة.",example:'#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << "Hello, world!" << endl;\n    return 0;\n}',steps:["افهم وظيفة include.","اكتب الدالة main.","شغّل البرنامج باستخدام مترجم C++."],task:"عدّل الرسالة لتعرض اسمك.",question:"ما وظيفة cout؟",options:["عرض المخرجات","قراءة صورة","إنشاء حلقة"],answer:0},
+   {title:"المتغيرات والأنواع",level:"مبتدئ",explanation:"تحدد أنواع البيانات شكل القيمة المخزنة. من الأنواع الشائعة int للأعداد الصحيحة وdouble للأعداد العشرية وstring للنصوص وbool للقيم المنطقية.",example:'#include <iostream>\n#include <string>\nusing namespace std;\nint main() {\n int age = 14;\n double height = 1.62;\n string name = "Amir";\n bool learning = true;\n cout << name << " " << age;\n return 0;\n}',steps:["اختر النوع المناسب.","أعط المتغير قيمة.","اطبع القيمة باستخدام cout."],task:"أنشئ متغيرًا للاسم وآخر لعدد صحيح واطبعهما.",question:"أي نوع مناسب لنص؟",options:["string","int","bool"],answer:0},
+   {title:"الإدخال باستخدام cin",level:"مبتدئ",explanation:"تقرأ cin البيانات من المستخدم. استخدم >> لإدخال قيمة في متغير.",example:'#include <iostream>\nusing namespace std;\nint main() {\n int age;\n cout << "Enter age: ";\n cin >> age;\n cout << age;\n return 0;\n}',steps:["عرّف متغيرًا قبل استخدامه.","استخدم cin >> variable.","تحقق من المدخلات في البرامج الأكبر."],task:"اطلب من المستخدم عددًا ثم اطبع العدد مضروبًا في اثنين.",question:"أي عامل يستخدم مع cin؟",options:["<<",">>","=="],answer:1},
+   {title:"العمليات الحسابية",level:"مبتدئ",explanation:"تستخدم C++ الرموز + و- و* و/ و% للعمليات الحسابية. انتبه إلى أن قسمة عددين صحيحين تنتج عددًا صحيحًا.",example:'#include <iostream>\nusing namespace std;\nint main() {\n int a = 10, b = 3;\n cout << a + b << endl;\n cout << a / b << endl;\n cout << a % b << endl;\n return 0;\n}',steps:["جرّب العمليات المختلفة.","قارن القسمة الصحيحة والعشرية.","لاحظ أن % يعمل مع الأنواع الصحيحة."],task:"اكتب برنامجًا يحسب مجموع عددين.",question:"ما ناتج 10 % 3؟",options:["3","1","0"],answer:1},
+   {title:"الشروط",level:"مبتدئ",explanation:"تستخدم if وelse لتحديد الأوامر التي تنفّذ بحسب شرط.",example:'#include <iostream>\nusing namespace std;\nint main() {\n int score = 75;\n if (score >= 60) cout << "Pass";\n else cout << "Try again";\n return 0;\n}',steps:["اكتب if مع شرط منطقي.","ضع الأمر داخل الكتلة المناسبة.","استخدم else للحالة الأخرى."],task:"افحص هل العدد موجب أم سالب أم صفر.",question:"أي رمز يعني المساواة عند المقارنة؟",options:["=","==",":"],answer:1},
+   {title:"الحلقات",level:"مبتدئ",explanation:"تكرر for الأوامر بعدد محدد من الدورات غالبًا، بينما تناسب while التكرار المرتبط بشرط.",example:'#include <iostream>\nusing namespace std;\nint main() {\n for (int i = 1; i <= 5; i++) {\n   cout << i << endl;\n }\n return 0;\n}',steps:["حدد البداية.","اكتب شرط الاستمرار.","حدّث عدّاد الحلقة."],task:"اطبع الأعداد الزوجية من 2 إلى 20.",question:"ما دور i++؟",options:["زيادة i بمقدار واحد","حذف i","إنهاء البرنامج دائمًا"],answer:0},
+   {title:"الدوال",level:"متوسط",explanation:"تساعد الدوال على تقسيم البرنامج إلى وحدات صغيرة. يحدد نوع الإرجاع نوع النتيجة التي تعيدها الدالة.",example:'#include <iostream>\nusing namespace std;\nint add(int a, int b) {\n return a + b;\n}\nint main() {\n cout << add(3, 4);\n return 0;\n}',steps:["اكتب نوع الإرجاع.","حدّد المعاملات وأنواعها.","أعد النتيجة باستخدام return."],task:"اكتب دالة تعيد مربع عدد صحيح.",question:"ما وظيفة return؟",options:["إرجاع النتيجة","طباعة كل شيء تلقائيًا","تعريف متغير جديد فقط"],answer:0},
+   {title:"المصفوفات",level:"متوسط",explanation:"تخزن المصفوفة عددًا محددًا من العناصر من النوع نفسه. يبدأ الفهرس في C++ من الصفر.",example:'#include <iostream>\nusing namespace std;\nint main() {\n int scores[3] = {80, 90, 75};\n cout << scores[0];\n return 0;\n}',steps:["حدد نوع العناصر.","حدد حجم المصفوفة.","لا تستخدم فهرسًا خارج حدودها."],task:"أنشئ مصفوفة من خمسة أعداد واطبعها بحلقة.",question:"ما فهرس أول عنصر؟",options:["0","1","5"],answer:0},
+   {title:"النصوص string",level:"متوسط",explanation:"تستخدم string لتخزين النصوص. يمكنك دمج النصوص باستخدام + وقراءة سطر كامل باستخدام getline.",example:'#include <iostream>\n#include <string>\nusing namespace std;\nint main() {\n string name;\n getline(cin, name);\n cout << "Hello " << name;\n return 0;\n}',steps:["أضف مكتبة string.","عرّف متغيرًا نصيًا.","استخدم getline لقراءة السطر كاملًا."],task:"اطلب اسم المستخدم ثم اطبع رسالة ترحيب.",question:"ما الدالة المناسبة لقراءة سطر كامل؟",options:["getline","cout","return"],answer:0},
+   {title:"المراجع",level:"متقدم",explanation:"تتيح المراجع التعامل مع اسم بديل لمتغير موجود. تستخدم & في تعريف المرجع.",example:'#include <iostream>\nusing namespace std;\nint main() {\n int value = 5;\n int& ref = value;\n ref = 10;\n cout << value;\n return 0;\n}',steps:["عرّف المتغير الأصلي.","عرّف مرجعًا من النوع المناسب.","لاحظ أن التعديل عبر المرجع يغيّر الأصل."],task:"أنشئ مرجعًا لمتغير وعدّل القيمة من خلاله.",question:"ما أثر تغيير ref في المثال؟",options:["يتغير value أيضًا","ينشأ ملف جديد","لا يحدث أي تغيير"],answer:0},
+   {title:"المؤشرات",level:"متقدم",explanation:"يخزن المؤشر عنوانًا في الذاكرة. استخدم & للحصول على عنوان متغير و* للوصول إلى القيمة عبر المؤشر.",example:'#include <iostream>\nusing namespace std;\nint main() {\n int value = 7;\n int* ptr = &value;\n cout << *ptr;\n return 0;\n}',steps:["افهم الفرق بين العنوان والقيمة.","تأكد من أن المؤشر يشير إلى كائن صالح.","تجنب فك إشارة مؤشر غير صالح."],task:"اطبع عنوان متغير وقيمته عبر مؤشر.",question:"ما وظيفة *ptr في المثال؟",options:["الوصول إلى القيمة المشار إليها","إنشاء نص","إنهاء البرنامج"],answer:0},
+   {title:"الأصناف والكائنات",level:"متقدم",explanation:"يسمح class بجمع الخصائص والدوال المرتبطة بنوع من الكائنات. تحدد public الأعضاء التي يمكن الوصول إليها من الخارج.",example:'#include <iostream>\n#include <string>\nusing namespace std;\nclass Player {\npublic:\n string name;\n int health = 100;\n};\nint main() {\n Player hero;\n hero.name = "Amir";\n cout << hero.name;\n return 0;\n}',steps:["عرّف class.","أضف الخصائص تحت public عند الحاجة.","أنشئ كائنًا واستخدم أعضاءه."],task:"أنشئ صنفًا للاعب يحوي الاسم والصحة.",question:"ما الذي ينشئه Player hero؟",options:["كائن من الصنف Player","حلقة","مكتبة جديدة"],answer:0},
+   {title:"vector والخوارزميات",level:"متقدم",explanation:"توفر vector مصفوفة ديناميكية الحجم، وتقدم مكتبة algorithm عمليات شائعة مثل البحث والترتيب.",example:'#include <iostream>\n#include <vector>\n#include <algorithm>\nusing namespace std;\nint main() {\n vector<int> values = {5, 2, 8, 1};\n sort(values.begin(), values.end());\n for (int x : values) cout << x << " ";\n return 0;\n}',steps:["أضف المكتبة المناسبة.","استخدم vector عند الحاجة إلى حجم مرن.","افهم حدود begin وend عند استخدام الخوارزميات."],task:"أنشئ vector من أعداد ورتّبها تصاعديًا.",question:"ما الذي تفعله sort؟",options:["ترتيب العناصر","قراءة ملف تلقائيًا","إنشاء كائن فقط"],answer:0},
+   {title:"مشروع نظام نقاط",level:"مشروع",explanation:"ابنِ برنامجًا بسيطًا يحتفظ بأسماء اللاعبين ونقاطهم. ابدأ بمصفوفة أو vector، ثم أضف دوالًا لتنظيم العمليات.",example:'#include <iostream>\n#include <vector>\nusing namespace std;\nint main() {\n vector<int> scores = {10, 25, 18};\n int total = 0;\n for (int score : scores) total += score;\n cout << "Total: " << total;\n return 0;\n}',steps:["خزّن نقاط اللاعبين.","احسب المجموع أو المتوسط.","أضف دالة للبحث عن أعلى نتيجة.","اختبر البرنامج ببيانات مختلفة."],task:"وسّع المشروع ليقبل نقاطًا من المستخدم ويعرض أعلى نتيجة.",question:"لماذا نختبر البرنامج بمدخلات مختلفة؟",options:["للعثور على الأخطاء والتأكد من صحة النتائج","لتغيير اسم اللغة","لمنع تشغيل البرنامج"],answer:0}
+  ]
+ },
+ javascript: {
+  title:"JavaScript",
+  icon:"⚡",
+  level:"برمجة الويب التفاعلية",
+  description:"تعلم أساسيات JavaScript، ثم استخدمها للتفاعل مع عناصر صفحات الويب وبناء أدوات صغيرة.",
+  lessons:[
+   {title:"أول كود JavaScript",level:"مبتدئ",explanation:"تضيف JavaScript التفاعل والسلوك إلى صفحات الويب. يمكن تشغيلها داخل وسم script في صفحة HTML.",example:'console.log("Hello world!");\nalert("مرحبًا بك!");',steps:["افتح مختبر الأكواد.","أضف وسم script.","افتح أدوات المطور لمشاهدة console.log."],task:"اطبع رسالة ترحيب في console.",question:"ما وظيفة console.log؟",options:["عرض قيمة في وحدة التحكم","تغيير حجم الشاشة","حذف الصفحة"],answer:0},
+   {title:"المتغيرات",level:"مبتدئ",explanation:"استخدم const للقيم التي لا يعاد إسنادها، وlet للمتغيرات التي تحتاج إلى إعادة إسناد. تجنب var في الأمثلة الحديثة دون سبب.",example:'const username = "Amir";\nlet score = 0;\nscore = score + 10;\nconsole.log(username, score);',steps:["استخدم const افتراضيًا عندما لا تحتاج إلى إعادة الإسناد.","استخدم let عند تغيير القيمة.","اختر أسماء تصف معنى المتغير."],task:"أنشئ متغيرًا للنقاط وزده بمقدار خمس.",question:"أي كلمة مناسبة لمتغير ستغيّر قيمته؟",options:["let","const دائمًا","title"],answer:0},
+   {title:"الأنواع والتحويل",level:"مبتدئ",explanation:"تتعامل JavaScript مع أرقام ونصوص وقيم منطقية ومصفوفات وكائنات. انتبه إلى تحويل النص إلى رقم عند إجراء الحسابات.",example:'const textNumber = "12";\nconst number = Number(textNumber);\nconsole.log(number + 3);',steps:["تحقق من نوع القيمة.","استخدم Number للتحويل عند الحاجة.","تعامل مع القيم غير الصالحة."],task:"حوّل النص '25' إلى عدد ثم أضف إليه 5.",question:"ما نتيجة Number('12') + 3؟",options:["123","15","خطأ دائمًا"],answer:1},
+   {title:"الشروط",level:"مبتدئ",explanation:"تسمح if وelse بتشغيل أوامر مختلفة حسب نتيجة الشرط.",example:'const score = 75;\nif (score >= 60) {\n console.log("ناجح");\n} else {\n console.log("حاول مجددًا");\n}',steps:["اكتب شرطًا بين قوسين.","ضع الأوامر داخل الأقواس المعقوفة.","اختبر أكثر من قيمة."],task:"اكتب شرطًا يفحص هل العمر أكبر من أو يساوي 18.",question:"ما الرمز الذي يعني المساواة مع المقارنة؟",options:["===",":=","=>"],answer:0},
+   {title:"الحلقات",level:"مبتدئ",explanation:"تكرر الحلقات مثل for تنفيذ التعليمات. احرص على أن يتغير عداد الحلقة حتى تنتهي.",example:'for (let i = 1; i <= 5; i++) {\n console.log(i);\n}',steps:["حدد قيمة البداية.","حدد شرط الاستمرار.","حدّث العداد."],task:"اطبع الأعداد من 1 إلى 10.",question:"ما وظيفة i++؟",options:["زيادة i بمقدار واحد","حذف i","إيقاف المتصفح"],answer:0},
+   {title:"الدوال",level:"متوسط",explanation:"تجمع الدوال أوامر قابلة لإعادة الاستخدام، ويمكنها استقبال معاملات وإرجاع نتيجة.",example:'function add(a, b) {\n return a + b;\n}\nconsole.log(add(4, 6));',steps:["عرّف اسم الدالة.","حدّد المعاملات.","استخدم return لإرجاع النتيجة."],task:"أنشئ دالة تضرب عددين وتعيد الناتج.",question:"ما وظيفة return؟",options:["إرجاع قيمة","تغيير لون النص وحده","إضافة صورة"],answer:0},
+   {title:"المصفوفات",level:"متوسط",explanation:"تخزن المصفوفة عدة قيم ويمكن الوصول إليها بالفهرس. تبدأ الفهارس من الصفر.",example:'const languages = ["Python", "HTML", "JavaScript"];\nconsole.log(languages[0]);\nlanguages.push("C++");\nconsole.log(languages);',steps:["أنشئ مصفوفة.","اقرأ عنصرًا بفهرسه.","استخدم push لإضافة عنصر."],task:"أنشئ مصفوفة بثلاث ألعاب وأضف رابعة.",question:"ما فهرس أول عنصر؟",options:["0","1","-1 فقط"],answer:0},
+   {title:"الكائنات",level:"متوسط",explanation:"تجمع الكائنات البيانات تحت أسماء خصائص. يمكن الوصول إلى الخصائص باستخدام النقطة أو الأقواس المربعة.",example:'const player = {\n name: "Amir",\n level: 3\n};\nconsole.log(player.name);\nplayer.level = 4;',steps:["أنشئ كائنًا بين أقواس معقوفة.","أضف خصائص وقيمًا.","اقرأ خاصية وعدّلها."],task:"أنشئ كائنًا يمثل لعبة مع الاسم والنوع.",question:"كيف تصل إلى خاصية name؟",options:["player.name","player->name","player(0)"],answer:0},
+   {title:"التعامل مع DOM",level:"متوسط",explanation:"يتيح DOM لJavaScript قراءة عناصر الصفحة وتعديلها. استخدم querySelector للوصول إلى عنصر مناسب.",example:'const title = document.querySelector("h1");\nif (title) {\n title.textContent = "تم تغيير العنوان";\n}',steps:["أضف عنصرًا إلى HTML.","استهدفه بمحدد مناسب.","غيّر النص أو الصنف."],task:"أنشئ زرًا يغيّر نص فقرة عند الضغط عليه.",question:"ما وظيفة querySelector؟",options:["اختيار عنصر من الصفحة","تشغيل قاعدة بيانات","ترتيب ملف على الجهاز"],answer:0},
+   {title:"الأحداث",level:"متوسط",explanation:"تسمح الأحداث بالاستجابة لأفعال المستخدم مثل النقر. يفضّل استخدام addEventListener لفصل السلوك عن HTML.",example:'const button = document.querySelector("button");\nbutton?.addEventListener("click", () => {\n console.log("تم الضغط");\n});',steps:["حدد العنصر.","اختر نوع الحدث.","اكتب الدالة التي ستنفّذ عند وقوعه."],task:"أضف حدث click إلى زر يحدّث عدادًا.",question:"ما اسم حدث النقر؟",options:["click","pressing","mouse-run"],answer:0},
+   {title:"مشروع قائمة مهام",level:"مشروع",explanation:"أنشئ واجهة تسمح بإضافة مهام وعرضها وحذفها. استخدم أحداث النقر وتعديل DOM لتحديث الصفحة.",example:'const tasks = [];\nfunction addTask(task) {\n if (task.trim()) tasks.push(task.trim());\n}\naddTask("تعلم JavaScript");\nconsole.log(tasks);',steps:["أنشئ حقل إدخال وزرًا.","أضف مهمة عند الضغط.","اعرض المهام في قائمة.","أضف حذف المهمة وتحسين الواجهة."],task:"أكمل قائمة مهام تعمل في المتصفح وتتعامل مع الإدخال الفارغ.",question:"ما الذي يجعل الصفحة تفاعلية؟",options:["استجابة JavaScript لأحداث المستخدم","لون الخلفية فقط","اسم الملف وحده"],answer:0}
+  ]
+ },
+ cyber: {
+  title:"الأمن السيبراني",
+  icon:"🛡️",
+  level:"أساسيات الدفاع والاختبار الآمن",
+  description:"تعلّم أساسيات حماية الحسابات والشبكات وفهم الثغرات والتدرّب فقط في مختبرات تملكها أو لديك إذن لاختبارها.",
+  lessons:[
+   {title:"ما الأمن السيبراني؟",level:"مبتدئ",explanation:"الأمن السيبراني هو حماية الأنظمة والشبكات والبيانات من الوصول أو الاستخدام أو التعطيل غير المصرح به. يبدأ التعلم بفهم المخاطر والدفاع.",example:"أصول مهمة:\n- الحسابات\n- الأجهزة\n- الشبكات\n- البيانات",steps:["حدد الأصل الذي تريد حمايته.","فكر في التهديدات المحتملة.","اختر إجراءات حماية مناسبة."],task:"اكتب قائمة بثلاثة أصول رقمية تريد حمايتها وثلاث وسائل دفاع.",question:"ما الهدف الأساسي للأمن السيبراني؟",options:["حماية الأنظمة والبيانات","اختراق أي جهاز دون إذن","تعطيل المواقع"],answer:0},
+   {title:"كلمات المرور والمصادقة",level:"مبتدئ",explanation:"استخدم كلمات مرور طويلة وفريدة ومدير كلمات مرور موثوقًا، وفعّل المصادقة متعددة العوامل للحسابات المهمة.",example:"قواعد أساسية:\n1. كلمة مرور فريدة لكل خدمة.\n2. المصادقة متعددة العوامل.\n3. لا تشارك رموز الدخول.",steps:["راجع إعدادات الأمان.","فعّل المصادقة متعددة العوامل.","احفظ رموز الاسترداد في مكان آمن."],task:"أنشئ قائمة تحقق لتأمين حساباتك دون كتابة كلمات مرورك في القائمة.",question:"لماذا لا يُنصح بإعادة استخدام كلمة المرور؟",options:["لأن تسربها قد يعرّض حسابات أخرى للخطر","لأنها لا تعمل على الإنترنت","لأنها تمنع التحديثات"],answer:0},
+   {title:"الشبكات وعناوين IP",level:"مبتدئ",explanation:"تستخدم الشبكات عناوين IP لتحديد واجهات الأجهزة. فهم DNS وHTTP وHTTPS والمنافذ يساعد على فهم كيفية تواصل الأنظمة.",example:"مفاهيم:\nIP: عنوان واجهة الشبكة\nDNS: تحويل أسماء النطاقات إلى عناوين\nHTTPS: اتصال ويب محمي بالتشفير",steps:["تعرّف على الفرق بين IP وDNS.","افهم وظيفة HTTP وHTTPS.","استخدم مختبرًا تعليميًا عند تجربة الشبكات."],task:"اشرح بكلماتك كيف يساعد DNS المتصفح على الوصول إلى موقع.",question:"ما وظيفة DNS الأساسية؟",options:["ترجمة أسماء النطاقات إلى عناوين","تخزين صور الجهاز فقط","تغيير كلمة المرور"],answer:0},
+   {title:"التصيّد والهندسة الاجتماعية",level:"مبتدئ",explanation:"تحاول رسائل التصيّد خداع المستخدم للحصول على معلومات أو دفعه إلى فتح رابط ضار. تحقّق من المرسل والنطاق ولا تشارك رموز التحقق.",example:"قبل فتح رابط:\n- راجع اسم النطاق بدقة.\n- لا تثق بالاستعجال والتهديد.\n- افتح الموقع الرسمي بنفسك.",steps:["افحص عنوان المرسل.","تحقق من الرابط قبل فتحه.","أبلغ عن الرسائل المشبوهة."],task:"اكتب خمس علامات تساعد على اكتشاف رسالة تصيّد.",question:"ما التصرف الأكثر أمانًا عند الشك في رابط؟",options:["فتح الرابط فورًا","التحقق عبر الموقع الرسمي أو قناة مستقلة","إرسال كلمة المرور للمرسل"],answer:1},
+   {title:"مبادئ اختبار الاختراق الأخلاقي",level:"متوسط",explanation:"الاختبار الأخلاقي يتطلب نطاقًا محددًا وإذنًا صريحًا. لا تختبر أنظمة الغير دون تصريح. ابدأ بمختبرات تعليمية مصممة للتجربة الآمنة.",example:"خطة اختبار آمن:\n1. احصل على إذن مكتوب.\n2. حدّد الأنظمة والنطاق.\n3. نفّذ الاختبارات المتفق عليها.\n4. وثّق النتائج وطرق الإصلاح.",steps:["تعلّم المفاهيم الأساسية.","استخدم بيئة تدريب محلية أو مختبرًا مخصصًا.","وثّق الثغرة مع أثرها وطريقة إصلاحها."],task:"اكتب نطاقًا افتراضيًا لمختبر محلي يوضح ما هو مسموح وما هو ممنوع.",question:"متى يجوز اختبار نظام لا تملكه؟",options:["عندما يكون مشهورًا","عند وجود إذن صريح ونطاق واضح","في أي وقت"],answer:1},
+   {title:"التحديثات وتقليل المخاطر",level:"متوسط",explanation:"تقلل التحديثات وإزالة البرامج غير الضرورية والنسخ الاحتياطية والصلاحيات المحدودة من المخاطر الأمنية.",example:"قائمة دفاعية:\n- تحديث النظام والبرامج.\n- استخدام حساب عادي للاستخدام اليومي.\n- تفعيل النسخ الاحتياطي.\n- مراجعة التطبيقات والصلاحيات.",steps:["حدّث نظام التشغيل.","احذف البرامج غير اللازمة.","اختبر إمكانية استعادة نسخة احتياطية."],task:"ضع خطة شهرية بسيطة لصيانة أمان جهازك.",question:"ما فائدة النسخ الاحتياطي؟",options:["يساعد على استعادة البيانات بعد فقدانها","يجعل كل ملف عامًا","يلغي الحاجة للتحديثات"],answer:0}
+  ]
+ }
+};
 
-  const total = courses[currentCourse].lessons.length;
-  const done = doneCount(currentCourse);
-  const pct = Math.round((done / total) * 100);
+function trackCard(id, track) {
+ const total = track.lessons.length;
+ const done = track.lessons.filter((_, i) => progress.done.includes(id + ":" + i)).length;
+ const percent = Math.round(done / total * 100);
+ return `<article class="card">
+  <div class="card-icon">${track.icon}</div>
+  <h3>${track.title}</h3>
+  <p>${track.description}</p>
+  <div class="small">${total} درسًا · ${track.level}</div>
+  <div class="progress-track"><span style="width:${percent}%"></span></div>
+  <div class="small">${done} من ${total} · ${percent}%</div>
+  <button class="btn btn-primary" onclick="openTrack('${id}')">دخول المسار ←</button>
+ </article>`;
+}
 
-  document.getElementById("courseProgressText").textContent =
-    `التقدم: ${pct}% (${done}/${total})`;
+function renderTracks() {
+ document.getElementById("homeTracks").innerHTML =
+  ["python","html","javascript","cpp","cyber"].map(id => trackCard(id, tracks[id])).join("");
+ document.getElementById("allTracks").innerHTML =
+  ["python","html","javascript","cpp","cyber"].map(id => trackCard(id, tracks[id])).join("");
+}
 
-  document.getElementById("courseProgressBar").style.width = pct + "%";
+function openTrack(id) {
+ if (!tracks[id]) return;
+ currentTrack = id;
+ currentLessonIndex = 0;
+ document.getElementById("courseEyebrow").textContent = "AMIRXTNA / " + tracks[id].title.toUpperCase();
+ document.getElementById("courseTitle").textContent = tracks[id].icon + " مسار " + tracks[id].title;
+ document.getElementById("courseDescription").textContent = tracks[id].description;
+ document.getElementById("lessonSearch").value = "";
+ renderLessonList();
+ renderLesson();
+ showPage("course");
 }
 
 function renderLessonList() {
-  if (!currentCourse) return;
-
-  const course = courses[currentCourse];
-  const query = document.getElementById("lessonSearch").value
-    .trim()
-    .toLowerCase();
-
-  const shown = course.lessons
-    .map((item, index) => ({ item, index }))
-    .filter(({ item }) => {
-      return (item.title + " " + item.level).toLowerCase().includes(query);
-    });
-
-  document.getElementById("lessonCount").textContent =
-    `${shown.length} من ${course.lessons.length} درس`;
-
-  if (shown.length === 0) {
-    document.getElementById("lessonList").innerHTML =
-      '<p class="muted" style="padding:10px">لا توجد دروس مطابقة للبحث.</p>';
-    return;
-  }
-
-  document.getElementById("lessonList").innerHTML = shown.map(({ item, index }) => `
-    <button class="lesson-item
-      ${index === currentLessonIndex ? "active" : ""}
-      ${isDone(currentCourse, index) ? "done" : ""}"
-      onclick="renderLesson(${index})">
-
-      <span class="lesson-number">
-        ${isDone(currentCourse, index) ? "✓" : index + 1}
-      </span>
-
-      <span class="lesson-meta">
-        <strong>${escapeHTML(item.title)}</strong>
-        <small>${escapeHTML(item.level)}</small>
-      </span>
-    </button>
-  `).join("");
+ const track = tracks[currentTrack];
+ const query = (document.getElementById("lessonSearch").value || "").trim().toLowerCase();
+ const list = track.lessons.map((lesson, i) => ({ lesson, i }))
+  .filter(x => x.lesson.title.toLowerCase().includes(query));
+ document.getElementById("lessonList").innerHTML = list.map(({lesson, i}) => {
+  const done = progress.done.includes(currentTrack + ":" + i);
+  return `<button class="lesson-item ${i===currentLessonIndex?"active":""} ${done?"done":""}" onclick="selectLesson(${i})">
+   <span class="lesson-number">${done?"✓":i+1}</span>
+   <span class="lesson-meta"><strong>${escapeHTML(lesson.title)}</strong><small>${escapeHTML(lesson.level)}</small></span>
+  </button>`;
+ }).join("") || '<p class="muted">لا توجد دروس مطابقة للبحث.</p>';
+ const completed = track.lessons.filter((_, i) => progress.done.includes(currentTrack + ":" + i)).length;
+ const percent = Math.round(completed / track.lessons.length * 100);
+ document.getElementById("courseProgress").style.width = percent + "%";
+ document.getElementById("courseProgressText").textContent = `${completed} من ${track.lessons.length} درس · ${percent}% مكتمل`;
 }
 
-function renderLesson(index) {
-  const course = courses[currentCourse];
-  const item = course.lessons[index];
+function selectLesson(index) {
+ currentLessonIndex = index;
+ renderLessonList();
+ renderLesson();
+}
 
-  currentLessonIndex = index;
-  renderLessonList();
-
-  const done = isDone(currentCourse, index);
-  const steps = item.lines.map(line => `<li>${escapeHTML(line)}</li>`).join("");
-
-  const options = item.options.map((option, i) => `
-    <label class="quiz-option">
-      <input type="radio" name="quizAnswer" value="${i}">
-      <span>${escapeHTML(option)}</span>
-    </label>
-  `).join("");
-
-  document.getElementById("lessonContent").innerHTML = `
-    <div class="eyebrow">
-      الدرس ${index + 1} من ${course.lessons.length}
-    </div>
-
-    <h2>${escapeHTML(item.title)}</h2>
-    <p class="muted">${escapeHTML(item.goal)}</p>
-
-    <div class="pills">
-      <span class="pill cyan">${escapeHTML(item.level)}</span>
-      <span class="pill">${done ? "✓ مكتمل" : "لم يكتمل بعد"}</span>
-    </div>
-
-    <section class="lesson-section">
-      <h3>📘 الشرح</h3>
-      <div class="lesson-text">${escapeHTML(item.explanation)}</div>
-    </section>
-
-    <section class="lesson-section">
-      <h3>💻 مثال عملي</h3>
-
-      <div class="code-wrap">
-        <button class="copy-btn" onclick="copyCode()">نسخ الكود</button>
-        <pre class="code-block" id="lessonCode"></pre>
-      </div>
-
-      <p class="small">
-        شغّل المثال في بيئة اللغة المناسبة، ولا تكتفِ بنسخه؛ غيّر فيه وجربه.
-      </p>
-    </section>
-
-    <section class="lesson-section">
-      <h3>🔍 شرح المثال خطوة بخطوة</h3>
-      <ol class="line-list">${steps}</ol>
-    </section>
-
-    <section class="lesson-section">
-      <div class="task-box">
-        <h3>🧩 تطبيق عملي</h3>
-        <div class="lesson-text">${escapeHTML(item.task)}</div>
-      </div>
-    </section>
-
-    <section class="lesson-section">
-      <div class="quiz-box">
-        <h3>🧠 اختبار قصير</h3>
-        <p>${escapeHTML(item.question)}</p>
-        <div>${options}</div>
-        <button class="btn btn-primary" onclick="checkQuiz()">
-          تحقق من إجابتي
-        </button>
-        <div class="feedback" id="quizFeedback" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <div class="lesson-actions">
-      <button class="btn btn-primary" onclick="toggleComplete()">
-        ${done ? "إلغاء اكتمال الدرس" : "✓ علّم الدرس كمكتمل"}
-      </button>
-      <button class="btn" onclick="openReset()">إعادة ضبط التقدم</button>
-    </div>
-
-    <div class="lesson-footer-nav">
-      <button class="btn" ${index === 0 ? "disabled" : ""}
-        onclick="renderLesson(${index - 1})">
-        ← الدرس السابق
-      </button>
-
-      <button class="btn" ${index === course.lessons.length - 1 ? "disabled" : ""}
-        onclick="renderLesson(${index + 1})">
-        الدرس التالي →
-      </button>
-    </div>
-  `;
-
-  /* نستخدم textContent لعرض الكود كما هو، بدل تفسيره كـ HTML */
-  document.getElementById("lessonCode").textContent = item.code;
+function renderLesson() {
+ const lesson = tracks[currentTrack].lessons[currentLessonIndex];
+ if (!lesson) return;
+ const key = currentTrack + ":" + currentLessonIndex;
+ const done = progress.done.includes(key);
+ const passed = !!progress.quizzes[key];
+ document.getElementById("lessonContent").innerHTML = `
+  <div class="eyebrow">${tracks[currentTrack].title.toUpperCase()} / LESSON ${currentLessonIndex+1}</div>
+  <h2>${escapeHTML(lesson.title)}</h2>
+  <div class="pills"><span class="pill cyan">${escapeHTML(lesson.level)}</span><span class="pill">${done?"✓ مكتمل":"درس جديد"}</span><span class="pill">${passed?"✓ اجتزت الاختبار":"اختبار قصير"}</span></div>
+  <section class="lesson-section"><h3>📖 الشرح</h3><div class="lesson-text">${escapeHTML(lesson.explanation)}</div></section>
+  <section class="lesson-section"><h3>💻 مثال عملي</h3><div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">نسخ</button><pre class="code-block">${escapeHTML(lesson.example)}</pre></div></section>
+  <section class="lesson-section"><h3>🪜 خطوات التطبيق</h3><ol class="line-list">${lesson.steps.map(s=>`<li>${escapeHTML(s)}</li>`).join("")}</ol></section>
+  <section class="lesson-section task-box"><h3>🎯 تمرينك العملي</h3><p>${escapeHTML(lesson.task)}</p><p class="small">جرّب الحل بنفسك قبل مشاهدة أي حل جاهز.</p></section>
+  <section class="lesson-section quiz-box">
+   <h3>🧠 اختبار الدرس</h3><p>${escapeHTML(lesson.question)}</p>
+   <div id="quizOptions">${lesson.options.map((opt,i)=>`<label class="quiz-option"><input type="radio" name="quiz" value="${i}"><span>${escapeHTML(opt)}</span></label>`).join("")}</div>
+   <button class="btn btn-primary" onclick="checkQuiz()">تحقق من الإجابة</button>
+   <div class="feedback" id="quizFeedback">${passed?"✓ سبق أن اجتزت هذا الاختبار. يمكنك إعادة المحاولة.":""}</div>
+  </section>
+  <div class="lesson-actions">
+   <button class="btn btn-primary" onclick="completeLesson()">${done?"✓ الدرس مكتمل":"✓ أنهيت الدرس"}</button>
+   <button class="btn" onclick="copyExample()">نسخ المثال</button>
+  </div>
+  <div class="lesson-footer-nav">
+   <button class="btn" onclick="previousLesson()" ${currentLessonIndex===0?"disabled":""}>→ الدرس السابق</button>
+   <button class="btn btn-primary" onclick="nextLesson()">${currentLessonIndex===tracks[currentTrack].lessons.length-1?"إنهاء المسار":"الدرس التالي ←"}</button>
+  </div>`;
 }
 
 function checkQuiz() {
-  const selected = document.querySelector('input[name="quizAnswer"]:checked');
-  const feedback = document.getElementById("quizFeedback");
-  const item = courses[currentCourse].lessons[currentLessonIndex];
-
-  if (!selected) {
-    feedback.style.color = "var(--pink)";
-    feedback.textContent = "اختر إجابة أولًا.";
-    return;
+ const lesson = tracks[currentTrack].lessons[currentLessonIndex];
+ const selected = document.querySelector('input[name="quiz"]:checked');
+ const feedback = document.getElementById("quizFeedback");
+ if (!selected) {
+  feedback.style.color = "var(--pink)";
+  feedback.textContent = "اختر إجابة أولًا.";
+  return;
+ }
+ const key = currentTrack + ":" + currentLessonIndex;
+ if (Number(selected.value) === lesson.answer) {
+  feedback.style.color = "var(--green)";
+  if (!progress.quizzes[key]) {
+   progress.quizzes[key] = true;
+   progress.xp += 10;
+   saveProgress();
   }
-
-  if (Number(selected.value) === item.answer) {
-    feedback.style.color = "var(--green)";
-    feedback.textContent = "إجابة صحيحة! " + item.why;
-  } else {
-    feedback.style.color = "var(--pink)";
-    feedback.textContent = "ليست الإجابة الصحيحة. " + item.why;
-  }
+  feedback.textContent = "إجابة صحيحة! +10 XP في أول اجتياز لهذا الاختبار. أحسنت!";
+ } else {
+  feedback.style.color = "var(--pink)";
+  feedback.textContent = "ليست الإجابة الصحيحة. راجع الشرح وحاول مرة أخرى.";
+ }
+ renderLessonList();
 }
 
-function toggleComplete() {
-  if (!progress[currentCourse]) {
-    progress[currentCourse] = [];
-  }
-
-  const index = currentLessonIndex;
-  const list = progress[currentCourse];
-  const position = list.indexOf(index);
-
-  if (position >= 0) {
-    list.splice(position, 1);
-  } else {
-    list.push(index);
-  }
-
-  list.sort((a, b) => a - b);
-
-  saveProgress();
-  initCards();
-  updateCourseProgress();
-  renderLesson(index);
+function completeLesson() {
+ const key = currentTrack + ":" + currentLessonIndex;
+ if (progress.done.includes(key)) {
+  modal("درس مكتمل", "سبق أن سجلت إكمال هذا الدرس. تابع إلى الدرس التالي!");
+  return;
+ }
+ progress.done.push(key);
+ progress.xp += 20;
+ saveProgress();
+ renderLessonList();
+ renderLesson();
+ modal("أحسنت! 🎉", "سجّلنا إكمال الدرس وأضفنا 20 XP إلى تقدمك.");
 }
 
-async function copyCode() {
-  const code = document.getElementById("lessonCode").textContent;
-  const button = document.querySelector(".copy-btn");
-
-  try {
-    await navigator.clipboard.writeText(code);
-    button.textContent = "تم النسخ ✓";
-  } catch (error) {
-    const textarea = document.createElement("textarea");
-    textarea.value = code;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand("copy");
-    textarea.remove();
-    button.textContent = "تم النسخ ✓";
-  }
-
-  setTimeout(() => {
-    if (button.isConnected) button.textContent = "نسخ الكود";
-  }, 1400);
+function previousLesson() {
+ if (currentLessonIndex > 0) selectLesson(currentLessonIndex - 1);
+}
+function nextLesson() {
+ if (currentLessonIndex < tracks[currentTrack].lessons.length - 1) {
+  selectLesson(currentLessonIndex + 1);
+ } else {
+  modal("وصلت إلى نهاية المسار", "أحسنت! راجع الدروس التي تعلمتها ثم طوّر مشروعًا يجمع المهارات.");
+ }
 }
 
-function openReset() {
-  document.getElementById("resetModal").classList.add("open");
+function escapeHTML(value) {
+ return String(value).replace(/[&<>"']/g, ch => ({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ }[ch]));
 }
 
-function closeReset() {
-  document.getElementById("resetModal").classList.remove("open");
+async function copyCode(button) {
+ const text = button.parentElement.querySelector("pre").textContent;
+ try {
+  await navigator.clipboard.writeText(text);
+  button.textContent = "تم النسخ ✓";
+  setTimeout(() => button.textContent = "نسخ", 1200);
+ } catch {
+  modal("تعذر النسخ التلقائي", "حدد المثال وانسخه يدويًا باستخدام Ctrl+C.");
+ }
+}
+async function copyExample() {
+ const text = tracks[currentTrack].lessons[currentLessonIndex].example;
+ try {
+  await navigator.clipboard.writeText(text);
+  modal("تم النسخ", "تم نسخ المثال إلى الحافظة.");
+ } catch {
+  modal("نسخ المثال", "حدد المثال وانسخه يدويًا.");
+ }
+}
+
+function updateStats() {
+ const doneCount = progress.done.length;
+ const xp = progress.xp;
+ const level = Math.floor(xp / 100) + 1;
+ ["statXP","progressXP"].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.textContent = xp + " XP";
+ });
+ ["statDone","progressDone"].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.textContent = doneCount;
+ });
+ const levelEl = document.getElementById("progressLevel");
+ if (levelEl) levelEl.textContent = level;
+}
+
+function renderProgress() {
+ updateStats();
+ const container = document.getElementById("progressTracks");
+ container.innerHTML = Object.entries(tracks).map(([id, track]) => {
+  const done = track.lessons.filter((_, i) => progress.done.includes(id+":"+i)).length;
+  const percent = Math.round(done / track.lessons.length * 100);
+  return `<div style="margin:18px 0">
+   <div style="display:flex;justify-content:space-between;gap:10px"><strong>${track.icon} ${escapeHTML(track.title)}</strong><span class="small">${done}/${track.lessons.length}</span></div>
+   <div class="progress-track"><span style="width:${percent}%"></span></div>
+  </div>`;
+ }).join("");
+}
+
+function exportProgress() {
+ const blob = new Blob([JSON.stringify(progress, null, 2)], {type:"application/json"});
+ const url = URL.createObjectURL(blob);
+ const a = document.createElement("a");
+ a.href = url;
+ a.download = "amirxtna-progress.json";
+ a.click();
+ URL.revokeObjectURL(url);
 }
 
 function confirmReset() {
-  progress = {};
+ if (confirm("هل أنت متأكد أنك تريد حذف التقدم المحفوظ في هذا المتصفح؟")) {
+  progress = {xp:0,done:[],quizzes:{}};
   saveProgress();
-  initCards();
-
-  if (currentCourse) {
-    renderLessonList();
-    updateCourseProgress();
-    renderLesson(currentLessonIndex);
+  renderTracks();
+  renderProgress();
+  if (document.getElementById("course").classList.contains("active")) {
+   renderLessonList();
+   renderLesson();
   }
-
-  closeReset();
+  modal("تمت إعادة ضبط التقدم", "يمكنك البدء من جديد.");
+ }
 }
 
-document.getElementById("resetModal").addEventListener("click", event => {
-  if (event.target.id === "resetModal") closeReset();
-});
+const originalHTML = `<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  font-family: Arial;
+  text-align: center;
+  padding: 40px;
+  background: #101629;
+  color: white;
+}
+button {
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 10px;
+  background: #38e5ff;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+<h1>مرحبًا بك في مختبر AMIRXTNA!</h1>
+<p>عدّل الكود وتعلّم بالتجربة.</p>
+<button onclick="alert('أحسنت!')">اضغط هنا</button>
+</body>
+</html>`;
 
-document.getElementById("year").textContent = new Date().getFullYear();
+function runHTML() {
+ const code = document.getElementById("htmlEditor").value;
+ document.getElementById("previewFrame").srcdoc = code;
+}
+function resetHTML() {
+ document.getElementById("htmlEditor").value = originalHTML;
+ runHTML();
+}
 
-/* تشغيل أولي للموقع */
-initCards();
+function runCommand(event) {
+ event.preventDefault();
+ const input = document.getElementById("terminalInput");
+ const output = document.getElementById("terminalOutput");
+ const command = input.value.trim().toLowerCase();
+ input.value = "";
+ const responses = {
+  help:"الأوامر التعليمية المتاحة:\nhelp - عرض الأوامر\nabout - معلومات عن المحطة\nskills - عرض المهارات\nclear - مسح الشاشة",
+  about:"AMIRXTNA Learning Shell\nمحاكاة تعليمية فقط. لا تنفذ أوامر النظام الحقيقية.",
+  skills:"مهارات الرحلة:\n- أساسيات البرمجة\n- حل المشكلات\n- تطوير الويب\n- مبادئ الأمن السيبراني الآمن",
+  clear:""
+ };
+ if (command === "clear") output.textContent = "";
+ else if (responses[command]) output.textContent += "\n$ " + command + "\n" + responses[command] + "\n";
+ else if (command === "") return;
+ else output.textContent += "\n$ " + command + "\nأمر غير معروف. اكتب help لعرض الأوامر.\n";
+}
+
+renderTracks();
 updateStats();
+runHTML();
 </script>
-
 </body>
 </html>
