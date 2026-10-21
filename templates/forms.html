@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMIRXTNA - Quick Forms</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #0d1117; color: #fff; text-align: center; padding: 20px; }
+        h1 { color: #00f2fe; margin-bottom: 15px; }
+        
+        .form-box { max-width: 500px; margin: 0 auto; background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 25px; text-align: right; }
+        label { color: #8b949e; font-size: 0.9rem; display: block; margin-top: 10px; }
+        input, textarea, select { width: 100%; padding: 10px; margin-top: 5px; background: #0d1117; border: 1px solid #30363d; border-radius: 6px; color: #fff; }
+        
+        button { background: #00f2fe; color: #0d1117; font-weight: bold; border: none; padding: 12px; border-radius: 6px; cursor: pointer; margin-top: 15px; width: 100%; }
+        button:hover { background: #00b8d4; }
+        
+        .btn-back { display: inline-block; margin-top: 20px; padding: 10px 20px; color: #00f2fe; text-decoration: none; border: 1px solid #00f2fe; border-radius: 8px; }
+    </style>
+</head>
+<body>
+
+    <h1>📋 منشئ الاستبيانات السريع (Quick Forms)</h1>
+
+    <div class="form-box">
+        <label>عنوان الاستبيان / الاختبار:</label>
+        <input type="text" id="title" placeholder="مثال: اختبار معلومات عامة">
+
+        <label>السؤال الأول:</label>
+        <input type="text" id="q1" placeholder="اكتب سؤالك هنا...">
+
+        <label>نوع الإجابة المتوقعة:</label>
+        <select>
+            <option>نص قصير</option>
+            <option>خيارات (نعم / لا)</option>
+            <option>تقييم من 5</option>
+        </select>
+
+        <button onclick="createForm()">إنشاء معاينة للاستبيان 🚀</button>
+
+        <div id="preview" style="margin-top: 20px; color: #00f2fe; text-align: center;"></div>
+    </div>
+
+    <a href="/" class="btn-back">⬅️ العودة للرئيسية</a>
+
+    <script>
+        function createForm() {
+            let title = document.getElementById('title').value;
+            if(title) {
+                document.getElementById('preview').innerText = "تم تجهيز معاينة الاستبيان: (" + title + ") بنجاح! ✅";
+            } else {
+                document.getElementById('preview').innerText = "يرجى كتابة عنوان للاستبيان أولاً!";
+            }
+        }
+    </script>
+</body>
+</html>
