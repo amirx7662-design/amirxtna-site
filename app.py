@@ -22,5 +22,9 @@ def forms():
 def contact():
     return render_template('contact.html')
 
+@app.route('/learn')
+def learn():
+    return render_template('learn.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
