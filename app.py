@@ -6,9 +6,21 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
+@app.route('/arcade')
+def arcade():
+    return render_template('arcade.html')
+
 @app.route('/tools')
 def tools():
     return render_template('tools.html')
+
+@app.route('/forms')
+def forms():
+    return render_template('forms.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
