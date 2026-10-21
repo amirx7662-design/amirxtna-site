@@ -3,405 +3,973 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AMIRXTNA ∞ | Quantum Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMIRXTNA ∞ | الكون البرمجي</title>
 <style>
-:root{--bg:#050711;--panel:#0c1221;--line:#202e46;--cyan:#52f4ff;--purple:#a17aff;--green:#6dffc1;--text:#f1f7ff;--muted:#95a5bd}
+:root{
+  --bg:#050511;--panel:rgba(17,19,43,.82);--line:rgba(157,135,255,.24);
+  --text:#f4f2ff;--muted:#aaa9c9;--purple:#a78bfa;--cyan:#48e8ff;
+  --pink:#ff55cf;--gold:#ffe39b;--radius:20px;
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Tahoma,Arial,sans-serif;min-height:100vh}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Tahoma,"Segoe UI",sans-serif;overflow-x:hidden;
+}
 button,input,textarea,select{font:inherit}
 button{cursor:pointer}
-button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
-#stars{position:fixed;inset:0;width:100%;height:100%;z-index:-2;pointer-events:none}
-body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 20% 0%,#442c8040,transparent 45%),radial-gradient(ellipse at 95% 70%,#00566a30,transparent 40%)}
-header{height:70px;position:sticky;top:0;z-index:10;background:#070a14ed;backdrop-filter:blur(18px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 22px;gap:12px}
-.logo{font-size:21px;font-weight:900;white-space:nowrap}.logo span{color:var(--cyan);text-shadow:0 0 18px #52f4ff66}
-.status{font-size:11px;color:var(--green)}.status i{display:inline-block;width:7px;height:7px;background:var(--green);border-radius:50%;margin-left:6px;box-shadow:0 0 12px var(--green);animation:pulse 1.5s infinite}
-@keyframes pulse{50%{opacity:.3;box-shadow:0 0 2px var(--green)}}
-.layout{display:grid;grid-template-columns:230px minmax(0,1fr);max-width:1700px;margin:auto;min-height:calc(100vh - 70px)}
-aside{padding:18px 12px;border-left:1px solid var(--line);background:#080b14b8}
-.nav-title{font-size:10px;color:#71819c;letter-spacing:2px;padding:20px 12px 8px}
-.nav{width:100%;display:block;text-align:right;padding:13px 12px;border:1px solid transparent;background:transparent;color:#aab8cf;margin:3px 0;border-radius:9px;transition:background .2s,border-color .2s,transform .2s}
-.nav:hover{transform:translateX(-3px);color:white}
-.nav.active,.nav:hover{background:linear-gradient(100deg,#162b3c,#19132d);border-color:#2d4a61;color:white}
-.nav b{color:var(--cyan);margin-left:10px}
-.sidebar-ad{margin-top:25px;padding:13px;border:1px dashed #45516b;background:#0b1020;border-radius:10px}
-.sidebar-ad small{color:var(--muted);font-size:11px}
-main{padding:26px;min-width:0}
-.page{display:none;animation:enter .25s ease}.page.active{display:block}
-@keyframes enter{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
-.topline{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:20px}
-.kicker{font-size:10px;letter-spacing:3px;color:var(--cyan)}
-h1{font-size:clamp(30px,4vw,54px);line-height:1.3;margin:12px 0}
-h1 span{color:var(--cyan);text-shadow:0 0 28px #52f4ff66}
-h2{font-size:24px;margin:7px 0}
-h3{font-size:16px}
-p{font-size:13px;line-height:1.9;color:var(--muted)}
-.hero{position:relative;overflow:hidden;border:1px solid #30435d;background:linear-gradient(115deg,#0c1424,#11102a 65%,#08202c);padding:clamp(22px,4vw,42px);display:grid;grid-template-columns:1.2fr .8fr;align-items:center;min-height:310px}
-.hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(#52f4ff0b 1px,transparent 1px),linear-gradient(90deg,#52f4ff0b 1px,transparent 1px);background-size:30px 30px;mask-image:linear-gradient(90deg,transparent,black);pointer-events:none}
-.hero-copy{position:relative;z-index:1}
-.hero-copy p{max-width:500px}
-.core-area{display:grid;place-items:center;min-height:220px}
-.core{width:145px;height:145px;border-radius:50%;border:1px solid #52f4ff80;display:grid;place-items:center;position:relative;box-shadow:0 0 35px #52f4ff22,inset 0 0 30px #52f4ff16;animation:levitate 4s ease-in-out infinite}
-.core:before,.core:after{content:"";position:absolute;inset:-15px;border:1px dashed #a17aff80;border-radius:50%;animation:spin 16s linear infinite}
-.core:after{inset:-30px;border-color:#52f4ff50;animation-duration:24s;animation-direction:reverse}
-.core span{font-size:43px;color:var(--cyan);text-shadow:0 0 25px var(--cyan)}
-@keyframes spin{to{transform:rotate(360deg)}}@keyframes levitate{50%{transform:translateY(-9px)}}
-.btn{border:1px solid #2a3b54;background:#10192a;color:white;padding:11px 15px;border-radius:7px;transition:.2s}
-.btn:hover{border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 17px #52f4ff18}
-.btn.primary{background:var(--cyan);color:#031016;border-color:var(--cyan);font-weight:bold}
-.btn.primary:hover{background:#fff}
-.btn.small{font-size:11px;padding:8px 11px}
-.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
-.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:16px 0 30px}
-.metric,.panel,.module{background:#0a0f1c;border:1px solid var(--line);padding:17px;min-width:0}
-.metric{position:relative;overflow:hidden}
-.metric:after{content:"";position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);animation:glow 3s linear infinite}
-@keyframes glow{50%{opacity:.3}}
-.metric small{font-size:11px;color:var(--muted)}
-.metric strong{display:block;font-size:24px;margin:10px 0}
-.section-label{font-size:10px;color:var(--muted);letter-spacing:2px;margin:30px 0 13px}
-.modules{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.module{transition:transform .2s,border-color .2s;background:linear-gradient(145deg,#0e1524,#090d17)}
-.module:hover{transform:translateY(-4px);border-color:#4c8195}
-.module .symbol{font-size:26px;color:var(--cyan)}
-.module p{min-height:48px}
-.tag{border:1px solid #2d4058;color:var(--cyan);font-size:10px;padding:7px 10px}
-.field-label{display:block;font-size:12px;color:#a8b7ce;margin:14px 0 7px}
-input,textarea,select{width:100%;background:#060a13;color:white;border:1px solid #2a3750;border-radius:6px;padding:12px;min-width:0}
-input:focus,textarea:focus,select:focus{border-color:var(--cyan)}
-textarea{min-height:245px;resize:vertical;direction:ltr;text-align:left;font:13px/1.8 Consolas,monospace}
-.editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
-.panel{margin-bottom:13px}
-.panel-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
-iframe{display:block;width:100%;height:320px;background:white;border:1px solid #2a3750}
-.console{background:#04070d;color:var(--green);padding:12px;border:1px solid #243149;margin-top:10px;min-height:45px;white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.7 Consolas,monospace}
-.lesson{border:1px solid var(--line);padding:15px;margin:10px 0;background:#0b101d}
-.lesson.done{border-color:#26866a}
-pre{background:#050911;border:1px solid #202b40;padding:12px;white-space:pre-wrap;overflow-wrap:anywhere;direction:ltr;text-align:left;color:#c5dcff}
-.quiz-option{display:block;width:100%;padding:12px;margin:8px 0;background:#0b1220;border:1px solid var(--line);color:white;text-align:right}
-.quiz-option:hover{border-color:var(--cyan)}
-.ad-banner{border:1px dashed #54617a;background:linear-gradient(110deg,#0c1321,#11102a);padding:22px;text-align:center;margin:14px 0;position:relative;overflow:hidden}
-.ad-banner:before{content:"";position:absolute;top:0;bottom:0;width:70px;background:#ffffff08;transform:skewX(-20deg);animation:scan 5s linear infinite}
-@keyframes scan{from{right:-100px}to{right:110%}}
-.ad-banner>*{position:relative}
-.list-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
-.game-wrap{text-align:center;background:#050911;padding:12px;border:1px solid var(--line)}
-canvas#game{display:block;width:100%;max-width:650px;height:auto;margin:auto;background:#080e1b;border:1px solid #192a40}
-footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;color:#72809a;font-size:10px}
-#toast{position:fixed;bottom:18px;left:18px;background:#0c1924;color:white;border:1px solid var(--cyan);padding:13px 17px;z-index:100;display:none;max-width:90vw}
-@media(max-width:950px){.layout{grid-template-columns:1fr}aside{display:flex;gap:5px;overflow-x:auto;padding:8px;border-left:0;border-bottom:1px solid var(--line)}.nav-title,.sidebar-ad{display:none}.nav{white-space:nowrap;width:auto;min-width:max-content}main{padding:16px}}
-@media(max-width:650px){header{height:62px;padding:0 11px}.logo{font-size:16px}.status{display:none}main{padding:11px}.hero{grid-template-columns:1fr}.core-area{min-height:140px;grid-row:1}.core{width:95px;height:95px}.core span{font-size:30px}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.modules,.editor-grid{grid-template-columns:1fr}.module p{min-height:0}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
+button:focus-visible,input:focus-visible,textarea:focus-visible{
+  outline:2px solid var(--cyan);outline-offset:3px
+}
+button:disabled{opacity:.45;cursor:not-allowed}
+#universe{
+  position:fixed;inset:0;width:100%;height:100%;
+  pointer-events:none;z-index:-3
+}
+.aurora{
+  position:fixed;width:65vw;height:65vw;border-radius:50%;
+  filter:blur(100px);opacity:.13;pointer-events:none;z-index:-2;
+  animation:nebula 18s ease-in-out infinite alternate;
+}
+.aurora.a{background:#762cff;top:-30vw;right:-10vw}
+.aurora.b{background:#00bfff;bottom:-40vw;left:-10vw;animation-delay:-8s}
+@keyframes nebula{
+  0%{transform:translate(0,0) scale(.9)}
+  100%{transform:translate(-7vw,8vh) scale(1.25)}
+}
+@keyframes pulse{
+  0%,100%{box-shadow:0 0 12px #8b5cf644}
+  50%{box-shadow:0 0 32px #8b5cf688,0 0 65px #3de7ff22}
+}
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes shimmer{to{background-position:200% center}}
+@keyframes appear{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+*{scrollbar-color:#6150a7 #090919;scrollbar-width:thin}
+.topbar{
+  position:sticky;top:0;z-index:20;display:flex;align-items:center;
+  justify-content:space-between;gap:15px;padding:12px 4%;
+  background:rgba(5,5,17,.83);backdrop-filter:blur(22px);
+  border-bottom:1px solid var(--line)
+}
+.brand{display:flex;align-items:center;gap:11px;font-weight:900}
+.logo{
+  width:43px;height:43px;border-radius:15px;display:grid;place-items:center;
+  background:linear-gradient(135deg,#9c5cff,#2526a0,#22d3ee);
+  box-shadow:0 0 28px #8b5cf655;font-size:19px;
+  animation:pulse 4s infinite
+}
+.brand-name{
+  font-size:18px;letter-spacing:.5px;
+  background:linear-gradient(90deg,#fff,#a78bfa,#48e8ff,#fff);
+  background-size:200%;color:transparent;background-clip:text;
+  animation:shimmer 5s linear infinite
+}
+.brand small{display:block;color:var(--muted);font-size:10px;margin-top:4px}
+.status{font-size:11px;color:#a5f3cf;white-space:nowrap}
+.status:before{content:"";display:inline-block;width:7px;height:7px;
+  border-radius:50%;background:#5df5ad;margin-left:7px;box-shadow:0 0 12px #5df5ad}
+.layout{display:grid;grid-template-columns:235px minmax(0,1fr);gap:22px;
+  max-width:1600px;margin:auto;padding:24px 3% 70px}
+.sidebar{
+  align-self:start;position:sticky;top:85px;padding:15px;
+  border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--panel);backdrop-filter:blur(20px)
+}
+.side-label{font-size:10px;color:#7779a9;margin:15px 10px 8px}
+.nav-btn{
+  width:100%;display:flex;align-items:center;gap:12px;text-align:right;
+  padding:12px;border:1px solid transparent;border-radius:13px;
+  background:transparent;color:#c5c4e0;margin:3px 0;transition:.25s
+}
+.nav-btn:hover,.nav-btn.active{
+  color:white;background:linear-gradient(100deg,#8b5cf626,#20d9ff0c);
+  border-color:#a78bfa55;transform:translateX(-3px)
+}
+.nav-btn.active{box-shadow:inset -3px 0 var(--purple)}
+.nav-icon{width:25px;text-align:center;font-size:17px}
+.side-foot{margin-top:22px;padding:13px;border-radius:14px;
+  background:#a78bfa0b;border:1px solid var(--line);font-size:11px;color:var(--muted)}
+.main{min-width:0}
+.view{display:none;animation:appear .35s ease}
+.view.active{display:block}
+.hero{
+  position:relative;overflow:hidden;padding:32px;border:1px solid var(--line);
+  border-radius:26px;background:
+  radial-gradient(ellipse at 85% 0%,#733bff2a,transparent 50%),
+  radial-gradient(ellipse at 10% 100%,#00cfff15,transparent 50%),
+  rgba(12,12,31,.82);margin-bottom:20px
+}
+.hero:after{
+  content:"";position:absolute;left:-60px;top:-100px;width:270px;height:270px;
+  border:1px solid #a78bfa2b;border-radius:50%;
+  box-shadow:0 0 0 25px #a78bfa08,0 0 0 55px #a78bfa05;
+  pointer-events:none
+}
+.eyebrow{font-size:11px;letter-spacing:2px;color:var(--cyan);margin-bottom:14px}
+h1{font-size:clamp(28px,4vw,49px);line-height:1.35;margin:0 0 12px}
+.gradient-text{
+  background:linear-gradient(90deg,#fff,#b4a1ff,#51eaff,#ff9be9);
+  background-size:200%;background-clip:text;color:transparent;
+  animation:shimmer 7s linear infinite
+}
+p{line-height:1.9}
+.muted{color:var(--muted)}
+.hero p{max-width:680px;color:#b7b7d4;font-size:14px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  border:1px solid var(--line);border-radius:12px;padding:11px 15px;
+  background:#ffffff08;color:#eeeaff;transition:transform .2s,border-color .2s,background .2s
+}
+.btn:hover{transform:translateY(-2px);border-color:#a78bfa;background:#a78bfa18}
+.btn.primary{color:#090819;font-weight:900;border:0;
+  background:linear-gradient(110deg,#b9a1ff,#54e9ff)}
+.btn.pink{border-color:#ff55cf66;background:#ff55cf10}
+.btn.danger{border-color:#ff6b6b66;color:#ffb4b4}
+.btn.small{padding:7px 10px;font-size:11px;border-radius:9px}
+.section-head{display:flex;justify-content:space-between;align-items:center;
+  gap:12px;flex-wrap:wrap;margin:24px 0 13px}
+.section-head h2{font-size:18px;margin:0}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.card{
+  min-width:0;padding:19px;border:1px solid var(--line);border-radius:18px;
+  background:linear-gradient(145deg,#17172fdd,#090918ee);
+  transition:transform .25s,border-color .25s;position:relative;overflow:hidden
+}
+.card:hover{transform:translateY(-4px);border-color:#a78bfa88}
+.card-icon{font-size:27px;margin-bottom:13px;display:block}
+.card h3{font-size:15px;margin:0 0 8px}
+.card p{font-size:12px;color:var(--muted);margin:0 0 15px}
+.metric{font-size:27px;font-weight:900}
+.metric-label{font-size:11px;color:var(--muted);margin-top:5px}
+.panel{
+  border:1px solid var(--line);border-radius:20px;background:var(--panel);
+  padding:19px;margin:14px 0;min-width:0
+}
+.input,.area,.select{
+  display:block;width:100%;background:#070714;color:#f2efff;
+  border:1px solid #45416e;border-radius:11px;padding:12px;margin-top:7px;
+  min-width:0
+}
+.area{min-height:110px;resize:vertical;line-height:1.65}
+.input:focus,.area:focus,.select:focus{border-color:var(--cyan);outline:none}
+.field{display:block;color:#bdbbdc;font-size:12px;margin:12px 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.editor{
+  width:100%;min-height:260px;resize:vertical;direction:ltr;text-align:left;
+  font:13px/1.7 Consolas,monospace;background:#070710;color:#b9f7e4;
+  border:1px solid #46416f;border-radius:13px;padding:15px;tab-size:2
+}
+.preview{
+  display:block;width:100%;height:320px;background:white;border:1px solid #45416e;
+  border-radius:13px
+}
+.code-top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.tag{display:inline-block;padding:5px 9px;border:1px solid var(--line);
+  border-radius:999px;font-size:10px;color:#c5b8ff}
+.progress{height:8px;background:#ffffff10;border-radius:99px;overflow:hidden;margin:10px 0}
+.progress>div{height:100%;width:0;background:linear-gradient(90deg,#a78bfa,#48e8ff);
+  border-radius:99px;transition:width .4s}
+.ad-spot{
+  border:1px dashed #b39aff77;border-radius:16px;padding:16px;margin:16px 0;
+  background:linear-gradient(115deg,#9c5cff0c,#48e8ff09);
+  position:relative;overflow:hidden
+}
+.ad-label{font-size:10px;letter-spacing:1px;color:var(--gold);margin-bottom:9px}
+.ad-content{display:flex;justify-content:space-between;align-items:center;gap:15px}
+.ad-content h3{margin:0 0 5px;font-size:14px}
+.ad-content p{margin:0;color:var(--muted);font-size:12px;overflow-wrap:anywhere}
+.ad-empty{color:#9b98bc;font-size:12px}
+.ad-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.ad-item{border:1px solid var(--line);border-radius:15px;padding:14px;background:#0a0a1a}
+.ad-item h3{font-size:14px;margin:0 0 6px}
+.ad-item p{font-size:12px;color:var(--muted);overflow-wrap:anywhere}
+.ad-item a{color:var(--cyan);font-size:12px;overflow-wrap:anywhere}
+#gameCanvas{width:100%;max-width:650px;display:block;margin:12px auto;
+  border:1px solid #575087;border-radius:16px;background:#070717;touch-action:none}
+.game-controls{display:flex;justify-content:center;gap:12px}
+.game-controls .btn{min-width:66px;font-size:19px}
+.lesson{border:1px solid var(--line);border-radius:15px;padding:15px;margin:10px 0;background:#0a0a1b}
+.lesson.done{border-color:#4ce3b477}
+.lesson pre{white-space:pre-wrap;direction:ltr;text-align:left;
+  background:#050510;padding:12px;border-radius:10px;color:#a8f4e1;overflow:auto}
+.notice{font-size:12px;color:#c4c2df;background:#ffffff06;padding:12px;border-radius:12px}
+.toast{
+  position:fixed;bottom:20px;left:20px;z-index:99;max-width:min(350px,90vw);
+  padding:13px 17px;border-radius:13px;border:1px solid #7c6cb9;
+  background:#15142c;color:white;box-shadow:0 10px 40px #0008;
+  opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s
+}
+.toast.show{opacity:1;transform:translateY(0)}
+.footer{text-align:center;color:#747394;font-size:11px;padding:30px 0 10px}
+.hide{display:none!important}
+@media(max-width:1000px){
+ .layout{grid-template-columns:1fr;padding:16px 3%}
+ .sidebar{position:static;display:flex;overflow-x:auto;gap:5px;padding:9px}
+ .side-label,.side-foot{display:none}
+ .nav-btn{width:auto;min-width:max-content;padding:10px}
+ .nav-btn.active{box-shadow:inset 0 -3px var(--purple)}
+ .nav-btn:hover,.nav-btn.active{transform:none}
+}
+@media(max-width:650px){
+ .grid{grid-template-columns:1fr}
+ .two,.ad-list{grid-template-columns:1fr}
+ .hero{padding:22px}
+ .topbar{padding:10px 3%}
+ .brand-name{font-size:15px}
+ .status{font-size:9px}
+ .panel{padding:13px}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
+}
 </style>
 </head>
 <body>
-<canvas id="stars"></canvas>
-<header>
-  <div class="logo">AMIRX<span>TNA ∞</span></div>
-  <div class="status"><i></i> النظام يعمل</div>
-  <button class="btn small" id="quickLab">⌘ المختبر</button>
+<canvas id="universe"></canvas>
+<div class="aurora a"></div><div class="aurora b"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="logo">∞</div>
+    <div><div class="brand-name">AMIRXTNA</div><small>THE COSMIC CODE UNIVERSE</small></div>
+  </div>
+  <div class="status">النظام المحلي جاهز</div>
 </header>
 
 <div class="layout">
-<aside>
-  <div class="nav-title">مركز القيادة</div>
-  <button class="nav active" data-page="home"><b>◈</b> الرئيسية</button>
-  <button class="nav" data-page="lab"><b>⌘</b> مختبر البرمجة</button>
-  <button class="nav" data-page="academy"><b>✧</b> أكاديمية التعلم</button>
-  <button class="nav" data-page="sites"><b>▧</b> صانع المواقع</button>
-  <button class="nav" data-page="games"><b>◉</b> مصنع الألعاب</button>
-  <div class="nav-title">المشاريع والإدارة</div>
-  <button class="nav" data-page="projects"><b>▤</b> مشاريعي</button>
-  <button class="nav" data-page="ads"><b>◇</b> مركز الإعلانات</button>
-  <div class="sidebar-ad">
-    <small>AD SPACE / 01</small>
-    <h3>مساحة إعلانية</h3>
-    <small>هذه المساحة باقية ويمكن تخصيصها.</small>
-    <button class="btn small" data-go="ads" style="margin-top:10px">إدارة الإعلان</button>
-  </div>
+<aside class="sidebar">
+  <div class="side-label">بوابات الكون</div>
+  <button class="nav-btn active" data-view="home"><span class="nav-icon">✧</span> مركز القيادة</button>
+  <button class="nav-btn" data-view="lab"><span class="nav-icon">⌘</span> مختبر البرمجة</button>
+  <button class="nav-btn" data-view="academy"><span class="nav-icon">◈</span> الأكاديمية</button>
+  <button class="nav-btn" data-view="builder"><span class="nav-icon">✦</span> صانع المواقع</button>
+  <button class="nav-btn" data-view="game"><span class="nav-icon">⚔</span> مصنع الألعاب</button>
+  <button class="nav-btn" data-view="projects"><span class="nav-icon">▣</span> مشاريعي</button>
+  <button class="nav-btn" data-view="ads"><span class="nav-icon">◇</span> مركز الإعلانات</button>
+  <div class="side-label">أدوات النظام</div>
+  <button class="nav-btn" data-action="randomize"><span class="nav-icon">✺</span> طاقة كونية جديدة</button>
+  <button class="nav-btn" data-action="top"><span class="nav-icon">↑</span> العودة للأعلى</button>
+  <div class="side-foot">✦ فضاؤك البرمجي، أدواتك، ومشاريعك. يتم حفظ التقدم محليًا عندما يسمح المتصفح بذلك.</div>
 </aside>
 
-<main>
-<section id="home" class="page active">
-  <div class="topline"><div><div class="kicker">INFINITE DEVELOPER ENVIRONMENT</div><p>مساحة أمير X للإبداع والبرمجة</p></div><span class="tag" id="clock">SYSTEM ONLINE</span></div>
+<main class="main">
+<section class="view active" id="view-home">
   <div class="hero">
-    <div class="hero-copy">
-      <div class="kicker">BEYOND THE LIMIT</div>
-      <h1>اصنع عالمك<br><span>بلا حدود ∞</span></h1>
-      <p>تعلم البرمجة، واكتب الأكواد، وابنِ صفحاتك وألعابك داخل منصة واحدة.</p>
-      <div class="actions"><button class="btn primary" data-go="lab">ابدأ البرمجة ↗</button><button class="btn" data-go="academy">ابدأ التعلم</button></div>
-    </div>
-    <div class="core-area"><div class="core"><span>∞</span></div></div>
-  </div>
-  <div class="metrics">
-    <div class="metric"><small>مشاريع محفوظة</small><strong id="mProjects">0</strong></div>
-    <div class="metric"><small>دروس مكتملة</small><strong id="mLessons">0</strong></div>
-    <div class="metric"><small>أقسام المنصة</small><strong>7</strong></div>
-    <div class="metric"><small>حالة النظام</small><strong style="font-size:18px;color:var(--green)">ACTIVE</strong></div>
-  </div>
-  <div class="section-label">SYSTEM MODULES / وحدات النظام</div>
-  <div class="modules">
-    <div class="module"><div class="symbol">⌘</div><h3>مختبر الأكواد</h3><p>حرّر صفحات الويب وشاهد النتيجة.</p><button class="btn small" data-go="lab">فتح المختبر ↗</button></div>
-    <div class="module"><div class="symbol">✧</div><h3>أكاديمية البرمجة</h3><p>دروس قصيرة واختبارات عملية.</p><button class="btn small" data-go="academy">ابدأ التعلم ↗</button></div>
-    <div class="module"><div class="symbol">▧</div><h3>صانع المواقع</h3><p>كوّن صفحة قابلة للتعديل والتنزيل.</p><button class="btn small" data-go="sites">إنشاء موقع ↗</button></div>
-    <div class="module"><div class="symbol">◉</div><h3>مصنع الألعاب</h3><p>جرّب لعبة البلورات التفاعلية.</p><button class="btn small" data-go="games">دخول اللعبة ↗</button></div>
-    <div class="module"><div class="symbol">▤</div><h3>مستودع المشاريع</h3><p>افتح مشاريعك المحفوظة.</p><button class="btn small" data-go="projects">فتح المستودع ↗</button></div>
-    <div class="module"><div class="symbol">◇</div><h3>مركز الإعلانات</h3><p>إعداد الإعلان ومعاينة المساحة.</p><button class="btn small" data-go="ads">إدارة الإعلانات ↗</button></div>
-  </div>
-</section>
-
-<section id="lab" class="page">
-  <div class="topline"><div><div class="kicker">MODULE 01 / CODE</div><h2>مختبر البرمجة</h2><p>اكتب الكود، شغّله، احفظه أو نزّله.</p></div><span class="tag">LIVE PREVIEW</span></div>
-  <div class="panel">
-    <label class="field-label" for="pname">اسم المشروع</label><input id="pname" value="مشروعي الأول">
-    <label class="field-label" for="lang">اللغة</label>
-    <select id="lang"><option value="html">HTML</option><option value="css">CSS</option><option value="js">JavaScript</option><option value="json">JSON</option><option value="python">Python — مثال تعليمي</option></select>
-  </div>
-  <div class="editor-grid">
-    <div class="panel">
-      <div class="panel-head"><strong>محرر الأكواد</strong><button class="btn small" id="resetCode">إعادة المثال</button></div>
-      <textarea id="src" spellcheck="false" aria-label="محرر الكود"></textarea>
-      <div class="actions"><button class="btn primary" id="runCode">▶ تشغيل</button><button class="btn" id="saveCode">حفظ المشروع</button><button class="btn" id="downloadCode">تنزيل الملف</button></div>
-      <div class="console" id="console" role="status">جاهز للتجربة.</div>
-    </div>
-    <div class="panel">
-      <div class="panel-head"><strong>معاينة النتيجة</strong><span class="status"><i></i> READY</span></div>
-      <iframe id="preview" title="معاينة الكود" sandbox="allow-scripts"></iframe>
-      <p>HTML وCSS للمعاينة، وJavaScript للتجربة داخل إطار منفصل. Python يحتاج إلى بيئة تشغيل منفصلة.</p>
+    <div class="eyebrow">✧ BEYOND THE LIMITS · 001</div>
+    <h1>مرحبًا بك في<br><span class="gradient-text">الكون البرمجي اللامتناهي</span></h1>
+    <p>حوّل أفكارك إلى مواقع وتجارب وألعاب. اكتب الكود، شاهد النتيجة، تعلّم بالتطبيق، واحتفظ بمشاريعك داخل مختبرك.</p>
+    <div class="row">
+      <button class="btn primary" data-view="lab">⌘ افتح المختبر</button>
+      <button class="btn" data-view="academy">◈ ابدأ التعلّم</button>
+      <button class="btn" data-action="randomize">✺ حرّك الكون</button>
     </div>
   </div>
+
+  <div class="grid">
+    <div class="card"><span class="card-icon">⌘</span><div class="metric" id="stat-projects">0</div><div class="metric-label">مشاريع محفوظة</div></div>
+    <div class="card"><span class="card-icon">◈</span><div class="metric" id="stat-lessons">0%</div><div class="metric-label">تقدم الأكاديمية</div></div>
+    <div class="card"><span class="card-icon">✦</span><div class="metric" id="stat-ads">0</div><div class="metric-label">إعلاناتك المحلية</div></div>
+  </div>
+
+  <div class="section-head"><h2>بوابات سريعة</h2><span class="tag">YOUR WORKSPACE</span></div>
+  <div class="grid">
+    <div class="card"><span class="card-icon">⌨️</span><h3>مختبر الكود</h3><p>اكتب HTML وCSS وJavaScript، وشاهد الصفحة داخل المعاينة.</p><button class="btn small" data-view="lab">فتح المختبر ←</button></div>
+    <div class="card"><span class="card-icon">🌌</span><h3>أكاديمية البرمجة</h3><p>دروس قصيرة وتطبيقات عملية واختبارات للمبتدئين.</p><button class="btn small" data-view="academy">دخول الأكاديمية ←</button></div>
+    <div class="card"><span class="card-icon">🪐</span><h3>صانع المواقع</h3><p>أنشئ صفحة أولية من فكرتك، ثم عدّلها واحفظها.</p><button class="btn small" data-view="builder">اصنع موقعًا ←</button></div>
+  </div>
+
+  <div class="section-head"><h2>مساحة الإعلانات</h2><span class="tag">AD SPACE · LOCAL DEMO</span></div>
+  <div class="ad-spot">
+    <div class="ad-label">✦ مساحة إعلانية — لا يتم حذفها</div>
+    <div id="home-ad"><div class="ad-empty">مساحتك الإعلانية محفوظة. أنشئ إعلانًا من مركز الإعلانات ليظهر هنا.</div></div>
+    <div class="row" style="margin-top:12px"><button class="btn small" data-view="ads">إدارة الإعلانات</button></div>
+  </div>
 </section>
 
-<section id="academy" class="page">
-  <div class="topline"><div><div class="kicker">MODULE 02 / LEARNING</div><h2>أكاديمية التعلم</h2><p>تعلم خطوة بخطوة وسجّل إنجازك.</p></div></div>
-  <div class="panel" id="lessons"></div>
+<section class="view" id="view-lab">
+  <div class="section-head"><h2>⌘ مختبر البرمجة</h2><span class="tag">HTML · CSS · JS</span></div>
+  <p class="muted">اكتب كود الصفحة في المحرر. زر التشغيل يعرض HTML وCSS وJavaScript في معاينة معزولة.</p>
   <div class="panel">
-    <div class="kicker">QUICK QUIZ</div><h3>ما نتيجة 10 + 2 * 3 ؟</h3>
-    <button class="quiz-option" data-answer="16">16</button><button class="quiz-option" data-answer="36">36</button><button class="quiz-option" data-answer="13">13</button>
-    <p id="quizResult" role="status"></p>
+    <div class="code-top"><strong>محرر الكود</strong><div class="row">
+      <button class="btn small" data-action="run-code">▶ تشغيل المعاينة</button>
+      <button class="btn small" data-action="reset-code">↺ إعادة المثال</button>
+      <button class="btn small" data-action="download-code">↓ تنزيل HTML</button>
+    </div></div>
+    <textarea id="code-editor" class="editor" spellcheck="false" aria-label="محرر HTML"></textarea>
+    <div class="row" style="margin-top:12px">
+      <button class="btn small" data-action="save-code">▣ حفظ كمشروع</button>
+      <button class="btn small" data-action="copy-code">نسخ الكود</button>
+      <span class="muted" id="code-status" style="font-size:11px">جاهز للتحرير</span>
+    </div>
   </div>
-</section>
-
-<section id="sites" class="page">
-  <div class="topline"><div><div class="kicker">MODULE 03 / WEB FORGE</div><h2>صانع المواقع</h2><p>أنشئ صفحة بسيطة وعاينها ثم نزّلها.</p></div></div>
   <div class="panel">
-    <label class="field-label" for="siteTitle">اسم الموقع</label><input id="siteTitle" value="موقعي الجديد">
-    <label class="field-label" for="siteDesc">وصف الموقع</label><textarea id="siteDesc" style="min-height:95px;direction:rtl;text-align:right;font-family:Tahoma">أهلًا بك في عالمي الجديد.</textarea>
-    <label class="field-label" for="siteColor">لون التصميم</label><input id="siteColor" type="color" value="#52f4ff" style="height:45px;padding:4px">
-    <div class="actions"><button class="btn primary" id="buildSite">إنشاء المعاينة</button><button class="btn" id="downloadSite">تنزيل الموقع</button></div>
-  </div>
-  <div class="panel"><div class="panel-head"><strong>معاينة الموقع</strong></div><iframe id="sitePreview" title="معاينة الموقع"></iframe></div>
-</section>
-
-<section id="games" class="page">
-  <div class="topline"><div><div class="kicker">MODULE 04 / GAME WORLD</div><h2>بُعد البلورات</h2><p>اجمع البلورات باستخدام الأسهم أو WASD.</p></div></div>
-  <div class="panel game-wrap">
-    <canvas id="game" width="650" height="360"></canvas>
-    <h3 id="score">البلورات: 0</h3>
-    <div class="actions" style="justify-content:center"><button class="btn primary" id="startGame">بدء اللعبة</button><button class="btn" id="resetGame">إعادة اللعبة</button></div>
+    <div class="code-top"><strong>نافذة المعاينة</strong><span class="tag">SANDBOX</span></div>
+    <iframe id="preview" class="preview" title="معاينة الكود" sandbox="allow-scripts"></iframe>
+    <p class="notice">المعاينة تعمل داخل إطار معزول. الأكواد التي تعتمد على خادم أو مفاتيح API أو ملفات خارجية قد لا تعمل محليًا.</p>
   </div>
 </section>
 
-<section id="projects" class="page">
-  <div class="topline"><div><div class="kicker">MODULE 05 / PROJECT VAULT</div><h2>مشاريعي</h2><p>مشاريع محفوظة على هذا المتصفح.</p></div><button class="btn" id="refreshProjects">تحديث</button></div>
-  <div class="panel" id="projectList">لا توجد مشاريع بعد.</div>
-  <p>الحفظ محلي في Chrome على هذا الجهاز، وليس على خادم سحابي.</p>
-</section>
-
-<section id="ads" class="page">
-  <div class="topline"><div><div class="kicker">MODULE 06 / AD CONTROL</div><h2>مركز الإعلانات</h2><p>هذه الواجهة محفوظة ويمكنك تخصيص الإعلان.</p></div><span class="tag">AD SPACE ACTIVE</span></div>
-  <div class="ad-banner" id="adPreview"><strong>مساحة إعلانية</strong><p>معاينة إعلانك تظهر هنا.</p></div>
+<section class="view" id="view-academy">
+  <div class="section-head"><h2>◈ أكاديمية AMIRXTNA</h2><span class="tag">LEARN BY BUILDING</span></div>
   <div class="panel">
-    <h3>إعدادات الإعلان</h3>
-    <label class="field-label" for="adTitle">عنوان الإعلان</label><input id="adTitle" value="مساحة إعلانية متاحة" maxlength="100">
-    <label class="field-label" for="adText">وصف الإعلان</label><input id="adText" value="يمكنك تخصيص هذا الإعلان." maxlength="200">
-    <label class="field-label" for="adUrl">رابط الإعلان الاختياري</label><input id="adUrl" type="url" placeholder="https://example.com">
-    <div class="actions"><button class="btn primary" id="saveAd">حفظ الإعدادات</button><button class="btn" id="previewAd">معاينة الإعلان</button></div>
+    <div class="row" style="justify-content:space-between"><strong>رحلتك التعليمية</strong><strong id="academy-percent">0%</strong></div>
+    <div class="progress"><div id="academy-bar"></div></div>
+    <p class="muted" style="font-size:12px">ابدأ بالأساسيات ثم جرّب التعديل بنفسك. هذه بداية تعليمية وليست بديلًا عن الممارسة والمشاريع.</p>
   </div>
-  <div class="sidebar-ad"><strong>مساحة إعلانية إضافية</strong><p>هذه المساحة محفوظة كذلك. يمكن تخصيصها لموضع إعلان آخر لاحقًا.</p></div>
-  <p>ملاحظة: هذه إدارة تجريبية؛ لا تعرض إعلانات مدفوعة ولا تحقق أرباحًا حتى يتم ربط مزود إعلانات مناسب.</p>
+  <div id="lessons"></div>
+  <div class="panel">
+    <h3>اختبار سريع: ماذا تفعل console.log()؟</h3>
+    <p class="muted">اختر الإجابة الصحيحة.</p>
+    <div class="row">
+      <button class="btn" data-action="quiz" data-answer="wrong">تحذف الموقع</button>
+      <button class="btn" data-action="quiz" data-answer="right">تطبع قيمة في وحدة التحكم</button>
+      <button class="btn" data-action="quiz" data-answer="wrong">تنشئ صورة تلقائيًا</button>
+    </div>
+    <p id="quiz-result" aria-live="polite" class="muted"></p>
+  </div>
 </section>
-<footer>AMIRXTNA ∞ · QUANTUM STUDIO · النسخة التجريبية</footer>
+
+<section class="view" id="view-builder">
+  <div class="section-head"><h2>✦ صانع المواقع</h2><span class="tag">SITE GENERATOR</span></div>
+  <div class="panel">
+    <p class="muted">اكتب بيانات صفحتك وسيُنشأ لك قالب HTML جاهز للتعديل والتنزيل.</p>
+    <label class="field">اسم الموقع<input class="input" id="site-title" value="موقعي الجديد" maxlength="80"></label>
+    <label class="field">وصف الموقع<textarea class="area" id="site-description" maxlength="500">مكان أحوّل فيه أفكاري إلى مشاريع رقمية.</textarea></label>
+    <label class="field">لون الصفحة
+      <select class="select" id="site-color">
+        <option value="#7657ff">بنفسجي كوني</option>
+        <option value="#087e8b">أزرق فضائي</option>
+        <option value="#a52d81">وردي مجري</option>
+        <option value="#167c55">أخضر مستقبلي</option>
+        <option value="#20243c">ليلي داكن</option>
+      </select>
+    </label>
+    <div class="row">
+      <button class="btn primary" data-action="generate-site">✧ أنشئ الموقع</button>
+      <button class="btn" data-action="download-site">↓ تنزيل الموقع</button>
+      <button class="btn" data-action="send-site-to-lab">فتح في المختبر</button>
+    </div>
+    <p id="builder-status" class="muted" style="font-size:12px"></p>
+  </div>
+  <div class="panel"><strong>معاينة الموقع المُنشأ</strong><iframe id="builder-preview" class="preview" title="معاينة الموقع المُنشأ" sandbox="allow-scripts" style="margin-top:12px"></iframe></div>
+</section>
+
+<section class="view" id="view-game">
+  <div class="section-head"><h2>⚔ مصنع الألعاب</h2><span class="tag">MINI GAME · STAR HUNTER</span></div>
+  <div class="panel">
+    <p>اجمع النجوم المتوهجة بالمركبة. تحرك بالأسهم أو WASD، وعلى الهاتف استخدم الأزرار.</p>
+    <div class="row" style="justify-content:space-between">
+      <strong>النقاط: <span id="game-score">0</span></strong>
+      <span class="muted" id="game-state">اضغط ابدأ للعب</span>
+      <button class="btn primary" data-action="start-game">▶ ابدأ / أعد اللعب</button>
+    </div>
+    <canvas id="gameCanvas" width="640" height="360" aria-label="لعبة جمع النجوم"></canvas>
+    <div class="game-controls">
+      <button class="btn" data-action="move" data-dir="left" aria-label="يسار">◀</button>
+      <button class="btn" data-action="move" data-dir="up" aria-label="أعلى">▲</button>
+      <button class="btn" data-action="move" data-dir="down" aria-label="أسفل">▼</button>
+      <button class="btn" data-action="move" data-dir="right" aria-label="يمين">▶</button>
+    </div>
+  </div>
+  <div class="notice">هذه لعبة تجريبية تعمل محليًا داخل الصفحة. إنشاء ألعاب كاملة ثلاثية الأبعاد يحتاج محرك ألعاب وموارد إضافية.</div>
+</section>
+
+<section class="view" id="view-projects">
+  <div class="section-head"><h2>▣ مستودع مشاريعي</h2><span class="tag">LOCAL PROJECTS</span></div>
+  <div class="panel">
+    <p class="muted">احفظ الأكواد هنا واسترجعها أو نزّلها كملفات. الحفظ المحلي يعتمد على إعدادات المتصفح.</p>
+    <div class="row">
+      <button class="btn" data-action="export-projects">↓ تصدير المشاريع</button>
+      <button class="btn danger" data-action="clear-projects">حذف كل المشاريع</button>
+    </div>
+  </div>
+  <div id="project-list"></div>
+</section>
+
+<section class="view" id="view-ads">
+  <div class="section-head"><h2>◇ مركز الإعلانات</h2><span class="tag">AD STUDIO</span></div>
+  <div class="hero" style="padding:22px">
+    <div class="eyebrow">YOUR ADVERTISING SPACE</div>
+    <h2 style="margin:0 0 8px">مساحتك الإعلانية باقية</h2>
+    <p>أنشئ إعلانًا تجريبيًا، شاهد شكله، وأدر الإعلانات التي تظهر داخل هذه الصفحة.</p>
+  </div>
+  <div class="panel">
+    <h3>إنشاء إعلان جديد</h3>
+    <form id="ad-form">
+      <label class="field">عنوان الإعلان<input class="input" id="ad-title" required maxlength="100" placeholder="مثال: مشروعي الجديد"></label>
+      <label class="field">وصف الإعلان<textarea class="area" id="ad-description" required maxlength="500" placeholder="اكتب وصفًا مختصرًا..."></textarea></label>
+      <label class="field">رابط الإعلان (اختياري)<input class="input" id="ad-url" type="url" placeholder="https://example.com"></label>
+      <label class="field">لون الإعلان
+        <select class="select" id="ad-color">
+          <option value="#9b78ff">بنفسجي</option><option value="#22c7e8">سماوي</option>
+          <option value="#e85ba8">وردي</option><option value="#d8ad50">ذهبي</option>
+        </select>
+      </label>
+      <div class="row"><button class="btn primary" type="submit">＋ إنشاء الإعلان</button><button class="btn" type="button" data-action="clear-ad-form">مسح الحقول</button></div>
+    </form>
+  </div>
+  <div class="panel">
+    <div class="section-head" style="margin-top:0"><h3>معاينة الإعلان</h3><span class="tag">LIVE PREVIEW</span></div>
+    <div class="ad-spot" id="ad-preview">
+      <div class="ad-label">إعلان تجريبي</div>
+      <h3 id="ad-preview-title">عنوان إعلانك يظهر هنا</h3>
+      <p id="ad-preview-description" class="muted">اكتب عنوان الإعلان ووصفه لمعاينة التصميم.</p>
+    </div>
+  </div>
+  <div class="section-head"><h2>الإعلانات المحفوظة</h2><span class="tag" id="ad-count">0 إعلان</span></div>
+  <div id="ad-list" class="ad-list"></div>
+  <div class="notice" style="margin-top:16px">مهم: هذا مركز إعلانات محلي للعرض والتجربة فقط. لا يعرض إعلانات مدفوعة ولا يحقق أرباحًا تلقائيًا. تحقيق الدخل يحتاج مزود إعلانات، حسابًا مؤهلًا، وربطًا وإعدادات من الجهة المعنية.</div>
+</section>
+
+<div class="footer">AMIRXTNA ∞ · اصنع شيئًا لم يكن موجودًا من قبل</div>
 </main>
 </div>
-<div id="toast" role="status"></div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
 
 <script>
-(function(){
 "use strict";
-const $=id=>document.getElementById(id);
-const pages=[...document.querySelectorAll(".page")];
-let toastTimer;
-function toast(message){
-  const el=$("toast");el.textContent=message;el.style.display="block";
-  clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.style.display="none",2500);
+
+/* AMIRXTNA CORE — سكربت واحد، معالجات أحداث مركزية، ودوال غير مكررة */
+const $ = (selector, root = document) => root.querySelector(selector);
+const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+
+const DEFAULT_CODE = `<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{font-family:Tahoma,sans-serif;background:#101024;color:white;
+padding:30px;text-align:center}
+h1{color:#a78bfa}
+button{padding:12px 18px;border:0;border-radius:10px;
+background:#55e6ff;cursor:pointer}
+</style>
+</head>
+<body>
+<h1>أهلًا بك في مختبرك! 🚀</h1>
+<p>عدّل الكود، ثم اضغط تشغيل المعاينة.</p>
+<button id="hello">اضغط هنا</button>
+<p id="result"></p>
+<script>
+document.getElementById('hello').addEventListener('click',function(){
+ document.getElementById('result').textContent='رائع! JavaScript يعمل.';
+});
+<\/script>
+</body>
+</html>`;
+
+const LESSON_DATA = [
+ {id:1,title:"الدرس 1: ما هي البرمجة؟",desc:"البرمجة هي كتابة تعليمات يفهمها الحاسوب لتنفيذ مهمة. سنبدأ بصفحة ويب بسيطة.",code:'<h1>أهلًا بالعالم!</h1>'},
+ {id:2,title:"الدرس 2: المتغيرات",desc:"المتغير اسم نخزن فيه قيمة. في JavaScript نستخدم let للقيم التي قد تتغير.",code:"let name = 'Amir';\nconsole.log(name);"},
+ {id:3,title:"الدرس 3: العمليات الحسابية",desc:"يمكنك استخدام + للجمع، و- للطرح، و* للضرب، و/ للقسمة.",code:"let a = 10;\nlet b = 5;\nconsole.log(a + b); // 15"},
+ {id:4,title:"الدرس 4: الشروط",desc:"تسمح if بتنفيذ أمر عندما يتحقق شرط معين.",code:"let score = 80;\nif (score >= 50) {\n  console.log('ناجح');\n} else {\n  console.log('حاول مجددًا');\n}"},
+ {id:5,title:"الدرس 5: الدوال",desc:"الدالة مجموعة تعليمات تستطيع استدعاءها عند الحاجة.",code:"function greet(name) {\n  return 'أهلًا ' + name;\n}\nconsole.log(greet('Amir'));"},
+ {id:6,title:"الدرس 6: التكرار",desc:"تساعد الحلقات على تكرار الأوامر دون كتابة السطر نفسه عدة مرات.",code:"for (let i = 1; i <= 5; i++) {\n  console.log(i);\n}"}
+];
+
+const STORE = {projects:"amirxtna_projects_v1",ads:"amirxtna_ads_v1",lessons:"amirxtna_lessons_v1"};
+let projects = readStore(STORE.projects, []);
+let ads = readStore(STORE.ads, []);
+let completedLessons = readStore(STORE.lessons, []);
+let generatedSite = "";
+let toastTimer = null;
+
+function readStore(key, fallback){
+  try{
+    const value = localStorage.getItem(key);
+    return value ? JSON.parse(value) : fallback;
+  }catch(error){return fallback;}
 }
-function go(id){
-  if(!$ (id))return;
-  pages.forEach(p=>p.classList.toggle("active",p.id===id));
-  document.querySelectorAll(".nav").forEach(b=>b.classList.toggle("active",b.dataset.page===id));
-  if(id==="projects")renderProjects();
+function writeStore(key, value){
+  try{localStorage.setItem(key, JSON.stringify(value));return true;}
+  catch(error){notify("تعذر الحفظ المحلي. تحقق من إعدادات المتصفح.");return false;}
+}
+function escapeHTML(value){
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  })[char]);
+}
+function safeURL(value){
+  try{
+    const url = new URL(value);
+    return ["http:","https:"].includes(url.protocol) ? url.href : "";
+  }catch(error){return "";}
+}
+function notify(message){
+  const toast = $("#toast");
+  if(!toast)return;
+  toast.textContent = message;
+  toast.classList.add("show");
+  if(toastTimer)clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>toast.classList.remove("show"),2600);
+}
+function navigate(viewName){
+  const target = $("#view-" + viewName);
+  if(!target){notify("القسم غير موجود.");return;}
+  $$(".view").forEach(view=>view.classList.toggle("active",view===target));
+  $$(".nav-btn[data-view]").forEach(button=>button.classList.toggle("active",button.dataset.view===viewName));
   window.scrollTo({top:0,behavior:"smooth"});
 }
-document.addEventListener("click",e=>{
-  const nav=e.target.closest("[data-page]");
-  const link=e.target.closest("[data-go]");
-  if(nav)go(nav.dataset.page);
-  else if(link)go(link.dataset.go);
-});
-$("quickLab").addEventListener("click",()=>go("lab"));
-
-const samples={
- html:'<!doctype html>\n<html lang="ar" dir="rtl">\n<meta charset="UTF-8">\n<body style="font-family:Arial;text-align:center;padding:30px;background:#101426;color:white">\n<h1 style="color:#52f4ff">أهلًا يا أمير X</h1>\n<p>هذه أول صفحة لي!</p>\n<button onclick="document.querySelector(\\'p\\').textContent=\\'نجحت!\\'">اضغط هنا</button>\n</body>\n</html>',
- css:'body { background:#101426; color:white; font-family:Arial; text-align:center; padding:30px; }\nh1 { color:#52f4ff; }\np { font-size:20px; }\n',
- js:'console.log("أهلًا يا أمير X");\nlet score = 10 + 5;\nconsole.log("النقاط:", score);',
- json:'{\n  "name": "AMIRXTNA",\n  "version": 1,\n  "active": true\n}',
- python:'name = "Amir X"\nscore = 10 + 5\nprint("أهلًا", name)\nprint(score)'
-};
-function loadExample(){$("src").value=samples[$("lang").value];$("console").textContent="تم تحميل المثال."}
-$("lang").addEventListener("change",loadExample);
-$("resetCode").addEventListener("click",loadExample);
-
-$("runCode").addEventListener("click",()=>{
- const lang=$("lang").value,code=$("src").value;
- try{
-  if(lang==="html"){$("preview").srcdoc=code;$("console").textContent="تم إرسال HTML إلى المعاينة."}
-  else if(lang==="css"){$("preview").srcdoc='<style>'+code.replace(/<\/style/gi,"")+'</style><main style="font-family:Arial;padding:20px"><h1>معاينة CSS</h1><p>عدّل الكود لمشاهدة التغيير.</p></main>';$("console").textContent="تمت معاينة CSS."}
-  else if(lang==="json"){JSON.parse(code);$("console").textContent="✓ ملف JSON صحيح."}
-  else if(lang==="python"){$("console").textContent="هذا مثال Python فقط. لتشغيله فعليًا تحتاج إلى تثبيت Python أو خادم تنفيذ."}
-  else{
-   const safeCode=JSON.stringify(code);
-   $("preview").srcdoc='<pre id="out" style="white-space:pre-wrap;font:14px monospace"></pre><script>const out=document.getElementById("out");const log=(...a)=>out.textContent+=a.join(" ")+"\\n";try{new Function("console",'+safeCode+')({log})}catch(e){out.textContent="خطأ: "+e.message}<\/script>';
-   $("console").textContent="تم تشغيل JavaScript في إطار معاينة منفصل.";
+function makePreviewDocument(code){
+  /* لا نحقن </script> خامًا داخل سكربت الصفحة الأم */
+  return '<!doctype html><html><head><meta charset="utf-8">' +
+    '<meta name="viewport" content="width=device-width,initial-scale=1"></head><body>' +
+    code + '</body></html>';
+}
+function runCode(){
+  const code = $("#code-editor").value;
+  $("#preview").srcdoc = makePreviewDocument(code);
+  $("#code-status").textContent = "تم تحديث المعاينة";
+  notify("تم تشغيل المعاينة.");
+}
+function downloadText(filename, content, type="text/html;charset=utf-8"){
+  try{
+    const blob = new Blob([content],{type});
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;link.download = filename;
+    document.body.appendChild(link);link.click();link.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
+    notify("بدأ تنزيل الملف.");
+  }catch(error){notify("تعذر إنشاء الملف للتنزيل.");}
+}
+function saveProject(name, code){
+  const title = String(name || "مشروع جديد").trim().slice(0,100);
+  if(!code.trim()){notify("لا يوجد كود لحفظه.");return;}
+  const project = {id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),name:title,code,created:new Date().toLocaleString("ar-SA")};
+  projects.unshift(project);
+  projects = projects.slice(0,100);
+  if(writeStore(STORE.projects,projects)){
+    renderProjects();updateStats();notify("تم حفظ المشروع محليًا.");
   }
- }catch(e){$("console").textContent="خطأ: "+e.message}
-});
-function downloadBlob(name,text,type){
- const url=URL.createObjectURL(new Blob([text],{type}));
- const a=document.createElement("a");a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();
- setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
-$("downloadCode").addEventListener("click",()=>{
- const ext={html:"html",css:"css",js:"js",json:"json",python:"py"}[$("lang").value];
- const name=($("pname").value||"project").replace(/[\\/:*?"<>|]/g,"_");
- downloadBlob(name+"."+ext,$("src").value,"text/plain;charset=utf-8");toast("بدأ تنزيل الملف.");
-});
-function getProjects(){try{return JSON.parse(localStorage.getItem("amx_projects")||"[]")}catch(e){return []}}
-function saveProject(){
- const item={id:Date.now(),name:$("pname").value||"مشروع جديد",lang:$("lang").value,code:$("src").value};
- try{const list=getProjects();list.unshift(item);localStorage.setItem("amx_projects",JSON.stringify(list.slice(0,100)));updateStats();toast("تم حفظ المشروع.");}
- catch(e){toast("تعذر الحفظ. تحقق من مساحة التخزين.");}
-}
-$("saveCode").addEventListener("click",saveProject);
 function renderProjects(){
- const root=$("projectList");root.replaceChildren();const list=getProjects();
- if(!list.length){root.textContent="لا توجد مشاريع محفوظة. افتح المختبر واحفظ مشروعك الأول.";return}
- list.forEach(item=>{
-  const row=document.createElement("div");row.className="list-row";
-  const info=document.createElement("div"),title=document.createElement("strong"),desc=document.createElement("p");
-  title.textContent=item.name;desc.textContent=item.lang.toUpperCase();info.append(title,desc);
-  const actions=document.createElement("div"),open=document.createElement("button"),del=document.createElement("button");
-  open.className="btn small";open.textContent="فتح";open.addEventListener("click",()=>{$("pname").value=item.name;$("lang").value=item.lang;$("src").value=item.code;go("lab")});
-  del.className="btn small";del.textContent="حذف";del.addEventListener("click",()=>{localStorage.setItem("amx_projects",JSON.stringify(getProjects().filter(x=>x.id!==item.id)));renderProjects();updateStats()});
-  actions.append(open,del);row.append(info,actions);root.append(row);
- });
-}
-$("refreshProjects").addEventListener("click",renderProjects);
-
-const lessonData=[
- {id:1,title:"الدرس الأول: ما البرمجة؟",body:"البرمجة هي كتابة تعليمات ينفذها الكمبيوتر.",code:'console.log("Hello World");'},
- {id:2,title:"الدرس الثاني: المتغيرات",body:"المتغير يخزن قيمة يمكن استخدامها لاحقًا.",code:"let score = 10;\nscore = score + 5;\nconsole.log(score);"},
- {id:3,title:"الدرس الثالث: العمليات الحسابية",body:"الضرب والقسمة يسبقان الجمع والطرح.",code:"let result = 10 + 2 * 3;\nconsole.log(result);"}
-];
-function getDone(){try{return JSON.parse(localStorage.getItem("amx_lessons")||"[]")}catch(e){return []}}
-function renderLessons(){
- const root=$("lessons");root.replaceChildren();
- lessonData.forEach(item=>{
-  const box=document.createElement("div");box.className="lesson"+(getDone().includes(item.id)?" done":"");
-  const title=document.createElement("h3"),body=document.createElement("p"),code=document.createElement("pre"),button=document.createElement("button");
-  title.textContent=item.title;body.textContent=item.body;code.textContent=item.code;button.className="btn small";button.textContent=getDone().includes(item.id)?"مكتمل ✓":"أنهيت الدرس";
-  button.addEventListener("click",()=>{
-   const done=new Set(getDone());done.add(item.id);localStorage.setItem("amx_lessons",JSON.stringify([...done]));
-   renderLessons();updateStats();toast("أحسنت! تم حفظ تقدمك.");
-  });
-  box.append(title,body,code,button);root.append(box);
- });
-}
-document.querySelectorAll("[data-answer]").forEach(b=>b.addEventListener("click",()=>{
- $("quizResult").textContent=Number(b.dataset.answer)===16?"إجابة صحيحة! الضرب قبل الجمع. 🎉":"حاول مرة أخرى: 2 × 3 أولًا، ثم أضف 10.";
-}));
-function updateStats(){$("mProjects").textContent=getProjects().length;$("mLessons").textContent=getDone().length}
-
-let siteHTML="";
-function buildSite(){
- const title=escapeHTML($("siteTitle").value||"موقعي"),desc=escapeHTML($("siteDesc").value),color=$("siteColor").value;
- siteHTML='<!doctype html><html lang="ar" dir="rtl"><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+title+'</title><body style="font-family:Arial;background:#080b14;color:white;text-align:center;padding:70px 20px"><h1 style="color:'+color+'">'+title+'</h1><p style="line-height:2">'+desc.replace(/\n/g,"<br>")+'</p><button onclick="alert(\\'مرحبًا!\\')" style="padding:12px 22px;background:'+color+';border:0;cursor:pointer">ابدأ الآن</button></body></html>';
- $("sitePreview").srcdoc=siteHTML;toast("تم إنشاء معاينة الموقع.");
-}
-function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-$("buildSite").addEventListener("click",buildSite);
-$("downloadSite").addEventListener("click",()=>{if(!siteHTML)buildSite();downloadBlob("amirxtna-site.html",siteHTML,"text/html;charset=utf-8")});
-
-let ad={title:"مساحة إعلانية متاحة",text:"يمكنك تخصيص هذا الإعلان.",url:""};
-function renderAd(){
- const root=$("adPreview");root.replaceChildren();
- const h=document.createElement("strong"),p=document.createElement("p");
- h.textContent=ad.title;p.textContent=ad.text;root.append(h,p);
- if(ad.url){
-  try{const u=new URL(ad.url);if(!["https:","http:"].includes(u.protocol))throw Error("url");
-   const a=document.createElement("a");a.href=u.href;a.target="_blank";a.rel="noopener noreferrer";a.textContent="فتح رابط الإعلان";a.style.color="var(--cyan)";root.append(a);
-  }catch(e){const err=document.createElement("p");err.textContent="الرابط غير صالح؛ استخدم HTTP أو HTTPS.";root.append(err)}
- }
-}
-function saveAd(){
- ad={title:$("adTitle").value,text:$("adText").value,url:$("adUrl").value};
- try{localStorage.setItem("amx_ad",JSON.stringify(ad))}catch(e){}
- renderAd();toast("تم حفظ إعدادات الإعلان محليًا.");
-}
-$("saveAd").addEventListener("click",saveAd);
-$("previewAd").addEventListener("click",()=>{ad={title:$("adTitle").value,text:$("adText").value,url:$("adUrl").value};renderAd();toast("هذه معاينة الإعلان.")});
-
-const canvas=$("game"),ctx=canvas.getContext("2d");
-let player={x:70,y:180},orb={x:350,y:180},score=0,playing=false,keys={};
-function drawGame(){
- ctx.clearRect(0,0,canvas.width,canvas.height);
- for(let x=0;x<canvas.width;x+=32){ctx.strokeStyle="#15233a";ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,canvas.height);ctx.stroke()}
- for(let y=0;y<canvas.height;y+=32){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(canvas.width,y);ctx.stroke()}
- ctx.shadowBlur=18;ctx.shadowColor="#52f4ff";ctx.fillStyle="#52f4ff";ctx.beginPath();ctx.arc(player.x,player.y,13,0,Math.PI*2);ctx.fill();
- ctx.shadowColor="#a17aff";ctx.fillStyle="#a17aff";ctx.save();ctx.translate(orb.x,orb.y);ctx.rotate(Math.PI/4);ctx.fillRect(-8,-8,16,16);ctx.restore();ctx.shadowBlur=0;
- ctx.fillStyle="#8295b4";ctx.font="12px monospace";ctx.fillText("AMIRXTNA / CRYSTAL RUN",12,20);
-}
-$("startGame").addEventListener("click",()=>{playing=true;toast("اللعبة بدأت! استخدم الأسهم أو WASD.")});
-$("resetGame").addEventListener("click",()=>{player={x:70,y:180};orb={x:350,y:180};score=0;playing=false;$("score").textContent="البلورات: 0";drawGame()});
-window.addEventListener("keydown",e=>{const k=e.key.toLowerCase();if(["arrowup","arrowdown","arrowleft","arrowright"].includes(k))e.preventDefault();keys[k]=true});
-window.addEventListener("keyup",e=>keys[e.key.toLowerCase()]=false);
-function gameLoop(){
- if(playing){
-  if(keys.arrowup||keys.w)player.y-=3;
-  if(keys.arrowdown||keys.s)player.y+=3;
-  if(keys.arrowleft||keys.a)player.x-=3;
-  if(keys.arrowright||keys.d)player.x+=3;
-  player.x=Math.max(13,Math.min(canvas.width-13,player.x));
-  player.y=Math.max(13,Math.min(canvas.height-13,player.y));
-  if(Math.hypot(player.x-orb.x,player.y-orb.y)<23){
-   score++;$("score").textContent="البلورات: "+score;
-   orb={x:25+Math.random()*(canvas.width-50),y:35+Math.random()*(canvas.height-70)};
+  const container = $("#project-list");
+  if(!projects.length){
+    container.innerHTML = '<div class="panel muted">لا توجد مشاريع محفوظة بعد. افتح مختبر البرمجة واحفظ أول مشروع.</div>';
+    return;
   }
- }
- drawGame();requestAnimationFrame(gameLoop);
+  container.innerHTML = projects.map(project=>`
+    <div class="panel">
+      <div class="row" style="justify-content:space-between">
+        <strong>${escapeHTML(project.name)}</strong><span class="tag">${escapeHTML(project.created||"")}</span>
+      </div>
+      <p class="muted" style="font-size:11px">${escapeHTML(project.code.slice(0,160))}${project.code.length>160?"…":""}</p>
+      <div class="row">
+        <button class="btn small" data-action="open-project" data-id="${escapeHTML(project.id)}">فتح في المختبر</button>
+        <button class="btn small" data-action="download-project" data-id="${escapeHTML(project.id)}">تنزيل</button>
+        <button class="btn small danger" data-action="delete-project" data-id="${escapeHTML(project.id)}">حذف</button>
+      </div>
+    </div>`).join("");
+}
+function renderLessons(){
+  const container = $("#lessons");
+  container.innerHTML = LESSON_DATA.map(lesson=>{
+    const done = completedLessons.includes(lesson.id);
+    return `<article class="lesson ${done?"done":""}">
+      <div class="row" style="justify-content:space-between">
+        <strong>${escapeHTML(lesson.title)}</strong><span class="tag">${done?"✓ مكتمل":"درس عملي"}</span>
+      </div>
+      <p class="muted" style="font-size:12px">${escapeHTML(lesson.desc)}</p>
+      <pre>${escapeHTML(lesson.code)}</pre>
+      <div class="row">
+        <button class="btn small" data-action="lesson-to-lab" data-id="${lesson.id}">جرّب الكود في المختبر</button>
+        <button class="btn small ${done?"pink":"primary"}" data-action="complete-lesson" data-id="${lesson.id}">${done?"إلغاء الإكمال":"إكمال الدرس ✓"}</button>
+      </div>
+    </article>`;
+  }).join("");
+  const percent = Math.round(completedLessons.length/LESSON_DATA.length*100);
+  $("#academy-percent").textContent=percent+"%";
+  $("#academy-bar").style.width=percent+"%";
+}
+function updateStats(){
+  $("#stat-projects").textContent=projects.length;
+  $("#stat-ads").textContent=ads.length;
+  $("#stat-lessons").textContent=Math.round(completedLessons.length/LESSON_DATA.length*100)+"%";
+}
+function renderAds(){
+  $("#ad-count").textContent=ads.length+" إعلان";
+  const container=$("#ad-list");
+  if(!ads.length){
+    container.innerHTML='<div class="panel ad-empty">لا توجد إعلانات بعد. استخدم النموذج أعلاه لإنشاء أول إعلان.</div>';
+  }else{
+    container.innerHTML=ads.map(ad=>`
+      <article class="ad-item" style="border-color:${escapeHTML(ad.color)}55">
+        <div class="ad-label">✦ إعلان محلي</div>
+        <h3>${escapeHTML(ad.title)}</h3>
+        <p>${escapeHTML(ad.description)}</p>
+        ${ad.url?`<a href="${escapeHTML(ad.url)}" target="_blank" rel="noopener noreferrer">فتح رابط الإعلان ↗</a>`:"<span class='muted' style='font-size:11px'>بدون رابط خارجي</span>"}
+        <div class="row" style="margin-top:12px">
+          <button class="btn small" data-action="feature-ad" data-id="${escapeHTML(ad.id)}">عرض في المساحة الرئيسية</button>
+          <button class="btn small danger" data-action="delete-ad" data-id="${escapeHTML(ad.id)}">حذف</button>
+        </div>
+      </article>`).join("");
+  }
+  const featured=ads.find(ad=>ad.featured)||ads[0];
+  renderFeaturedAd(featured);
+  updateStats();
+}
+function renderFeaturedAd(ad){
+  const container=$("#home-ad");
+  if(!ad){
+    container.innerHTML='<div class="ad-empty">مساحتك الإعلانية محفوظة. أنشئ إعلانًا من مركز الإعلانات ليظهر هنا.</div>';
+    return;
+  }
+  container.innerHTML=`<div class="ad-content">
+    <div>
+      <div class="ad-label">✦ مساحة إعلانية · ${escapeHTML(ad.title)}</div>
+      <h3>${escapeHTML(ad.title)}</h3>
+      <p>${escapeHTML(ad.description)}</p>
+    </div>
+    ${ad.url?`<a class="btn small" href="${escapeHTML(ad.url)}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;white-space:nowrap">اعرف المزيد ↗</a>`:""}
+  </div>`;
+}
+function updateAdPreview(){
+  $("#ad-preview-title").textContent=$("#ad-title").value.trim()||"عنوان إعلانك يظهر هنا";
+  $("#ad-preview-description").textContent=$("#ad-description").value.trim()||"اكتب عنوان الإعلان ووصفه لمعاينة التصميم.";
+  $("#ad-preview").style.borderColor=$("#ad-color").value;
+}
+function buildSite(){
+  const title=$("#site-title").value.trim()||"موقعي الجديد";
+  const description=$("#site-description").value.trim()||"أهلًا بك في موقعي.";
+  const color=$("#site-color").value;
+  generatedSite=`<!doctype html>
+<html lang="ar" dir="rtl">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${escapeHTML(title)}</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;
+font-family:Tahoma,sans-serif;background:#090916;color:#fff;padding:24px}
+main{max-width:760px;padding:42px;border:1px solid ${color};border-radius:24px;
+background:linear-gradient(145deg,${color}35,#101022);text-align:center}
+h1{font-size:clamp(28px,6vw,48px);margin:0 0 20px}
+p{line-height:2;color:#d7d5ef}button{border:0;border-radius:12px;padding:13px 20px;
+background:${color};color:white;cursor:pointer}
+</style></head><body><main><h1>${escapeHTML(title)}</h1>
+<p>${escapeHTML(description)}</p><button id="hello">ابدأ الاستكشاف</button>
+<p id="result"></p></main><script>
+document.getElementById('hello').addEventListener('click',function(){
+document.getElementById('result').textContent='شكرًا لزيارتك!';
+});
+<\/script></body></html>`;
+  $("#builder-preview").srcdoc=makePreviewDocument(generatedSite);
+  $("#builder-status").textContent="تم إنشاء القالب. يمكنك تنزيله أو فتحه في المختبر للتعديل.";
+  return generatedSite;
+}
+function randomizeCosmos(){
+  const hues=[245,265,190,315,220,35,160];
+  const hue=hues[Math.floor(Math.random()*hues.length)];
+  document.documentElement.style.setProperty("--purple",`hsl(${hue} 95% 76%)`);
+  document.documentElement.style.setProperty("--cyan",`hsl(${(hue+75)%360} 95% 70%)`);
+  const auroras=$$(".aurora");
+  auroras.forEach((el,i)=>{
+    el.style.background=`hsl(${(hue+i*100)%360} 95% 60%)`;
+    el.style.opacity=(.10+Math.random()*.12).toFixed(2);
+  });
+  notify("تغيّرت طاقة الكون ✦");
 }
 
-function updateClock(){$("clock").textContent=new Date().toLocaleTimeString("ar-SA")}
-function setupStars(){
- const c=$("stars"),g=c.getContext("2d");let stars=[];
- function resize(){c.width=innerWidth*devicePixelRatio;c.height=innerHeight*devicePixelRatio;c.style.width=innerWidth+"px";c.style.height=innerHeight+"px";g.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);stars=Array.from({length:Math.min(160,Math.floor(innerWidth/7))},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.5+.3,s:Math.random()*.35+.08,a:Math.random()*.7+.2}))}
- function draw(){g.clearRect(0,0,innerWidth,innerHeight);for(const s of stars){s.y+=s.s;if(s.y>innerHeight){s.y=0;s.x=Math.random()*innerWidth}g.globalAlpha=s.a;g.fillStyle="#a9dfff";g.beginPath();g.arc(s.x,s.y,s.r,0,Math.PI*2);g.fill()}g.globalAlpha=1;requestAnimationFrame(draw)}
- window.addEventListener("resize",resize);resize();draw();
-}
-try{const saved=JSON.parse(localStorage.getItem("amx_ad")||"null");if(saved){ad=saved;$("adTitle").value=ad.title||"";$("adText").value=ad.text||"";$("adUrl").value=ad.url||""}}catch(e){}
-loadExample();renderLessons();updateStats();renderAd();buildSite();drawGame();gameLoop();updateClock();setInterval(updateClock,1000);setupStars();
+/* خلفية نجوم متحركة */
+(function initUniverse(){
+  const canvas=$("#universe");
+  const ctx=canvas.getContext("2d");
+  if(!ctx)return;
+  let width=0,height=0,stars=[];
+  function resize(){
+    const dpr=Math.min(window.devicePixelRatio||1,2);
+    width=window.innerWidth;height=window.innerHeight;
+    canvas.width=Math.floor(width*dpr);canvas.height=Math.floor(height*dpr);
+    canvas.style.width=width+"px";canvas.style.height=height+"px";
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    const count=Math.min(180,Math.floor(width*height/7500));
+    stars=Array.from({length:count},()=>({
+      x:Math.random()*width,y:Math.random()*height,
+      r:Math.random()*1.5+.25,s:Math.random()*.35+.08,
+      phase:Math.random()*Math.PI*2
+    }));
+  }
+  function draw(time){
+    ctx.clearRect(0,0,width,height);
+    for(const star of stars){
+      const glow=.35+.65*(.5+.5*Math.sin(time*.001+star.phase));
+      ctx.beginPath();ctx.arc(star.x,star.y,star.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(190,205,255,${glow*.8})`;ctx.fill();
+      star.y-=star.s;
+      if(star.y<0){star.y=height;star.x=Math.random()*width;}
+    }
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener("resize",resize);
+  resize();requestAnimationFrame(draw);
 })();
+
+/* لعبة النجوم */
+const game={
+  canvas:$("#gameCanvas"),running:false,score:0,
+  player:{x:320,y:180,r:11,speed:5},
+  star:{x:120,y:100,r:7},
+  keys:{},last:0
+};
+const gameCtx=game.canvas.getContext("2d");
+function placeGameStar(){
+  game.star.x=18+Math.random()*(game.canvas.width-36);
+  game.star.y=18+Math.random()*(game.canvas.height-36);
+}
+function startGame(){
+  game.score=0;game.player.x=game.canvas.width/2;game.player.y=game.canvas.height/2;
+  placeGameStar();game.running=true;
+  $("#game-score").textContent="0";$("#game-state").textContent="اجمع النجوم!";
+  drawGame();
+}
+function drawGame(){
+  const ctx=gameCtx,c=game.canvas;
+  if(!ctx)return;
+  ctx.clearRect(0,0,c.width,c.height);
+  ctx.fillStyle="#070717";ctx.fillRect(0,0,c.width,c.height);
+  for(let i=0;i<45;i++){
+    const x=(i*97)%c.width,y=(i*53)%c.height;
+    ctx.fillStyle="#ffffff20";ctx.fillRect(x,y,2,2);
+  }
+  const s=game.star;
+  ctx.save();ctx.shadowBlur=22;ctx.shadowColor="#ffe39b";ctx.fillStyle="#ffe39b";
+  ctx.beginPath();ctx.arc(s.x,s.y,s.r+Math.sin(Date.now()/180)*1.5,0,Math.PI*2);ctx.fill();ctx.restore();
+  const p=game.player;
+  ctx.save();ctx.shadowBlur=18;ctx.shadowColor="#48e8ff";
+  const gradient=ctx.createLinearGradient(p.x-10,p.y-10,p.x+10,p.y+10);
+  gradient.addColorStop(0,"#ffffff");gradient.addColorStop(.4,"#48e8ff");gradient.addColorStop(1,"#a78bfa");
+  ctx.fillStyle=gradient;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();ctx.restore();
+  ctx.strokeStyle="#a78bfa66";ctx.beginPath();ctx.arc(p.x,p.y,p.r+5,0,Math.PI*2);ctx.stroke();
+  if(game.running)requestAnimationFrame(drawGame);
+}
+function moveGame(direction){
+  if(!game.running){notify("اضغط ابدأ للعب أولًا.");return;}
+  const p=game.player,step=game.player.speed;
+  if(direction==="left")p.x-=step*2;
+  if(direction==="right")p.x+=step*2;
+  if(direction==="up")p.y-=step*2;
+  if(direction==="down")p.y+=step*2;
+  p.x=Math.max(p.r,Math.min(game.canvas.width-p.r,p.x));
+  p.y=Math.max(p.r,Math.min(game.canvas.height-p.r,p.y));
+  if(Math.hypot(p.x-game.star.x,p.y-game.star.y)<p.r+game.star.r+3){
+    game.score++;$("#game-score").textContent=game.score;placeGameStar();
+  }
+  drawGame();
+}
+function gameFrame(){
+  if(!game.running)return;
+  const p=game.player,speed=p.speed;
+  if(game.keys.ArrowLeft||game.keys.a)p.x-=speed;
+  if(game.keys.ArrowRight||game.keys.d)p.x+=speed;
+  if(game.keys.ArrowUp||game.keys.w)p.y-=speed;
+  if(game.keys.ArrowDown||game.keys.s)p.y+=speed;
+  p.x=Math.max(p.r,Math.min(game.canvas.width-p.r,p.x));
+  p.y=Math.max(p.r,Math.min(game.canvas.height-p.r,p.y));
+  if(Math.hypot(p.x-game.star.x,p.y-game.star.y)<p.r+game.star.r+2){
+    game.score++;$("#game-score").textContent=game.score;placeGameStar();
+  }
+  requestAnimationFrame(gameFrame);
+}
+
+/* التنقل وجميع الأزرار: معالج واحد مركزي */
+document.addEventListener("click",function(event){
+  const button=event.target.closest("button");
+  if(!button)return;
+
+  if(button.dataset.view){
+    navigate(button.dataset.view);
+    return;
+  }
+
+  const action=button.dataset.action;
+  if(!action)return;
+
+  switch(action){
+    case "top":
+      window.scrollTo({top:0,behavior:"smooth"});
+      break;
+    case "randomize":
+      randomizeCosmos();
+      break;
+    case "run-code":
+      runCode();
+      break;
+    case "reset-code":
+      $("#code-editor").value=DEFAULT_CODE;
+      runCode();
+      notify("تمت استعادة مثال البداية.");
+      break;
+    case "download-code":
+      downloadText("amirxtna-project.html",$("#code-editor").value);
+      break;
+    case "save-code":
+      saveProject(prompt("ما اسم المشروع؟","مشروعي البرمجي")||"مشروعي البرمجي",$("#code-editor").value);
+      break;
+    case "copy-code":
+      if(navigator.clipboard&&navigator.clipboard.writeText){
+        navigator.clipboard.writeText($("#code-editor").value)
+          .then(()=>notify("تم نسخ الكود."))
+          .catch(()=>notify("تعذر النسخ تلقائيًا. يمكنك النسخ من المحرر."));
+      }else{
+        $("#code-editor").focus();$("#code-editor").select();
+        notify("حدد الكود ثم استخدم Ctrl+C.");
+      }
+      break;
+    case "complete-lesson":{
+      const id=Number(button.dataset.id);
+      if(completedLessons.includes(id))completedLessons=completedLessons.filter(n=>n!==id);
+      else completedLessons.push(id);
+      writeStore(STORE.lessons,completedLessons);
+      renderLessons();updateStats();
+      notify("تم تحديث تقدمك.");
+      break;
+    }
+    case "lesson-to-lab":{
+      const lesson=LESSON_DATA.find(item=>item.id===Number(button.dataset.id));
+      if(lesson){
+        $("#code-editor").value=lesson.code;
+        navigate("lab");
+        runCode();
+      }
+      break;
+    }
+    case "quiz":{
+      const result=$("#quiz-result");
+      if(button.dataset.answer==="right"){
+        result.textContent="إجابة صحيحة! console.log() يطبع قيمة في وحدة التحكم.";
+        result.style.color="#76f0bd";
+      }else{
+        result.textContent="ليست صحيحة. جرّب مرة أخرى.";
+        result.style.color="#ff9eac";
+      }
+      break;
+    }
+    case "generate-site":
+      buildSite();
+      notify("تم إنشاء موقعك الأولي.");
+      break;
+    case "download-site":
+      downloadText("my-amirxtna-site.html",generatedSite||buildSite());
+      break;
+    case "send-site-to-lab":
+      $("#code-editor").value=generatedSite||buildSite();
+      navigate("lab");runCode();
+      break;
+    case "start-game":
+      startGame();
+      if(!game.loopStarted){
+        game.loopStarted=true;
+        requestAnimationFrame(gameFrame);
+      }
+      break;
+    case "move":
+      moveGame(button.dataset.dir);
+      break;
+    case "open-project":{
+      const project=projects.find(item=>item.id===button.dataset.id);
+      if(project){$("#code-editor").value=project.code;navigate("lab");runCode();}
+      break;
+    }
+    case "download-project":{
+      const project=projects.find(item=>item.id===button.dataset.id);
+      if(project)downloadText("project-"+project.id+".html",project.code);
+      break;
+    }
+    case "delete-project":{
+      const project=projects.find(item=>item.id===button.dataset.id);
+      if(project&&confirm("هل تريد حذف المشروع «"+project.name+"»؟")){
+        projects=projects.filter(item=>item.id!==project.id);
+        writeStore(STORE.projects,projects);renderProjects();updateStats();notify("تم حذف المشروع.");
+      }
+      break;
+    }
+    case "export-projects":
+      downloadText("amirxtna-projects.json",JSON.stringify(projects,null,2),"application/json;charset=utf-8");
+      break;
+    case "clear-projects":
+      if(projects.length&&confirm("هل أنت متأكد من حذف جميع المشاريع المحفوظة؟")){
+        projects=[];writeStore(STORE.projects,projects);renderProjects();updateStats();notify("تم حذف المشاريع.");
+      }else if(!projects.length)notify("لا توجد مشاريع لحذفها.");
+      break;
+    case "feature-ad":{
+      const id=button.dataset.id;
+      ads=ads.map(ad=>({...ad,featured:ad.id===id}));
+      writeStore(STORE.ads,ads);renderAds();notify("تم عرض الإعلان في المساحة الرئيسية.");
+      break;
+    }
+    case "delete-ad":{
+      const id=button.dataset.id;
+      if(confirm("هل تريد حذف هذا الإعلان؟")){
+        ads=ads.filter(ad=>ad.id!==id);
+        if(ads.length&&!ads.some(ad=>ad.featured))ads[0].featured=true;
+        writeStore(STORE.ads,ads);renderAds();notify("تم حذف الإعلان.");
+      }
+      break;
+    }
+    case "clear-ad-form":
+      $("#ad-form").reset();updateAdPreview();notify("تم مسح حقول الإعلان.");
+      break;
+    default:
+      notify("هذا الإجراء غير معروف.");
+  }
+});
+
+/* نموذج الإعلانات */
+$("#ad-form").addEventListener("submit",function(event){
+  event.preventDefault();
+  const title=$("#ad-title").value.trim();
+  const description=$("#ad-description").value.trim();
+  const rawURL=$("#ad-url").value.trim();
+  const url=rawURL?safeURL(rawURL):"";
+  if(!title||!description){notify("اكتب عنوان الإعلان ووصفه.");return;}
+  if(rawURL&&!url){notify("الرابط غير صالح. استخدم رابط HTTP أو HTTPS.");return;}
+  const ad={
+    id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),
+    title,description,url,color:$("#ad-color").value,featured:ads.length===0
+  };
+  ads.unshift(ad);ads=ads.slice(0,50);
+  if(writeStore(STORE.ads,ads)){
+    renderAds();$("#ad-form").reset();updateAdPreview();
+    notify("تم إنشاء الإعلان محليًا.");
+  }
+});
+["ad-title","ad-description","ad-color"].forEach(id=>{
+  $("#"+id).addEventListener("input",updateAdPreview);
+});
+$("#ad-url").addEventListener("input",updateAdPreview);
+
+/* تحكم لوحة المفاتيح للعبة، دون تعطيل الكتابة داخل المحررات */
+window.addEventListener("keydown",function(event){
+  const tag=(event.target.tagName||"").toLowerCase();
+  if(["input","textarea","select"].includes(tag)||event.target.isContentEditable)return;
+  if(["ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].includes(event.key)){
+    event.preventDefault();game.keys[event.key]=true;
+  }
+  if(["w","a","s","d","W","A","S","D"].includes(event.key))game.keys[event.key.toLowerCase()]=true;
+});
+window.addEventListener("keyup",function(event){
+  game.keys[event.key]=false;game.keys[event.key.toLowerCase()]=false;
+});
+
+/* تهيئة التطبيق */
+function init(){
+  $("#code-editor").value=DEFAULT_CODE;
+  renderLessons();renderProjects();renderAds();updateStats();updateAdPreview();
+  $("#builder-preview").srcdoc=makePreviewDocument(
+    '<main style="font-family:Tahoma;text-align:center;padding:30px"><h1>معاينة صانع المواقع</h1><p>أنشئ موقعك ليظهر هنا.</p></main>'
+  );
+  runCode();
+}
+init();
 </script>
 </body>
 </html>
