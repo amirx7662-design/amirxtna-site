@@ -5,14 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>AMIRXTNA | كوكب الأسطورة</title>
 <style>
-:root{--c:#3df5ff;--v:#b06bff;--g:#5dffb0;--o:#ffb84d;--b:#2a3470;--m:#93a3cf;color-scheme:dark}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
+:root{--c:#3df5ff;--v:#b06bff;--g:#5dffb0;--o:#ffb84d;--b:#2a3470;--m:#93a3cf;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;background:#02030a;color:#eef4ff;font-family:Tahoma,Arial,sans-serif;overflow-x:hidden}
 #st{position:fixed;inset:0;z-index:-1;width:100%;height:100%}
 #glow{position:fixed;width:300px;height:300px;margin:-150px;border-radius:50%;background:radial-gradient(#3df5ff22,transparent 65%);pointer-events:none;z-index:-1}
 p{color:var(--m);line-height:1.9}button{font:inherit;cursor:pointer}
-#boot{position:fixed;inset:0;background:#000;z-index:99;display:flex;align-items:center;justify-content:center;direction:ltr;font:15px monospace;color:var(--g);padding:20px;transition:opacity .8s}
-.top{position:sticky;top:0;z-index:9;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;padding:12px 5%;background:#03051acc;border-bottom:1px solid var(--b);backdrop-filter:blur(14px)}
+#boot{position:fixed;inset:0;background:#000;z-index:99;display:flex;align-items:center;justify-content:center;font:15px monospace;color:var(--g);padding:20px;transition:opacity .8s}
+#bt{direction:ltr;white-space:pre}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;padding:12px 5%;background:#03051acc;border-bottom:1px solid var(--b);backdrop-filter:blur(14px)}
 .logo{font-weight:900;font-size:22px;letter-spacing:3px}.logo b{color:var(--c);text-shadow:0 0 20px var(--c)}
 .btn{border:1px solid var(--b);background:#101a40;color:#fff;padding:9px 14px;border-radius:10px;transition:.2s}
 .btn:hover,.btn.on{border-color:var(--c);box-shadow:0 0 20px #3df5ff44;transform:translateY(-2px)}
@@ -22,8 +23,7 @@ main{max-width:1150px;margin:auto;padding:20px 5% 80px}
 .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:center;padding:50px 0}
 .tag{color:var(--o);font:12px monospace;letter-spacing:3px}
 h1{font-size:clamp(34px,6.5vw,70px);line-height:1.2;margin:14px 0}
-h1 em{font-style:normal;background:linear-gradient(90deg,var(--o),var(--c),var(--v));-webkit-background-clip:text;background-clip:text;color:transparent;animation:gl 3s infinite}
-@keyframes gl{50%{filter:drop-shadow(0 0 14px var(--c)) hue-rotate(40deg)}}
+h1 em{font-style:normal;background:linear-gradient(90deg,var(--o),var(--c),var(--v));-webkit-background-clip:text;background-clip:text;color:transparent}
 .planet{width:240px;height:240px;margin:auto;border-radius:50%;position:relative;background:radial-gradient(circle at 30% 30%,#ffd86b,#ff6a3d 40%,#5a1a8a 75%,#12062a);box-shadow:0 0 80px #ff8a3d66,inset -30px -20px 60px #000c;animation:fl 6s ease-in-out infinite}
 .planet:before{content:"";position:absolute;left:-60px;right:-60px;top:50%;height:60px;margin-top:-30px;border:3px solid #3df5ffaa;border-radius:50%;transform:rotate(-22deg);box-shadow:0 0 25px #3df5ff66}
 @keyframes fl{50%{transform:translateY(-14px)}}
@@ -32,36 +32,39 @@ h1 em{font-style:normal;background:linear-gradient(90deg,var(--o),var(--c),var(-
 .bar{height:7px;background:#1c2650;border-radius:9px;overflow:hidden;margin:10px 0}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--o),var(--c),var(--v));transition:width .5s}
 .road{display:flex;flex-direction:column;gap:12px}.lvl{border-right:3px solid var(--o)}
 .ls{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.done{border-color:var(--g);color:var(--g)}
-pre{direction:ltr;text-align:left;background:#040717;border:1px solid var(--b);border-radius:10px;padding:12px;overflow-x:auto;color:#bff9ff;font-size:13px}
+pre{direction:ltr;text-align:left;background:#040717;border:1px solid var(--b);border-radius:10px;padding:12px;overflow-x:auto;color:#bff9ff;font-size:13px;white-space:pre-wrap}
 .box{display:none;margin-top:18px}.box.on{display:block}
-textarea{width:100%;min-height:300px;direction:ltr;text-align:left;background:#030615;color:#c8f7ff;border:1px solid var(--b);border-radius:12px;padding:12px;font:13px/1.6 Consolas,monospace}
+textarea,input{width:100%;background:#030615;color:#c8f7ff;border:1px solid var(--b);border-radius:12px;padding:12px;font:inherit}
+textarea{min-height:260px;direction:ltr;text-align:left;font:13px/1.6 Consolas,monospace}
 iframe{width:100%;height:340px;border:0;border-radius:12px;background:#fff}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}.tb{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
 .opt{display:block;width:100%;text-align:right;margin:8px 0;padding:12px;border-radius:10px;border:1px solid var(--b);background:#0f1736;color:#fff}
 .ok{border-color:var(--g);background:#0f3a2b}.no{border-color:#ff5c7a;background:#3a1322}
-input{width:100%;padding:12px;border-radius:10px;border:1px solid var(--b);background:#050818;color:#fff;font:inherit}
-.dec{position:fixed;top:80px;left:50%;transform:translateX(-50%);background:#1a1030;border:2px solid var(--o);padding:14px 22px;border-radius:14px;z-index:60;display:none;box-shadow:0 0 40px #ffb84d55;text-align:center;max-width:90vw}
+.bd{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.bd .card{text-align:center;opacity:.35;padding:12px}.bd .card.got{opacity:1;border-color:var(--o);box-shadow:0 0 18px #ffb84d44}.bd span{font-size:30px;display:block}
+.dec{position:fixed;top:calc(80px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);background:#1a1030;border:2px solid var(--o);padding:14px 22px;border-radius:14px;z-index:60;display:none;box-shadow:0 0 40px #ffb84d55;text-align:center;max-width:90vw}
 footer{text-align:center;color:var(--m);font-size:12px;padding:25px}
 @media(max-width:760px){.hero,.two{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.planet{width:180px;height:180px}}
 </style>
 </head>
 <body>
 <canvas id="st"></canvas><div id="glow"></div>
-<div id="boot"><pre id="bt" style="border:0;background:none;color:inherit"></pre></div>
+<div id="boot"><div id="bt"></div></div>
 <header class="top"><div class="logo"><b>AMIR</b>XTNA</div>
-<nav id="nav" style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn on" data-p="home">العرش</button><button class="btn" data-p="ac">الأكاديمية</button><button class="btn" data-p="lab">المختبر</button><button class="btn" data-p="ar">الساحة</button><button class="btn" data-p="me">الإمبراطور</button></nav></header>
+<nav id="nav" style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn on" data-p="home">العرش</button><button class="btn" data-p="ac">الأكاديمية</button><button class="btn" data-p="lab">المختبر</button><button class="btn" data-p="cc">التحديات</button><button class="btn" data-p="ar">الساحة</button><button class="btn" data-p="me">الإمبراطور</button></nav></header>
 <main>
 <section id="home" class="pg on">
 <div class="hero"><div><div class="tag">◆ PLANET LEGENDARIA · الإمبراطورية الأعظم</div>
 <h1>أنا لا أتعلّم البرمجة.<br><em>أنا أحكمها.</em></h1>
-<p>من كوكب الأسطورة تبدأ رحلتك: من أول سطر كود إلى عرش إله البرمجة. كل درس تنهيه يوسّع إمبراطوريتك.</p>
-<div class="tb"><button class="btn gold" data-p="ac">⚔ ابدأ الغزو</button><button class="btn pri" data-p="lab">&lt;/&gt; المختبر</button></div></div>
+<p>من أول سطر كود إلى عرش إله البرمجة. كل درس وتحدٍّ ينتصر فيه يوسّع إمبراطوريتك.</p>
+<div class="tb"><button class="btn gold" data-p="ac">⚔ ابدأ الغزو</button><button class="btn pri" data-p="cc">🧪 تحدي الكود</button></div></div>
 <div class="planet"></div></div>
-<div class="stats"><div class="card"><strong id="s1">0</strong>XP</div><div class="card"><strong id="s2">0</strong>أراضٍ محتلة</div><div class="card"><strong id="s3">0</strong>الأتباع</div><div class="card"><strong id="s4">-</strong>اللقب</div></div>
+<div class="stats"><div class="card"><strong id="s1">0</strong>XP</div><div class="card"><strong id="s2">0</strong>أراضٍ محتلة</div><div class="card"><strong id="s3">0</strong>أيام متتالية 🔥</div><div class="card"><strong id="s4">-</strong>اللقب</div></div>
 <h2>خريطة السيطرة</h2><div class="road" id="road"></div>
 </section>
 
-<section id="ac" class="pg"><h2>أكاديمية الأباطرة</h2><div id="lv" class="road"></div>
+<section id="ac" class="pg"><h2>أكاديمية الأباطرة</h2>
+<input id="q" placeholder="🔎 ابحث عن درس..." aria-label="بحث"><div id="lv" class="road" style="margin-top:14px"></div>
 <div id="lbox" class="card box"><h2 id="lt"></h2><div id="lb"></div>
 <div class="tb"><button class="btn gold" id="fin">استولِ على الدرس +25 XP</button><button class="btn" data-p="lab">جرّب</button><button class="btn" id="cls">إغلاق ×</button></div></div></section>
 
@@ -69,15 +72,21 @@ footer{text-align:center;color:var(--m);font-size:12px;padding:25px}
 <div class="tb"><button class="btn gold" id="run">▶ تشغيل</button><button class="btn" data-t="1">تفاعل</button><button class="btn" data-t="2">حاسبة</button><button class="btn" data-t="3">لعبة تخمين</button><button class="btn" id="dl">تنزيل</button><button class="btn" id="sv">حفظ</button></div>
 <div class="two"><textarea id="ed" spellcheck="false" aria-label="المحرر"></textarea><iframe id="pv" title="المعاينة" sandbox="allow-scripts"></iframe></div></section>
 
+<section id="cc" class="pg"><h2>تحديات الكود الحقيقية</h2><p>اكتب دالة JavaScript، وسيختبرها الموقع تلقائيًا.</p>
+<div class="tb" id="cl"></div>
+<div class="card"><h3 id="ct"></h3><p id="cd"></p><textarea id="ce" spellcheck="false" aria-label="كود التحدي"></textarea>
+<div class="tb"><button class="btn gold" id="ct2">▶ اختبر الكود</button><button class="btn" id="chint">💡 تلميح</button></div><pre id="co">النتيجة هنا...</pre></div></section>
+
 <section id="ar" class="pg"><h2>ساحة المعارك</h2><div class="card" id="qa"></div></section>
 
 <section id="me" class="pg"><h2>سجل الإمبراطور</h2><div class="card">
 <label for="nm">اسمك الإمبراطوري</label><input id="nm" maxlength="30">
 <div class="tb"><button class="btn gold" id="sn">تتويج</button><button class="btn" id="ex">تصدير</button><button class="btn" id="rs">إعادة الحكم</button></div>
-<div class="bar"><i id="xb"></i></div><p id="xt"></p><h3>سلّم الألقاب</h3><p id="ranks"></p></div></section>
+<div class="bar"><i id="xb"></i></div><p id="xt"></p><p id="ranks"></p></div>
+<h2>الأوسمة</h2><div class="bd" id="bd"></div></section>
 </main>
 <footer>AMIRXTNA © كوكب الأسطورة — الكون ينتظر أوامرك</footer>
-<div class="dec" id="dec"></div>
+<div class="dec" id="dec" role="status"></div>
 
 <script>
 (function(){
@@ -85,58 +94,86 @@ footer{text-align:center;color:var(--m);font-size:12px;padding:25px}
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const LV=["مستكشف المجرة · Python","بنّاء العوالم · الويب","مهندس الكون · الخوارزميات","سيّد الأدوات · احتراف","الأسطورة · مشاريع"];
 const L=[
-[0,"🐍","أول أمر","<p>ثبّت Python من python.org ثم اكتب:</p><pre>print('أنا الأسطورة')</pre>"],
-[0,"📦","المتغيرات","<pre>name='Amir'\nage=15\nprint(type(age))</pre><p>المتغير اسم يشير إلى قيمة.</p>"],
-[0,"🔀","الشروط","<pre>if xp>=100:\n    print('قائد')\nelse:\n    print('تدرّب')</pre>"],
-[0,"🔁","الحلقات والدوال","<pre>def total(n):\n    return sum(range(1,n+1))\nprint(total(10))</pre>"],
-[1,"🌐","HTML","<pre>&lt;h1&gt;عرشي&lt;/h1&gt;\n&lt;button&gt;زر&lt;/button&gt;</pre><p>استخدم وسومًا دلالية: header وmain وfooter.</p>"],
-[1,"🎨","CSS","<pre>.card{display:grid;gap:12px;\n border-radius:16px}</pre><p>تعلّم flexbox وgrid والتجاوب.</p>"],
-[1,"⚡","JavaScript","<pre>btn.addEventListener('click',()=>{\n alert('تم!')})</pre>"],
-[2,"🗂️","القوائم والقواميس","<pre>user={'name':'Amir','xp':50}\nnums=[3,1,2];nums.sort()</pre>"],
-[2,"🧠","الخوارزميات وO(n)","<p>البحث الخطي O(n) والثنائي O(log n). تعلّم الترتيب والتكرار الذاتي.</p>"],
-[2,"🏛️","الكائنات OOP","<pre>class Player:\n  def __init__(s,n):\n    s.n=n;s.xp=0</pre>"],
-[3,"🌿","Git","<pre>git init\ngit add .\ngit commit -m 'v1'</pre>"],
-[3,"🗄️","SQL","<pre>SELECT name FROM players\nWHERE xp>100;</pre>"],
-[3,"🛡️","الأمان والاختبار","<p>لا تثق بمدخلات المستخدم، ولا تضع كلمات المرور في كود المتصفح، واكتب اختبارات آلية.</p>"],
-[4,"🏗️","تصميم الأنظمة","<p>REST وخوادم Flask/Node والتخزين المؤقت وتوسيع النظام لملايين المستخدمين.</p>"],
-[4,"🚀","مشاريعك","<p>ابنِ تطبيق مهام ثم لعبة ثم موقعًا بقاعدة بيانات ثم API، وانشرها على GitHub.</p>"]];
-const Q=[["أي أمر يطبع في Python؟",["show()","print()","echo()"],1],["أي وسم للعنوان الرئيسي؟",["<h1>","<p>","<top>"],0],["ما وظيفة CSS؟",["التنسيق","قاعدة بيانات","خادم"],0],["هيكل مفتاح وقيمة؟",["tuple","dict","range"],1],["تعقيد البحث الثنائي؟",["O(n)","O(log n)","O(n²)"],1],["أمر Git للحفظ؟",["git commit","git run","git save"],0],["أمر SQL للجلب؟",["GET","FETCH","SELECT"],2]];
+[0,"🐍","أول أمر","<p>ثبّت Python من python.org ثم اكتب:</p><pre>print('أنا الأسطورة')</pre><p>🎯 تمرين: اطبع اسمك واسم مدينتك في سطرين.</p>"],
+[0,"📦","المتغيرات","<pre>name = 'Amir'   # نص\nage = 15        # عدد صحيح\npi = 3.14       # عشري\nok = True       # منطقي\nprint(type(age))</pre><p>المتغير اسم يشير إلى قيمة. 🎯 تمرين: خزّن سعر منتج وكميته واطبع المجموع.</p>"],
+[0,"🔀","الشروط","<pre>xp = 120\nif xp >= 100:\n    print('قائد')\nelif xp >= 50:\n    print('محارب')\nelse:\n    print('تدرّب')</pre><p>المسافة البادئة جزء من صياغة Python.</p>"],
+[0,"🔁","الحلقات والدوال","<pre>def total(n):\n    s = 0\n    for i in range(1, n + 1):\n        s += i\n    return s\nprint(total(10))  # 55</pre><p>🎯 تمرين: اكتب دالة تحسب مضروب عدد.</p>"],
+[1,"🌐","HTML","<pre>&lt;header&gt;&lt;h1&gt;عرشي&lt;/h1&gt;&lt;/header&gt;\n&lt;main&gt;&lt;p&gt;نص&lt;/p&gt;&lt;button&gt;زر&lt;/button&gt;&lt;/main&gt;</pre><p>استخدم وسومًا دلالية، وهي مفيدة للـSEO وقارئات الشاشة.</p>"],
+[1,"🎨","CSS","<pre>.card{\n  display:grid; gap:12px;\n  border-radius:16px;\n  background:linear-gradient(#111,#222);\n}\n@media(max-width:700px){.card{padding:10px}}</pre><p>تعلّم flexbox وgrid والتصميم المتجاوب.</p>"],
+[1,"⚡","JavaScript","<pre>const nums = [1,2,3];\nconst sq = nums.map(n => n * n);\nconsole.log(sq); // [1,4,9]\nbtn.addEventListener('click', () => alert('تم!'));</pre><p>جرّبها في المختبر، ثم اصعد إلى التحديات.</p>"],
+[2,"🗂️","القوائم والقواميس","<pre>user = {'name': 'Amir', 'xp': 50}\nnums = [3, 1, 2]\nnums.sort()\nprint(user['name'], nums)</pre><p>اختيار الهيكل المناسب نصف الحل.</p>"],
+[2,"🧠","الخوارزميات وO(n)","<p>البحث الخطي O(n) يفحص كل عنصر، والثنائي O(log n) يقسم المجال نصفين في كل خطوة ويعمل على قائمة مرتبة. تعلّم أيضًا الترتيب والتكرار الذاتي (recursion).</p>"],
+[2,"🏛️","الكائنات OOP","<pre>class Player:\n    def __init__(self, name):\n        self.name = name\n        self.xp = 0\n    def gain(self, n):\n        self.xp += n</pre><p>الصنف قالب والكائن نسخة منه. تعلّم الوراثة والتغليف.</p>"],
+[3,"🌿","Git","<pre>git init\ngit add .\ngit commit -m 'v1'\ngit branch feature\ngit push origin main</pre><p>Git يحفظ تاريخ مشروعك ويسهّل العمل الجماعي.</p>"],
+[3,"🗄️","SQL","<pre>SELECT name, xp FROM players\nWHERE xp > 100\nORDER BY xp DESC;</pre><p>تعلّم الجداول والمفاتيح والعلاقات والفهارس.</p>"],
+[3,"🛡️","الأمان والاختبار","<p>لا تثق بمدخلات المستخدم، ولا تضع كلمات المرور في كود المتصفح، واستخدم HTTPS وتجزئة كلمات المرور، واكتب اختبارات آلية (pytest وJest).</p>"],
+[4,"🏗️","تصميم الأنظمة","<p>REST وخوادم Flask أو Node، والتخزين المؤقت، وتوسيع النظام لملايين المستخدمين.</p>"],
+[4,"🚀","مشاريعك","<p>ابنِ تطبيق مهام ثم لعبة ثم موقعًا بقاعدة بيانات ثم API، وانشرها على GitHub. محفظة مشاريعك أقوى من أي شهادة.</p>"]];
+const Q=[["أي أمر يطبع في Python؟",["show()","print()","echo()"],1],["أي وسم للعنوان الرئيسي؟",["<h1>","<p>","<top>"],0],["ما وظيفة CSS؟",["التنسيق","قاعدة بيانات","خادم"],0],["هيكل مفتاح وقيمة؟",["tuple","dict","range"],1],["تعقيد البحث الثنائي؟",["O(n)","O(log n)","O(n²)"],1],["أمر Git للحفظ؟",["git commit","git run","git save"],0],["أمر SQL للجلب؟",["GET","FETCH","SELECT"],2],["ما ناتج typeof 5 في JS؟",["number","int","float"],0]];
+const C=[
+{t:"1 · المضاعف",d:"اكتب دالة double(n) ترجع n × 2.",s:"function double(n){\n  // اكتب هنا\n}",f:"double",T:[[[2],4],[[-3],-6],[[0],0]],h:"return n * 2;"},
+{t:"2 · الأكبر",d:"اكتب دالة max2(a,b) ترجع الأكبر.",s:"function max2(a,b){\n  \n}",f:"max2",T:[[[1,2],2],[[9,3],9],[[-1,-5],-1]],h:"return a > b ? a : b;"},
+{t:"3 · المجموع",d:"اكتب دالة sum(arr) ترجع مجموع عناصر المصفوفة.",s:"function sum(arr){\n  \n}",f:"sum",T:[[[[1,2,3]],6],[[[]],0],[[[5,-5,10]],10]],h:"return arr.reduce((a,b)=>a+b,0);"},
+{t:"4 · المقلوب",d:"اكتب دالة rev(s) تقلب النص.",s:"function rev(s){\n  \n}",f:"rev",T:[[["abc"],"cba"],[[""],""],[["amir"],"rima"]],h:"return s.split('').reverse().join('');"},
+{t:"5 · مضروب",d:"اكتب دالة fact(n) ترجع n! (مضروب n).",s:"function fact(n){\n  \n}",f:"fact",T:[[[0],1],[[5],120],[[3],6]],h:"return n<=1 ? 1 : n * fact(n-1);"}];
+const B=[["🥇","أول غزوة","1 درس",s=>s.done.length>=1],["⚔️","محارب","5 دروس",s=>s.done.length>=5],["🏰","فاتح","10 دروس",s=>s.done.length>=10],["💯","100 XP","اجمع 100 XP",s=>s.xp>=100],["👑","500 XP","اجمع 500 XP",s=>s.xp>=500],["🧪","مبرمج حقيقي","حلّ تحديًا",s=>s.cdone.length>=1],["🧠","عبقري الكود","حلّ كل التحديات",s=>s.cdone.length>=C.length],["🔥","ثلاثة أيام","سلسلة 3 أيام",s=>s.streak>=3]];
 const RK=["مواطن","فارس","قائد","حاكم كوكب","سيّد المجرة","إمبراطور الكون","خالد","إله البرمجة"];
-const DC=["بأمر الإمبراطور: الكود يخضع لك!","سجّل التاريخ: كوكب جديد سقط في يدك!","الأتباع يهتفون باسمك!","الباغ يرتجف أمامك!","عرشك يتوسّع!"];
+const DC=["بأمر الإمبراطور: الكود يخضع لك!","كوكب جديد سقط في يدك!","الأتباع يهتفون باسمك!","الباغ يرتجف أمامك!","عرشك يتوسّع!"];
 const T={1:`<!DOCTYPE html><html dir="rtl"><body style="background:#0b1230;color:#fff;font-family:Tahoma;text-align:center;padding:40px"><h1 style="color:#ffb84d">عرش الأسطورة</h1><button id="b">اضغط</button><p id="r"></p><script>b.onclick=()=>r.textContent='الكون يطيعك 👑'<\/script></body></html>`,
 2:`<!DOCTYPE html><html dir="rtl"><body style="font-family:Tahoma;padding:30px"><input id="a" type="number" value="5"> × <input id="b" type="number" value="3"> <button onclick="r.textContent=a.value*b.value">احسب</button><h2 id="r"></h2></body></html>`,
 3:`<!DOCTYPE html><html dir="rtl"><body style="font-family:Tahoma;padding:30px"><h3>خمّن رقمًا 1-10</h3><input id="g" type="number"><button onclick="go()">جرّب</button><p id="m"></p><script>let n=Math.ceil(Math.random()*10);function go(){let v=+g.value;m.textContent=v===n?'صحيح!':v<n?'أكبر':'أصغر'}<\/script></body></html>`};
-let S={xp:0,done:[],name:"",code:T[1]},cur=null,qi=0,ans=false;
-try{const d=JSON.parse(localStorage.getItem("amir3")||"null");if(d){S.xp=+d.xp||0;S.done=Array.isArray(d.done)?d.done:[];S.name=String(d.name||"").slice(0,30);S.code=typeof d.code==="string"?d.code:T[1]}}catch(e){}
-const save=()=>{try{localStorage.setItem("amir3",JSON.stringify(S))}catch(e){}};
-function dec(t){const e=$("#dec");e.textContent="👑 "+t;e.style.display="block";clearTimeout(dec.k);dec.k=setTimeout(()=>e.style.display="none",2600)}
+let S={xp:0,done:[],cdone:[],name:"",code:T[1],streak:0,last:"",badges:[]},cur=null,qi=0,ans=false,ci=0,PT=[];
+try{const d=JSON.parse(localStorage.getItem("amir4")||"null");if(d){S.xp=+d.xp||0;S.done=Array.isArray(d.done)?d.done:[];S.cdone=Array.isArray(d.cdone)?d.cdone:[];S.name=String(d.name||"").slice(0,30);S.code=typeof d.code==="string"?d.code:T[1];S.streak=+d.streak||0;S.last=String(d.last||"");S.badges=Array.isArray(d.badges)?d.badges:[]}}catch(e){}
+const save=()=>{try{localStorage.setItem("amir4",JSON.stringify(S))}catch(e){}};
+const today=new Date().toDateString();
+if(S.last!==today){const y=new Date(Date.now()-864e5).toDateString();S.streak=S.last===y?S.streak+1:1;S.last=today;save()}
+function dec(t){const e=$("#dec");e.textContent="👑 "+t;e.style.display="block";clearTimeout(dec.k);dec.k=setTimeout(()=>e.style.display="none",2800)}
+function boom(){for(let i=0;i<70;i++)PT.push({x:innerWidth/2,y:innerHeight/3,vx:(Math.random()-.5)*12,vy:Math.random()*-9-2,l:70,c:["#ffb84d","#3df5ff","#b06bff","#5dffb0"][i%4]})}
+function chk(){B.forEach(b=>{if(!S.badges.includes(b[1])&&b[3](S)){S.badges.push(b[1]);save();dec("وسام جديد: "+b[0]+" "+b[1]);boom()}})}
+function gain(n){const o=Math.floor(S.xp/120);S.xp+=n;save();if(Math.floor(S.xp/120)>o){dec("ترقية! لقبك الآن: "+RK[Math.min(7,Math.floor(S.xp/120))]);boom()}stats();chk()}
 function go(p){$$(".pg").forEach(x=>x.classList.toggle("on",x.id===p));$$("#nav .btn").forEach(b=>b.classList.toggle("on",b.dataset.p===p));scrollTo({top:0,behavior:"smooth"})}
-function stats(){const r=Math.min(7,Math.floor(S.xp/120));$("#s1").textContent=S.xp;$("#s2").textContent=S.done.length;$("#s3").textContent=(S.xp*137).toLocaleString("en");$("#s4").textContent=RK[r];
+function lessons(){const q=$("#q").value.trim().toLowerCase();
+$("#lv").innerHTML=LV.map((l,i)=>{const b=L.map((x,j)=>x[0]===i&&(!q||(x[2]+x[3]).toLowerCase().includes(q))?`<button class="btn ${S.done.includes(j)?"done":""}" data-l="${j}">${x[1]} ${x[2]}</button>`:"").join("");return b?`<div class="card lvl"><b>${l}</b><div class="ls">${b}</div></div>`:""}).join("")||"<p>لا نتائج.</p>"}
+function stats(){const r=Math.min(7,Math.floor(S.xp/120));$("#s1").textContent=S.xp;$("#s2").textContent=S.done.length;$("#s3").textContent=S.streak;$("#s4").textContent=RK[r];
 $("#xb").style.width=(S.xp%120)/120*100+"%";$("#xt").textContent=(S.name?"الإمبراطور "+S.name+" — ":"")+"تبقّى "+(120-S.xp%120)+" XP للقب التالي.";$("#nm").value=S.name;$("#ranks").textContent=RK.join(" ← ");
 $("#road").innerHTML=LV.map((l,i)=>{const t=L.filter(x=>x[0]===i),d=t.filter(x=>S.done.includes(L.indexOf(x))).length;return`<div class="card lvl"><b>${l}</b><div class="bar"><i style="width:${d/t.length*100}%"></i></div></div>`}).join("");
-$("#lv").innerHTML=LV.map((l,i)=>`<div class="card lvl"><b>${l}</b><div class="ls">${L.map((x,j)=>x[0]===i?`<button class="btn ${S.done.includes(j)?"done":""}" data-l="${j}">${x[1]} ${x[2]}</button>`:"").join("")}</div></div>`).join("")}
+$("#bd").innerHTML=B.map(b=>`<div class="card ${S.badges.includes(b[1])?"got":""}"><span>${b[0]}</span><b>${b[1]}</b><p style="margin:4px 0;font-size:12px">${b[2]}</p></div>`).join("");
+$("#cl").innerHTML=C.map((c,i)=>`<button class="btn ${S.cdone.includes(i)?"done":""} ${i===ci?"on":""}" data-c="${i}">${S.cdone.includes(i)?"✓ ":""}${c.t}</button>`).join("");lessons()}
+function showC(){const c=C[ci];$("#ct").textContent=c.t;$("#cd").textContent=c.d;$("#ce").value=c.s;$("#co").textContent="النتيجة هنا...";stats()}
+function testC(){const c=C[ci],id="r"+Date.now(),f=document.createElement("iframe");f.sandbox="allow-scripts";f.style.display="none";
+f.srcdoc=`<script>const L=[];console.log=(...a)=>L.push(a.map(String).join(" "));let R=[];try{${$("#ce").value.replace(/<\/script/gi,"<\\/script")}\nconst T=${JSON.stringify(c.T)};T.forEach(t=>{let v;try{v=${c.f}(...t[0])}catch(e){v="خطأ: "+e.message}R.push([t[0],t[1],v,JSON.stringify(v)===JSON.stringify(t[1])])})}catch(e){R=e.message}parent.postMessage({id:"${id}",R,L},"*")<\/script>`;
+const h=e=>{if(e.source!==f.contentWindow||!e.data||e.data.id!==id)return;removeEventListener("message",h);f.remove();const R=e.data.R;
+if(typeof R==="string"){$("#co").textContent="❌ خطأ في الكود: "+R;return}
+const ok=R.every(r=>r[3]);$("#co").textContent=R.map(r=>(r[3]?"✅":"❌")+" ("+r[0].map(x=>JSON.stringify(x)).join(", ")+") المتوقع "+JSON.stringify(r[1])+" والناتج "+JSON.stringify(r[2])).join("\n")+(e.data.L.length?"\n\nconsole:\n"+e.data.L.join("\n"):"")+(ok?"\n\n🏆 انتصار! جميع الاختبارات نجحت.":"");
+if(ok&&!S.cdone.includes(ci)){S.cdone.push(ci);gain(40);dec("انتصرت في التحدي! +40 XP");boom()}};
+addEventListener("message",h);document.body.appendChild(f);setTimeout(()=>{if(f.isConnected){removeEventListener("message",h);f.remove();$("#co").textContent="⏱ انتهى الوقت: ربما هناك حلقة لا نهائية."}},4000)}
 function quiz(){const q=Q[qi%Q.length],a=$("#qa");ans=false;a.innerHTML=`<div class="tag">معركة ${qi%Q.length+1}/${Q.length}</div><h3></h3><div id="o"></div><p id="rs"></p><button class="btn pri" id="nx" disabled>التالي ←</button>`;a.querySelector("h3").textContent=q[0];
-q[1].forEach((t,i)=>{const b=document.createElement("button");b.className="opt";b.textContent=t;b.onclick=()=>{if(ans)return;ans=true;if(i===q[2]){b.classList.add("ok");S.xp+=10;save();stats();dec("انتصار! +10 XP")}else{b.classList.add("no");$("#o").children[q[2]].classList.add("ok");$("#rs").textContent="حتى الأباطرة يتعثّرون. أكمل!"}$("#nx").disabled=false};$("#o").appendChild(b)});
+q[1].forEach((t,i)=>{const b=document.createElement("button");b.className="opt";b.textContent=t;b.onclick=()=>{if(ans)return;ans=true;if(i===q[2]){b.classList.add("ok");gain(10);dec("انتصار! +10 XP")}else{b.classList.add("no");$("#o").children[q[2]].classList.add("ok");$("#rs").textContent="حتى الأباطرة يتعثّرون. أكمل!"}$("#nx").disabled=false};$("#o").appendChild(b)});
 $("#nx").onclick=()=>{qi++;quiz()}}
 const run=()=>{$("#pv").srcdoc=$("#ed").value};
 function dlf(x,t,n){const u=URL.createObjectURL(new Blob([x],{type:t})),a=document.createElement("a");a.href=u;a.download=n;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1000)}
-document.addEventListener("click",e=>{const p=e.target.closest("[data-p]");if(p)go(p.dataset.p);const l=e.target.closest("[data-l]");if(l){cur=+l.dataset.l;$("#lt").textContent=L[cur][2];$("#lb").innerHTML=L[cur][3];$("#lbox").classList.add("on");$("#fin").textContent=S.done.includes(cur)?"محتل ✓":"استولِ على الدرس +25 XP";$("#lbox").scrollIntoView({behavior:"smooth"})}
-const t=e.target.closest("[data-t]");if(t){$("#ed").value=T[t.dataset.t];run()}});
+document.addEventListener("click",e=>{const p=e.target.closest("[data-p]");if(p)go(p.dataset.p);
+const l=e.target.closest("[data-l]");if(l){cur=+l.dataset.l;$("#lt").textContent=L[cur][2];$("#lb").innerHTML=L[cur][3];$("#lbox").classList.add("on");$("#fin").textContent=S.done.includes(cur)?"محتل ✓":"استولِ على الدرس +25 XP";$("#lbox").scrollIntoView({behavior:"smooth"})}
+const t=e.target.closest("[data-t]");if(t){$("#ed").value=T[t.dataset.t];run()}
+const c=e.target.closest("[data-c]");if(c){ci=+c.dataset.c;showC()}});
+$("#q").addEventListener("input",lessons);
 $("#cls").onclick=()=>$("#lbox").classList.remove("on");
-$("#fin").onclick=()=>{if(cur===null||S.done.includes(cur))return;S.done.push(cur);S.xp+=25;save();stats();$("#fin").textContent="محتل ✓";dec(DC[Math.floor(Math.random()*DC.length)]+" +25 XP")};
-$("#run").onclick=run;$("#sv").onclick=()=>{S.code=$("#ed").value;save();dec("تم حفظ الكود في خزائن الإمبراطورية")};
+$("#fin").onclick=()=>{if(cur===null||S.done.includes(cur))return;S.done.push(cur);$("#fin").textContent="محتل ✓";gain(25);dec(DC[Math.floor(Math.random()*DC.length)]+" +25 XP")};
+$("#run").onclick=run;$("#sv").onclick=()=>{S.code=$("#ed").value;save();dec("تم حفظ الكود")};
 $("#dl").onclick=()=>dlf($("#ed").value,"text/html","legend.html");
-$("#ex").onclick=()=>dlf(JSON.stringify({xp:S.xp,done:S.done,name:S.name},null,2),"application/json","empire.json");
+$("#ct2").onclick=testC;$("#chint").onclick=()=>{$("#co").textContent="💡 تلميح: "+C[ci].h};
+$("#ex").onclick=()=>dlf(JSON.stringify(S,null,2),"application/json","empire.json");
 $("#sn").onclick=()=>{S.name=$("#nm").value.trim().slice(0,30);save();stats();dec("تم تتويجك!")};
-$("#rs").onclick=()=>{if(confirm("التنازل عن العرش وإعادة كل شيء؟")){S.xp=0;S.done=[];save();stats()}};
+$("#rs").onclick=()=>{if(confirm("التنازل عن العرش وإعادة كل شيء؟")){S.xp=0;S.done=[];S.cdone=[];S.badges=[];save();stats()}};
 addEventListener("pointermove",e=>{const g=$("#glow");g.style.left=e.clientX+"px";g.style.top=e.clientY+"px"});
 const cv=$("#st"),cx=cv.getContext("2d");let P=[];
 function rz(){cv.width=innerWidth;cv.height=innerHeight;P=Array.from({length:130},()=>({x:Math.random()*cv.width,y:Math.random()*cv.height,z:Math.random()*2+.3}))}
-function dr(){cx.clearRect(0,0,cv.width,cv.height);cx.fillStyle="#a8dcff";P.forEach(s=>{s.y+=s.z*.4;if(s.y>cv.height)s.y=0;cx.globalAlpha=s.z/2.3;cx.fillRect(s.x,s.y,s.z,s.z)});requestAnimationFrame(dr)}
+function dr(){cx.clearRect(0,0,cv.width,cv.height);cx.fillStyle="#a8dcff";P.forEach(s=>{s.y+=s.z*.4;if(s.y>cv.height)s.y=0;cx.globalAlpha=s.z/2.3;cx.fillRect(s.x,s.y,s.z,s.z)});
+PT=PT.filter(p=>p.l>0);PT.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.3;p.l--;cx.globalAlpha=p.l/70;cx.fillStyle=p.c;cx.fillRect(p.x,p.y,6,6)});requestAnimationFrame(dr)}
 addEventListener("resize",rz);rz();if(!matchMedia("(prefers-reduced-motion:reduce)").matches)dr();
-const bl=["> INIT PLANET_LEGENDARIA ...","> LOADING EMPIRE ........ OK","> SUBJECTS: 7,000,000,000","> WELCOME, EMPEROR."];let bi=0,bs="";
-(function tp(){if(bi<bl.length){bs+=bl[bi++]+"\n";$("#bt").textContent=bs;setTimeout(tp,450)}else setTimeout(()=>{$("#boot").style.opacity=0;setTimeout(()=>$("#boot").remove(),800)},500)})();
-$("#ed").value=S.code;stats();quiz();run();
+const bl=["> INIT PLANET_LEGENDARIA ...","> LOADING EMPIRE ........ OK","> STREAK: "+S.streak+" DAYS","> WELCOME, EMPEROR."];let bi=0,bs="";
+(function tp(){if(bi<bl.length){bs+=bl[bi++]+"\n";$("#bt").textContent=bs;setTimeout(tp,420)}else setTimeout(()=>{$("#boot").style.opacity=0;setTimeout(()=>$("#boot").remove(),800)},450)})();
+$("#ed").value=S.code;stats();quiz();run();showC();chk();
 })();
 </script>
 </body>
