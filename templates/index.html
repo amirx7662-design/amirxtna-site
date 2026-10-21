@@ -570,4 +570,1166 @@ h1, h2, h3 { line-height: 1.4; }
   width: 175px;
   min-height: 75px;
   padding: 12px;
-  border: 1px
+  border: 1px dashed #91a9ff55;
+  border-radius: 14px;
+  background: #101629ed;
+  font-size: .78rem;
+}
+
+.ad-slot strong { display: block; color: var(--purple); }
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: #000a;
+}
+
+.modal.open { display: flex; }
+
+.modal-content {
+  width: min(420px, 100%);
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--panel);
+}
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .track-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .course-layout { grid-template-columns: 1fr; }
+  .lesson-sidebar { position: static; }
+  .lesson-list { max-height: 300px; }
+}
+
+@media (max-width: 650px) {
+  .container { width: calc(100% - 22px); }
+  .nav { padding: 10px 0; }
+  .mobile-menu { display: block; }
+  .nav-links { display: none; width: 100%; }
+  .nav-links.open { display: flex; }
+  .nav-links button { flex: 1; }
+  .hero { padding-top: 30px; }
+  .hero-art { min-height: 260px; }
+  .track-grid, .games-grid { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: 1fr; }
+  .roadmap { grid-template-columns: repeat(2, 1fr); }
+  .ad-slot { position: static; width: auto; margin: 15px 11px; }
+  .lesson-footer-nav button { font-size: .85rem; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#" class="brand" onclick="showPage('home'); return false;">
+      <span class="brand-icon">AX</span>
+      <span>AMIR<span class="gradient">XTNA</span></span>
+    </a>
+
+    <button class="nav-btn mobile-menu" onclick="toggleMenu()">
+      ☰ القائمة
+    </button>
+
+    <nav class="nav-links" id="navLinks">
+      <button class="nav-btn active" data-page="home">الرئيسية</button>
+      <button class="nav-btn" data-page="programming">البرمجة</button>
+      <button class="nav-btn" data-page="games">الألعاب</button>
+      <button class="nav-btn" data-page="about">عن الأكاديمية</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- الرئيسية -->
+<section class="page active" id="home">
+  <div class="container">
+
+    <div class="hero">
+      <div>
+        <div class="eyebrow">تعلم • طبّق • ابنِ مشروعك</div>
+        <h1>
+          تعلّم البرمجة<br>
+          من <span class="gradient">الصفر إلى الإبداع</span>
+        </h1>
+        <p class="lead">
+          مرحبًا بك في AMIRXTNA، أكاديمية تساعدك على تعلم البرمجة
+          خطوة بخطوة، مع أمثلة عملية وتحديات ومشاريع وأساسيات
+          الأمن السيبراني.
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="showPage('programming')">
+            ابدأ رحلة التعلم ←
+          </button>
+          <button class="btn" onclick="showPage('games')">
+            اكتشف الألعاب 🎮
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <span class="float-tag tag-one">PYTHON</span>
+        <span class="float-tag tag-two">BUILD YOUR FUTURE</span>
+        <span class="float-tag tag-three">CYBER LAB</span>
+        <div class="orb"><span>AX</span></div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <b id="statLessons">0</b>
+        <span>درس في النسخة الحالية</span>
+      </div>
+      <div class="stat">
+        <b id="statDone">0</b>
+        <span>درس أكملته</span>
+      </div>
+      <div class="stat">
+        <b>5</b>
+        <span>مسارات تعليمية</span>
+      </div>
+    </div>
+
+    <div class="section-head">
+      <h2>ابدأ بأحد المسارات</h2>
+      <p>اختر المسار الذي تريد تعلمه.</p>
+    </div>
+
+    <div class="track-grid" id="homeTracks"></div>
+
+    <div class="section-head">
+      <h2>كيف تتعلم داخل الأكاديمية؟</h2>
+    </div>
+
+    <div class="roadmap">
+      <div class="roadmap-item">
+        <b>01 — افهم</b>
+        <span>اقرأ الشرح والأمثلة بهدوء.</span>
+      </div>
+      <div class="roadmap-item">
+        <b>02 — جرّب</b>
+        <span>اكتب الكود بنفسك على جهازك.</span>
+      </div>
+      <div class="roadmap-item">
+        <b>03 — اختبر</b>
+        <span>حل الأسئلة واكتشف أخطاءك.</span>
+      </div>
+      <div class="roadmap-item">
+        <b>04 — ابنِ</b>
+        <span>استخدم ما تعلمته في المشاريع.</span>
+      </div>
+    </div>
+
+    <div class="notice">
+      <strong>تذكّر:</strong>
+      الاحتراف يحتاج إلى التدريب المستمر، وبناء مشاريع حقيقية،
+      وتصحيح الأخطاء. الدروس بداية رحلتك وليست بديلًا عن التطبيق.
+    </div>
+
+  </div>
+</section>
+
+<!-- مسارات البرمجة -->
+<section class="page" id="programming">
+  <div class="container">
+    <div class="eyebrow">LEARNING PATHS</div>
+    <h1 class="page-title">مسارات البرمجة</h1>
+    <p class="muted">
+      اختر لغة أو مجالًا، ثم افتح دروسه من القائمة.
+    </p>
+    <div class="track-grid" id="allTracks"></div>
+  </div>
+</section>
+
+<!-- صفحة الدروس -->
+<section class="page" id="course">
+  <div class="container">
+    <div class="back-row">
+      <button class="btn" onclick="showPage('programming')">
+        ← كل المسارات
+      </button>
+      <span class="muted" id="courseProgressText">التقدم: 0%</span>
+    </div>
+
+    <div class="progress-track">
+      <span id="courseProgressBar"></span>
+    </div>
+
+    <div class="section-head">
+      <div>
+        <div class="eyebrow" id="courseEyebrow"></div>
+        <h1 class="page-title" id="courseTitle"></h1>
+        <p class="muted" id="courseDescription"></p>
+      </div>
+    </div>
+
+    <div class="course-layout">
+      <aside class="lesson-sidebar">
+        <div class="sidebar-head">
+          <h3>دروس المسار</h3>
+          <input
+            class="searchbox"
+            id="lessonSearch"
+            placeholder="ابحث عن درس..."
+            oninput="renderLessonList()"
+          >
+          <p class="small" id="lessonCount"></p>
+        </div>
+        <div class="lesson-list" id="lessonList"></div>
+      </aside>
+
+      <article class="lesson-content" id="lessonContent">
+        <h2>اختر درسًا للبدء</h2>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- الألعاب -->
+<section class="page" id="games">
+  <div class="container">
+    <div class="eyebrow">GAMES LAB</div>
+    <h1 class="page-title">مختبر الألعاب</h1>
+    <p class="muted">
+      مساحة لعرض ألعابك الحالية والمشاريع التي ستطوّرها مستقبلًا.
+    </p>
+
+    <div class="games-grid">
+      <article class="card">
+        <div class="game-art">⚔️</div>
+        <h3>THRONE ZERO</h3>
+        <p>
+          مشروع لعبة ثلاثية الأبعاد بعالم خيالي واسع، وقتال وقدرات خاصة.
+        </p>
+        <span class="status">قيد التطوير</span>
+      </article>
+
+      <article class="card">
+        <div class="game-art">🎮</div>
+        <h3>مشروع اللعبة القادمة</h3>
+        <p>
+          أضف هنا وصف لعبتك القادمة، وأهدافها وصورها عندما تصبح جاهزة.
+        </p>
+        <span class="status">فكرة مستقبلية</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- عن الأكاديمية -->
+<section class="page" id="about">
+  <div class="container">
+    <div class="eyebrow">ABOUT AMIRXTNA</div>
+    <h1 class="page-title">نبني المهارة خطوة بخطوة</h1>
+
+    <div class="card">
+      <h3>هدف الأكاديمية</h3>
+      <p>
+        مساعدة المبتدئين على فهم البرمجة بدلًا من حفظ الأوامر فقط.
+        نبدأ بالمبادئ، ثم ننتقل إلى بناء البرامج والمواقع والمشاريع.
+      </p>
+
+      <h3>ماذا ستتعلم؟</h3>
+      <p>
+        Python، وHTML وCSS، وJavaScript، وC++، بالإضافة إلى مبادئ
+        الأمن السيبراني وحماية التطبيقات والتعلم داخل مختبرات آمنة.
+      </p>
+
+      <h3>الأمن السيبراني المسؤول</h3>
+      <p>
+        التدرب الأمني يجب أن يكون على أجهزتك أو مختبرات تدريبية
+        أو أنظمة تملك إذنًا صريحًا لاختبارها. لا تختبر حسابات
+        أو أجهزة الآخرين دون إذن.
+      </p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <span>© <span id="year"></span> AMIRXTNA</span>
+    <span>تعلم اليوم، وابنِ مشروعك غدًا 🚀</span>
+  </div>
+</footer>
+
+<aside class="ad-slot">
+  <strong>مساحة إعلانية</strong>
+  <span>مكان مخصص لإعلان مستقبلي.</span>
+</aside>
+
+<div class="modal" id="resetModal">
+  <div class="modal-content">
+    <h3>إعادة ضبط التقدم؟</h3>
+    <p class="muted">
+      سيُحذف سجل الدروس المكتملة المحفوظ في هذا المتصفح.
+    </p>
+    <button class="btn btn-primary" onclick="confirmReset()">نعم، أعد الضبط</button>
+    <button class="btn" onclick="closeReset()">إلغاء</button>
+  </div>
+</div>
+
+<script>
+/* ====================================
+   بيانات الدروس
+   ==================================== */
+
+function lesson(title, level, goal, explanation, code, lines,
+                task, question, options, answer, why) {
+  return {
+    title, level, goal, explanation, code, lines,
+    task, question, options, answer, why
+  };
+}
+
+const courses = {
+  python: {
+    title: "Python — بايثون",
+    icon: "🐍",
+    tag: "PYTHON",
+    desc: "ابدأ تعلم البرمجة باستخدام لغة مناسبة للمبتدئين.",
+    lessons: [
+      lesson(
+        "أول برنامج",
+        "المستوى 1 · البداية",
+        "فهم طريقة طباعة رسالة.",
+        "البرنامج مجموعة أوامر ينفذها الكمبيوتر. في Python نستخدم print() لعرض النصوص على الشاشة. النص يوضع بين علامتي اقتباس.",
+        'print("Hello, world!")\nprint("أتعلم بايثون")',
+        [
+          "print هي الدالة التي تعرض النتيجة.",
+          "الأقواس تحتوي على ما نريد طباعته.",
+          'النص "Hello, world!" مكتوب بين علامتي اقتباس.',
+          "كل سطر هنا يعرض رسالة مستقلة."
+        ],
+        'اكتب برنامجًا يطبع اسمك ورسالة تقول فيها إنك بدأت تعلم البرمجة.',
+        "ما وظيفة print()؟",
+        ["حذف الملفات", "طباعة قيمة على الشاشة", "إيقاف الكمبيوتر"],
+        1,
+        "تُستخدم print() لعرض نص أو قيمة على الشاشة."
+      ),
+
+      lesson(
+        "المتغيرات",
+        "المستوى 1 · الأساسيات",
+        "تخزين البيانات داخل أسماء.",
+        "المتغير اسم نستخدمه للوصول إلى قيمة. في Python يمكن إنشاء متغير بكتابة اسمه ثم علامة = ثم القيمة. النص يوضع بين اقتباسين، والأعداد يمكن كتابتها من دون اقتباس.",
+        'name = "Amir"\nage = 14\nprint(name)\nprint(age)',
+        [
+          'name متغير يحتوي على النص "Amir".',
+          "age متغير يحتوي على العدد 14.",
+          "علامة = تعطي المتغير قيمة.",
+          "print(name) يعرض محتوى متغير الاسم."
+        ],
+        "أنشئ متغيرًا لاسم لعبتك المفضلة وآخر لعدد ساعات التدريب، ثم اطبع قيمتيهما.",
+        "أي سطر ينشئ متغيرًا اسمه score وقيمته 100؟",
+        ['score == 100', 'score = 100', '100 = score'],
+        1,
+        "نستخدم علامة = لإسناد القيمة إلى المتغير."
+      ),
+
+      lesson(
+        "العمليات الحسابية",
+        "المستوى 1 · الحساب",
+        "إجراء الحسابات الأساسية.",
+        "يدعم Python الجمع + والطرح - والضرب * والقسمة /. أما % فيعطي باقي القسمة. نستخدم هذه العمليات في الآلات الحاسبة والألعاب والبرامج.",
+        'a = 10\nb = 3\nprint(a + b)\nprint(a * b)\nprint(a % b)',
+        [
+          "a يحتوي على العدد 10.",
+          "b يحتوي على العدد 3.",
+          "a + b نتيجته 13.",
+          "a * b نتيجته 30.",
+          "a % b نتيجته 1، لأنه باقي قسمة 10 على 3."
+        ],
+        "أنشئ برنامجًا يجمع عددين من اختيارك ويعرض الناتج.",
+        "ما ناتج 10 % 3؟",
+        ["0", "1", "3"],
+        1,
+        "قسمة 10 على 3 تعطي 3 ويتبقى 1."
+      ),
+
+      lesson(
+        "الشروط",
+        "المستوى 2 · اتخاذ القرار",
+        "تنفيذ أمر حسب تحقق شرط.",
+        "تسمح if للبرنامج باتخاذ قرار. إذا كان الشرط صحيحًا ينفذ الكود الموجود تحتها. ويمكن استعمال else لتنفيذ خيار آخر. المسافات البادئة مهمة في Python.",
+        'age = 18\n\nif age >= 18:\n    print("Adult")\nelse:\n    print("Under 18")',
+        [
+          "age يحتوي على العدد 18.",
+          "الرمز >= يعني أكبر من أو يساوي.",
+          "إذا تحقق الشرط تنفذ الأوامر تحت if.",
+          "else تمثل الخيار الآخر إذا لم يتحقق الشرط."
+        ],
+        "اكتب شرطًا يفحص درجة طالب: إذا كانت الدرجة 60 أو أكثر اطبع ناجح، وإلا اطبع يحتاج إلى تحسين.",
+        "ماذا تفعل else؟",
+        ["تكرر الأوامر", "تقدم خيارًا بديلًا", "تحول النص إلى صورة"],
+        1,
+        "تعمل else عندما لا يتحقق الشرط السابق."
+      ),
+
+      lesson(
+        "الحلقات",
+        "المستوى 2 · التكرار",
+        "تكرار أمر دون كتابته مرات عديدة.",
+        "تستخدم for للتكرار على عناصر أو نطاق من الأعداد. الدالة range(5) تنتج الأعداد من 0 إلى 4، أي خمس مرات.",
+        'for i in range(5):\n    print(i)',
+        [
+          "for تبدأ حلقة التكرار.",
+          "i يستقبل القيمة الحالية في كل مرة.",
+          "range(5) ينتج خمس قيم تبدأ من 0.",
+          "المسافة البادئة تحدد الأمر الذي سيتكرر."
+        ],
+        "اكتب حلقة تطبع الأعداد من 1 إلى 10.",
+        "كم مرة تعمل for i in range(5)؟",
+        ["4 مرات", "5 مرات", "6 مرات"],
+        1,
+        "تنتج range(5) خمس قيم: من 0 إلى 4."
+      )
+    ]
+  },
+
+  web: {
+    title: "HTML + CSS",
+    icon: "🌐",
+    tag: "WEB DESIGN",
+    desc: "تعلم بناء صفحات الويب وتنسيقها.",
+    lessons: [
+      lesson(
+        "هيكل صفحة HTML",
+        "المستوى 1 · HTML",
+        "معرفة الأجزاء الرئيسية لصفحة ويب.",
+        "HTML تحدد محتوى الصفحة ومعناه. نستخدم html لجمع عناصر الصفحة، وhead للمعلومات، وbody للمحتوى الذي يظهر للزائر.",
+        '<!DOCTYPE html>\n<html lang="ar" dir="rtl">\n<head>\n  <meta charset="UTF-8">\n  <title>صفحتي</title>\n</head>\n<body>\n  <h1>مرحبًا!</h1>\n  <p>هذه أول صفحة لي.</p>\n</body>\n</html>',
+        [
+          "DOCTYPE يعرّف المتصفح على نوع المستند.",
+          "html هو العنصر الأساسي للصفحة.",
+          "head يحتوي على معلومات الصفحة.",
+          "body يحتوي على ما يظهر للمستخدم.",
+          "h1 عنوان رئيسي وp فقرة نصية."
+        ],
+        "أنشئ صفحة فيها عنوان باسمك وفقرة تتحدث عن هدفك.",
+        "أين نضع المحتوى المرئي للصفحة عادة؟",
+        ["داخل body", "داخل title فقط", "داخل doctype"],
+        0,
+        "عناصر المحتوى المرئي توضع داخل body."
+      ),
+
+      lesson(
+        "العناوين والروابط",
+        "المستوى 1 · عناصر HTML",
+        "إضافة عناوين وروابط.",
+        "توجد ستة مستويات للعناوين من h1 إلى h6. ونستخدم a لإنشاء رابط، وتحدد الخاصية href عنوان الصفحة التي سينتقل إليها الزائر.",
+        '<h1>موقعي</h1>\n<h2>عنّي</h2>\n<p>تعلم البرمجة ممتع.</p>\n<a href="https://example.com">افتح الموقع</a>',
+        [
+          "h1 عنوان رئيسي.",
+          "h2 عنوان فرعي.",
+          "p لكتابة فقرة.",
+          "a ينشئ رابطًا قابلًا للضغط.",
+          "href يحدد وجهة الرابط."
+        ],
+        "أضف عنوانًا وفقرة ورابطًا إلى صفحة HTML من إنشائك.",
+        "ما الخاصية التي تحدد وجهة الرابط؟",
+        ["src", "href", "color"],
+        1,
+        "تحتوي href على عنوان وجهة الرابط."
+      ),
+
+      lesson(
+        "أساسيات CSS",
+        "المستوى 1 · تنسيق الصفحات",
+        "تغيير شكل عناصر HTML.",
+        "CSS مسؤولة عن مظهر صفحة الويب. يمكن تحديد العنصر الذي تريد تنسيقه ثم كتابة القواعد بين الأقواس المعقوفة. اللون يُكتب في color، والخلفية في background-color.",
+        '<style>\nbody {\n  background-color: #080b16;\n  color: white;\n  font-family: Arial;\n}\n\nh1 {\n  color: cyan;\n}\n</style>\n\n<h1>أهلًا بك</h1>',
+        [
+          "style يحتوي على قواعد CSS.",
+          "body يحدد العنصر الذي سننسقه.",
+          "background-color يغير لون الخلفية.",
+          "color يغير لون النص.",
+          "h1 يستهدف العناوين الرئيسية."
+        ],
+        "اجعل خلفية صفحتك داكنة والعنوان باللون السماوي.",
+        "ما الخاصية التي تغير لون النص؟",
+        ["color", "font-size فقط", "href"],
+        0,
+        "color هي خاصية لون النص."
+      ),
+
+      lesson(
+        "Flexbox",
+        "المستوى 2 · التخطيط",
+        "ترتيب العناصر بجانب بعضها.",
+        "Flexbox أداة في CSS لترتيب العناصر داخل حاوية مرنة. نستخدم display: flex لتفعيلها، وgap لإضافة مسافة بين العناصر.",
+        '<style>\n.cards {\n  display: flex;\n  gap: 16px;\n  flex-wrap: wrap;\n}\n\n.card {\n  padding: 20px;\n  border: 1px solid cyan;\n}\n</style>\n\n<div class="cards">\n  <div class="card">الأول</div>\n  <div class="card">الثاني</div>\n</div>',
+        [
+          "class اسم نستخدمه لاستهداف العناصر في CSS.",
+          "display: flex يفعّل التخطيط المرن.",
+          "gap يحدد المسافة بين العناصر.",
+          "flex-wrap يسمح للعناصر بالانتقال إلى سطر جديد عند الحاجة."
+        ],
+        "أنشئ حاوية فيها ثلاث بطاقات، واجعل المسافات بينها 12 بكسل.",
+        "ما فائدة gap؟",
+        ["إضافة مسافة بين العناصر", "تغيير عنوان الصفحة", "تشغيل JavaScript"],
+        0,
+        "تحدد gap المسافة بين عناصر الحاوية."
+      )
+    ]
+  },
+
+  javascript: {
+    title: "JavaScript — جافاسكربت",
+    icon: "⚡",
+    tag: "JAVASCRIPT",
+    desc: "اجعل صفحات الويب تفاعلية.",
+    lessons: [
+      lesson(
+        "أول برنامج JavaScript",
+        "المستوى 1 · البداية",
+        "طباعة رسالة في أدوات المطور.",
+        "JavaScript تضيف السلوك والتفاعل إلى صفحات الويب. يمكن تجربة console.log في أدوات المطور، أو تضمين JavaScript داخل عنصر script في الصفحة.",
+        '<script>\nconsole.log("Hello, world!");\nconsole.log("أتعلم JavaScript");\n<\/script>',
+        [
+          "script يحتوي على كود JavaScript.",
+          "console.log تعرض قيمة في وحدة التحكم.",
+          "النصوص توضع بين علامات اقتباس.",
+          "الفاصلة المنقوطة اختيارية في كثير من الحالات لكنها شائعة."
+        ],
+        "اطبع ثلاث رسائل مختلفة داخل console.log.",
+        "أين تظهر نتيجة console.log عادة؟",
+        ["في وحدة التحكم", "في اسم الملف", "داخل لوحة المفاتيح"],
+        0,
+        "تظهر النتيجة في وحدة تحكم المتصفح."
+      ),
+
+      lesson(
+        "let وconst",
+        "المستوى 1 · المتغيرات",
+        "إنشاء متغيرات في JavaScript.",
+        "نستخدم let لإنشاء متغير يمكن تغيير قيمته. أما const فتستخدم لقيمة لا يعاد إسنادها إلى متغير آخر. اختر النوع المناسب حسب الحاجة.",
+        'let score = 10;\nscore = 20;\n\nconst player = "Amir";\n\nconsole.log(score);\nconsole.log(player);',
+        [
+          "let تنشئ متغيرًا يمكن إعادة إسناد قيمته.",
+          "score بدأ بقيمة 10 ثم أصبح 20.",
+          "const تنشئ متغيرًا لا يمكن إعادة إسناد قيمته.",
+          "console.log تعرض المتغيرين."
+        ],
+        "أنشئ متغيرًا للعبة وآخر لدرجتك، ثم اعرضهما.",
+        "أي كلمة تناسب متغيرًا لا تريد إعادة إسناد قيمته؟",
+        ["const", "if", "for"],
+        0,
+        "const تمنع إعادة إسناد قيمة جديدة إلى المتغير."
+      ),
+
+      lesson(
+        "الشروط",
+        "المستوى 2 · المنطق",
+        "اتخاذ قرار حسب قيمة.",
+        "تستخدم if لاختبار شرط. إذا كان الشرط صحيحًا ينفذ البرنامج الكود التابع له، وإلا يمكن استخدام else لتنفيذ مسار بديل.",
+        'let score = 85;\n\nif (score >= 60) {\n  console.log("ناجح");\n} else {\n  console.log("حاول مرة أخرى");\n}',
+        [
+          "score يخزن درجة الطالب.",
+          ">= تعني أكبر من أو يساوي.",
+          "الأقواس تحيط بالشرط.",
+          "تنفذ كتلة if إذا كان الشرط صحيحًا.",
+          "else تمثل الخيار البديل."
+        ],
+        "اكتب شرطًا يفحص هل عدد ما أكبر من صفر أم لا.",
+        "ما وظيفة if؟",
+        ["اتخاذ قرار", "تغيير لون الشاشة دائمًا", "حذف المتغير"],
+        0,
+        "تجعل if تنفيذ الكود يعتمد على نتيجة الشرط."
+      ),
+
+      lesson(
+        "التفاعل مع الصفحة",
+        "المستوى 2 · DOM",
+        "تغيير محتوى عنصر HTML.",
+        "يسمح DOM لجافاسكربت بالوصول إلى عناصر HTML. نستخدم getElementById للحصول على عنصر يحمل معرّفًا محددًا، ثم يمكن تغيير textContent.",
+        '<h2 id="message">رسالة قديمة</h2>\n<button onclick="changeMessage()">اضغط هنا</button>\n\n<script>\nfunction changeMessage() {\n  document.getElementById("message").textContent = "تم التغيير!";\n}\n<\/script>',
+        [
+          "id يعرّف عنصرًا باسم message.",
+          "button ينشئ زرًا.",
+          "onclick يستدعي الدالة عند الضغط في هذا المثال.",
+          "getElementById يبحث عن العنصر بواسطة المعرّف.",
+          "textContent يغير النص الذي يظهر داخل العنصر."
+        ],
+        "أنشئ زرًا يغيّر نص فقرة عندما تضغط عليه.",
+        "ما وظيفة getElementById؟",
+        ["البحث عن عنصر بواسطة id", "حفظ ملف Python", "تغيير عنوان الموقع مباشرة"],
+        0,
+        "تستخدم للحصول على عنصر HTML بواسطة id."
+      )
+    ]
+  },
+
+  cpp: {
+    title: "C++ — سي بلس بلس",
+    icon: "⚙️",
+    tag: "C++",
+    desc: "تعلم أساسيات لغة قوية لبناء البرامج.",
+    lessons: [
+      lesson(
+        "أول برنامج C++",
+        "المستوى 1 · البداية",
+        "فهم شكل برنامج C++.",
+        "تستخدم C++ في أنواع متعددة من البرامج والألعاب. تشمل البرامج البسيطة عادة ملف المكتبة iostream، ودالة main التي يبدأ التنفيذ منها.",
+        '#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << "Hello, world!";\n    return 0;\n}',
+        [
+          "include تضمين مكتبة نحتاجها.",
+          "iostream توفر أدوات الإدخال والإخراج.",
+          "main هي نقطة بداية البرنامج.",
+          "cout تطبع النص على الشاشة.",
+          "return 0 تشير عادة إلى انتهاء طبيعي للبرنامج."
+        ],
+        "غيّر النص ليطبع اسمك ورسالة ترحيبية.",
+        "ما وظيفة cout؟",
+        ["طباعة المخرجات", "إنشاء صورة", "حذف البرنامج"],
+        0,
+        "cout تُستخدم لعرض المخرجات."
+      ),
+
+      lesson(
+        "المتغيرات والأنواع",
+        "المستوى 1 · الأساسيات",
+        "تخزين أعداد ونصوص.",
+        "في C++ نكتب نوع المتغير قبل اسمه. int للأعداد الصحيحة، double للأعداد العشرية، وstring للنصوص بعد تضمين المكتبة المناسبة.",
+        '#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    int score = 100;\n    double height = 1.75;\n    string name = "Amir";\n\n    cout << score << endl;\n    cout << name << endl;\n    return 0;\n}',
+        [
+          "int مناسب للأعداد الصحيحة.",
+          "double يسمح بتخزين أعداد عشرية.",
+          "string يخزن نصًا.",
+          "endl ينقل الطباعة إلى سطر جديد.",
+          "يجب إعلان المتغير بنوع مناسب."
+        ],
+        "أنشئ متغيرًا للعمر وآخر لاسم لعبة، ثم اطبعهما.",
+        "أي نوع يناسب العدد الصحيح 42؟",
+        ["int", "string", "bool فقط"],
+        0,
+        "int هو النوع المعتاد للأعداد الصحيحة."
+      ),
+
+      lesson(
+        "الشروط",
+        "المستوى 2 · اتخاذ القرار",
+        "استخدام if وelse.",
+        "تسمح الشروط بتغيير مسار البرنامج حسب القيم. نقارن باستخدام عوامل مثل == للمساواة و> للأكبر من.",
+        '#include <iostream>\nusing namespace std;\n\nint main() {\n    int score = 75;\n\n    if (score >= 60) {\n        cout << "Pass";\n    } else {\n        cout << "Try again";\n    }\n\n    return 0;\n}',
+        [
+          "score يخزن الدرجة.",
+          ">= تختبر إن كانت القيمة أكبر من أو تساوي 60.",
+          "إذا تحقق الشرط ينفذ cout الأول.",
+          "else تنفذ عند عدم تحقق الشرط."
+        ],
+        "اكتب شرطًا يفحص إن كان العدد يساوي 10.",
+        "أي عامل يقارن المساواة في C++؟",
+        ["=", "==", "!="],
+        1,
+        "== للمقارنة، أما = فهي لإسناد قيمة."
+      ),
+
+      lesson(
+        "الحلقات",
+        "المستوى 2 · التكرار",
+        "تكرار الأوامر باستخدام for.",
+        "تستخدم حلقة for عند معرفة طريقة التكرار المطلوبة. تتكون غالبًا من بداية المتغير، وشرط الاستمرار، ثم تحديث المتغير.",
+        '#include <iostream>\nusing namespace std;\n\nint main() {\n    for (int i = 1; i <= 5; i++) {\n        cout << i << endl;\n    }\n    return 0;\n}',
+        [
+          "int i = 1 يبدأ العداد من 1.",
+          "i <= 5 هو شرط استمرار الحلقة.",
+          "i++ يزيد العداد واحدًا في كل مرة.",
+          "تطبع الحلقة الأعداد من 1 إلى 5."
+        ],
+        "عدّل المثال ليطبع الأعداد من 1 إلى 10.",
+        "ماذا تفعل i++؟",
+        ["تنقص العداد", "تزيد العداد واحدًا", "توقف البرنامج"],
+        1,
+        "i++ تزيد قيمة i واحدًا."
+      )
+    ]
+  },
+
+  cyber: {
+    title: "الأمن السيبراني والاختراق الأخلاقي",
+    icon: "🛡️",
+    tag: "CYBER LAB",
+    desc: "تعلم حماية الأنظمة والتدرب الأمني بطريقة قانونية.",
+    lessons: [
+      lesson(
+        "الأخلاقيات والإذن",
+        "المستوى 1 · أساسي",
+        "معرفة حدود الاختبار الأمني.",
+        "الأمن السيبراني يشمل حماية الأنظمة والبيانات واكتشاف نقاط الضعف وإصلاحها. أي اختبار فعلي يجب أن يكون ضمن نطاق مصرح به، مثل جهازك الشخصي أو مختبر تدريبي.",
+        'قبل الاختبار:\n1. حدد النظام الذي تملكه أو لديك إذن لاختباره.\n2. اكتب نطاق الاختبار.\n3. استخدم بيانات تجريبية.\n4. وثّق النتائج والإصلاحات.',
+        [
+          "الإذن يحدد ما يسمح لك باختباره.",
+          "النطاق يوضح الأنظمة المشمولة في الاختبار.",
+          "البيانات التجريبية تقلل احتمال الإضرار بالآخرين.",
+          "التوثيق يساعد على إصلاح المشاكل والتحقق منها."
+        ],
+        "اكتب قواعد مختبر تدريبي محلي ستستخدمه للتعلم، وحدد ما يقع خارج نطاقه.",
+        "أين تتدرب على اختبار أمني عملي؟",
+        ["على حساب شخص آخر دون إذن", "في مختبر تملكه أو لديك إذن لاختباره", "على أي موقع عشوائي"],
+        1,
+        "الاختبار العملي يجب أن يكون ضمن بيئة تملكها أو لديك إذن واضح لاختبارها."
+      ),
+
+      lesson(
+        "أساسيات الشبكات",
+        "المستوى 1 · الشبكات",
+        "فهم مفاهيم IP وDNS والمنافذ.",
+        "عنوان IP يساعد على تحديد الجهاز ضمن شبكة. وDNS يحول أسماء النطاقات مثل example.com إلى معلومات تساعد على الوصول إلى وجهتها. أما المنفذ فيحدد خدمة على الجهاز.",
+        'مفاهيم أساسية:\nIP      = عنوان شبكة\nDNS     = نظام أسماء النطاقات\nPort    = منفذ خدمة\nHTTPS   = اتصال ويب مشفر',
+        [
+          "IP عنوان يستخدم للتواصل عبر الشبكات.",
+          "DNS يساعد على حل اسم النطاق.",
+          "المنفذ يحدد نقطة اتصال لخدمة.",
+          "HTTPS يستخدم تشفير الاتصال بين المتصفح والخادم."
+        ],
+        "اكتب تعريفًا بكلماتك لكل من IP وDNS والمنفذ، ثم أعط مثالًا على استخدام يومي لكل مفهوم.",
+        "ما وظيفة DNS الأساسية؟",
+        ["تحويل أسماء النطاقات إلى معلومات الوصول المناسبة", "زيادة سرعة المعالج", "تغيير كلمة مرور الجهاز"],
+        0,
+        "يساعد DNS على العثور على الوجهة المرتبطة باسم النطاق."
+      ),
+
+      lesson(
+        "حماية كلمات المرور",
+        "المستوى 2 · حماية الحسابات",
+        "تعلم ممارسات أفضل للحسابات.",
+        "استخدم كلمة مرور طويلة وفريدة لكل حساب، واستعن بمدير كلمات مرور موثوق عند الحاجة. تفعيل المصادقة متعددة العوامل يضيف طبقة حماية أخرى. لا تشارك رموز التحقق مع أحد.",
+        'قائمة حماية الحساب:\n- كلمة مرور طويلة وفريدة.\n- تفعيل المصادقة متعددة العوامل.\n- عدم مشاركة رموز التحقق.\n- تحديث البريد ووسائل الاسترداد.\n- الانتباه لرسائل التصيد.',
+        [
+          "كلمة المرور الفريدة تقلل أثر تسرب كلمة مرور من خدمة أخرى.",
+          "المصادقة متعددة العوامل تضيف خطوة تحقق.",
+          "رموز التحقق أسرار مؤقتة لا ينبغي مشاركتها.",
+          "رسائل التصيد قد تحاول خداعك للحصول على بياناتك."
+        ],
+        "ضع قائمة من خمس خطوات لحماية حساب جديد دون كتابة كلمة مرورك الفعلية.",
+        "لماذا من الأفضل استخدام كلمة مرور مختلفة لكل حساب؟",
+        ["لتقليل أثر تسرب واحدة منها", "لأنها تسهل مشاركة كلمات المرور", "لأن كل المواقع تطلب كلمة المرور نفسها"],
+        0,
+        "إذا تسربت كلمة مرور واحدة، فلا يستطيع المهاجم استخدامها تلقائيًا لتسجيل الدخول إلى جميع حساباتك الأخرى."
+      ),
+
+      lesson(
+        "التحقق من المدخلات",
+        "المستوى 2 · أمان التطبيقات",
+        "فهم أهمية التحقق من البيانات.",
+        "يجب ألا يفترض التطبيق أن البيانات القادمة من المستخدم صحيحة أو آمنة. تحقق من النوع والطول والنطاق، وطبّق الصلاحيات في جهة الخادم، واستخدم الأدوات المناسبة للتعامل مع البيانات.",
+        'أمثلة على التحقق:\n- هل الحقل مطلوب؟\n- هل الطول ضمن الحد المسموح؟\n- هل القيمة من النوع المتوقع؟\n- هل يملك المستخدم الصلاحية؟\n- هل تُعرض البيانات كنص آمن؟',
+        [
+          "كل مدخلات المستخدم تحتاج تحققًا مناسبًا.",
+          "تحديد الحد الأقصى للطول يساعد على ضبط البيانات.",
+          "لا تعتمد على إخفاء الأزرار في الواجهة لحماية الصلاحيات.",
+          "يجب تطبيق فحوصات الصلاحيات في المكان الصحيح بالخادم."
+        ],
+        "صمم قائمة تحقق لنموذج تسجيل مستخدم تجريبي، دون جمع كلمات مرور حقيقية.",
+        "أين يجب تطبيق فحوصات الصلاحيات المهمة؟",
+        ["في واجهة الصفحة فقط", "في جهة الخادم أيضًا وبصورة صحيحة", "لا داعي لها"],
+        1,
+        "يجب أن يفرض الخادم الصلاحيات؛ فلا يكفي الاعتماد على الواجهة وحدها."
+      )
+    ]
+  }
+};
+
+/* ====================================
+   إدارة الصفحات والتقدم
+   ==================================== */
+
+const courseKeys = Object.keys(courses);
+const STORAGE_KEY = "amirxtna_progress_v1";
+
+let progress = loadProgress();
+let currentCourse = null;
+let currentLessonIndex = 0;
+
+const descriptions = {
+  python: "أساسيات Python والحساب والشروط والحلقات.",
+  web: "إنشاء صفحات ويب وتنسيقها.",
+  javascript: "بناء صفحات تفاعلية.",
+  cpp: "مبادئ C++ والخوارزميات.",
+  cyber: "أساسيات الأمن السيبراني الدفاعي."
+};
+
+function loadProgress() {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+  } catch (error) {
+    return {};
+  }
+}
+
+function saveProgress() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+  } catch (error) {
+    console.warn("تعذر حفظ التقدم في المتصفح.");
+  }
+  updateStats();
+}
+
+function doneCount(key) {
+  return (progress[key] || []).length;
+}
+
+function isDone(key, index) {
+  return (progress[key] || []).includes(index);
+}
+
+function totalLessons() {
+  return courseKeys.reduce((sum, key) => {
+    return sum + courses[key].lessons.length;
+  }, 0);
+}
+
+function completedLessons() {
+  return courseKeys.reduce((sum, key) => {
+    return sum + doneCount(key);
+  }, 0);
+}
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[char]);
+}
+
+function renderCard(key) {
+  const course = courses[key];
+  const total = course.lessons.length;
+  const done = doneCount(key);
+  const pct = Math.round((done / total) * 100);
+
+  return `
+    <article class="card">
+      <div class="card-icon">${course.icon}</div>
+      <div class="eyebrow">${escapeHTML(course.tag)}</div>
+      <h3>${escapeHTML(course.title)}</h3>
+      <p>${escapeHTML(descriptions[key] || course.desc)}</p>
+      <div class="small">
+        ${total} دروس في هذه النسخة · ${pct}% مكتمل
+      </div>
+      <div class="progress-track">
+        <span style="width:${pct}%"></span>
+      </div>
+      <button class="btn btn-primary" onclick="openCourse('${key}')">
+        افتح المسار ←
+      </button>
+    </article>
+  `;
+}
+
+function initCards() {
+  document.getElementById("homeTracks").innerHTML =
+    ["python", "web", "javascript"].map(renderCard).join("");
+
+  document.getElementById("allTracks").innerHTML =
+    courseKeys.map(renderCard).join("");
+}
+
+function updateStats() {
+  document.getElementById("statLessons").textContent = totalLessons();
+  document.getElementById("statDone").textContent = completedLessons();
+}
+
+function showPage(pageId) {
+  document.querySelectorAll(".page").forEach(page => {
+    page.classList.toggle("active", page.id === pageId);
+  });
+
+  document.querySelectorAll("[data-page]").forEach(button => {
+    button.classList.toggle("active", button.dataset.page === pageId);
+  });
+
+  document.getElementById("navLinks").classList.remove("open");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("open");
+}
+
+document.querySelectorAll("[data-page]").forEach(button => {
+  button.addEventListener("click", () => showPage(button.dataset.page));
+});
+
+function openCourse(key) {
+  currentCourse = key;
+  currentLessonIndex = 0;
+
+  const course = courses[key];
+
+  document.getElementById("courseTitle").textContent = course.title;
+  document.getElementById("courseEyebrow").textContent = course.tag;
+  document.getElementById("courseDescription").textContent = course.desc;
+  document.getElementById("lessonSearch").value = "";
+
+  renderLessonList();
+  updateCourseProgress();
+  showPage("course");
+  renderLesson(0);
+}
+
+function updateCourseProgress() {
+  if (!currentCourse) return;
+
+  const total = courses[currentCourse].lessons.length;
+  const done = doneCount(currentCourse);
+  const pct = Math.round((done / total) * 100);
+
+  document.getElementById("courseProgressText").textContent =
+    `التقدم: ${pct}% (${done}/${total})`;
+
+  document.getElementById("courseProgressBar").style.width = pct + "%";
+}
+
+function renderLessonList() {
+  if (!currentCourse) return;
+
+  const course = courses[currentCourse];
+  const query = document.getElementById("lessonSearch").value
+    .trim()
+    .toLowerCase();
+
+  const shown = course.lessons
+    .map((item, index) => ({ item, index }))
+    .filter(({ item }) => {
+      return (item.title + " " + item.level).toLowerCase().includes(query);
+    });
+
+  document.getElementById("lessonCount").textContent =
+    `${shown.length} من ${course.lessons.length} درس`;
+
+  if (shown.length === 0) {
+    document.getElementById("lessonList").innerHTML =
+      '<p class="muted" style="padding:10px">لا توجد دروس مطابقة للبحث.</p>';
+    return;
+  }
+
+  document.getElementById("lessonList").innerHTML = shown.map(({ item, index }) => `
+    <button class="lesson-item
+      ${index === currentLessonIndex ? "active" : ""}
+      ${isDone(currentCourse, index) ? "done" : ""}"
+      onclick="renderLesson(${index})">
+
+      <span class="lesson-number">
+        ${isDone(currentCourse, index) ? "✓" : index + 1}
+      </span>
+
+      <span class="lesson-meta">
+        <strong>${escapeHTML(item.title)}</strong>
+        <small>${escapeHTML(item.level)}</small>
+      </span>
+    </button>
+  `).join("");
+}
+
+function renderLesson(index) {
+  const course = courses[currentCourse];
+  const item = course.lessons[index];
+
+  currentLessonIndex = index;
+  renderLessonList();
+
+  const done = isDone(currentCourse, index);
+  const steps = item.lines.map(line => `<li>${escapeHTML(line)}</li>`).join("");
+
+  const options = item.options.map((option, i) => `
+    <label class="quiz-option">
+      <input type="radio" name="quizAnswer" value="${i}">
+      <span>${escapeHTML(option)}</span>
+    </label>
+  `).join("");
+
+  document.getElementById("lessonContent").innerHTML = `
+    <div class="eyebrow">
+      الدرس ${index + 1} من ${course.lessons.length}
+    </div>
+
+    <h2>${escapeHTML(item.title)}</h2>
+    <p class="muted">${escapeHTML(item.goal)}</p>
+
+    <div class="pills">
+      <span class="pill cyan">${escapeHTML(item.level)}</span>
+      <span class="pill">${done ? "✓ مكتمل" : "لم يكتمل بعد"}</span>
+    </div>
+
+    <section class="lesson-section">
+      <h3>📘 الشرح</h3>
+      <div class="lesson-text">${escapeHTML(item.explanation)}</div>
+    </section>
+
+    <section class="lesson-section">
+      <h3>💻 مثال عملي</h3>
+
+      <div class="code-wrap">
+        <button class="copy-btn" onclick="copyCode()">نسخ الكود</button>
+        <pre class="code-block" id="lessonCode"></pre>
+      </div>
+
+      <p class="small">
+        شغّل المثال في بيئة اللغة المناسبة، ولا تكتفِ بنسخه؛ غيّر فيه وجربه.
+      </p>
+    </section>
+
+    <section class="lesson-section">
+      <h3>🔍 شرح المثال خطوة بخطوة</h3>
+      <ol class="line-list">${steps}</ol>
+    </section>
+
+    <section class="lesson-section">
+      <div class="task-box">
+        <h3>🧩 تطبيق عملي</h3>
+        <div class="lesson-text">${escapeHTML(item.task)}</div>
+      </div>
+    </section>
+
+    <section class="lesson-section">
+      <div class="quiz-box">
+        <h3>🧠 اختبار قصير</h3>
+        <p>${escapeHTML(item.question)}</p>
+        <div>${options}</div>
+        <button class="btn btn-primary" onclick="checkQuiz()">
+          تحقق من إجابتي
+        </button>
+        <div class="feedback" id="quizFeedback" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <div class="lesson-actions">
+      <button class="btn btn-primary" onclick="toggleComplete()">
+        ${done ? "إلغاء اكتمال الدرس" : "✓ علّم الدرس كمكتمل"}
+      </button>
+      <button class="btn" onclick="openReset()">إعادة ضبط التقدم</button>
+    </div>
+
+    <div class="lesson-footer-nav">
+      <button class="btn" ${index === 0 ? "disabled" : ""}
+        onclick="renderLesson(${index - 1})">
+        ← الدرس السابق
+      </button>
+
+      <button class="btn" ${index === course.lessons.length - 1 ? "disabled" : ""}
+        onclick="renderLesson(${index + 1})">
+        الدرس التالي →
+      </button>
+    </div>
+  `;
+
+  /* نستخدم textContent لعرض الكود كما هو، بدل تفسيره كـ HTML */
+  document.getElementById("lessonCode").textContent = item.code;
+}
+
+function checkQuiz() {
+  const selected = document.querySelector('input[name="quizAnswer"]:checked');
+  const feedback = document.getElementById("quizFeedback");
+  const item = courses[currentCourse].lessons[currentLessonIndex];
+
+  if (!selected) {
+    feedback.style.color = "var(--pink)";
+    feedback.textContent = "اختر إجابة أولًا.";
+    return;
+  }
+
+  if (Number(selected.value) === item.answer) {
+    feedback.style.color = "var(--green)";
+    feedback.textContent = "إجابة صحيحة! " + item.why;
+  } else {
+    feedback.style.color = "var(--pink)";
+    feedback.textContent = "ليست الإجابة الصحيحة. " + item.why;
+  }
+}
+
+function toggleComplete() {
+  if (!progress[currentCourse]) {
+    progress[currentCourse] = [];
+  }
+
+  const index = currentLessonIndex;
+  const list = progress[currentCourse];
+  const position = list.indexOf(index);
+
+  if (position >= 0) {
+    list.splice(position, 1);
+  } else {
+    list.push(index);
+  }
+
+  list.sort((a, b) => a - b);
+
+  saveProgress();
+  initCards();
+  updateCourseProgress();
+  renderLesson(index);
+}
+
+async function copyCode() {
+  const code = document.getElementById("lessonCode").textContent;
+  const button = document.querySelector(".copy-btn");
+
+  try {
+    await navigator.clipboard.writeText(code);
+    button.textContent = "تم النسخ ✓";
+  } catch (error) {
+    const textarea = document.createElement("textarea");
+    textarea.value = code;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    textarea.remove();
+    button.textContent = "تم النسخ ✓";
+  }
+
+  setTimeout(() => {
+    if (button.isConnected) button.textContent = "نسخ الكود";
+  }, 1400);
+}
+
+function openReset() {
+  document.getElementById("resetModal").classList.add("open");
+}
+
+function closeReset() {
+  document.getElementById("resetModal").classList.remove("open");
+}
+
+function confirmReset() {
+  progress = {};
+  saveProgress();
+  initCards();
+
+  if (currentCourse) {
+    renderLessonList();
+    updateCourseProgress();
+    renderLesson(currentLessonIndex);
+  }
+
+  closeReset();
+}
+
+document.getElementById("resetModal").addEventListener("click", event => {
+  if (event.target.id === "resetModal") closeReset();
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* تشغيل أولي للموقع */
+initCards();
+updateStats();
+</script>
+
+</body>
+</html>
