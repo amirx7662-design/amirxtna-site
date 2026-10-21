@@ -1,178 +1,189 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#070b16">
-<title>AMIRXTNA | أكاديمية البرمجة</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#070713">
+<title>AMIRXTNA ∞ | Cosmic Coding Academy</title>
 <style>
 :root{
---bg:#070b16;--panel:#10182a;--panel2:#151f35;
---line:#263653;--text:#eef4ff;--muted:#a4b3ce;
---cyan:#56f0df;--purple:#a78bfa;--green:#66e3a2;
---red:#ff7185;--yellow:#ffd166
+--bg:#070713;--panel:#101329;--panel2:#171d38;--line:#30365b;
+--text:#f2f5ff;--muted:#a6b0d0;--cyan:#62fff0;
+--purple:#b58cff;--pink:#ff72d2;--green:#72f0aa;
+--red:#ff758c;--yellow:#ffd166
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
 body{
-margin:0;background:radial-gradient(ellipse at 80% -10%,#1a2850 0,transparent 42%),radial-gradient(ellipse at 0 30%,#102c36 0,transparent 35%),var(--bg);
-color:var(--text);font-family:Tahoma,Arial,sans-serif;line-height:1.8
+margin:0;background:radial-gradient(ellipse at 50% -15%,#32215c 0,transparent 40%),
+radial-gradient(ellipse at 0 45%,#07343c 0,transparent 35%),var(--bg);
+color:var(--text);font:16px/1.8 Tahoma,Arial,sans-serif;overflow-x:hidden
 }
 button,input,textarea,select{font:inherit}
 button{cursor:pointer}
-.wrap{max-width:1240px;width:calc(100% - 32px);margin:auto}
-.topbar{position:sticky;top:0;z-index:20;background:#070b16ef;border-bottom:1px solid var(--line);backdrop-filter:blur(16px)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;flex-wrap:wrap}
-.brand{font-size:22px;font-weight:900;letter-spacing:1px}
+a{color:inherit}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+#universe{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:.75}
+.wrap{width:min(1240px,calc(100% - 30px));margin:auto}
+.topbar{position:sticky;top:0;z-index:50;background:#080a17eF;border-bottom:1px solid #363252;backdrop-filter:blur(20px)}
+.nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 0}
+.brand{font-size:23px;font-weight:1000;text-decoration:none;letter-spacing:.6px}
 .brand b{color:var(--cyan)}
-.navlinks{display:flex;gap:8px;flex-wrap:wrap}
-.navlinks a{color:var(--muted);text-decoration:none;padding:7px 10px;border-radius:10px}
-.navlinks a:hover{background:var(--panel2);color:var(--cyan)}
-.pill{border:1px solid #2e5662;background:#102c36;color:var(--cyan);border-radius:999px;padding:5px 12px;font-size:12px}
-.hero{padding:66px 0 40px;display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
-.eyebrow{color:var(--cyan);font-weight:bold}
-.hero h1{font-size:clamp(34px,5vw,62px);line-height:1.2;margin:12px 0}
-.gradient{background:linear-gradient(90deg,var(--cyan),#9eafff,var(--purple));color:transparent;background-clip:text}
-.hero p{color:var(--muted);font-size:18px;max-width:700px}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
-.btn{border:1px solid var(--line);background:var(--panel2);color:var(--text);padding:10px 16px;border-radius:12px;font-weight:bold}
-.btn.primary{background:var(--cyan);color:#051217;border-color:var(--cyan)}
-.btn:hover{transform:translateY(-1px);filter:brightness(1.08)}
-.hero-card,.panel,.course,.lesson-card,.stat{background:linear-gradient(145deg,#121c31,#0c1323);border:1px solid var(--line);border-radius:20px}
-.hero-card{padding:22px;box-shadow:0 20px 80px #0005}
-.code-top{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;border-bottom:1px solid var(--line);padding-bottom:10px}
-.code-window{direction:ltr;text-align:left;font:14px/1.9 Consolas,monospace;white-space:pre-wrap;color:#d8e5ff}
-.code-window .kw{color:#c4a7ff}
-.code-window .str{color:#8de7c0}
-.code-window .fn{color:#69d8ff}
-.dots{display:flex;gap:5px}
-.dots i{width:9px;height:9px;border-radius:50%;background:#ff7185}
-.dots i:nth-child(2){background:#ffd166}
-.dots i:nth-child(3){background:#66e3a2}
-.section{padding:38px 0}
-.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;flex-wrap:wrap;margin-bottom:20px}
-.section h2{font-size:clamp(25px,3vw,36px);margin:0}
-.muted{color:var(--muted)}
+.navlinks{display:flex;gap:6px;flex-wrap:wrap}
+.navlinks a{padding:7px 10px;border-radius:10px;text-decoration:none;color:var(--muted);font-size:14px}
+.navlinks a:hover{color:var(--cyan);background:#ffffff0b}
+.pill{display:inline-flex;border:1px solid #3a526e;background:#10242f;color:var(--cyan);padding:4px 11px;border-radius:99px;font-size:12px}
+.hero{min-height:470px;padding:65px 0 45px;display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
+.eyebrow{color:var(--cyan);font-size:13px;font-weight:bold;letter-spacing:.5px}
+h1{font-size:clamp(36px,5vw,68px);line-height:1.18;margin:14px 0}
+.gradient{background:linear-gradient(100deg,var(--cyan),#9fafff,var(--pink));background-clip:text;color:transparent}
+.hero p{font-size:17px;color:var(--muted);max-width:690px}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin:18px 0}
+.btn{border:1px solid var(--line);border-radius:12px;padding:10px 15px;background:#171d38;color:var(--text);font-weight:bold;transition:.2s}
+.btn:hover{transform:translateY(-2px);border-color:var(--cyan);box-shadow:0 8px 25px #62fff018}
+.btn.primary{background:var(--cyan);color:#041116;border-color:var(--cyan)}
+.btn.danger{border-color:#743447;color:#ffafbd}
+.hero-card,.panel,.course,.stat,.project,.neo-panel{
+background:linear-gradient(145deg,#151a35ed,#0b1021ed);
+border:1px solid var(--line);border-radius:20px
+}
+.hero-card{padding:22px;position:relative;overflow:hidden;box-shadow:0 25px 80px #0005}
+.hero-card:after{content:"";position:absolute;width:170px;height:170px;left:-70px;top:-70px;border-radius:50%;background:#b58cff28;filter:blur(15px);pointer-events:none}
+.code-top{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:10px;color:var(--muted);font-size:13px}
+.dots{display:flex;gap:5px}.dots i{width:9px;height:9px;border-radius:50%;background:var(--red)}.dots i:nth-child(2){background:var(--yellow)}.dots i:nth-child(3){background:var(--green)}
+.code-window{direction:ltr;text-align:left;white-space:pre-wrap;font:14px/2 Consolas,monospace;color:#cfe6ff;padding:15px 0}
+.progressbar{height:8px;border-radius:20px;overflow:hidden;background:#242a46}
+.progressbar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));transition:width .35s}
+.section{padding:35px 0}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+h2{font-size:clamp(25px,3vw,36px);line-height:1.3;margin:2px 0}
+h3{margin:0 0 10px}
+.muted,.notice{color:var(--muted)}
+.notice{font-size:12px}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.stat{padding:18px}
-.stat strong{display:block;font-size:28px;color:var(--cyan)}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.course{padding:20px;display:flex;flex-direction:column;gap:10px}
-.course .emoji{font-size:30px}
-.course h3{margin:0}
-.course p{color:var(--muted);margin:0;flex:1}
-.tags{display:flex;gap:7px;flex-wrap:wrap}
-.tag{font-size:12px;border:1px solid var(--line);color:var(--muted);padding:3px 9px;border-radius:999px}
-.progressbar{height:8px;border-radius:99px;background:#222f48;overflow:hidden}
-.progressbar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--purple));transition:width .3s}
-.layout{display:grid;grid-template-columns:290px 1fr;gap:18px;align-items:start}
-.panel{padding:18px}
-.panel h3{margin:0 0 12px}
-.lesson-list{display:grid;gap:8px;max-height:650px;overflow:auto}
-.lesson-btn{display:flex;align-items:center;gap:9px;text-align:right;background:#0c1425;border:1px solid var(--line);color:var(--text);border-radius:12px;padding:10px;width:100%}
+.stat{padding:17px}
+.stat strong{display:block;color:var(--cyan);font-size:28px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.course{padding:20px;display:flex;flex-direction:column;gap:10px;transition:.25s}
+.course:hover,.project:hover,.stat:hover{transform:translateY(-4px);border-color:#62fff0;box-shadow:0 14px 35px #62fff014}
+.course p,.project p{color:var(--muted);margin:0 0 8px;flex:1}
+.emoji{font-size:32px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin:3px 0 8px}
+.tag{font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:2px 9px}
+.layout{display:grid;grid-template-columns:300px minmax(0,1fr);gap:16px;align-items:start}
+.panel{padding:18px;min-width:0}
+.search,input[type=text]{background:#080e20;color:var(--text);border:1px solid var(--line);padding:10px 12px;border-radius:11px;max-width:100%}
+.search{width:min(100%,330px)}
+.lesson-list{display:grid;gap:7px;max-height:570px;overflow:auto;margin-top:14px}
+.lesson-btn{width:100%;display:flex;gap:9px;align-items:center;text-align:right;background:#0b1022;color:var(--text);border:1px solid var(--line);border-radius:11px;padding:9px}
 .lesson-btn.active{border-color:var(--cyan);background:#12303a}
+.lesson-btn small{display:block;color:var(--muted);font-size:11px}
 .lesson-btn .num{color:var(--cyan);font-family:Consolas,monospace}
-.lesson-btn small{display:block;color:var(--muted)}
-.lesson-content h3{font-size:25px;margin:0}
-.lesson-content h4{margin-bottom:4px;color:var(--cyan)}
+.lesson-content h3{font-size:25px;margin:5px 0}
+.lesson-content h4{color:var(--cyan);margin:16px 0 5px}
 .lesson-content p,.lesson-content li{color:#d3def0}
-.lesson-content pre{direction:ltr;text-align:left;white-space:pre-wrap;background:#050913;border:1px solid var(--line);padding:15px;border-radius:12px;overflow:auto;color:#a6f3d1;font:14px/1.7 Consolas,monospace}
-.exercise{background:#0a1221;border:1px dashed #3b5873;border-radius:16px;padding:16px;margin-top:18px}
-.editor{width:100%;min-height:180px;resize:vertical;direction:ltr;text-align:left;background:#050913;color:#dff9f1;border:1px solid #30435f;border-radius:12px;padding:14px;font:14px/1.7 Consolas,monospace}
-.output{direction:ltr;text-align:left;white-space:pre-wrap;min-height:60px;background:#050913;border:1px solid var(--line);border-radius:12px;padding:12px;font:14px/1.6 Consolas,monospace;color:var(--green)}
-.quiz-option{display:block;margin:8px 0;padding:10px;border:1px solid var(--line);border-radius:10px;background:#0b1425}
+.lesson-content pre{direction:ltr;text-align:left;white-space:pre-wrap;overflow:auto;background:#050813;border:1px solid var(--line);padding:14px;border-radius:12px;color:#a6f3d1;font:13px/1.8 Consolas,monospace}
+.exercise{background:#0a1020;border:1px dashed #435575;border-radius:16px;padding:15px;margin-top:18px}
+.editor,.challenge-code{width:100%;min-height:155px;resize:vertical;direction:ltr;text-align:left;background:#050813;color:#dff9f1;border:1px solid #30435f;border-radius:12px;padding:13px;font:13px/1.8 Consolas,monospace}
+.output{direction:ltr;text-align:left;white-space:pre-wrap;min-height:55px;background:#050813;border:1px solid var(--line);border-radius:12px;padding:12px;color:var(--green);font:13px/1.7 Consolas,monospace}
+.quiz-option{display:block;margin:7px 0;padding:10px;border:1px solid var(--line);border-radius:10px;background:#0b1425;cursor:pointer}
 .quiz-option input{margin-left:8px}
-.feedback{margin-top:10px;padding:10px;border-radius:10px;display:none}
+.feedback{display:none;padding:10px;border-radius:10px;margin-top:8px}
 .feedback.good{display:block;background:#123527;color:#8af0b7}
 .feedback.bad{display:block;background:#3b1b29;color:#ffb3bf}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.tabs{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}
 .tab{padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:#0b1425;color:var(--muted)}
-.tab.active{color:var(--cyan);border-color:var(--cyan)}
-.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.project{padding:17px;border:1px solid var(--line);border-radius:16px;background:#0d1526}
-.project h3{margin:0}
-.project p{color:var(--muted)}
-.footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);margin-top:35px}
-.notice{font-size:13px;color:var(--muted)}
+.tab.active{color:var(--cyan);border-color:var(--cyan);background:#10303a}
+.project-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.project{padding:15px;min-width:0;transition:.2s}
+.project h3{overflow-wrap:anywhere}
+.neo-panel{padding:20px;margin:15px 0;position:relative;overflow:hidden}
+.neo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:15px 0}
+.neo-stat{padding:15px;background:#090e20;border:1px solid var(--line);border-radius:14px}
+.neo-stat strong{display:block;color:var(--cyan);font-size:25px}
+.neo-message{min-height:30px;color:var(--cyan);padding-top:8px}
+.ad-slot{min-height:120px;padding:20px;text-align:center;border:1px dashed #59668a;border-radius:16px;background:linear-gradient(120deg,#15172b,#0a1624)}
+.ad-slot small{display:block;color:var(--muted)}
+.footer{border-top:1px solid var(--line);padding:25px 0;margin-top:30px;color:var(--muted)}
+#toast{position:fixed;bottom:20px;left:20px;max-width:calc(100% - 40px);z-index:100;display:none;padding:12px 17px;background:#12303a;border:1px solid var(--cyan);border-radius:12px;box-shadow:0 10px 30px #0008}
+#globalError{display:none;position:fixed;bottom:10px;right:10px;left:10px;background:#3b1b29;color:#fff;padding:12px;border-radius:10px;z-index:200;white-space:pre-wrap}
 .hidden{display:none!important}
-.search{width:min(100%,320px);background:#0b1425;border:1px solid var(--line);color:var(--text);padding:10px 12px;border-radius:10px}
-#toast{position:fixed;bottom:20px;left:20px;background:#12303a;border:1px solid var(--cyan);color:var(--text);padding:12px 18px;border-radius:12px;z-index:50;display:none;box-shadow:0 10px 30px #0008}
-@media(max-width:850px){
-.hero{grid-template-columns:1fr;padding-top:42px}
-.grid,.project-grid{grid-template-columns:repeat(2,1fr)}
-.layout{grid-template-columns:1fr}
-.lesson-list{max-height:300px}
-.stats{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:560px){
-.grid,.project-grid{grid-template-columns:1fr}
-.wrap{width:calc(100% - 22px)}
-.nav{align-items:flex-start}
-.hero{padding-top:30px}
-.stat strong{font-size:23px}
-}
+@keyframes pulse{0%,100%{box-shadow:0 0 10px #62fff010}50%{box-shadow:0 0 28px #62fff025}}
+.hero-card{animation:pulse 5s ease-in-out infinite}
+@media(max-width:850px){.hero{grid-template-columns:1fr;padding-top:35px}.grid,.project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.layout{grid-template-columns:1fr}.lesson-list{max-height:280px}.stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.grid,.project-grid,.neo-grid{grid-template-columns:1fr}.wrap{width:calc(100% - 22px)}.nav{align-items:flex-start}.hero{padding-top:25px}.stat strong{font-size:23px}.brand{font-size:20px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
 <body>
+<canvas id="universe" aria-hidden="true"></canvas>
+
 <header class="topbar">
 <div class="wrap nav">
-<a class="brand" href="#home" style="text-decoration:none;color:var(--text)">AMIRX<b>TNA</b> <span class="pill">ACADEMY</span></a>
-<nav class="navlinks">
-<a href="#paths">المسارات</a>
-<a href="#academy">الأكاديمية</a>
-<a href="#lab">مختبر الكود</a>
-<a href="#projects">المشاريع</a>
+<a class="brand" href="#home">AMIRX<b>TNA</b> <span class="pill">∞ COSMIC</span></a>
+<nav class="navlinks" aria-label="التنقل الرئيسي">
+<a href="#paths">المسارات</a><a href="#academy">الأكاديمية</a>
+<a href="#lab">المختبر</a><a href="#neo-center">التحديات</a>
+<a href="#projects">المشاريع</a><a href="#neo-ads">الإعلانات</a>
 </nav>
-<span class="pill">تعلم • طبّق • ابنِ</span>
+<span class="pill">LEARN • BUILD • CREATE</span>
 </div>
 </header>
 
-<main id="home" class="wrap">
+<main class="wrap" id="home">
 <section class="hero">
 <div>
-<div class="eyebrow">من الصفر إلى بناء مشاريعك بنفسك</div>
-<h1>لا تحفظ الكود.<br><span class="gradient">افهمه واكتبه بنفسك.</span></h1>
-<p>أكاديمية عربية للتعلم خطوة بخطوة: دروس، أمثلة، تمارين، اختبارات، مختبر عملي، ومشاريع تساعدك على الانتقال من المبتدئ إلى بناء برامج حقيقية.</p>
+<div class="eyebrow">من الصفر إلى صناعة مشاريعك</div>
+<h1>مستقبلك البرمجي<br><span class="gradient">يبدأ من هنا.</span></h1>
+<p>أكاديمية عربية ومختبر عملي ومركز مشاريع وتحديات. تعلّم خطوة بخطوة، جرّب الكود، واكتب حلولك بنفسك.</p>
 <div class="actions">
-<a class="btn primary" href="#academy" style="text-decoration:none">ابدأ أول درس ←</a>
-<a class="btn" href="#paths" style="text-decoration:none">اكتشف المسارات</a>
+<a class="btn primary" href="#academy" style="text-decoration:none">ابدأ التعلّم ←</a>
+<a class="btn" href="#lab" style="text-decoration:none">افتح المختبر</a>
+<a class="btn" href="#neo-center" style="text-decoration:none">تحدي اليوم ⚡</a>
 </div>
-<p class="notice">التقدم محفوظ على هذا المتصفح. إتقان البرمجة يحتاج ممارسة مستمرة، وليس مشاهدة الدروس فقط.</p>
+<p class="notice">يُحفظ تقدمك ومشاريعك محليًا في هذا المتصفح. المزامنة والحسابات والخدمات السحابية تحتاج خادمًا.</p>
 </div>
 <div class="hero-card">
-<div class="code-top"><span>first_program.py</span><span class="dots"><i></i><i></i><i></i></span></div>
-<div class="code-window"><span class="kw">name</span> = <span class="str">"Amir"</span><br><span class="kw">skills</span> = [<span class="str">"think"</span>, <span class="str">"build"</span>, <span class="str">"learn"</span>]<br><br><span class="kw">for</span> skill <span class="kw">in</span> skills:<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="fn">print</span>(name, skill)<br><br><span class="kw">print</span>(<span class="str">"Your journey starts now!"</span>)</div>
-<div class="progressbar"><span style="width:24%"></span></div>
-<p class="muted">كل محترف بدأ بسطر واحد، ثم واصل التدريب.</p>
+<div class="code-top"><span>future.py</span><span class="dots"><i></i><i></i><i></i></span></div>
+<div class="code-window">name = "AMIRXTNA"
+skills = ["learn", "build", "create"]
+
+for skill in skills:
+    print(name, skill)
+
+print("Your future starts now!")</div>
+<div class="progressbar"><span id="heroProgress" style="width:0"></span></div>
+<p class="muted">كل سطر جديد يقربك من مشروعك القادم.</p>
 </div>
 </section>
 
 <section class="section">
 <div class="stats">
-<div class="stat"><span class="muted">المسارات</span><strong>5</strong><span class="notice">من الأساسيات للتخصص</span></div>
-<div class="stat"><span class="muted">مراحل التعلم</span><strong>6</strong><span class="notice">تدرج واضح</span></div>
-<div class="stat"><span class="muted">تقدمك</span><strong id="statDone">0</strong><span class="notice">دروس مكتملة</span></div>
-<div class="stat"><span class="muted">نقاطك</span><strong id="statPoints">0</strong><span class="notice">اكسبها بالتطبيق</span></div>
+<div class="stat"><span class="muted">الدروس</span><strong id="statLessons">19</strong><span class="notice">دروس عملية</span></div>
+<div class="stat"><span class="muted">الدروس المكتملة</span><strong id="statDone">0</strong><span class="notice">تقدمك الشخصي</span></div>
+<div class="stat"><span class="muted">النقاط</span><strong id="statPoints">0</strong><span class="notice">من التعلّم والتحديات</span></div>
+<div class="stat"><span class="muted">المشاريع المحفوظة</span><strong id="statProjects">0</strong><span class="notice">في هذا المتصفح</span></div>
 </div>
 </section>
 
 <section id="paths" class="section">
-<div class="section-head"><div><div class="eyebrow">اختر طريقك</div><h2>مسارات البرمجة</h2></div><p class="muted">ابدأ بمسار واحد ثم توسع.</p></div>
+<div class="section-head"><div><div class="eyebrow">CHOOSE YOUR PATH</div><h2>مسارات البرمجة</h2></div><p class="muted">اختر المسار وابدأ من أول درس فيه.</p></div>
 <div class="grid">
-<article class="course"><div class="emoji">🐍</div><h3>Python من الصفر</h3><p>المتغيرات، الشروط، الحلقات، الدوال، الملفات، البرمجة الكائنية، ومشاريع عملية.</p><div class="tags"><span class="tag">مبتدئ</span><span class="tag">أتمتة</span><span class="tag">منطق</span></div><button class="btn primary" onclick="chooseTrack('python')">ابدأ Python</button></article>
-<article class="course"><div class="emoji">🌐</div><h3>تطوير الويب</h3><p>HTML لبناء الصفحة، CSS لتنسيقها، وJavaScript لإضافة التفاعل، ثم مشاريع مواقع.</p><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div><button class="btn" onclick="chooseTrack('web')">ابدأ الويب</button></article>
-<article class="course"><div class="emoji">⚡</div><h3>JavaScript</h3><p>المتغيرات والدوال والمصفوفات والكائنات وDOM والطلبات غير المتزامنة.</p><div class="tags"><span class="tag">تفاعل</span><span class="tag">واجهات</span></div><button class="btn" onclick="chooseTrack('js')">ابدأ JavaScript</button></article>
-<article class="course"><div class="emoji">⚙️</div><h3>C++</h3><p>الأنواع، الشروط، الحلقات، الدوال، المؤشرات ومبادئ إدارة الذاكرة.</p><div class="tags"><span class="tag">أساسيات قوية</span><span class="tag">أداء</span></div><button class="btn" onclick="chooseTrack('cpp')">ابدأ C++</button></article>
-<article class="course"><div class="emoji">🛡️</div><h3>الأمن السيبراني الأخلاقي</h3><p>أساسيات الشبكات وLinux وHTTP، ثم مختبرات آمنة على أنظمة تملكها أو لديك إذن لاختبارها.</p><div class="tags"><span class="tag">شبكات</span><span class="tag">دفاع</span><span class="tag">أخلاقي</span></div><button class="btn" onclick="chooseTrack('security')">ابدأ الأمن</button></article>
-<article class="course"><div class="emoji">🧠</div><h3>حل المشكلات والخوارزميات</h3><p>تعلم تقسيم المسألة، كتابة خطوات الحل، اختبار الحالات وتحسين الكفاءة.</p><div class="tags"><span class="tag">تفكير منطقي</span><span class="tag">تحديات</span></div><button class="btn" onclick="chooseTrack('logic')">ابدأ التفكير</button></article>
+<article class="course"><div class="emoji">🐍</div><h3>Python من الصفر</h3><p>المتغيرات والشروط والحلقات والدوال والملفات والمشاريع.</p><div class="tags"><span class="tag">مبتدئ</span><span class="tag">أتمتة</span></div><button class="btn primary" data-track="python">ابدأ Python</button></article>
+<article class="course"><div class="emoji">🌐</div><h3>تطوير الويب</h3><p>تعلم بنية HTML وتنسيق CSS وبناء صفحات الويب.</p><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span></div><button class="btn" data-track="web">ابدأ الويب</button></article>
+<article class="course"><div class="emoji">⚡</div><h3>JavaScript</h3><p>أضف التفاعل والمنطق والأحداث إلى صفحاتك.</p><div class="tags"><span class="tag">واجهات</span><span class="tag">تفاعل</span></div><button class="btn" data-track="js">ابدأ JavaScript</button></article>
+<article class="course"><div class="emoji">⚙️</div><h3>C++</h3><p>الأنواع والشروط والحلقات والدوال وأساسيات الأداء.</p><div class="tags"><span class="tag">أساسيات</span><span class="tag">أداء</span></div><button class="btn" data-track="cpp">ابدأ C++</button></article>
+<article class="course"><div class="emoji">🛡️</div><h3>الأمن السيبراني الأخلاقي</h3><p>الشبكات وHTTP وLinux والتعلم داخل مختبرات مصرح بها.</p><div class="tags"><span class="tag">دفاع</span><span class="tag">شبكات</span></div><button class="btn" data-track="security">ابدأ الأمن</button></article>
+<article class="course"><div class="emoji">🧠</div><h3>الخوارزميات</h3><p>حل المشكلات وتقسيمها إلى خطوات واختبار الحلول.</p><div class="tags"><span class="tag">تفكير</span><span class="tag">منطق</span></div><button class="btn" data-track="logic">ابدأ التفكير</button></article>
 </div>
 </section>
 
 <section id="academy" class="section">
-<div class="section-head"><div><div class="eyebrow">تعلم بالممارسة</div><h2>الأكاديمية التفاعلية</h2></div><input id="lessonSearch" class="search" placeholder="ابحث عن درس..." oninput="renderLessons()"></div>
+<div class="section-head"><div><div class="eyebrow">LEARN BY DOING</div><h2>الأكاديمية التفاعلية</h2></div><input id="lessonSearch" class="search" placeholder="ابحث عن درس أو لغة..."></div>
 <div class="layout">
 <aside class="panel">
-<h3>خريطة الدروس <span class="pill" id="lessonCount">0 درس</span></h3>
+<h3>خريطة الدروس <span class="pill" id="lessonCount">19 درسًا</span></h3>
 <div class="progressbar"><span id="courseProgress"></span></div>
 <p class="notice" id="progressLabel">ابدأ أول درس</p>
 <div id="lessonList" class="lesson-list"></div>
@@ -182,412 +193,549 @@ button{cursor:pointer}
 </section>
 
 <section id="lab" class="section">
-<div class="section-head"><div><div class="eyebrow">جرّب بنفسك</div><h2>مختبر الكود</h2></div><span class="pill">HTML / CSS / JavaScript</span></div>
+<div class="section-head"><div><div class="eyebrow">LIVE PLAYGROUND</div><h2>مختبر الكود</h2></div><span class="pill">HTML / CSS / JavaScript</span></div>
 <div class="panel">
-<p class="muted">اكتب HTML أو CSS أو JavaScript، ثم اضغط تشغيل لمعاينة النتيجة. هذا المختبر يشغّل كود الواجهة داخل معاينة معزولة؛ لا يشغّل Python أو C++.</p>
+<p class="muted">اكتب الكود وشاهد النتيجة في معاينة معزولة. لا يُشغّل هذا المختبر Python أو C++ مباشرة.</p>
 <div class="tabs">
-<button class="tab active" onclick="setLabTab('html',this)">HTML</button>
-<button class="tab" onclick="setLabTab('css',this)">CSS</button>
-<button class="tab" onclick="setLabTab('js',this)">JavaScript</button>
+<button class="tab active" data-mode="html">HTML</button>
+<button class="tab" data-mode="css">CSS</button>
+<button class="tab" data-mode="js">JavaScript</button>
 </div>
-<textarea id="labEditor" class="editor" spellcheck="false"></textarea>
-<div class="actions"><button class="btn primary" onclick="runLab()">▶ تشغيل الكود</button><button class="btn" onclick="resetLab()">إعادة المثال</button></div>
-<h4>المعاينة</h4>
-<iframe id="labFrame" title="معاينة الكود" sandbox="allow-scripts" style="width:100%;height:260px;background:white;border:1px solid var(--line);border-radius:12px"></iframe>
-<p class="notice">تنبيه: لا تضع كلمات مرور أو بيانات خاصة في المختبر. لا يوجد هنا خادم لحفظ بيانات الزوار أو تشغيل لغات الخادم.</p>
+<textarea id="labEditor" class="editor" spellcheck="false" aria-label="محرر الكود"></textarea>
+<div class="actions">
+<button class="btn primary" id="runLab">▶ تشغيل</button>
+<button class="btn" id="resetLab">إعادة المثال</button>
+<button class="btn" id="copyLab">نسخ الكود</button>
+<button class="btn" id="downloadLab">تنزيل HTML</button>
+</div>
+<h3>المعاينة</h3>
+<iframe id="labFrame" title="معاينة الكود" sandbox="allow-scripts" style="width:100%;height:300px;background:white;border:1px solid var(--line);border-radius:12px"></iframe>
+<p class="notice">المعاينة معزولة نسبيًا عن الصفحة الرئيسية. لا تدخل كلمات مرور أو بيانات حساسة في الكود الذي تختبره.</p>
+</div>
+</section>
+
+<section id="neo-center" class="section">
+<div class="section-head"><div><div class="eyebrow">DAILY MISSIONS</div><h2>مركز التحديات الكوني</h2></div><span class="pill">نقاط + إنجازات</span></div>
+<div class="neo-panel">
+<h3 id="challengeTitle">تحدي الحساب الذكي</h3>
+<p id="challengeDescription" class="muted">اكتب كودًا يحسب مجموع الأعداد من 1 إلى 10.</p>
+<textarea id="challengeCode" class="challenge-code" spellcheck="false">total = 0
+for number in range(1, 11):
+    total += number
+print(total)</textarea>
+<div class="actions">
+<button class="btn primary" id="checkChallenge">تحقق من الحل</button>
+<button class="btn" id="nextChallenge">تحدٍ آخر</button>
+<button class="btn" id="saveChallenge">حفظ المحاولة</button>
+</div>
+<div class="neo-message" id="challengeMessage" aria-live="polite"></div>
+<p class="notice">الفحص المبدئي يفحص شكل الكود فقط؛ لا ينفذ Python فعليًا ولا يضمن صحة جميع الحلول.</p>
+</div>
+<div class="neo-grid">
+<div class="neo-stat"><span class="muted">التحديات المنجزة</span><strong id="neoSolved">0</strong></div>
+<div class="neo-stat"><span class="muted">نقاط التحديات</span><strong id="neoPoints">0</strong></div>
+<div class="neo-stat"><span class="muted">مستوى التعلّم</span><strong id="neoLevel">1</strong></div>
 </div>
 </section>
 
 <section id="projects" class="section">
-<div class="section-head"><div><div class="eyebrow">من متعلم إلى صانع</div><h2>مشاريع تبني بها خبرتك</h2></div></div>
-<div class="project-grid">
-<article class="project"><h3>🟢 مبتدئ: آلة حاسبة</h3><p>اقرأ رقمين، نفّذ الجمع والطرح والضرب والقسمة، وتعامل مع القسمة على صفر.</p><span class="tag">المهارات: متغيرات + شروط + دوال</span></article>
-<article class="project"><h3>🟡 متوسط: قائمة مهام</h3><p>أضف مهامًا واحذفها وعلّم المكتمل منها واحفظها محليًا في المتصفح.</p><span class="tag">المهارات: قوائم + DOM + تخزين</span></article>
-<article class="project"><h3>🟠 متوسط: لعبة تخمين</h3><p>أنشئ رقمًا عشوائيًا، أعطِ تلميحات، وعدّ المحاولات ثم أضف مستويات صعوبة.</p><span class="tag">المهارات: حلقات + شروط + عشوائية</span></article>
-<article class="project"><h3>🔵 متقدم: واجهة API</h3><p>اجلب بيانات عامة، اعرض حالات التحميل والأخطاء، وتحقق من صحة البيانات.</p><span class="tag">المهارات: HTTP + JSON + async</span></article>
-<article class="project"><h3>🟣 متقدم: نظام تسجيل</h3><p>صمّم واجهة دخول تعليمية، ثم تعلّم لماذا يجب تنفيذ المصادقة الحقيقية على خادم آمن.</p><span class="tag">المهارات: تصميم + أمان</span></article>
-<article class="project"><h3>🔴 مشروع التخرج</h3><p>ابنِ تطبيقًا من اختيارك، واكتب وصفًا للمشكلة، واختبارات، وتعليمات تشغيل، وملف README.</p><span class="tag">المهارات: دورة تطوير كاملة</span></article>
+<div class="section-head"><div><div class="eyebrow">BUILD YOUR FUTURE</div><h2>المشاريع والأعمال</h2></div></div>
+<div class="grid">
+<article class="course"><div class="emoji">🧮</div><h3>آلة حاسبة</h3><p>أنشئ حاسبة تتعامل مع الجمع والطرح والضرب والقسمة والأخطاء.</p><button class="btn" data-project-template="calculator">استخدم فكرة المشروع</button></article>
+<article class="course"><div class="emoji">✅</div><h3>قائمة مهام</h3><p>أضف المهام واحذفها واحفظها محليًا.</p><button class="btn" data-project-template="todo">استخدم فكرة المشروع</button></article>
+<article class="course"><div class="emoji">🎲</div><h3>لعبة تخمين</h3><p>رقم عشوائي وتلميحات وعدّاد للمحاولات.</p><button class="btn" data-project-template="guess">استخدم فكرة المشروع</button></article>
+<article class="course"><div class="emoji">🌍</div><h3>واجهة API</h3><p>تعلم جلب البيانات والتعامل مع حالات التحميل والأخطاء.</p><button class="btn" data-project-template="api">استخدم فكرة المشروع</button></article>
+<article class="course"><div class="emoji">🔐</div><h3>واجهة تسجيل تعليمية</h3><p>افهم الفرق بين الواجهة والمصادقة الآمنة على الخادم.</p><button class="btn" data-project-template="login">استخدم فكرة المشروع</button></article>
+<article class="course"><div class="emoji">🚀</div><h3>مشروعك الخاص</h3><p>اكتب فكرتك وكودك واحفظه في خزنة المشاريع.</p><a class="btn" href="#projectVault" style="text-decoration:none;text-align:center">افتح خزنة المشاريع</a></article>
+</div>
+</section>
+
+<section id="projectVault" class="section">
+<div class="section-head"><div><div class="eyebrow">MY WORKSPACE</div><h2>خزنة المشاريع</h2></div></div>
+<div class="neo-panel">
+<label for="projectName">اسم المشروع</label>
+<p><input id="projectName" class="search" type="text" placeholder="مثال: موقعي الأول"></p>
+<label for="projectCode">الكود أو وصف المشروع</label>
+<textarea id="projectCode" class="editor" placeholder="اكتب كود المشروع أو فكرته هنا..."></textarea>
+<div class="actions">
+<button class="btn primary" id="saveProject">حفظ المشروع</button>
+<button class="btn" id="exportProjects">تصدير JSON</button>
+<button class="btn" id="clearProjects">حذف جميع المشاريع</button>
+</div>
+<div id="projectList" class="project-grid"></div>
+</div>
+</section>
+
+<section id="neo-ads" class="section">
+<div class="section-head"><div><div class="eyebrow">AMIRXTNA PARTNERS</div><h2>المركز الإعلاني</h2></div><span class="pill">مساحة الإعلانات</span></div>
+<div class="neo-panel">
+<div class="ad-slot">
+<small>مساحة إعلانية</small>
+<h3 id="adTitle">مساحة مخصصة لشركاء AMIRXTNA</h3>
+<p id="adText" class="muted">يمكنك تخصيص هذه المساحة لعرض إعلانك أو إعلان راعٍ.</p>
+</div>
+<h3 style="margin-top:20px">تخصيص الإعلان التجريبي</h3>
+<label for="adTitleInput">عنوان الإعلان</label>
+<p><input id="adTitleInput" class="search" type="text" placeholder="عنوان الإعلان"></p>
+<label for="adTextInput">وصف الإعلان</label>
+<p><textarea id="adTextInput" class="editor" style="min-height:90px" placeholder="وصف الإعلان"></textarea></p>
+<div class="actions">
+<button class="btn primary" id="updateAd">تحديث الإعلان</button>
+<button class="btn" id="resetAd">استعادة الافتراضي</button>
+</div>
+<p class="notice">هذه واجهة إعلانية قابلة للتخصيص. عرض إعلانات حقيقية أو تحقيق دخل منها يحتاج إلى مزود إعلانات وإعداداته.</p>
 </div>
 </section>
 
 <section class="section">
 <div class="panel">
-<h2>خطة الطريق إلى الاستقلال في كتابة الكود</h2>
+<div class="eyebrow">YOUR ROADMAP</div>
+<h2>كيف تصبح قادرًا على كتابة الكود بنفسك؟</h2>
 <ol>
-<li><b>افهم:</b> اشرح المفهوم بكلماتك قبل كتابة الحل.</li>
-<li><b>توقّع:</b> اكتب ما تتوقع أن يظهر قبل التشغيل.</li>
-<li><b>اكتب من الذاكرة:</b> أغلق المثال وحاول كتابة الحل بنفسك.</li>
-<li><b>اختبر:</b> جرّب الحالة العادية والحالة الفارغة والحالات غير المتوقعة.</li>
-<li><b>أصلح:</b> اقرأ رسالة الخطأ وحدد السطر والسبب بدل حذف الكود عشوائيًا.</li>
-<li><b>ابنِ:</b> غيّر المشروع وأضف ميزة لم تُشرح لك بعد.</li>
+<li>افهم الفكرة واشرحها بكلماتك.</li>
+<li>توقّع نتيجة الكود قبل تشغيله.</li>
+<li>اكتب الحل من الذاكرة بدل النسخ فقط.</li>
+<li>اختبر الحالات المختلفة واقرأ رسائل الخطأ.</li>
+<li>غيّر المثال وأضف ميزة جديدة من عندك.</li>
+<li>ابنِ مشروعًا كاملًا ووثّق طريقة تشغيله.</li>
 </ol>
-<p class="notice">لا تتجاوز الدرس إذا لم تستطع حل التمرين من دون نسخ. ارجع للمثال، افهمه، ثم أعد المحاولة.</p>
+<p class="notice">التقدم محفوظ في متصفحك الحالي. خذ وقتك في التدريب، فالإتقان يحتاج ممارسة فعلية.</p>
 </div>
 </section>
 </main>
 
 <footer class="footer">
 <div class="wrap">
-<b>AMIRXTNA Academy</b>
-<p>تعلم البرمجة بالممارسة وبناء المشاريع.</p>
-<p class="notice">نسخة تعليمية تعمل كملف HTML واحد. الدروس والتقدم محفوظان محليًا على جهازك؛ الحسابات والمزامنة بين الأجهزة وتشغيل Python/C++ الحقيقي تحتاج خادمًا أو بيئة تشغيل منفصلة.</p>
+<b>AMIRXTNA ∞ COSMIC ACADEMY</b>
+<p>تعلّم. جرّب. ابنِ شيئًا جديدًا.</p>
+<p class="notice">ملف HTML مستقل. الحفظ محلي، ولا يوجد اتصال بخادم أو خدمة ذكاء اصطناعي أو شبكة إعلانات تلقائيًا.</p>
 </div>
 </footer>
-<div id="toast"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+<div id="globalError" role="alert"></div>
 
 <script>
-const lessons = [
-{
-id:"p1",track:"python",stage:1,title:"1. ما هي البرمجة؟",time:"10 دقائق",
-goal:"فهم فكرة الأوامر والمخرجات",
-explain:"البرنامج سلسلة تعليمات ينفذها الحاسوب. في Python نستخدم print() لعرض نص أو قيمة. النص يوضع بين علامتي اقتباس.",
-code:'print("مرحباً بالعالم!")\nprint("أنا أتعلم البرمجة")',
-task:"اكتب أمرين print: الأول يعرض اسمك المستعار، والثاني يعرض سبب رغبتك في تعلم البرمجة.",
-starter:"# اكتب الحل هنا\n",
-tests:[{q:"ما وظيفة print() في Python؟",opts:["حذف ملف","عرض قيمة أو نص","إيقاف الحاسوب"],a:1,why:"print() تعرض القيمة في المخرجات."}]
-},
-{
-id:"p2",track:"python",stage:1,title:"2. المتغيرات",time:"15 دقيقة",
-goal:"حفظ القيم بأسماء واضحة",
-explain:"المتغير اسم يشير إلى قيمة. لا تحتاج كتابة نوع المتغير في Python غالبًا. استخدم أسماء تصف المعنى، مثل age أو score.",
-code:'name = "Amir"\nage = 13\nprint(name)\nprint(age)',
-task:"أنشئ متغيرًا باسم city ومتغيرًا باسم points، وضع لكل منهما قيمة ثم اطبعهما.",
-starter:'city = ""\npoints = 0\n# اطبع المتغيرين',
-tests:[{q:"أي سطر يضع القيمة 10 في المتغير score؟",opts:["10 = score","score = 10","print = score 10"],a:1,why:"نكتب اسم المتغير ثم علامة = ثم القيمة."}]
-},
-{
-id:"p3",track:"python",stage:1,title:"3. العمليات الحسابية",time:"15 دقيقة",
-goal:"إجراء الحسابات داخل البرنامج",
-explain:"العمليات الأساسية: + للجمع، - للطرح، * للضرب، / للقسمة، // للقسمة الصحيحة، % للباقي، ** للأس. الأقواس تحدد ترتيب العمليات.",
-code:"a = 12\nb = 5\nprint(a + b)\nprint(a % b)\nprint(a ** 2)",
-task:"أنشئ متغيرين، ثم اطبع مجموعهما وفرقَهما وحاصل ضربهما. جرّب أرقامًا مختلفة.",
-starter:"a = 8\nb = 3\n# اكتب عمليات الجمع والطرح والضرب هنا",
-tests:[{q:"ما نتيجة 17 % 5؟",opts:["3","2","5"],a:1,why:"17 = 5×3 + 2، لذا الباقي 2."}]
-},
-{
-id:"p4",track:"python",stage:1,title:"4. النصوص والأرقام",time:"15 دقيقة",
-goal:"التعامل مع str و int و float",
-explain:"النص نوع str، والعدد الصحيح int، والعشري float. input() يرجع نصًا، لذا حوّله إلى int أو float عند الحاجة.",
-code:'age_text = "14"\nage = int(age_text)\nprint(age + 1)\nprint(type(age))',
-task:'حوّل النص "25" إلى عدد صحيح ثم أضف إليه 5 واطبع النتيجة.',
-starter:'number_text = "25"\n# حوّله إلى int ثم أضف 5',
-tests:[{q:'ما نوع القيمة "42" بين علامتي اقتباس؟',opts:["int","str","bool"],a:1,why:"أي قيمة نصية بين اقتباسين هي str."}]
-},
-{
-id:"p5",track:"python",stage:1,title:"5. الشروط if",time:"20 دقيقة",
-goal:"جعل البرنامج يتخذ قرارًا",
-explain:"تسمح if بتنفيذ كود عند تحقق شرط. استخدم == للمقارنة، و != للاختلاف، و > و < للمقارنات. انتبه للمسافة البادئة في Python.",
-code:'score = 75\nif score >= 60:\n    print("ناجح")\nelse:\n    print("حاول مرة أخرى")',
-task:'أنشئ متغيرًا باسم temperature. إذا كان أكبر من 30 اطبع "حار"، وإلا اطبع "معتدل".',
-starter:"temperature = 32\n# اكتب if و else",
-tests:[{q:"ما رمز المقارنة للتأكد من تساوي قيمتين؟",opts:["=","==","=>"],a:1,why:"= للإسناد، أما == فللمقارنة."}]
-},
-{
-id:"p6",track:"python",stage:2,title:"6. الحلقات for و while",time:"25 دقيقة",
-goal:"تكرار الأوامر بلا نسخها",
-explain:"تكرر for الأوامر على عناصر أو نطاق، وتكرر while ما دام الشرط صحيحًا. تأكد أن حلقة while يمكن أن تتوقف.",
-code:"for number in range(1, 6):\n    print(number)\n\ncount = 3\nwhile count > 0:\n    print(count)\n    count -= 1",
-task:"استخدم for لطباعة الأرقام من 1 إلى 10، ثم اطبع مربّع كل رقم.",
-starter:"for number in range(1, 11):\n    # اطبع الرقم ومربعه",
-tests:[{q:"كم مرة تعمل range(1, 4) داخل for؟",opts:["3 مرات","4 مرات","مرتين"],a:0,why:"النهاية 4 غير مشمولة، فتكون القيم 1 و2 و3."}]
-},
-{
-id:"p7",track:"python",stage:2,title:"7. القوائم",time:"20 دقيقة",
-goal:"تخزين عدة قيم في مجموعة",
-explain:"القائمة list تحفظ عدة عناصر بترتيب. يبدأ الفهرس من صفر. استخدم append لإضافة عنصر، وlen لمعرفة العدد.",
-code:'games = ["Minecraft", "Chess"]\ngames.append("Python")\nprint(games[0])\nprint(len(games))',
-task:"أنشئ قائمة من ثلاثة أشياء تريد تعلمها، أضف عنصرًا رابعًا، واطبع القائمة.",
-starter:'goals = ["Python", "HTML", "CSS"]\n# أضف عنصرًا واطبع القائمة',
-tests:[{q:"ما فهرس أول عنصر في القائمة؟",opts:["0","1","-1 دائمًا"],a:0,why:"فهرسة القوائم تبدأ من الصفر."}]
-},
-{
-id:"p8",track:"python",stage:2,title:"8. الدوال",time:"25 دقيقة",
-goal:"تقسيم البرنامج إلى أجزاء قابلة لإعادة الاستخدام",
-explain:"نعرّف الدالة باستخدام def. يمكنها استقبال معاملات وإرجاع نتيجة باستخدام return. اسم الدالة يوضح ما تفعله.",
-code:"def add(a, b):\n    return a + b\n\nresult = add(4, 6)\nprint(result)",
-task:"اكتب دالة square(number) تعيد مربع العدد، ثم استدعها مع 7 واطبع النتيجة.",
-starter:"def square(number):\n    # أعد مربع العدد\n    pass\n\nprint(square(7))",
-tests:[{q:"ما وظيفة return داخل الدالة؟",opts:["إرجاع نتيجة","طباعة دائمًا فقط","إنشاء حلقة"],a:0,why:"return يعيد القيمة إلى مكان استدعاء الدالة."}]
-},
-{
-id:"p9",track:"python",stage:2,title:"9. القواميس والمجموعات",time:"25 دقيقة",
-goal:"تخزين بيانات بمفاتيح",
-explain:"القاموس dict يخزن أزواج مفتاح وقيمة. استخدم مفتاحًا واضحًا للوصول إلى المعلومة. set يحتفظ بالقيم الفريدة.",
-code:'player = {"name": "Amir", "level": 2}\nprint(player["name"])\nplayer["level"] += 1\nprint(player)',
-task:"أنشئ قاموسًا لكتاب يحتوي title و author و pages، ثم اطبع اسم المؤلف.",
-starter:'book = {"title": "رحلة", "author": "كاتب", "pages": 120}\n# اطبع المؤلف',
-tests:[{q:"كيف نصل إلى قيمة name في القاموس user؟",opts:["user.name فقط",'user["name"]',"user( name )"],a:1,why:"نستخدم المفتاح بين أقواس مربعة."}]
-},
-{
-id:"p10",track:"python",stage:2,title:"10. التعامل مع الأخطاء",time:"20 دقيقة",
-goal:"قراءة الأخطاء وتصحيحها",
-explain:"رسالة الخطأ تساعدك على تحديد نوع المشكلة ومكانها. try/except يعالج أخطاء متوقعة، لكن لا تستخدمه لإخفاء كل الأخطاء بلا فهم.",
-code:'text = "abc"\ntry:\n    number = int(text)\nexcept ValueError:\n    print("أدخل أرقاماً فقط")',
-task:'اكتب تحويلًا آمنًا للنص "hello" إلى عدد، واطبع رسالة مفهومة إذا فشل التحويل.',
-starter:'text = "hello"\n# استخدم try و except ValueError',
-tests:[{q:"ماذا تفعل عند ظهور خطأ غير مفهوم؟",opts:["تحذف البرنامج كله","تقرأ نوع الخطأ والسطر وتعيد إنتاج المشكلة","تتجاهله دائمًا"],a:1,why:"التشخيص المنظم جزء أساسي من البرمجة."}]
-},
-{
-id:"p11",track:"python",stage:3,title:"11. الملفات",time:"25 دقيقة",
-goal:"قراءة وكتابة بيانات في ملف",
-explain:"يمكن فتح الملفات باستخدام with open. حدّد الترميز UTF-8 للنصوص، واختر وضع القراءة أو الكتابة أو الإضافة بعناية.",
-code:'with open("notes.txt", "w", encoding="utf-8") as file:\n    file.write("أول ملف لي")\n\nwith open("notes.txt", encoding="utf-8") as file:\n    print(file.read())',
-task:"اكتب برنامجًا يحفظ قائمة مهام نصية في ملف ثم يقرأها ويطبع محتواه.",
-starter:"# استخدم with open لكتابة ثم قراءة ملف",
-tests:[{q:"ما فائدة with open؟",opts:["إغلاق الملف تلقائيًا عند انتهاء الكتلة","تشفير الملف تلقائيًا","حذف الملف بعد القراءة"],a:0,why:"تضمن إدارة الملف وإغلاقه بصورة سليمة."}]
-},
-{
-id:"p12",track:"python",stage:3,title:"12. البرمجة الكائنية",time:"30 دقيقة",
-goal:"تمثيل الأشياء باستخدام classes",
-explain:"class قالب لإنشاء كائنات. يحتوي الكائن على بيانات وطرق. ابدأ بفهم __init__ و self ثم تدرب على نماذج بسيطة.",
-code:'class Player:\n    def __init__(self, name, health):\n        self.name = name\n        self.health = health\n\nhero = Player("Amir", 100)\nprint(hero.name, hero.health)',
-task:"أنشئ class باسم Book يستقبل العنوان وعدد الصفحات، ثم أنشئ كائنًا واطبع بياناته.",
-starter:"class Book:\n    def __init__(self, title, pages):\n        # خزّن البيانات\n        pass",
-tests:[{q:"ما الذي يمثله self غالبًا؟",opts:["الكائن الحالي","اسم الملف","نوع الحلقة"],a:0,why:"self يشير إلى الكائن الذي تُستدعى عليه الطريقة."}]
-},
-{
-id:"p13",track:"python",stage:4,title:"13. المكتبات والبيئات",time:"25 دقيقة",
-goal:"استخدام مكتبات خارجية بأمان",
-explain:"المكتبات توفر وظائف جاهزة. استخدم بيئة افتراضية لكل مشروع، واقرأ وثائق المكتبة ومصدرها قبل تثبيتها.",
-code:'import random\nsecret = random.randint(1, 10)\nprint("تم إنشاء رقم عشوائي")',
-task:"استخدم مكتبة random لتوليد رقم بين 1 و 6، كما لو كان رمية نرد.",
-starter:"import random\n# ولّد رقمًا من 1 إلى 6",
-tests:[{q:"لماذا نستخدم بيئة افتراضية؟",opts:["لعزل اعتماديات المشروع","لزيادة حجم الشاشة","لإخفاء الأخطاء"],a:0,why:"تساعد على عزل حزم كل مشروع عن الآخر."}]
-},
-{
-id:"p14",track:"logic",stage:1,title:"14. التفكير الخوارزمي",time:"20 دقيقة",
-goal:"تحويل المشكلة إلى خطوات",
-explain:"الخوارزمية خطوات محددة لحل مشكلة. قسّم المشكلة إلى مدخلات ومعالجة ومخرجات، ثم اختبر حالات بسيطة وحدودية قبل كتابة الكود.",
-code:"# وصف الحل قبل البرمجة:\n# 1. اقرأ عددين\n# 2. اجمعهما\n# 3. اعرض الناتج\na, b = 3, 4\nprint(a + b)",
-task:"اكتب خطوات حل مسألة إيجاد أكبر عدد من ثلاثة أعداد، ثم حوّلها إلى كود Python.",
-starter:"# اكتب خوارزمية أكبر عدد من ثلاثة أعداد",
-tests:[{q:"ما أول خطوة مفيدة عند مواجهة مسألة جديدة؟",opts:["كتابة كود عشوائي","فهم المدخلات والمخرجات وتقسيم المشكلة","نسخ حل جاهز"],a:1,why:"تحديد المطلوب يجعل الحل أوضح وأسهل للاختبار."}]
-},
-{
-id:"w1",track:"web",stage:1,title:"15. أول صفحة HTML",time:"20 دقيقة",
-goal:"بناء هيكل صفحة ويب",
-explain:"HTML يحدد بنية المحتوى باستخدام عناصر مثل h1 و p و a. العناصر ليست لغة برمجة عامة لكنها أساس الويب.",
-code:'<!doctype html>\n<html lang="ar" dir="rtl">\n<head><meta charset="UTF-8"><title>صفحتي</title></head>\n<body><h1>أهلاً!</h1><p>هذه صفحتي الأولى.</p></body>\n</html>',
-task:"أنشئ عنوانًا وفقرة ورابطًا إلى موقع تختاره. جرّب الكود في مختبر الويب.",
-starter:'<h1>عنوان صفحتي</h1>\n<p>اكتب نبذة عن نفسك.</p>\n<a href="https://example.com">رابط تجريبي</a>',
-tests:[{q:"ما وظيفة HTML؟",opts:["هيكلة محتوى الصفحة","إدارة قواعد البيانات وحدها","استبدال نظام التشغيل"],a:0,why:"HTML يصف بنية ومحتوى صفحة الويب."}]
-},
-{
-id:"w2",track:"web",stage:1,title:"16. تنسيق CSS",time:"25 دقيقة",
-goal:"تصميم صفحات واضحة",
-explain:"CSS يتحكم في الألوان والمسافات والتخطيط والخطوط. يمكن اختيار العناصر عبر المحددات مثل body و .card و #title.",
-code:"body { font-family: Arial; background: #101827; color: white; }\n.card { padding: 20px; border-radius: 14px; }",
-task:"صمّم بطاقة بها عنوان وفقرة، وأضف لون خلفية ومسافة داخلية وحواف مستديرة.",
-starter:"body { font-family: Arial; }\n.card { /* أضف التنسيق هنا */ }",
-tests:[{q:"ما الذي يحدده CSS؟",opts:["تنسيق المظهر","تخزين الملفات على الخادم تلقائيًا","ترجمة Python"],a:0,why:"CSS مسؤول عن العرض والتنسيق."}]
-},
-{
-id:"j1",track:"js",stage:1,title:"17. أساسيات JavaScript",time:"25 دقيقة",
-goal:"إضافة منطق وتفاعل للصفحة",
-explain:"JavaScript لغة برمجة تستخدم في المتصفح والخادم. استخدم const للقيمة التي لا يعاد إسنادها و let للمتغير الذي قد تتغير قيمته.",
-code:'const name = "Amir";\nlet points = 0;\npoints += 10;\nconsole.log(name, points);',
-task:"أنشئ متغيرًا للاسم وآخر للنقاط، أضف 5 نقاط، ثم اعرض النتيجة في console.",
-starter:'const name = "متعلم";\nlet points = 0;\n// أكمل التمرين',
-tests:[{q:"متى تستخدم const؟",opts:["عندما لا تريد إعادة إسناد المتغير","لعمل حلقة دائمًا","لإنشاء ملف"],a:0,why:"const يمنع إعادة إسناد المتغير، مع ملاحظة أن محتوى الكائنات يمكن أن يتغير."}]
-},
-{
-id:"c1",track:"cpp",stage:1,title:"18. مقدمة C++",time:"25 دقيقة",
-goal:"فهم شكل برنامج C++",
-explain:"تحتاج C++ إلى مترجم لتشغيل الكود. يبدأ البرنامج عادة من main، وتستخدم cout للطباعة وتحتاج إلى تضمين iostream.",
-code:'#include <iostream>\nusing namespace std;\nint main() {\n    cout << "Hello, world!" << endl;\n    return 0;\n}',
-task:"عدّل رسالة Hello, world! لتطبع جملة من اختيارك، ثم شغّلها بمترجم C++ محلي.",
-starter:'#include <iostream>\nusing namespace std;\nint main() {\n    // اكتب أمر الطباعة\n    return 0;\n}',
-tests:[{q:"ما وظيفة main في برنامج C++ تقليدي؟",opts:["نقطة بداية التنفيذ","تعريف لون النص","تنزيل المكتبات تلقائيًا"],a:0,why:"main هي نقطة الدخول المعتادة للبرنامج."}]
-},
-{
-id:"s1",track:"security",stage:1,title:"19. أساسيات الأمن الأخلاقي",time:"25 دقيقة",
-goal:"التعلم داخل نطاق مصرح به",
-explain:"ابدأ بالشبكات وHTTP وLinux وإدارة كلمات المرور والتحديثات. اختبر فقط أجهزة أو مختبرات تملكها أو لديك تصريح واضح لاختبارها.",
-code:"# خطة تعلم آمنة\n1. تعلّم أساسيات الشبكات\n2. افهم HTTP و DNS\n3. استخدم مختبرًا تدريبيًا قانونيًا\n4. وثّق النتائج وأصلح الثغرات",
-task:"اكتب قائمة من خمس خطوات لتأمين حسابك أو جهازك، مع توضيح سبب كل خطوة.",
-starter:"# اكتب قائمة تدابير أمنية دفاعية",
-tests:[{q:"متى يجوز اختبار نظام؟",opts:["أي نظام على الإنترنت","نظام تملكه أو لديك إذن صريح لاختباره","نظام صديق دون علمه"],a:1,why:"يجب أن يكون الاختبار داخل نطاق مصرح به."}]
+"use strict";
+
+/* ===== أدوات عامة وحفظ آمن ===== */
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+
+function readStore(key, fallback) {
+  try {
+    const v = localStorage.getItem(key);
+    return v === null ? fallback : JSON.parse(v);
+  } catch {
+    return fallback;
+  }
 }
+function writeStore(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+    return true;
+  } catch {
+    toast("تعذر الحفظ. قد يكون التخزين محظورًا أو ممتلئًا.");
+    return false;
+  }
+}
+function toast(message) {
+  const el = $("#toast");
+  el.textContent = message;
+  el.style.display = "block";
+  clearTimeout(window._amirToastTimer);
+  window._amirToastTimer = setTimeout(() => el.style.display = "none", 2800);
+}
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, c => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  })[c]);
+}
+function downloadText(filename, content, type="text/plain;charset=utf-8") {
+  const blob = new Blob([content], {type});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.append(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+async function copyText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    toast("تم نسخ النص.");
+  } catch {
+    const area = document.createElement("textarea");
+    area.value = text;
+    document.body.append(area);
+    area.select();
+    const ok = document.execCommand("copy");
+    area.remove();
+    toast(ok ? "تم نسخ النص." : "تعذر النسخ؛ حدّد الكود وانسخه يدويًا.");
+  }
+}
+
+/* ===== الأكاديمية: الدروس ===== */
+const lessons = [
+{id:"p1",track:"python",stage:1,title:"1. ما هي البرمجة؟",time:"10 دقائق",goal:"فهم الأوامر والمخرجات",explain:"البرنامج سلسلة تعليمات ينفذها الحاسوب. تستخدم print() لعرض نص أو قيمة. ضع النص بين علامتي اقتباس.",code:'print("مرحباً بالعالم!")\nprint("أنا أتعلم البرمجة")',task:"اكتب أمرين print: الأول يعرض اسمك المستعار، والثاني يعرض سبب رغبتك في تعلم البرمجة.",starter:'# اكتب الحل هنا\n',tests:[{q:"ما وظيفة print()؟",opts:["حذف ملف","عرض قيمة أو نص","إيقاف الحاسوب"],a:1,why:"print() تعرض القيمة في المخرجات."}]},
+{id:"p2",track:"python",stage:1,title:"2. المتغيرات",time:"15 دقيقة",goal:"حفظ القيم بأسماء واضحة",explain:"المتغير اسم يشير إلى قيمة. استخدم أسماء تصف المعنى، مثل age أو score.",code:'name = "Amir"\nage = 13\nprint(name)\nprint(age)',task:"أنشئ متغير city ومتغير points، وضع لكل منهما قيمة ثم اطبعهما.",starter:'city = ""\npoints = 0\n# اطبع المتغيرين',tests:[{q:"أي سطر يضع القيمة 10 في score؟",opts:["10 = score","score = 10","print = score 10"],a:1,why:"اسم المتغير يأتي قبل علامة =."}]},
+{id:"p3",track:"python",stage:1,title:"3. العمليات الحسابية",time:"15 دقيقة",goal:"إجراء الحسابات",explain:"العمليات الأساسية: + للجمع، - للطرح، * للضرب، / للقسمة، // للقسمة الصحيحة، % للباقي، ** للأس. الأقواس تحدد ترتيب العمليات.",code:"a = 12\nb = 5\nprint(a + b)\nprint(a % b)\nprint(a ** 2)",task:"أنشئ متغيرين واطبع مجموعهما وفرقَهما وحاصل ضربهما.",starter:"a = 8\nb = 3\n# اكتب الجمع والطرح والضرب",tests:[{q:"ما نتيجة 17 % 5؟",opts:["3","2","5"],a:1,why:"الباقي بعد قسمة 17 على 5 هو 2."}]},
+{id:"p4",track:"python",stage:1,title:"4. النصوص والأرقام",time:"15 دقيقة",goal:"فهم أنواع البيانات",explain:"النص str، والعدد الصحيح int، والعشري float. الدالة input() تعيد نصًا؛ حوّله إلى رقم عند الحاجة.",code:'age_text = "14"\nage = int(age_text)\nprint(age + 1)\nprint(type(age))',task:'حوّل النص "25" إلى عدد صحيح ثم أضف 5.',starter:'number_text = "25"\n# حوّله إلى int ثم أضف 5',tests:[{q:'ما نوع "42"؟',opts:["int","str","bool"],a:1,why:"القيمة بين الاقتباسين نص من نوع str."}]},
+{id:"p5",track:"python",stage:1,title:"5. الشروط if",time:"20 دقيقة",goal:"جعل البرنامج يتخذ قرارًا",explain:"تسمح if بتنفيذ كود عند تحقق شرط. استخدم == للمقارنة، و!= للاختلاف، وانتبه للمسافة البادئة.",code:'score = 75\nif score >= 60:\n    print("ناجح")\nelse:\n    print("حاول مرة أخرى")',task:'إذا كانت temperature أكبر من 30 اطبع "حار"، وإلا اطبع "معتدل".',starter:"temperature = 32\n# اكتب if و else",tests:[{q:"ما رمز مقارنة التساوي؟",opts:["=","==","=>"],a:1,why:"= للإسناد، و== للمقارنة."}]},
+{id:"p6",track:"python",stage:2,title:"6. الحلقات",time:"25 دقيقة",goal:"تكرار الأوامر",explain:"تكرر for على عناصر أو نطاق. تكرر while ما دام الشرط صحيحًا؛ تأكد أن حلقة while تستطيع التوقف.",code:"for number in range(1, 6):\n    print(number)\n\ncount = 3\nwhile count > 0:\n    print(count)\n    count -= 1",task:"اطبع الأرقام من 1 إلى 10 ومربع كل رقم.",starter:"for number in range(1, 11):\n    # اطبع الرقم ومربعه",tests:[{q:"كم مرة تعمل range(1, 4)؟",opts:["3 مرات","4 مرات","مرتين"],a:0,why:"القيم هي 1 و2 و3؛ النهاية غير مشمولة."}]},
+{id:"p7",track:"python",stage:2,title:"7. القوائم",time:"20 دقيقة",goal:"تخزين عدة قيم",explain:"القائمة list تحفظ عناصر بترتيب. يبدأ الفهرس من صفر، ويضيف append عنصرًا جديدًا.",code:'games = ["Minecraft", "Chess"]\ngames.append("Python")\nprint(games[0])\nprint(len(games))',task:"أنشئ قائمة من ثلاثة أهداف، أضف عنصرًا رابعًا واطبعها.",starter:'goals = ["Python", "HTML", "CSS"]\n# أضف عنصرًا واطبع القائمة',tests:[{q:"ما فهرس أول عنصر؟",opts:["0","1","-1 دائمًا"],a:0,why:"فهرسة القوائم تبدأ من الصفر."}]},
+{id:"p8",track:"python",stage:2,title:"8. الدوال",time:"25 دقيقة",goal:"إعادة استخدام الحلول",explain:"نعرّف الدالة باستخدام def، ويمكنها إرجاع نتيجة باستخدام return.",code:"def add(a, b):\n    return a + b\n\nresult = add(4, 6)\nprint(result)",task:"اكتب دالة square(number) تعيد مربع العدد، واستدعها مع 7.",starter:"def square(number):\n    # أعد مربع العدد\n    pass\n\nprint(square(7))",tests:[{q:"ما وظيفة return؟",opts:["إرجاع نتيجة","الطباعة دائمًا فقط","إنشاء حلقة"],a:0,why:"return يعيد القيمة إلى مكان استدعاء الدالة."}]},
+{id:"p9",track:"python",stage:2,title:"9. القواميس والمجموعات",time:"25 دقيقة",goal:"تخزين بيانات بمفاتيح",explain:"القاموس dict يخزن أزواج مفتاح وقيمة، أما set فيحفظ القيم الفريدة.",code:'player = {"name": "Amir", "level": 2}\nprint(player["name"])\nplayer["level"] += 1\nprint(player)',task:"أنشئ قاموس كتاب يحتوي title و author و pages، ثم اطبع المؤلف.",starter:'book = {"title": "رحلة", "author": "كاتب", "pages": 120}\n# اطبع المؤلف',tests:[{q:"كيف نصل إلى name في user؟",opts:["user.name فقط",'user["name"]',"user(name)"],a:1,why:"نصل إلى قيمة القاموس باستخدام المفتاح."}]},
+{id:"p10",track:"python",stage:2,title:"10. التعامل مع الأخطاء",time:"20 دقيقة",goal:"قراءة الأخطاء وتصحيحها",explain:"رسالة الخطأ تساعدك على تحديد المشكلة. استخدم try/except للأخطاء المتوقعة ولا تخفِ كل الأخطاء بلا فهم.",code:'text = "abc"\ntry:\n    number = int(text)\nexcept ValueError:\n    print("أدخل أرقاماً فقط")',task:'حاول تحويل النص "hello" إلى عدد وتعامل مع فشل التحويل.',starter:'text = "hello"\n# استخدم try و except ValueError',tests:[{q:"ماذا تفعل عند ظهور خطأ؟",opts:["تحذف البرنامج كله","تقرأ النوع والسطر وتعيد المشكلة","تتجاهله دائمًا"],a:1,why:"التشخيص المنظم جزء أساسي من البرمجة."}]},
+{id:"p11",track:"python",stage:3,title:"11. الملفات",time:"25 دقيقة",goal:"قراءة وكتابة ملف",explain:"استخدم with open لإدارة الملفات. حدّد الترميز UTF-8 للنصوص واختر وضع الكتابة أو القراءة بعناية.",code:'with open("notes.txt", "w", encoding="utf-8") as file:\n    file.write("أول ملف لي")\n\nwith open("notes.txt", encoding="utf-8") as file:\n    print(file.read())',task:"اكتب برنامجًا يحفظ قائمة مهام في ملف ثم يقرأها.",starter:"# استخدم with open للكتابة ثم القراءة",tests:[{q:"ما فائدة with open؟",opts:["إغلاق الملف تلقائيًا عند انتهاء الكتلة","تشفير الملف تلقائيًا","حذف الملف"],a:0,why:"تدير with الملف وتغلقه بصورة سليمة."}]},
+{id:"p12",track:"python",stage:3,title:"12. البرمجة الكائنية",time:"30 دقيقة",goal:"تمثيل الأشياء بالكائنات",explain:"class قالب لإنشاء كائنات تحتوي بيانات وطرقًا. ابدأ بفهم __init__ وself.",code:'class Player:\n    def __init__(self, name, health):\n        self.name = name\n        self.health = health\n\nhero = Player("Amir", 100)\nprint(hero.name, hero.health)',task:"أنشئ class باسم Book يستقبل العنوان وعدد الصفحات.",starter:"class Book:\n    def __init__(self, title, pages):\n        # خزّن البيانات\n        pass",tests:[{q:"إلى ماذا يشير self عادة؟",opts:["الكائن الحالي","اسم الملف","نوع الحلقة"],a:0,why:"self يشير إلى الكائن الحالي."}]},
+{id:"p13",track:"python",stage:4,title:"13. المكتبات والبيئات",time:"25 دقيقة",goal:"استخدام المكتبات بأمان",explain:"توفر المكتبات وظائف جاهزة. استخدم بيئة افتراضية لكل مشروع واقرأ وثائق المكتبة قبل تثبيتها.",code:'import random\nsecret = random.randint(1, 10)\nprint("تم إنشاء رقم عشوائي")',task:"استخدم random لتوليد رقم بين 1 و6.",starter:"import random\n# ولّد رقمًا من 1 إلى 6",tests:[{q:"لماذا نستخدم بيئة افتراضية؟",opts:["لعزل اعتماديات المشروع","لتغيير حجم الشاشة","لإخفاء الأخطاء"],a:0,why:"تعزل حزم المشروع عن المشاريع الأخرى."}]},
+{id:"p14",track:"logic",stage:1,title:"14. التفكير الخوارزمي",time:"20 دقيقة",goal:"تقسيم المسألة إلى خطوات",explain:"الخوارزمية خطوات محددة لحل مشكلة. حدّد المدخلات والمعالجة والمخرجات واختبر الحالات الحدية.",code:"# الخطوات:\n# 1. اقرأ عددين\n# 2. اجمعهما\n# 3. اعرض الناتج\na, b = 3, 4\nprint(a + b)",task:"اكتب خوارزمية لإيجاد أكبر عدد من ثلاثة أعداد.",starter:"# اكتب خطوات الحل ثم حوّلها إلى Python",tests:[{q:"ما البداية المفيدة للمسألة؟",opts:["كتابة كود عشوائي","فهم المدخلات والمخرجات","نسخ حل جاهز"],a:1,why:"تحديد المطلوب يجعل الحل أوضح."}]},
+{id:"w1",track:"web",stage:1,title:"15. أول صفحة HTML",time:"20 دقيقة",goal:"بناء هيكل صفحة ويب",explain:"HTML يحدد بنية المحتوى باستخدام عناصر مثل h1 وp وa. وهو أساس بناء صفحات الويب.",code:'<!doctype html>\n<html lang="ar" dir="rtl">\n<head><meta charset="UTF-8"><title>صفحتي</title></head>\n<body><h1>أهلاً!</h1><p>هذه صفحتي الأولى.</p></body>\n</html>',task:"أنشئ عنوانًا وفقرة ورابطًا في صفحتك.",starter:'<h1>عنوان صفحتي</h1>\n<p>نبذة عني</p>\n<a href="https://example.com">رابط تجريبي</a>',tests:[{q:"ما وظيفة HTML؟",opts:["هيكلة محتوى الصفحة","إدارة قاعدة البيانات وحدها","استبدال نظام التشغيل"],a:0,why:"HTML يحدد بنية ومحتوى الصفحة."}]},
+{id:"w2",track:"web",stage:1,title:"16. تنسيق CSS",time:"25 دقيقة",goal:"تنسيق المظهر",explain:"CSS يتحكم بالألوان والمسافات والتخطيط والخطوط، ويستخدم محددات مثل body و.card و#title.",code:"body { font-family: Arial; background: #101827; color: white; }\n.card { padding: 20px; border-radius: 14px; }",task:"صمم بطاقة عنوان وفقرة وأضف خلفية ومسافة وحواف مستديرة.",starter:"body { font-family: Arial; }\n.card { /* أضف التنسيق */ }",tests:[{q:"ما وظيفة CSS؟",opts:["تنسيق المظهر","حفظ الملفات على الخادم تلقائيًا","ترجمة Python"],a:0,why:"CSS مسؤول عن التنسيق والعرض."}]},
+{id:"j1",track:"js",stage:1,title:"17. أساسيات JavaScript",time:"25 دقيقة",goal:"إضافة التفاعل",explain:"JavaScript لغة برمجة تعمل في المتصفح والخادم. استخدم const للقيمة التي لا يعاد إسنادها وlet للمتغير القابل لإعادة الإسناد.",code:'const name = "Amir";\nlet points = 0;\npoints += 10;\nconsole.log(name, points);',task:"أنشئ متغيرًا للاسم وآخر للنقاط، وأضف خمس نقاط.",starter:'const name = "متعلم";\nlet points = 0;\n// أكمل التمرين',tests:[{q:"متى تستخدم const؟",opts:["عندما لا تريد إعادة إسناد المتغير","لإنشاء حلقة دائمًا","لإنشاء ملف"],a:0,why:"const يمنع إعادة إسناد المتغير."}]},
+{id:"c1",track:"cpp",stage:1,title:"18. مقدمة C++",time:"25 دقيقة",goal:"فهم شكل البرنامج",explain:"تحتاج C++ إلى مترجم لتشغيل الكود. يبدأ البرنامج التقليدي من main ويستخدم cout للطباعة.",code:'#include <iostream>\nusing namespace std;\nint main() {\n    cout << "Hello, world!" << endl;\n    return 0;\n}',task:"عدّل الرسالة في المثال ثم شغّل البرنامج بمترجم C++ محلي.",starter:'#include <iostream>\nusing namespace std;\nint main() {\n    // اكتب أمر الطباعة\n    return 0;\n}',tests:[{q:"ما وظيفة main؟",opts:["نقطة بداية التنفيذ","تعريف لون النص","تنزيل المكتبات"],a:0,why:"main نقطة الدخول المعتادة في برنامج C++."}]},
+{id:"s1",track:"security",stage:1,title:"19. أساسيات الأمن الأخلاقي",time:"25 دقيقة",goal:"التعلم ضمن نطاق مصرح به",explain:"ابدأ بالشبكات وHTTP وLinux وإدارة كلمات المرور. اختبر فقط أجهزة تملكها أو لديك تصريح واضح لاختبارها.",code:"# خطة تعلم آمنة\n1. تعلّم أساسيات الشبكات\n2. افهم HTTP و DNS\n3. استخدم مختبرًا تدريبيًا قانونيًا\n4. وثّق النتائج وأصلح الثغرات",task:"اكتب خمس خطوات لتأمين حساب أو جهاز واشرح سبب كل خطوة.",starter:"# اكتب قائمة تدابير أمنية دفاعية",tests:[{q:"متى يجوز اختبار نظام؟",opts:["أي نظام على الإنترنت","نظام تملكه أو لديك إذن صريح","جهاز صديق دون علمه"],a:1,why:"يجب أن يكون الاختبار ضمن نطاق مصرح به."}]}
 ];
 
-let currentLesson = 0;
-let labMode = "html";
+const trackNames={python:"Python",web:"تطوير الويب",js:"JavaScript",cpp:"C++",security:"الأمن الأخلاقي",logic:"حل المشكلات"};
+let currentLesson=0;
+let progress=readStore("amirxtna_progress",{done:[],points:0,track:"python"});
+if(!progress || !Array.isArray(progress.done)) progress={done:[],points:0,track:"python"};
+let quizAwarded=readStore("amirxtna_quiz_awards",[]);
+if(!Array.isArray(quizAwarded))quizAwarded=[];
 
-const labDefaults = {
-html:`<h1>أهلاً بك في مختبر AMIRXTNA</h1>
-<p>غيّر النص أو أضف عنصرًا جديدًا!</p>
-<button onclick="document.querySelector('p').textContent='لقد كتبت أول تفاعل بنفسك!'">اضغط هنا</button>`,
-css:`body { font-family: Arial; padding: 24px; background: #101827; color: white; }
-h1 { color: #56f0df; }
-button { padding: 10px 16px; border-radius: 8px; }`,
-js:`document.body.innerHTML = "<h1>JavaScript يعمل!</h1><p>لقد كتبت أول سطر تفاعلي.</p>";`
-};
-
-function getProgress(){
- try{
-  return JSON.parse(localStorage.getItem("amirxtna_progress") || '{"done":[],"points":0,"track":"python"}');
- }catch(e){
-  return {done:[],points:0,track:"python"};
- }
-}
-
-function saveProgress(p){
- localStorage.setItem("amirxtna_progress",JSON.stringify(p));
- updateStats();
-}
-
+function trackName(t){return trackNames[t]||t}
 function updateStats(){
- const p=getProgress();
- document.getElementById("statDone").textContent=p.done.filter(x=>lessons.some(l=>l.id===x)).length;
- document.getElementById("statPoints").textContent=p.points;
- const pct=Math.round(p.done.filter(x=>lessons.some(l=>l.id===x)).length/lessons.length*100);
- document.getElementById("courseProgress").style.width=pct+"%";
- document.getElementById("progressLabel").textContent=`أكملت ${p.done.filter(x=>lessons.some(l=>l.id===x)).length} من ${lessons.length} درسًا (${pct}%)`;
- renderLessons();
+  const done=progress.done.filter(id=>lessons.some(l=>l.id===id)).length;
+  $("#statLessons").textContent=lessons.length;
+  $("#statDone").textContent=done;
+  $("#statPoints").textContent=progress.points||0;
+  $("#courseProgress").style.width=(done/lessons.length*100)+"%";
+  $("#heroProgress").style.width=(done/lessons.length*100)+"%";
+  $("#progressLabel").textContent=`أكملت ${done} من ${lessons.length} درسًا (${Math.round(done/lessons.length*100)}%)`;
+  $("#lessonCount").textContent=lessons.length+" درسًا";
+  renderLessonList();
 }
-
-function toast(msg){
- const el=document.getElementById("toast");
- el.textContent=msg;
- el.style.display="block";
- clearTimeout(window._toastTimer);
- window._toastTimer=setTimeout(()=>el.style.display="none",2600);
+function saveProgress(){
+  writeStore("amirxtna_progress",progress);
+  updateStats();
 }
-
-function chooseTrack(track){
- const p=getProgress();
- p.track=track;
- saveProgress(p);
- const first=lessons.findIndex(l=>l.track===track);
- if(first>=0)selectLesson(first);
- document.getElementById("academy").scrollIntoView({behavior:"smooth"});
- toast("تم اختيار المسار");
+function renderLessonList(){
+  const q=($("#lessonSearch").value||"").trim().toLowerCase();
+  const list=$("#lessonList");
+  list.replaceChildren();
+  lessons.forEach((l,i)=>{
+    if(q && !(l.title+" "+l.track+" "+trackName(l.track)+" "+l.goal).toLowerCase().includes(q))return;
+    const b=document.createElement("button");
+    b.type="button";
+    b.className="lesson-btn"+(i===currentLesson?" active":"");
+    const num=document.createElement("span");
+    num.className="num";
+    num.textContent=progress.done.includes(l.id)?"✓":String(i+1).padStart(2,"0");
+    const txt=document.createElement("span");
+    txt.append(document.createTextNode(l.title));
+    const small=document.createElement("small");
+    small.textContent=trackName(l.track)+" • "+l.time;
+    txt.append(small);b.append(num,txt);
+    b.addEventListener("click",()=>selectLesson(i));
+    list.append(b);
+  });
 }
-
-function trackName(t){
- return ({python:"Python",web:"تطوير الويب",js:"JavaScript",cpp:"C++",security:"الأمن الأخلاقي",logic:"حل المشكلات"})[t]||t;
-}
-
-function renderLessons(){
- const p=getProgress();
- const q=(document.getElementById("lessonSearch")?.value||"").trim().toLowerCase();
- const filtered=lessons.map((l,i)=>({...l,index:i})).filter(l=>!q||l.title.toLowerCase().includes(q)||l.track.includes(q)||trackName(l.track).toLowerCase().includes(q));
- const list=document.getElementById("lessonList");
- document.getElementById("lessonCount").textContent=lessons.length+" درس";
- list.innerHTML="";
- filtered.forEach(l=>{
-  const b=document.createElement("button");
-  b.className="lesson-btn"+(l.index===currentLesson?" active":"");
-  b.innerHTML=`<span class="num">${p.done.includes(l.id)?"✓":String(l.index+1).padStart(2,"0")}</span><span>${l.title}<small>${trackName(l.track)} • ${l.time}</small></span>`;
-  b.onclick=()=>selectLesson(l.index);
-  list.appendChild(b);
- });
-}
-
 function selectLesson(index){
- currentLesson=index;
- const l=lessons[index],p=getProgress();
- const area=document.getElementById("lessonArea");
- area.innerHTML=`
- <div class="eyebrow">${trackName(l.track)} • المرحلة ${l.stage} • ${l.time}</div>
- <h3>${l.title}</h3>
- <p><b>هدف الدرس:</b> ${l.goal}</p>
- <h4>الشرح</h4><p>${l.explain}</p>
- <h4>مثال مشروح</h4><pre>${escapeHTML(l.code)}</pre>
- <div class="exercise">
- <h4>تحديك العملي</h4><p>${l.task}</p>
- <textarea id="lessonEditor" class="editor" spellcheck="false">${escapeHTML(l.starter)}</textarea>
- <p class="notice">اكتب الحل بنفسك. محرر الدروس يقبل نص الكود، لكنه لا يشغّل Python أو C++؛ استخدم بيئة اللغة المناسبة. تستطيع تشغيل HTML/JavaScript في مختبر الكود.</p>
- <h4>اختبار سريع</h4>
- <div id="quizBox">${l.tests.map((t,ti)=>`
- <div class="quiz"><p><b>${t.q}</b></p>
- ${t.opts.map((o,oi)=>`<label class="quiz-option"><input type="radio" name="q${ti}" value="${oi}">${o}</label>`).join("")}
- <button class="btn" onclick="checkQuiz(${index},${ti})">تحقق من الإجابة</button>
- <div id="feedback${ti}" class="feedback"></div>
- </div>`).join("")}</div>
- <div class="actions">
- <button class="btn primary" onclick="completeLesson(${index})">أنهيت التطبيق والدرس ✓</button>
- <button class="btn" onclick="selectLesson(${Math.min(index+1,lessons.length-1)})">الدرس التالي ←</button>
- </div>
- </div>`;
- renderLessons();
+  currentLesson=Math.max(0,Math.min(index,lessons.length-1));
+  const l=lessons[currentLesson];
+  const area=$("#lessonArea");
+  area.innerHTML=`
+    <div class="eyebrow">${escapeHTML(trackName(l.track))} • المرحلة ${l.stage} • ${escapeHTML(l.time)}</div>
+    <h3>${escapeHTML(l.title)}</h3>
+    <p><b>هدف الدرس:</b> ${escapeHTML(l.goal)}</p>
+    <h4>الشرح</h4><p>${escapeHTML(l.explain)}</p>
+    <h4>مثال</h4><pre>${escapeHTML(l.code)}</pre>
+    <div class="exercise">
+      <h4>التطبيق العملي</h4><p>${escapeHTML(l.task)}</p>
+      <textarea id="lessonEditor" class="editor" spellcheck="false">${escapeHTML(l.starter)}</textarea>
+      <div class="actions">
+        <button class="btn" id="copyLesson">نسخ الكود</button>
+        <button class="btn" id="sendToLab">نقل إلى المختبر</button>
+      </div>
+      <p class="notice">محرر الدرس لا يشغّل Python أو C++؛ استخدم بيئة تشغيل اللغة المناسبة.</p>
+      <h4>اختبار سريع</h4>
+      ${l.tests.map((t,ti)=>`
+        <div class="quiz">
+          <p><b>${escapeHTML(t.q)}</b></p>
+          ${t.opts.map((o,oi)=>`<label class="quiz-option"><input type="radio" name="quiz-${ti}" value="${oi}"> ${escapeHTML(o)}</label>`).join("")}
+          <button class="btn" type="button" data-quiz="${ti}">تحقق من الإجابة</button>
+          <div class="feedback" id="feedback-${ti}" aria-live="polite"></div>
+        </div>`).join("")}
+      <div class="actions">
+        <button class="btn primary" id="completeLesson">أنهيت الدرس ✓</button>
+        <button class="btn" id="prevLesson" ${currentLesson===0?"disabled":""}>السابق</button>
+        <button class="btn" id="nextLesson" ${currentLesson===lessons.length-1?"disabled":""}>الدرس التالي ←</button>
+      </div>
+    </div>`;
+  $("#copyLesson").addEventListener("click",()=>copyText($("#lessonEditor").value));
+  $("#sendToLab").addEventListener("click",()=>{
+    const code=$("#lessonEditor").value;
+    setLabTab("html");
+    $("#labEditor").value=code;
+    $("#lab").scrollIntoView({behavior:"smooth"});
+    toast("نُقل الكود إلى مختبر HTML.");
+  });
+  $$("[data-quiz]").forEach(btn=>btn.addEventListener("click",()=>checkQuiz(currentLesson,Number(btn.dataset.quiz))));
+  $("#completeLesson").addEventListener("click",()=>completeLesson(currentLesson));
+  $("#prevLesson").addEventListener("click",()=>selectLesson(currentLesson-1));
+  $("#nextLesson").addEventListener("click",()=>selectLesson(currentLesson+1));
+  renderLessonList();
 }
-
 function checkQuiz(index,ti){
- const l=lessons[index],t=l.tests[ti];
- const selected=document.querySelector(`input[name="q${ti}"]:checked`);
- const f=document.getElementById("feedback"+ti);
- if(!selected){
-  f.className="feedback bad";
-  f.textContent="اختر إجابة أولاً.";
-  return;
- }
- if(Number(selected.value)===t.a){
-  f.className="feedback good";
-  f.textContent="إجابة صحيحة! "+t.why;
-  const p=getProgress();
-  const key=l.id+"-quiz-"+ti;
-  if(!p.done.includes(key)){
-   p.done.push(key);
-   p.points+=5;
-   saveProgress(p);
+  const l=lessons[index],t=l.tests[ti];
+  const selected=document.querySelector(`input[name="quiz-${ti}"]:checked`);
+  const f=$("#feedback-"+ti);
+  if(!selected){f.className="feedback bad";f.textContent="اختر إجابة أولًا.";return}
+  if(Number(selected.value)===t.a){
+    f.className="feedback good";f.textContent="إجابة صحيحة! "+t.why;
+    const key=l.id+"-"+ti;
+    if(!quizAwarded.includes(key)){
+      quizAwarded.push(key);progress.points=(progress.points||0)+5;
+      writeStore("amirxtna_quiz_awards",quizAwarded);saveProgress();
+    }
+  }else{
+    f.className="feedback bad";f.textContent="ليست صحيحة بعد. تلميح: "+t.why;
   }
- }else{
-  f.className="feedback bad";
-  f.textContent="ليست الإجابة الصحيحة بعد. تلميح: "+t.why;
- }
 }
-
 function completeLesson(index){
- const l=lessons[index],p=getProgress();
- if(!p.done.includes(l.id)){
-  p.done.push(l.id);
-  p.points+=10;
-  saveProgress(p);
-  toast("أحسنت! أُضيفت 10 نقاط");
- }else{
-  toast("هذا الدرس مكتمل سابقًا");
- }
- if(index<lessons.length-1)selectLesson(index+1);
+  const l=lessons[index];
+  if(!progress.done.includes(l.id)){
+    progress.done.push(l.id);progress.points=(progress.points||0)+10;
+    saveProgress();toast("أحسنت! حصلت على 10 نقاط.");
+  }else toast("أكملت هذا الدرس سابقًا.");
+  if(index<lessons.length-1)selectLesson(index+1);
 }
-
-function escapeHTML(s){
- return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
-}
-
-function setLabTab(mode,btn){
- labMode=mode;
- document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
- btn.classList.add("active");
- document.getElementById("labEditor").value=labDefaults[mode];
- document.getElementById("labEditor").dataset.mode=mode;
-}
-
-function runLab(){
- const code=document.getElementById("labEditor").value;
- const mode=document.getElementById("labEditor").dataset.mode||"html";
- const frame=document.getElementById("labFrame");
- let html="";
- if(mode==="html"){
-  html=code;
- }else if(mode==="css"){
-  html='<!doctype html><html><head><style>'+code+'</style></head><body><h1>جرّب تنسيق CSS</h1><p>غيّر القواعد وشاهد النتيجة.</p><button>زر تجريبي</button></body></html>';
- }else{
-  html='<!doctype html><html><body><script>'+code.replace(/<\/script/gi,"<\\/script")+'<\/script></body></html>';
- }
- frame.srcdoc=html;
-}
-
-function resetLab(){
- document.getElementById("labEditor").value=labDefaults[labMode];
- runLab();
-}
-
-document.getElementById("labEditor").dataset.mode="html";
-document.getElementById("labEditor").value=labDefaults.html;
+$("#lessonSearch").addEventListener("input",renderLessonList);
+$$("[data-track]").forEach(btn=>btn.addEventListener("click",()=>{
+  const track=btn.dataset.track;
+  const idx=lessons.findIndex(l=>l.track===track);
+  if(idx<0){toast("سيُضاف محتوى هذا المسار في تحديث لاحق.");return}
+  progress.track=track;saveProgress();selectLesson(idx);
+  $("#academy").scrollIntoView({behavior:"smooth"});
+}));
 updateStats();
 selectLesson(0);
-runLab();
+
+/* ===== مختبر الويب ===== */
+const labDefaults={
+html:`<h1>أهلاً بك في AMIRXTNA</h1>
+<p>غيّر هذا النص وجرّب!</p>
+<button onclick="document.querySelector('p').textContent='نجح التفاعل!'">اضغط هنا</button>`,
+css:`body { font-family: Arial; padding: 24px; background: #101827; color: white; }
+h1 { color: #008b8b; }
+button { padding: 10px 16px; border-radius: 8px; }`,
+js:`document.body.innerHTML = "<h1>JavaScript يعمل!</h1><p>أول تجربة تفاعلية.</p>";`
+};
+let labMode="html";
+function setLabTab(mode){
+  labMode=mode;
+  $$(".tab").forEach(b=>b.classList.toggle("active",b.dataset.mode===mode));
+  $("#labEditor").value=labDefaults[mode];
+}
+function runLab(){
+  const code=$("#labEditor").value;
+  let html;
+  if(labMode==="html"){
+    html=/<html[\s>]|<!doctype/i.test(code)?code:
+      '<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body>'+code+'</body></html>';
+  }else if(labMode==="css"){
+    html='<!doctype html><html><head><meta charset="utf-8"><style>'+code.replace(/<\/style/gi,"<\\/style")+'</style></head><body><h1>معاينة CSS</h1><p>غيّر قواعد التنسيق وشاهد النتيجة.</p><button>زر تجريبي</button></body></html>';
+  }else{
+    html='<!doctype html><html><head><meta charset="utf-8"></head><body><h1>معاينة JavaScript</h1><script>'+code.replace(/<\/script/gi,"<\\/script")+'<\/script></body></html>';
+  }
+  $("#labFrame").srcdoc=html;
+}
+$$("[data-mode]").forEach(btn=>btn.addEventListener("click",()=>setLabTab(btn.dataset.mode)));
+$("#runLab").addEventListener("click",runLab);
+$("#resetLab").addEventListener("click",()=>{setLabTab(labMode);runLab();toast("تمت إعادة المثال.")});
+$("#copyLab").addEventListener("click",()=>copyText($("#labEditor").value));
+$("#downloadLab").addEventListener("click",()=>{
+  let html;
+  const code=$("#labEditor").value;
+  if(labMode==="html"){
+    html=/<html[\s>]|<!doctype/i.test(code)?code:
+      '<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><body>'+code+'</body></html>';
+  }else if(labMode==="css"){
+    html='<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><style>'+code+'</style><body><h1>صفحتي</h1><p>تعديل CSS</p></body></html>';
+  }else{
+    html='<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><body><h1>JavaScript</h1><script>'+code.replace(/<\/script/gi,"<\\/script")+'<\/script></body></html>';
+  }
+  downloadText("AMIRXTNA-lab.html",html,"text/html;charset=utf-8");
+});
+setLabTab("html");runLab();
+
+/* ===== التحديات ===== */
+const challenges=[
+{title:"تحدي الحساب الذكي",description:"احسب مجموع الأعداد من 1 إلى 10. الناتج المتوقع 55.",starter:"total = 0\nfor number in range(1, 11):\n    total += number\nprint(total)",check:c=>/for\b/.test(c)&&/range\s*\(\s*1\s*,\s*11\s*\)/.test(c)&&/print\s*\(/.test(c)&&/total\s*\+=\s*number/.test(c)},
+{title:"تحدي مربع العدد",description:"اكتب دالة square تعيد مربع العدد باستخدام return.",starter:"def square(number):\n    return number ** 2\n\nprint(square(7))",check:c=>/def\s+square\s*\(/.test(c)&&/return\b/.test(c)&&/\*\*/.test(c)},
+{title:"تحدي اتخاذ القرار",description:"اكتب شرطًا يتحقق هل العدد أكبر من أو يساوي 18.",starter:"age = 18\nif age >= 18:\n    print('مسموح')",check:c=>/if\b/.test(c)&&/>=/.test(c)&&/18/.test(c)},
+{title:"تحدي القائمة",description:"أنشئ قائمة games وأضف عنصرًا باستخدام append.",starter:'games = ["Chess"]\ngames.append("Python")\nprint(games)',check:c=>/games\s*=/.test(c)&&/\.append\s*\(/.test(c)}
+];
+let challengeIndex=0;
+let challengeState=readStore("amirxtna_challenges",{solved:[],points:0});
+if(!challengeState||!Array.isArray(challengeState.solved))challengeState={solved:[],points:0};
+function showChallenge(i){
+  challengeIndex=(i+challenges.length)%challenges.length;
+  const c=challenges[challengeIndex];
+  $("#challengeTitle").textContent=c.title;
+  $("#challengeDescription").textContent=c.description;
+  $("#challengeCode").value=c.starter;
+  $("#challengeMessage").textContent="";
+}
+function renderChallengeStats(){
+  $("#neoSolved").textContent=challengeState.solved.length;
+  $("#neoPoints").textContent=challengeState.points;
+  $("#neoLevel").textContent=1+Math.floor((challengeState.points+(progress.points||0))/100);
+  $("#statPoints").textContent=(progress.points||0)+challengeState.points;
+}
+$("#checkChallenge").addEventListener("click",()=>{
+  const c=challenges[challengeIndex],code=$("#challengeCode").value;
+  if(!code.trim()){ $("#challengeMessage").textContent="اكتب محاولتك أولًا.";return}
+  if(c.check(code)){
+    if(!challengeState.solved.includes(challengeIndex)){
+      challengeState.solved.push(challengeIndex);challengeState.points+=20;
+      writeStore("amirxtna_challenges",challengeState);
+      toast("رائع! ربحت 20 نقطة.");
+    }else toast("اجتزت هذا التحدي سابقًا.");
+    $("#challengeMessage").textContent="اجتزت الفحص المبدئي! راجع الكود وتأكد من صحته بتشغيله في بيئة Python.";
+  }else{
+    $("#challengeMessage").textContent="حاول مرة أخرى: تأكد من وجود العناصر المطلوبة في الحل.";
+  }
+  renderChallengeStats();
+});
+$("#nextChallenge").addEventListener("click",()=>showChallenge(challengeIndex+1));
+$("#saveChallenge").addEventListener("click",()=>{
+  if(writeStore("amirxtna_last_challenge",{title:challenges[challengeIndex].title,code:$("#challengeCode").value,savedAt:new Date().toISOString()}))toast("حُفظت المحاولة محليًا.");
+});
+showChallenge(0);renderChallengeStats();
+
+/* ===== خزنة المشاريع ===== */
+let projects=readStore("amirxtna_projects",[]);
+if(!Array.isArray(projects))projects=[];
+const projectTemplates={
+calculator:{name:"آلة حاسبة",code:'def add(a, b):\n    return a + b\n\ndef subtract(a, b):\n    return a - b\n\nprint(add(8, 3))\nprint(subtract(8, 3))'},
+todo:{name:"قائمة مهام",code:'tasks = ["تعلم Python", "إنشاء موقع"]\ntasks.append("اختبار الكود")\nfor task in tasks:\n    print("- " + task)'},
+guess:{name:"لعبة تخمين",code:'import random\nsecret = random.randint(1, 10)\nguess = int(input("خمن رقمًا من 1 إلى 10: "))\nif guess == secret:\n    print("أحسنت!")\nelse:\n    print("الرقم كان", secret)'},
+api:{name:"مشروع API",code:'// مثال مبدئي في JavaScript\nasync function loadData() {\n  try {\n    const response = await fetch("https://jsonplaceholder.typicode.com/todos/1");\n    if (!response.ok) throw new Error("فشل الطلب");\n    const data = await response.json();\n    console.log(data);\n  } catch (error) {\n    console.error(error);\n  }\n}'},
+login:{name:"واجهة دخول تعليمية",code:'<!-- واجهة فقط؛ ليست مصادقة حقيقية -->\n<form>\n  <label>اسم المستخدم <input required></label>\n  <label>كلمة المرور <input type="password" required></label>\n  <button>تسجيل الدخول التجريبي</button>\n</form>'}
+};
+function renderProjects(){
+  const list=$("#projectList");list.replaceChildren();
+  projects.forEach((p,i)=>{
+    const card=document.createElement("article");card.className="project";
+    const title=document.createElement("h3");title.textContent=p.name;
+    const desc=document.createElement("p");
+    desc.textContent=p.code.length>180?p.code.slice(0,180)+"…":p.code;
+    const actions=document.createElement("div");actions.className="actions";
+    const load=document.createElement("button");load.type="button";load.className="btn";load.textContent="فتح";
+    load.addEventListener("click",()=>{$("#projectName").value=p.name;$("#projectCode").value=p.code;$("#projectVault").scrollIntoView({behavior:"smooth"})});
+    const down=document.createElement("button");down.type="button";down.className="btn";down.textContent="تنزيل";
+    down.addEventListener("click",()=>downloadText((p.name||"project").replace(/[\\/:*?"<>|]/g,"_")+".txt",p.code));
+    const del=document.createElement("button");del.type="button";del.className="btn danger";del.textContent="حذف";
+    del.addEventListener("click",()=>{
+      if(!confirm("هل تريد حذف هذا المشروع؟"))return;
+      const old=projects;projects=projects.filter((_,j)=>j!==i);
+      if(writeStore("amirxtna_projects",projects)){renderProjects();toast("تم حذف المشروع.");}
+      else projects=old;
+    });
+    actions.append(load,down,del);card.append(title,desc,actions);list.append(card);
+  });
+  $("#statProjects").textContent=projects.length;
+}
+$("#saveProject").addEventListener("click",()=>{
+  const name=$("#projectName").value.trim(),code=$("#projectCode").value;
+  if(!name){toast("اكتب اسم المشروع.");$("#projectName").focus();return}
+  if(!code.trim()){toast("اكتب كود المشروع أو وصفه.");$("#projectCode").focus();return}
+  projects.push({id:Date.now(),name,code,savedAt:new Date().toISOString()});
+  if(writeStore("amirxtna_projects",projects)){
+    $("#projectName").value="";$("#projectCode").value="";
+    renderProjects();toast("تم حفظ المشروع.");
+  }else projects.pop();
+});
+$("#exportProjects").addEventListener("click",()=>downloadText("AMIRXTNA-projects.json",JSON.stringify(projects,null,2),"application/json;charset=utf-8"));
+$("#clearProjects").addEventListener("click",()=>{
+  if(!projects.length){toast("خزنة المشاريع فارغة.");return}
+  if(!confirm("سيتم حذف جميع المشاريع المحفوظة. هل أنت متأكد؟"))return;
+  const old=projects;projects=[];
+  if(writeStore("amirxtna_projects",projects)){renderProjects();toast("تم مسح المشاريع.");}
+  else projects=old;
+});
+$$("[data-project-template]").forEach(btn=>btn.addEventListener("click",()=>{
+  const p=projectTemplates[btn.dataset.projectTemplate];if(!p)return;
+  $("#projectName").value=p.name;$("#projectCode").value=p.code;
+  $("#projectVault").scrollIntoView({behavior:"smooth"});
+  toast("تم تجهيز قالب المشروع. احفظه عندما تكون جاهزًا.");
+}));
+renderProjects();
+
+/* ===== مركز الإعلانات ===== */
+const adDefault={title:"مساحة مخصصة لشركاء AMIRXTNA",text:"يمكنك تخصيص هذه المساحة لعرض إعلانك أو إعلان راعٍ."};
+function displayAd(ad){
+  $("#adTitle").textContent=ad.title||adDefault.title;
+  $("#adText").textContent=ad.text||adDefault.text;
+}
+displayAd(readStore("amirxtna_ad",adDefault));
+$("#updateAd").addEventListener("click",()=>{
+  const ad={title:$("#adTitleInput").value.trim()||adDefault.title,text:$("#adTextInput").value.trim()||adDefault.text};
+  if(writeStore("amirxtna_ad",ad)){displayAd(ad);toast("تم تحديث الإعلان.");}
+});
+$("#resetAd").addEventListener("click",()=>{
+  $("#adTitleInput").value="";$("#adTextInput").value="";
+  if(writeStore("amirxtna_ad",adDefault)){displayAd(adDefault);toast("تمت استعادة الإعلان الافتراضي.");}
+});
+
+/* ===== خلفية فضائية متحركة ===== */
+(function cosmicBackground(){
+  const canvas=$("#universe"),ctx=canvas.getContext("2d");
+  if(!ctx)return;
+  let width=0,height=0,stars=[],raf=0;
+  const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function resize(){
+    const dpr=Math.min(window.devicePixelRatio||1,2);
+    width=window.innerWidth;height=window.innerHeight;
+    canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);
+    canvas.style.width=width+"px";canvas.style.height=height+"px";
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    const count=Math.min(160,Math.floor(width*height/8500));
+    stars=Array.from({length:count},()=>({
+      x:Math.random()*width,y:Math.random()*height,
+      r:Math.random()*1.5+.25,a:Math.random()*.7+.2,
+      v:Math.random()*.22+.04,phase:Math.random()*6
+    }));
+  }
+  function draw(){
+    ctx.clearRect(0,0,width,height);
+    for(const s of stars){
+      if(!reduce)s.y-=s.v;
+      if(s.y<0)s.y=height;
+      const alpha=s.a*(.7+.3*Math.sin(s.phase+performance.now()*.0005));
+      ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(170,220,255,${alpha})`;ctx.fill();
+    }
+    if(!reduce)raf=requestAnimationFrame(draw);
+  }
+  window.addEventListener("resize",resize);
+  resize();draw();
+})();
+
+/* ===== معالجة أخطاء غير متوقعة ===== */
+window.addEventListener("error",event=>{
+  const box=$("#globalError");
+  box.textContent="حدث خطأ JavaScript: "+(event.message||"خطأ غير معروف")+
+    (event.lineno?" — السطر "+event.lineno:"");
+  box.style.display="block";
+});
+window.addEventListener("unhandledrejection",event=>{
+  console.error("Unhandled promise rejection:",event.reason);
+});
 </script>
 </body>
 </html>
