@@ -1,671 +1,578 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AMIRXTNA — أكاديمية المبرمجين</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMIRXTNA 9000 | أكاديمية المستقبل</title>
 <style>
 :root{
-  --bg:#080a12;
-  --panel:#111522;
-  --panel2:#171c2d;
-  --border:#293149;
-  --text:#f5f7ff;
-  --muted:#9da8c1;
-  --cyan:#55eaff;
-  --purple:#a78bfa;
-  --green:#63f5b0;
+--bg:#030611;--panel:#09152be8;--line:#24518b;
+--cyan:#50e7ff;--blue:#386cff;--purple:#a54dff;
+--text:#eff7ff;--muted:#9aafd0;--green:#66ffc4
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  margin:0;
-  background:
-    radial-gradient(ellipse at 80% 0%,#30205b55,transparent 35%),
-    radial-gradient(ellipse at 0% 30%,#063d5050,transparent 35%),
-    var(--bg);
-  color:var(--text);
-  font-family:Tahoma,Arial,sans-serif;
-  line-height:1.8;
+margin:0;background:var(--bg);color:var(--text);
+font-family:Tahoma,Arial,sans-serif;overflow-x:hidden
 }
-button,input,textarea{font:inherit}
-button{cursor:pointer}
+body:before{
+content:"";position:fixed;inset:0;z-index:-2;
+background:
+radial-gradient(ellipse at 80% 0%,#203c7a,transparent 40%),
+radial-gradient(ellipse at 10% 60%,#24134e,transparent 40%),
+linear-gradient(145deg,#030611,#080d20,#030611)
+}
+#stars{
+position:fixed;inset:0;z-index:-1;pointer-events:none;
+opacity:.55;
+background-image:
+radial-gradient(2px 2px at 20px 30px,#9eeaff 50%,transparent 60%),
+radial-gradient(1px 1px at 80px 120px,#fff 50%,transparent 60%),
+radial-gradient(2px 2px at 160px 70px,#79a9ff 50%,transparent 60%);
+background-size:220px 170px;
+animation:stars 40s linear infinite
+}
+@keyframes stars{to{background-position:220px 170px}}
+@keyframes float{50%{transform:translateY(-9px)}}
+@keyframes glow{50%{box-shadow:0 0 35px #328cff66}}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;font:inherit}
 .topbar{
-  position:sticky;top:0;z-index:20;
-  background:#080a12ed;
-  backdrop-filter:blur(15px);
-  border-bottom:1px solid var(--border);
-  padding:13px 5%;
+position:sticky;top:8px;z-index:10;
+display:flex;align-items:center;justify-content:space-between;
+gap:15px;width:calc(100% - 24px);max-width:1450px;
+margin:10px auto;padding:13px 20px;
+background:#040a17e8;border:1px solid var(--line);
+border-radius:17px;backdrop-filter:blur(18px)
 }
-.nav{
-  max-width:1400px;margin:auto;
-  display:flex;align-items:center;
-  justify-content:space-between;gap:16px;flex-wrap:wrap;
-}
-.brand{font-size:25px;font-weight:900;letter-spacing:1px}
-.brand span{color:var(--cyan)}
-.brand small{display:block;font-size:11px;color:var(--muted);letter-spacing:0}
-.navright{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
-.badge{
-  border:1px solid #34405b;
-  background:#151b2b;
-  border-radius:30px;
-  padding:5px 12px;font-size:13px;
-}
-button{
-  border:0;border-radius:11px;padding:10px 15px;
-  background:linear-gradient(110deg,var(--cyan),#9b8aff);
-  color:#07101b;font-weight:bold;
-  transition:.2s;
-}
-button:hover{transform:translateY(-2px);filter:brightness(1.1)}
-.btn-dark{background:#20283c;color:white;border:1px solid #36415c}
-.btn-green{background:var(--green);color:#07130d}
-main{max-width:1400px;margin:auto;padding:25px 20px 80px}
+.logo{font-size:21px;font-weight:bold;white-space:nowrap}
+.logo span{color:var(--cyan)}
+.logo small{display:block;font-size:9px;color:var(--muted);letter-spacing:3px}
+nav{display:flex;gap:5px;flex-wrap:wrap}
+nav a{padding:10px;border-radius:9px;color:#c5d7f4;font-size:13px}
+nav a:hover{background:#18305a;color:white}
+.status{font-size:11px;color:var(--green);white-space:nowrap}
+.status:before{content:"● ";text-shadow:0 0 12px var(--green)}
+.wrap{width:calc(100% - 28px);max-width:1450px;margin:auto}
 .hero{
-  min-height:340px;
-  position:relative;overflow:hidden;
-  display:grid;grid-template-columns:1.4fr .6fr;
-  align-items:center;gap:20px;
-  padding:clamp(22px,4vw,55px);
-  border:1px solid #3b4265;
-  border-radius:26px;
-  background:linear-gradient(125deg,#151e34,#17122c 60%,#092833);
+position:relative;min-height:410px;display:grid;
+grid-template-columns:1.1fr .9fr;align-items:center;
+gap:20px;padding:40px 24px;overflow:hidden
 }
 .hero:before{
-  content:"";position:absolute;width:330px;height:330px;
-  border:1px solid #55eaff40;border-radius:50%;
-  left:-100px;top:-170px;
-  box-shadow:0 0 0 35px #55eaff08,0 0 0 70px #55eaff05;
+content:"";position:absolute;inset:10px;z-index:-1;
+border:1px solid #4c8bdb44;border-radius:28px;
+background:linear-gradient(110deg,#091633e8,#07102799,#11163dcc)
 }
-.eyebrow{color:var(--cyan);font-size:13px;font-weight:bold}
-.hero h1{font-size:clamp(32px,5vw,60px);line-height:1.25;margin:12px 0}
-.gradient{
-  background:linear-gradient(90deg,var(--cyan),var(--purple),#ff9de2);
-  background-clip:text;color:transparent;
+.eyebrow{
+display:inline-block;padding:8px 12px;border-radius:30px;
+border:1px solid #50e7ff66;color:var(--cyan);
+background:#0a2644aa;font-size:12px
 }
-.hero p{color:var(--muted);max-width:650px}
-.hero-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
-.orb{
-  width:min(240px,90%);aspect-ratio:1;border-radius:50%;
-  margin:auto;display:grid;place-items:center;
-  font-size:65px;color:white;
-  background:radial-gradient(circle at 30% 25%,white 0,#55eaff 7%,#6966ff 35%,#381e67 68%,#101323 72%);
-  box-shadow:0 0 55px #6665ff65,0 0 100px #55eaff22;
-  animation:float 4s ease-in-out infinite;
+h1{font-size:clamp(34px,5vw,65px);line-height:1.3;margin:20px 0}
+h1 span{
+background:linear-gradient(90deg,#fff,#70eaff,#b18cff);
+background-clip:text;color:transparent
 }
-@keyframes float{50%{transform:translateY(-10px)}}
-.section-head{
-  display:flex;align-items:end;justify-content:space-between;
-  flex-wrap:wrap;gap:12px;margin:32px 0 14px;
+.lead{color:#b7c8e5;line-height:2;font-size:15px;max-width:650px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.btn{
+display:inline-block;padding:12px 18px;border-radius:12px;
+border:1px solid #65b9ff77;color:white;
+background:linear-gradient(110deg,#136bdb,#4934ce);
+box-shadow:0 0 22px #246bff33;transition:.2s
 }
+.btn:hover{transform:translateY(-3px);box-shadow:0 0 30px #2f93ff66}
+.secondary{background:#071225}
+.hero-visual{min-height:280px;display:grid;place-items:center;position:relative}
+.planet{
+width:min(280px,65vw);aspect-ratio:1;border-radius:50%;
+background:radial-gradient(circle at 30% 25%,#8ffaff,#3b7fdb 10%,#182f73 38%,#090f30 67%,#02050d 75%);
+box-shadow:0 0 50px #4a89ff55,0 0 100px #8a42ff22,inset -25px -20px 45px #000b;
+position:relative;animation:float 7s infinite ease-in-out
+}
+.planet:before{
+content:"";position:absolute;inset:-18px;border:2px solid #50dfff88;
+border-radius:50%;transform:rotate(-24deg) scaleY(.3)
+}
+.planet-label{
+position:absolute;bottom:5px;right:10%;padding:12px;
+background:#06142dee;border:1px solid var(--line);
+border-radius:12px;font-size:12px
+}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:12px 0 28px}
+.metric,.panel,.course,.lesson,.project{
+background:var(--panel);border:1px solid var(--line);
+border-radius:17px;backdrop-filter:blur(12px)
+}
+.metric{padding:18px}
+.metric strong{display:block;font-size:24px;color:var(--cyan);margin-bottom:7px}
+.metric span,.muted{color:var(--muted);font-size:12px}
+.section{margin:30px 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:16px}
 .section-head h2{margin:0;font-size:24px}
-.muted{color:var(--muted);font-size:13px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:17px}
-.stat,.panel,.course{
-  border:1px solid var(--border);
-  background:linear-gradient(145deg,#141a29,#0f1320);
-  border-radius:17px;padding:17px;
+.section-head p{color:var(--muted);font-size:13px;line-height:1.8}
+.tag{font-size:10px;color:var(--cyan);border:1px solid #50e7ff66;border-radius:20px;padding:7px 9px}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:17px;align-items:start}
+.maincol{min-width:0}
+.side{display:grid;gap:14px;position:sticky;top:90px}
+.panel{padding:19px}
+.panel h3{margin-top:0}
+.profile{display:flex;align-items:center;gap:12px}
+.avatar{
+width:52px;height:52px;display:grid;place-items:center;
+border-radius:15px;background:linear-gradient(135deg,#123e7e,#8d42de);
+font-size:25px
 }
-.stat{display:flex;align-items:center;gap:12px}
-.stat-icon{
-  width:43px;height:43px;display:grid;place-items:center;
-  border-radius:13px;background:#1b2c42;font-size:20px;
+.progress{height:8px;background:#111d35;border-radius:20px;overflow:hidden;margin:12px 0}
+.progress i{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--cyan),var(--purple));transition:.4s}
+.course-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.course{padding:17px;transition:.2s;position:relative;overflow:hidden}
+.course:hover{transform:translateY(-4px);border-color:var(--cyan)}
+.course-icon{font-size:28px;margin-bottom:12px}
+.course h3{font-size:17px;margin:0 0 8px}
+.course p{font-size:12px;line-height:1.9;color:var(--muted);min-height:48px}
+.course-foot{display:flex;justify-content:space-between;align-items:center;gap:6px;margin-top:12px}
+.smallbtn{
+background:#10264a;border:1px solid #3d80c877;color:#e0f2ff;
+border-radius:9px;padding:8px 10px;font-size:12px
 }
-.stat strong{display:block;color:var(--cyan);font-size:24px}
-.stat small{color:var(--muted)}
-.courses{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.course{position:relative;overflow:hidden;transition:.2s}
-.course:hover{border-color:#596c9d;transform:translateY(-3px)}
-.course-top{display:flex;justify-content:space-between;align-items:center}
-.course-icon{font-size:32px}
-.tag{font-size:11px;color:var(--cyan);background:#192a3a;border-radius:20px;padding:4px 9px}
-.course h3{margin:12px 0 3px}
-.course p{font-size:13px;color:var(--muted);min-height:48px}
-.course button{width:100%;margin-top:7px}
-.layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:15px}
-.sidebar{align-self:start;position:sticky;top:95px}
-.sidebar h3{margin-top:0}
-.sidebar button{
-  display:block;width:100%;text-align:right;margin:5px 0;
-  color:#dce5ff;background:#151c2c;border:1px solid transparent;
-  font-size:13px;
+.smallbtn:hover{background:#174178}
+.lesson-list{display:grid;gap:10px}
+.lesson{display:flex;gap:12px;align-items:center;padding:12px}
+.lesson-num{
+width:38px;height:38px;flex:0 0 38px;display:grid;place-items:center;
+border-radius:11px;background:#10284c;color:var(--cyan)
 }
-.sidebar button.active{border-color:var(--cyan);background:#102d3b;color:var(--cyan)}
-.progress-track{height:7px;background:#252c40;border-radius:10px;overflow:hidden}
-.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--purple));transition:.3s}
-.lesson-header{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
-.lesson-title{font-size:28px;margin:12px 0}
-.pill{display:inline-block;padding:3px 10px;border-radius:30px;background:#202b42;color:var(--cyan);font-size:12px;margin:2px}
-.lesson-content{color:#e1e8fb}
-.lesson-content h3{color:var(--cyan)}
-.lesson-content li{margin:6px 0}
-.codebox{
-  direction:ltr;text-align:left;white-space:pre-wrap;overflow:auto;
-  font-family:Consolas,monospace;background:#070a11;
-  border:1px solid #2b3550;border-radius:12px;
-  padding:15px;color:#aaf4ca;
+.lesson-info{flex:1}
+.lesson-info strong{font-size:14px}
+.lesson-info p{font-size:12px;color:var(--muted);margin:5px 0}
+.lesson.done{border-color:#54ffc355}
+.lesson.done .lesson-num{color:var(--green)}
+.lab-editor{
+width:100%;min-height:240px;background:#020711;color:#b7f6ff;
+border:1px solid #294d7e;border-radius:13px;padding:14px;
+direction:ltr;text-align:left;font:13px/1.8 Consolas,monospace
 }
-code{direction:ltr;display:inline-block;background:#222d43;color:var(--cyan);padding:0 5px;border-radius:4px}
-.callout{background:#102c2b;border:1px solid #28645a;border-radius:12px;padding:13px;margin:15px 0}
-.quiz{border-top:1px solid var(--border);margin-top:24px;padding-top:17px}
-.quiz label{
-  display:block;padding:10px;margin:8px 0;border:1px solid #303b56;
-  border-radius:10px;cursor:pointer;
+.labbar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+.challenge{
+padding:20px;background:linear-gradient(120deg,#0c2141,#101239);
+border:1px solid #6260ff66;border-radius:17px
 }
-.quiz label:hover{border-color:var(--cyan)}
-.feedback{min-height:28px;font-weight:bold}
-.search{
-  width:100%;padding:11px 13px;border-radius:10px;
-  border:1px solid var(--border);background:#0b101c;color:white;
-  margin-bottom:12px;
+.challenge h3{margin-top:0}
+.challenge code{color:var(--cyan);background:#020916;padding:4px;border-radius:5px}
+.quiz-options{display:grid;gap:9px;margin:15px 0}
+.quiz-options button{
+text-align:right;background:#0a1a34;border:1px solid #294e7a;
+color:white;border-radius:10px;padding:12px
 }
-.lab-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-textarea{
-  width:100%;min-height:280px;resize:vertical;
-  direction:ltr;text-align:left;font-family:Consolas,monospace;
-  background:#070a11;color:#baf5d0;border:1px solid #303b56;
-  border-radius:12px;padding:13px;
+.quiz-options button:hover{border-color:var(--cyan)}
+.notice{font-size:12px;line-height:1.9;color:var(--muted)}
+.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.project{padding:17px}
+.project .symbol{font-size:26px}
+.project h3{font-size:15px}
+.project p{font-size:12px;line-height:1.9;color:var(--muted)}
+footer{
+margin:35px 0 130px;padding:22px;border:1px solid var(--line);
+border-radius:17px;display:flex;justify-content:space-between;
+gap:15px;flex-wrap:wrap;color:var(--muted);font-size:12px
 }
-iframe{width:100%;height:320px;background:white;border:1px solid #303b56;border-radius:12px}
-.challenge{background:linear-gradient(110deg,#142a36,#211936);border-color:#3b4866}
-footer{text-align:center;color:var(--muted);padding:30px;border-top:1px solid var(--border)}
-/* مساحة الإعلان أسفل اليسار */
+/* مساحة الإعلان: ثابتة دائمًا ولا يوجد زر لإغلاقها */
 .ad-slot{
-  position:fixed;left:16px;bottom:16px;z-index:30;
-  width:230px;min-height:115px;
-  background:#111522f5;
-  border:1px dashed #56617e;
-  border-radius:14px;
-  box-shadow:0 8px 35px #0008;
-  padding:12px;
-  text-align:center;
-  backdrop-filter:blur(12px);
+position:fixed;z-index:20;left:15px;bottom:15px;width:245px;
+min-height:175px;padding:15px;border:1px solid #5ee9ff;
+border-radius:18px;background:linear-gradient(150deg,#06152df5,#130a32f5);
+box-shadow:0 0 22px #20bfff55,0 0 48px #a331ff22;
+overflow:hidden;animation:glow 4s infinite;backdrop-filter:blur(15px)
+}
+.ad-slot:before{
+content:"";position:absolute;inset:0;pointer-events:none;
+background:linear-gradient(transparent 50%,#45caff09 50%);
+background-size:100% 5px
 }
 .ad-label{
-  position:absolute;top:6px;left:8px;
-  color:#8490a9;font-size:9px;
+display:inline-block;color:var(--cyan);font-size:10px;
+border:1px solid #50e7ff66;border-radius:20px;padding:4px 7px
 }
-.ad-inner{padding-top:8px}
-.ad-inner strong{display:block;color:var(--cyan);font-size:14px}
-.ad-inner p{font-size:11px;color:var(--muted);margin:5px 0}
-.ad-inner button{font-size:11px;padding:6px 10px}
-.ad-close{
-  position:absolute;right:5px;top:4px;
-  width:23px;height:23px;padding:0;
-  border-radius:50%;background:#283149;color:white;
+.ad-slot h3{font-size:17px;line-height:1.6;margin:12px 0 5px}
+.ad-slot p{font-size:11px;color:#b8cbe8;line-height:1.8}
+.ad-cta{
+display:block;text-align:center;border-radius:9px;padding:10px;
+background:linear-gradient(90deg,#0876db,#792eff);font-size:12px
 }
-@media(max-width:850px){
- .hero{grid-template-columns:1fr}.orb{width:110px;font-size:35px}
- .courses{grid-template-columns:repeat(2,minmax(0,1fr))}
- .layout{grid-template-columns:1fr}.sidebar{position:static}
- .stats{grid-template-columns:repeat(2,1fr)}
- .lab-grid{grid-template-columns:1fr}
+.toast{
+position:fixed;bottom:20px;right:20px;z-index:30;display:none;
+background:#09233a;border:1px solid #50e7ff66;border-radius:12px;
+padding:12px 16px;max-width:calc(100% - 40px)
 }
-@media(max-width:520px){
- main{padding:15px 12px 150px}
- .courses{grid-template-columns:1fr}
- .hero{padding:23px}
- .ad-slot{left:9px;bottom:9px;width:180px;min-height:85px;padding:8px}
- .ad-inner strong{font-size:12px}
- .ad-inner p{font-size:10px;margin:2px 0}
- .ad-inner button{font-size:10px;padding:4px 7px}
- .navright{font-size:12px}
+.modal{
+position:fixed;inset:0;background:#01040bdf;z-index:40;
+display:none;place-items:center;padding:18px
+}
+.modal.show{display:grid}
+.modal-card{
+width:min(760px,100%);max-height:88vh;overflow:auto;
+background:#071126;border:1px solid #50e7ff66;
+border-radius:20px;padding:24px
+}
+.modal-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.modal-top button{background:#142646;color:white;border:1px solid var(--line);padding:8px;border-radius:8px}
+@media(max-width:1000px){
+.layout{grid-template-columns:1fr}.side{position:static;grid-template-columns:repeat(2,1fr)}
+.hero{grid-template-columns:1fr}.hero-visual{min-height:230px}
+.course-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:650px){
+.topbar{align-items:flex-start;flex-direction:column}
+nav{width:100%;overflow:auto;flex-wrap:nowrap}
+nav a{white-space:nowrap}.status{display:none}
+.hero{padding:28px 12px}.metrics{grid-template-columns:repeat(2,1fr)}
+.course-grid,.projects,.side{grid-template-columns:1fr}
+.ad-slot{width:185px;min-height:130px;left:8px;bottom:8px;padding:10px}
+.ad-slot h3{font-size:14px;margin:7px 0}
+.ad-slot p{font-size:10px;margin:4px 0 8px}
+.ad-cta{padding:7px;font-size:11px}
+footer{margin-bottom:155px}h1{font-size:36px}
 }
 </style>
 </head>
 <body>
+<div id="stars"></div>
 
 <header class="topbar">
-  <nav class="nav">
-    <div class="brand">⚡ AMIRX<span>TNA</span><small>ACADEMY / LEARN TO BUILD</small></div>
-    <div class="navright">
-      <span class="badge">المستوى <b id="level">1</b></span>
-      <span class="badge">⭐ <b id="points">0</b></span>
-      <button class="btn-dark" onclick="resetProgress()">إعادة التقدم</button>
-    </div>
+  <a class="logo" href="#home">AMIRX<span>TNA</span><small>ACADEMY // YEAR 9000</small></a>
+  <nav>
+    <a href="#home">الرئيسية</a>
+    <a href="#academy">الأكاديمية</a>
+    <a href="#lab">مختبر البرمجة</a>
+    <a href="#challenge">التحديات</a>
+    <a href="#projects">المشاريع</a>
   </nav>
+  <div class="status">أنظمة المستقبل تعمل</div>
 </header>
 
-<main>
+<main class="wrap" id="home">
 <section class="hero">
   <div>
-    <div class="eyebrow">● مستقبلك يبدأ بسطر كود</div>
-    <h1>تعلّم البرمجة.<br><span class="gradient">اصنع أي شيء تتخيله.</span></h1>
-    <p>من أول أمر تكتبه إلى بناء المواقع والمشاريع. تعلّم بالممارسة، واختبر نفسك، واجمع النقاط وافتح مستويات جديدة.</p>
-    <div class="hero-actions">
-      <button onclick="document.getElementById('academy').scrollIntoView()">ابدأ رحلتك 🚀</button>
-      <button class="btn-dark" onclick="document.getElementById('lab').scrollIntoView()">جرّب الكود 🧪</button>
+    <span class="eyebrow">✦ بوابتك إلى مستقبل البرمجة</span>
+    <h1>لا تكتفِ باستخدام التقنية.<br><span>اصنع المستقبل بنفسك.</span></h1>
+    <p class="lead">أهلًا بك في AMIRXTNA 9000؛ أكاديمية تفاعلية تبدأ معك من أول سطر كود، وتساعدك على بناء مهارات حقيقية عبر الدروس والتجارب والتحديات والمشاريع.</p>
+    <div class="actions">
+      <a class="btn" href="#academy">ابدأ رحلتك ←</a>
+      <a class="btn secondary" href="#lab">جرّب المختبر الآن</a>
     </div>
   </div>
-  <div class="orb">⌘</div>
+  <div class="hero-visual">
+    <div class="planet"></div>
+    <div class="planet-label">◈ مستقبل البرمجة يبدأ من هنا</div>
+  </div>
 </section>
 
-<section class="stats">
-  <div class="stat"><div class="stat-icon">📚</div><div><strong id="doneCount">0</strong><small>دروس مكتملة</small></div></div>
-  <div class="stat"><div class="stat-icon">⭐</div><div><strong id="totalPoints">0</strong><small>نقاطك</small></div></div>
-  <div class="stat"><div class="stat-icon">🏆</div><div><strong id="progress">0%</strong><small>التقدم</small></div></div>
-  <div class="stat"><div class="stat-icon">🔥</div><div><strong id="nextLevel">50</strong><small>نقطة للمستوى التالي</small></div></div>
+<section class="metrics">
+  <div class="metric"><strong id="xp">0 XP</strong><span>نقاط الخبرة</span></div>
+  <div class="metric"><strong id="completed">0</strong><span>دروس مكتملة</span></div>
+  <div class="metric"><strong>9000</strong><span>عام المستقبل</span></div>
+  <div class="metric"><strong id="rank">المبتدئ</strong><span>رتبتك الحالية</span></div>
 </section>
-
-<div class="section-head">
-  <h2>اختر تخصصك</h2>
-  <span class="muted">ابدأ بمسار واحد، ثم وسّع مهاراتك</span>
-</div>
-
-<section class="courses">
-  <article class="course">
-    <div class="course-top"><span class="course-icon">🐍</span><span class="tag">BEGINNER</span></div>
-    <h3>Python</h3><p>المتغيرات، الشروط، الحلقات، الدوال والمشاريع.</p>
-    <button onclick="chooseTrack('python')">تعلم Python ←</button>
-  </article>
-  <article class="course">
-    <div class="course-top"><span class="course-icon">🌐</span><span class="tag">WEB DESIGN</span></div>
-    <h3>HTML و CSS</h3><p>اصنع صفحات المواقع وتعلم التصميم والألوان والتخطيط.</p>
-    <button onclick="chooseTrack('web')">تعلم تطوير الويب ←</button>
-  </article>
-  <article class="course">
-    <div class="course-top"><span class="course-icon">⚡</span><span class="tag">INTERACTIVE</span></div>
-    <h3>JavaScript</h3><p>أضف الحركة والتفاعل والألعاب إلى مواقعك.</p>
-    <button onclick="chooseTrack('js')">تعلم JavaScript ←</button>
-  </article>
-  <article class="course">
-    <div class="course-top"><span class="course-icon">⚙️</span><span class="tag">PROGRAMMING</span></div>
-    <h3>C++</h3><p>تعلم أساسيات لغة قوية لبناء برامج متنوعة.</p>
-    <button onclick="chooseTrack('cpp')">تعلم C++ ←</button>
-  </article>
-  <article class="course">
-    <div class="course-top"><span class="course-icon">🛡️</span><span class="tag">SAFE LEARNING</span></div>
-    <h3>الأمن السيبراني</h3><p>تعلم حماية الأجهزة والحسابات والتدرب بطريقة قانونية.</p>
-    <button onclick="chooseTrack('cyber')">تعلم الأمن ←</button>
-  </article>
-  <article class="course">
-    <div class="course-top"><span class="course-icon">🧠</span><span class="tag">LOGIC</span></div>
-    <h3>التفكير البرمجي</h3><p>تدرب على حل المشكلات وتحويل الأفكار إلى خطوات.</p>
-    <button onclick="chooseTrack('logic')">طوّر تفكيرك ←</button>
-  </article>
-</section>
-
-<div class="section-head" id="academy">
-  <h2>📖 قاعة التعلم</h2>
-  <span class="muted">اقرأ، طبّق، ثم اختبر نفسك</span>
-</div>
 
 <div class="layout">
-  <aside class="panel sidebar">
-    <h3>خريطة الدروس</h3>
-    <input class="search" id="search" placeholder="ابحث عن درس..." oninput="renderLessons()">
-    <div class="progress-track"><div class="progress-fill" id="bar"></div></div>
-    <p class="muted" id="progressText">أكمل أول درس لتبدأ التقدم</p>
-    <div id="lessonList"></div>
-  </aside>
-  <section class="panel">
-    <div id="lessonBody"></div>
-  </section>
-</div>
+<div class="maincol">
+<section class="section" id="academy">
+  <div class="section-head">
+    <div><h2>بوابات الأكاديمية</h2><p>اختر مسارك وتعلّم ثم طبّق بنفسك.</p></div>
+    <span class="tag">LEARNING HUB</span>
+  </div>
+  <div class="course-grid" id="courseGrid"></div>
+</section>
 
-<div class="section-head" id="lab">
-  <h2>🧪 مختبر الكود</h2>
-  <span class="muted">اكتب تعديلاتك وشاهد النتيجة مباشرة</span>
-</div>
-<section class="panel">
-  <p class="muted">هذا المختبر يشغّل HTML وCSS وJavaScript داخل المتصفح. تشغيل Python وC++ يحتاج بيئة تشغيل منفصلة.</p>
-  <div class="lab-grid">
-    <div>
-      <h3>محرر الأكواد</h3>
-      <textarea id="editor" spellcheck="false"><!DOCTYPE html>
-<html>
-<head>
-<style>
-body {
-  background: #10162b;
-  color: white;
-  font-family: Arial;
-  text-align: center;
-  padding: 35px;
-}
-h1 { color: #00d9ff; }
-button {
-  padding: 12px 20px;
-  background: #9d7bff;
-  border: 0;
-  border-radius: 10px;
-  cursor: pointer;
-}
-</style>
-</head>
-<body>
-<h1>أهلًا بك في AMIRXTNA!</h1>
-<p>أنا أتعلم البرمجة وأبني مشروعي الأول.</p>
-<button onclick="alert('ممتاز! لقد صنعت تفاعلًا 🎉')">
-  اضغط هنا
-</button>
-</body>
-</html></textarea>
-      <button onclick="runCode()">▶ تشغيل</button>
-      <button class="btn-dark" onclick="resetEditor()">إعادة المثال</button>
+<section class="section" id="lessons">
+  <div class="section-head">
+    <div><h2>مسار البداية: Python</h2><p>دروس قصيرة وأمثلة واختبارات.</p></div>
+    <span class="tag">المسار الأول</span>
+  </div>
+  <div class="panel">
+    <div style="display:flex;justify-content:space-between;gap:10px">
+      <strong>تقدمك في بايثون</strong><span class="muted" id="progressText">0%</span>
     </div>
-    <div>
-      <h3>معاينة الموقع</h3>
-      <iframe id="preview" sandbox="allow-scripts" title="معاينة الكود"></iframe>
-      <div class="callout">💡 جرّب تغيير لون <code>h1</code> أو النص، ثم اضغط تشغيل.</div>
-    </div>
+    <div class="progress"><i id="progressBar"></i></div>
+    <div class="lesson-list" id="lessonList"></div>
   </div>
 </section>
 
-<section class="panel challenge" style="margin-top:18px">
-  <h2>🎯 مهمة اليوم</h2>
-  <p>اصنع صفحة تحمل اسمك، واكتب فيها هدفك كمبرمج، ثم أضف زرًا يعرض رسالة عند الضغط عليه.</p>
-  <button onclick="document.getElementById('lab').scrollIntoView()">ابدأ المهمة 🚀</button>
+<section class="section" id="lab">
+  <div class="section-head">
+    <div><h2>مختبر الويب التفاعلي</h2><p>اكتب HTML وCSS وJavaScript وشاهد النتيجة.</p></div>
+    <span class="tag">LIVE LAB</span>
+  </div>
+  <div class="panel">
+    <div class="labbar">
+      <span class="muted">ملف: future.html</span>
+      <button class="smallbtn" id="runWeb">▶ تشغيل المعاينة</button>
+    </div>
+    <textarea class="lab-editor" id="webCode" spellcheck="false"><div class="card">
+  <h1>مرحبًا يا مستقبل!</h1>
+  <p>أنا أتعلم البرمجة في AMIRXTNA.</p>
+  <button onclick="document.querySelector('p').textContent='أنت صنعت هذا بنفسك! 🚀'">اضغط هنا</button>
+</div>
+<style>
+body { background:#071126; color:white; font-family:Arial; padding:25px; }
+.card { border:1px solid #50e7ff; border-radius:16px; padding:22px; text-align:center; }
+h1 { color:#50e7ff; }
+button { background:#4b49e8; color:white; padding:10px 15px; border:0; border-radius:8px; }
+</style></textarea>
+    <p class="muted">النتيجة تظهر هنا:</p>
+    <iframe id="webPreview" title="معاينة الكود" sandbox="allow-scripts" style="width:100%;height:260px;border:1px solid #294d7e;border-radius:13px;background:#071126"></iframe>
+    <p class="notice">المختبر يشغّل تقنيات الويب. تشغيل Python وC++ يحتاج مشغّلًا أو خادمًا إضافيًا.</p>
+  </div>
 </section>
-</main>
 
-<footer>AMIRXTNA ACADEMY — تعلّم اليوم، وابنِ شيئًا جديدًا غدًا.</footer>
+<section class="section" id="challenge">
+  <div class="section-head">
+    <div><h2>تحدي اليوم</h2><p>حل السؤال لتحصل على نقاط خبرة.</p></div>
+    <span class="tag">+50 XP</span>
+  </div>
+  <div class="challenge">
+    <h3>🧠 تحدي المتغيرات</h3>
+    <p>في Python، كيف تخزّن اسمك في متغير اسمه <code>name</code>؟</p>
+    <div class="quiz-options" id="challengeOptions">
+      <button data-correct="false">name == "Amir"</button>
+      <button data-correct="true">name = "Amir"</button>
+      <button data-correct="false">"Amir" = name</button>
+    </div>
+    <div id="challengeFeedback" class="notice">اختر إجابة واحدة.</div>
+  </div>
+</section>
 
-<!-- مساحة الإعلان أسفل اليسار -->
-<aside class="ad-slot" id="adSlot">
-  <span class="ad-label">إعلان</span>
-  <button class="ad-close" aria-label="إغلاق الإعلان" onclick="document.getElementById('adSlot').style.display='none'">×</button>
-  <div class="ad-inner">
-    <strong>مساحة إعلانية</strong>
-    <p>ضع كود إعلانك هنا لاحقًا</p>
-    <button onclick="alert('هذه مساحة مخصصة لإعلانك. اربط مزود الإعلانات عند جاهزيتك.')">اعرف المزيد</button>
+<section class="section" id="projects">
+  <div class="section-head">
+    <div><h2>مصنع المشاريع</h2><p>حوّل ما تعلمته إلى مشاريع حقيقية.</p></div>
+    <span class="tag">BUILD MODE</span>
+  </div>
+  <div class="projects">
+    <article class="project"><div class="symbol">🌐</div><h3>موقعك الشخصي</h3><p>أنشئ صفحة تعريفية وأضف الألوان والأقسام والروابط.</p><button class="smallbtn" data-project="site">ابدأ المشروع</button></article>
+    <article class="project"><div class="symbol">🎮</div><h3>لعبة تخمين</h3><p>تعلّم المتغيرات والشروط والإدخال في لعبة بسيطة.</p><button class="smallbtn" data-project="game">ابدأ المشروع</button></article>
+    <article class="project"><div class="symbol">🤖</div><h3>مساعد بسيط</h3><p>اصنع مساعدًا يرد على أسئلة وفق قواعد تكتبها.</p><button class="smallbtn" data-project="bot">ابدأ المشروع</button></article>
+  </div>
+</section>
+</div>
+
+<aside class="side">
+  <div class="panel">
+    <div class="profile">
+      <div class="avatar">👨‍🚀</div>
+      <div><strong>مستكشف المستقبل</strong><div class="muted">متدرّب في AMIRXTNA</div></div>
+    </div>
+    <div class="progress"><i id="sideProgress"></i></div>
+    <div class="muted" id="sideProgressText">أكمل أول درس لتبدأ رحلتك.</div>
+    <button class="btn" style="width:100%;margin-top:15px" id="continueBtn">تابع التعلّم ←</button>
+  </div>
+  <div class="panel">
+    <h3>⚡ مركز الإنجازات</h3>
+    <div class="muted" id="achievementList">🏁 إنجازك الأول ينتظرك.</div>
+  </div>
+  <div class="panel">
+    <h3>🧭 خريطة الطريق</h3>
+    <p class="muted">١. تعلّم المفاهيم<br>٢. اكتب الكود بنفسك<br>٣. اكتشف الأخطاء وأصلحها<br>٤. ابنِ مشاريع صغيرة<br>٥. تعلّم الأمان المسؤول</p>
   </div>
 </aside>
+</div>
+
+<footer>
+  <span>© AMIRXTNA 9000 — أكاديمية المستقبل</span>
+  <span>تعلّم اليوم. ابنِ الغد. 🌌</span>
+  <span>الإصدار 1.0</span>
+</footer>
+</main>
+
+<!-- مساحة الإعلان ثابتة ولا تحتوي على زر إغلاق -->
+<aside class="ad-slot" aria-label="مساحة إعلانية">
+  <span class="ad-label">مساحة إعلانية</span>
+  <h3>مساحة إعلانية مميزة</h3>
+  <p>مكان مخصص لعرض إعلانك والوصول إلى جمهور أوسع.</p>
+  <a class="ad-cta" href="#contact" id="adLink">مساحة محجوزة للإعلان ↗</a>
+</aside>
+
+<div class="toast" id="toast" role="status"></div>
+<div class="modal" id="modal" role="dialog" aria-modal="true">
+  <div class="modal-card">
+    <div class="modal-top"><h2 id="modalTitle">درس جديد</h2><button id="closeModal">إغلاق النافذة</button></div>
+    <div id="modalContent"></div>
+  </div>
+</div>
 
 <script>
-const lessons = [
-{
- id:"p1",track:"python",title:"1. ما هي البرمجة؟",xp:10,
- body:`<p>البرمجة هي كتابة تعليمات للحاسوب لتنفيذ مهمة.</p>
- <div class="callout">مثال: أدخل رقمين ← اجمعهما ← اعرض النتيجة.</div>
- <h3>مصطلحات مهمة</h3>
- <ul><li><b>Code:</b> تعليمات مكتوبة بلغة برمجة.</li>
- <li><b>Program:</b> مجموعة تعليمات تنفذ مهمة.</li>
- <li><b>Bug:</b> خطأ في البرنامج.</li>
- <li><b>Debugging:</b> البحث عن الخطأ وإصلاحه.</li></ul>
- <div class="codebox">print("Hello, world!")</div>
- <p><code>print()</code> أمر يعرض النص أو القيمة على الشاشة في Python.</p>`,
- q:"ما وظيفة البرمجة؟",opts:["تزيين الشاشة فقط","إعطاء الحاسوب تعليمات","زيادة الإنترنت"],ans:1,
- why:"البرمجة تكتب تعليمات للحاسوب."
-},
-{
- id:"p2",track:"python",title:"2. أول برنامج",xp:15,
- body:`<p>الأمر <code>print()</code> يعرض النصوص والنتائج.</p>
- <div class="codebox">print("مرحبًا")
-print("أنا أتعلم Python")
-print(2 + 3)</div>
- <ul><li><code>print</code>: أمر العرض.</li><li><code>( )</code>: الأقواس التي تحتوي القيمة.</li>
- <li><code>"..."</code>: علامات تحيط بالنص.</li>
- <li><code>2 + 3</code>: عملية حسابية نتيجتها 5.</li></ul>`,
- q:"ماذا تطبع print(2 + 3)؟",opts:["23","5","خطأ دائمًا"],ans:1,
- why:"الأرقام دون علامات اقتباس تُحسب."
-},
-{
- id:"p3",track:"python",title:"3. المتغيرات",xp:20,
- body:`<p>المتغير اسم نخزن تحته قيمة.</p>
- <div class="codebox">name = "Amir"
-age = 13
-score = 100
-print(name)
-print(age + 1)</div>
- <ul><li><code>name</code>: اسم المتغير.</li>
- <li><code>=</code>: إسناد قيمة.</li>
- <li><code>"Amir"</code>: نص.</li>
- <li><code>13</code>: عدد صحيح.</li></ul>
- <p>اختر أسماء واضحة مثل <code>player_score</code>.</p>`,
- q:"كيف تنشئ متغيرًا اسمه score وقيمته 50؟",
- opts:["50 = score","score = 50","score == 50"],ans:1,
- why:"نكتب اسم المتغير ثم = ثم القيمة."
-},
-{
- id:"p4",track:"python",title:"4. أنواع البيانات",xp:20,
- body:`<p>أهم الأنواع:</p>
- <ul><li><code>str</code>: نص مثل <code>"مرحبا"</code>.</li>
- <li><code>int</code>: عدد صحيح مثل <code>12</code>.</li>
- <li><code>float</code>: عدد عشري مثل <code>3.5</code>.</li>
- <li><code>bool</code>: قيمة True أو False.</li></ul>
- <div class="codebox">name = "Sara"
-coins = 12
-speed = 4.5
-is_ready = True
-print(type(coins))</div>
- <p>الأمر <code>type()</code> يعرض نوع القيمة.</p>`,
- q:"ما نوع القيمة 4.5؟",opts:["str","int","float"],ans:2,
- why:"4.5 عدد عشري من نوع float."
-},
-{
- id:"p5",track:"python",title:"5. العمليات الحسابية",xp:20,
- body:`<p>استخدم هذه الرموز للحساب:</p>
- <div class="codebox">print(8 + 2)   # جمع
-print(8 - 2)   # طرح
-print(8 * 2)   # ضرب
-print(8 / 2)   # قسمة
-print(8 // 3)  # قسمة صحيحة
-print(8 % 3)   # باقي القسمة
-print(2 ** 3)  # أس</div>
- <p><code>#</code> يبدأ تعليقًا لا ينفذه البرنامج.</p>`,
- q:"ما ناتج 10 % 3؟",opts:["3","1","0"],ans:1,
- why:"يبقى 1 بعد قسمة 10 على 3."
-},
-{
- id:"p6",track:"python",title:"6. الشروط",xp:25,
- body:`<p>الشروط تجعل البرنامج يتخذ قرارًا.</p>
- <div class="codebox">age = 15
-if age >= 13:
-    print("ابدأ التعلم")
-else:
-    print("ابدأ بالأساسيات")</div>
- <ul><li><code>if</code>: إذا تحقق الشرط.</li>
- <li><code>&gt;=</code>: أكبر من أو يساوي.</li>
- <li><code>else</code>: وإلا.</li>
- <li>المسافة البادئة مهمة في Python.</li></ul>
- <p><code>==</code> للمقارنة بالمساواة، و<code>!=</code> لعدم المساواة.</p>`,
- q:"ما وظيفة else؟",opts:["إنشاء متغير","تنفيذ الأوامر إذا لم يتحقق الشرط","تكرار الأوامر"],ans:1,
- why:"else تنفذ عند عدم تحقق شرط if."
-},
-{
- id:"p7",track:"python",title:"7. الحلقات",xp:25,
- body:`<p>الحلقات تكرر الأوامر.</p>
- <div class="codebox">for number in range(1, 4):
-    print(number)
-
-count = 1
-while count <= 3:
-    print(count)
-    count += 1</div>
- <p><code>for</code> للتكرار على نطاق أو عناصر. <code>while</code> تستمر ما دام الشرط صحيحًا.</p>
- <div class="callout">انتبه: يجب أن تتمكن حلقة while من التوقف.</div>`,
- q:"كم مرة يطبع range(1, 4)؟",opts:["مرتين","ثلاث مرات","أربع مرات"],ans:1,
- why:"يطبع 1 و2 و3 ولا يشمل 4."
-},
-{
- id:"p8",track:"python",title:"8. الدوال",xp:25,
- body:`<p>الدالة تجمع أوامر تحت اسم يمكن إعادة استخدامه.</p>
- <div class="codebox">def greet(name):
-    print("أهلًا", name)
-
-greet("Amir")
-greet("Sara")</div>
- <p><code>def</code> لتعريف دالة. و<code>name</code> قيمة تستقبلها الدالة.</p>
- <div class="codebox">def add(a, b):
-    return a + b
-
-print(add(4, 6))</div>
- <p><code>return</code> تعيد النتيجة إلى مكان استدعاء الدالة.</p>`,
- q:"لماذا نستخدم الدوال؟",opts:["إعادة استخدام الكود وتنظيمه","إيقاف الحاسوب","إزالة الأخطاء تلقائيًا"],ans:0,
- why:"الدوال تجعل الكود منظمًا وتقلل التكرار."
-},
-{
- id:"w1",track:"web",title:"9. أساسيات HTML",xp:20,
- body:`<p>HTML تحدد بنية صفحة الويب.</p>
- <div class="codebox">&lt;h1&gt;عنوان رئيسي&lt;/h1&gt;
-&lt;p&gt;هذه فقرة.&lt;/p&gt;
-&lt;button&gt;اضغطني&lt;/button&gt;</div>
- <ul><li><code>h1</code>: عنوان رئيسي.</li>
- <li><code>p</code>: فقرة.</li>
- <li><code>button</code>: زر.</li>
- <li><code>a</code>: رابط.</li></ul>`,
- q:"أي عنصر يمثل فقرة؟",opts:["h1","p","img"],ans:1,
- why:"العنصر p مخصص للفقرة."
-},
-{
- id:"w2",track:"web",title:"10. أساسيات CSS",xp:20,
- body:`<p>CSS تنسق مظهر الصفحة.</p>
- <div class="codebox">h1 {
-  color: purple;
-  font-size: 32px;
-}
-body {
-  background: #f0f4ff;
-}</div>
- <p>اسم العنصر قبل الأقواس، وداخل الأقواس الخصائص والقيم.</p>`,
- q:"ما دور CSS؟",opts:["تنسيق مظهر الصفحة","تشغيل الحاسوب","حذف HTML"],ans:0,
- why:"CSS تتحكم بالألوان والأحجام والمسافات."
-},
-{
- id:"j1",track:"js",title:"11. أول JavaScript",xp:20,
- body:`<p>JavaScript تضيف التفاعل إلى صفحات الويب.</p>
- <div class="codebox">let name = "Amir";
-const points = 10;
-console.log("Hello", name);
-console.log(points + 5);</div>
- <p><code>let</code> يسمح بإعادة إسناد القيمة، و<code>const</code> يمنع إعادة إسنادها.</p>`,
- q:"أي كلمة مناسبة لقيمة لن تعيد إسنادها؟",opts:["const","repeat","print"],ans:0,
- why:"const تعرّف متغيرًا ثابت الإسناد."
-},
-{
- id:"c1",track:"cpp",title:"12. أول C++",xp:20,
- body:`<p>هذا المثال يحتاج مترجم C++ لتشغيله.</p>
- <div class="codebox">#include &lt;iostream&gt;
-using namespace std;
-int main() {
-    cout &lt;&lt; "Hello!" &lt;&lt; endl;
-    return 0;
-}</div>
- <ul><li><code>#include</code>: تضمين مكتبة.</li>
- <li><code>main()</code>: نقطة بداية البرنامج.</li>
- <li><code>cout</code>: إخراج المعلومات.</li>
- <li><code>;</code>: تنهي معظم التعليمات.</li></ul>`,
- q:"ما وظيفة cout؟",opts:["عرض المخرجات","إنشاء صورة","تنسيق HTML"],ans:0,
- why:"cout تعرض النصوص والقيم."
-},
-{
- id:"l1",track:"logic",title:"13. التفكير البرمجي",xp:15,
- body:`<p>قسّم المشكلة إلى خطوات:</p>
- <ol><li>حدد المشكلة.</li><li>حدد المدخلات.</li>
- <li>خطط للحل.</li><li>اكتب الكود.</li><li>اختبره.</li><li>أصلح الأخطاء.</li></ol>
- <div class="callout">تحدٍّ: احسب متوسط ثلاث درجات. ما المدخلات؟ وما العملية؟</div>`,
- q:"كيف تحل مشكلة كبيرة؟",opts:["تقسيمها لأجزاء أصغر","كتابة كود عشوائي","تجاهل الاختبار"],ans:0,
- why:"تقسيم المشكلة يجعل الحل أسهل."
-},
-{
- id:"cy1",track:"cyber",title:"14. الأمن السيبراني",xp:15,
- body:`<p>الأمن السيبراني يحمي الأجهزة والبيانات.</p>
- <ul><li>استخدم كلمات مرور قوية وفريدة.</li>
- <li>فعّل المصادقة متعددة العوامل.</li>
- <li>حدّث النظام والبرامج.</li>
- <li>تعلم أساسيات الشبكات.</li>
- <li>تدرب فقط في مختبرات تملكها أو لديك إذن لاستخدامها.</li></ul>`,
- q:"أين تتدرب على الاختبارات الأمنية؟",opts:["حساب شخص بلا إذن","مختبر مصرح به","أي شبكة عامة دون موافقة"],ans:1,
- why:"يجب أن يكون التدريب قانونيًا ومصرحًا به."
-}
+const courses=[
+{id:"python",icon:"🐍",title:"Python",desc:"المتغيرات والشروط والحلقات والدوال والمشاريع.",lessons:8},
+{id:"web",icon:"🌐",title:"HTML & CSS",desc:"اصنع صفحات جميلة ومتجاوبة وافهم تصميم المواقع.",lessons:6},
+{id:"js",icon:"⚡",title:"JavaScript",desc:"أضف التفاعل والأحداث والمنطق إلى مواقعك.",lessons:6},
+{id:"cpp",icon:"⚙️",title:"C++",desc:"تعلّم الأنواع والشروط والحلقات والدوال.",lessons:5},
+{id:"security",icon:"🛡️",title:"الأمن السيبراني",desc:"تعلّم حماية الحسابات والتدرّب بأمان وقانونية.",lessons:5},
+{id:"logic",icon:"🧩",title:"التفكير البرمجي",desc:"قسّم المشكلات إلى خطوات وابنِ خوارزميات.",lessons:4}
 ];
 
-let state={done:[],points:0,track:"python"};
-let current="p1";
-const defaultCode=document.getElementById("editor").value;
+const lessons=[
+{title:"أول برنامج لك",desc:"استخدم print() لعرض رسالة.",body:"الدالة print() تعرض معلومات على الشاشة. جرّب كتابة print('مرحبًا بالعالم') ثم غيّر النص.",code:"print('مرحبًا بالعالم')",quiz:"ما وظيفة print()؟",answers:["عرض معلومات على الشاشة","حذف الملفات","إنشاء صورة"],correct:0},
+{title:"المتغيرات",desc:"خزّن المعلومات بأسماء واضحة.",body:"المتغير اسم يشير إلى قيمة. مثال: name = 'Amir'. علامة = تسند القيمة إلى المتغير، أما == فتُستخدم للمقارنة.",code:"name = 'Amir'\nage = 13\nprint(name)\nprint(age)",quiz:"أي سطر يسند القيمة 7 إلى x؟",answers:["7 = x","x == 7","x = 7"],correct:2},
+{title:"العمليات الحسابية",desc:"اجمع واطرح واضرب واقسم.",body:"+ للجمع، - للطرح، * للضرب، / للقسمة، // للقسمة الصحيحة، % للباقي، و ** للأس.",code:"a = 10\nb = 3\nprint(a + b)\nprint(a * b)\nprint(a % b)\nprint(2 ** 3)",quiz:"ما ناتج 10 % 3؟",answers:["3","1","0"],correct:1},
+{title:"النصوص",desc:"تعرّف إلى النصوص ودمجها.",body:"النصوص تُكتب بين علامات اقتباس. يمكنك دمج النصوص باستخدام + أو استخدام f-string لإدراج المتغيرات.",code:"name = 'Amir'\nprint('أهلًا ' + name)\nprint(f'مرحبًا يا {name}')",quiz:"أيّهما نص صحيح؟",answers:["hello","'hello'","= hello"],correct:1},
+{title:"إدخال المستخدم",desc:"اجعل برنامجك يستقبل إجابة.",body:"input() تنتظر أن يكتب المستخدم قيمة. الناتج نص؛ استخدم int() لتحويله إلى عدد صحيح.",code:"name = input('ما اسمك؟ ')\nprint(f'أهلًا يا {name}!')",quiz:"ما وظيفة input()؟",answers:["تستقبل إدخال المستخدم","تطبع الرقم 1 دائمًا","تغلق البرنامج"],correct:0},
+{title:"الشروط",desc:"اجعل البرنامج يتخذ قرارًا.",body:"تستخدم if لاختبار شرط، وelse للحالة الأخرى. انتبه إلى النقطتين والمسافة البادئة.",code:"age = 13\nif age >= 13:\n    print('مرحبًا بالمبرمج')\nelse:\n    print('أهلًا بك')",quiz:"أي كلمة تبدأ شرطًا في Python؟",answers:["when","if","repeat"],correct:1},
+{title:"الحلقات",desc:"كرّر الأوامر دون نسخها.",body:"حلقة for مناسبة للتكرار. range(3) تنتج الأعداد 0 و1 و2.",code:"for i in range(3):\n    print('المحاولة', i + 1)",quiz:"كم مرة تعمل حلقة range(4)؟",answers:["3","4","5"],correct:1},
+{title:"الدوال",desc:"نظّم الكود وأعد استخدامه.",body:"تُعرّف الدالة باستخدام def، ويمكنها استقبال مدخلات وإرجاع نتيجة باستخدام return.",code:"def greet(name):\n    return f'أهلًا يا {name}'\n\nprint(greet('Amir'))",quiz:"ما الكلمة المستخدمة لتعريف دالة؟",answers:["func","def","make"],correct:1}
+];
 
+let state={xp:0,done:[],challenge:false};
 try{
-  const saved=JSON.parse(localStorage.getItem("amirxtna_v2")||"null");
-  if(saved)state={...state,...saved};
+ const saved=JSON.parse(localStorage.getItem("amirxtna9000")||"null");
+ if(saved&&Array.isArray(saved.done))state={...state,...saved};
 }catch(e){}
 
+const $=s=>document.querySelector(s);
 function save(){
-  try{localStorage.setItem("amirxtna_v2",JSON.stringify(state))}catch(e){}
-  updateStats();
+ try{localStorage.setItem("amirxtna9000",JSON.stringify(state))}catch(e){}
+ updateStats()
+}
+function toast(msg){
+ const t=$("#toast");t.textContent=msg;t.style.display="block";
+ clearTimeout(window.toastTimer);
+ window.toastTimer=setTimeout(()=>t.style.display="none",2600)
 }
 function updateStats(){
-  const done=state.done.length;
-  document.getElementById("points").textContent=state.points;
-  document.getElementById("totalPoints").textContent=state.points;
-  document.getElementById("doneCount").textContent=done;
-  document.getElementById("level").textContent=1+Math.floor(state.points/50);
-  document.getElementById("progress").textContent=Math.round(done/lessons.length*100)+"%";
-  document.getElementById("bar").style.width=(done/lessons.length*100)+"%";
-  document.getElementById("progressText").textContent=done+" من "+lessons.length+" درس مكتمل";
-  document.getElementById("nextLevel").textContent=50-(state.points%50);
+ $("#xp").textContent=state.xp+" XP";
+ $("#completed").textContent=state.done.length;
+ const p=Math.round(state.done.length/lessons.length*100);
+ $("#progressText").textContent=p+"%";
+ $("#progressBar").style.width=p+"%";
+ $("#sideProgress").style.width=p+"%";
+ $("#sideProgressText").textContent=p?`أنهيت ${state.done.length} من ${lessons.length} دروس.`:"أكمل أول درس لتبدأ رحلتك.";
+ $("#rank").textContent=state.xp>=300?"مهندس المستقبل":state.xp>=150?"صانع الأكواد":state.xp>=50?"متدرّب متقدم":"المبتدئ";
+ $("#achievementList").innerHTML=
+ (state.done.length?"🏅 أنهيت "+state.done.length+" درسًا.<br>":"🏁 إنجازك الأول ينتظرك.<br>")+
+ (state.challenge?"🎯 أكملت تحدي اليوم.<br>":"💡 جرّب تحدي اليوم.<br>")+
+ (state.xp>=100?"🚀 وصلت إلى 100 XP!":"⚡ استمر لجمع نقاط الخبرة.");
+ renderLessons()
 }
-function chooseTrack(track){
-  state.track=track;
-  const first=lessons.find(l=>l.track===track);
-  if(first)current=first.id;
-  renderLessons();renderLesson();
-  document.getElementById("academy").scrollIntoView({behavior:"smooth"});
+function renderCourses(){
+ $("#courseGrid").innerHTML=courses.map(c=>`
+ <article class="course">
+ <div class="course-icon">${c.icon}</div><h3>${c.title}</h3>
+ <p>${c.desc}</p><div class="course-foot">
+ <span class="tag">${c.lessons} وحدات</span>
+ <button class="smallbtn" data-course="${c.id}">استكشف ←</button>
+ </div></article>`).join("")
 }
 function renderLessons(){
-  const q=document.getElementById("search").value.toLowerCase();
-  const list=lessons.filter(l=>
-    (l.track===state.track||q)&&
-    (l.title+" "+l.track+" "+l.body).toLowerCase().includes(q)
-  );
-  document.getElementById("lessonList").innerHTML=list.map(l=>
-    `<button class="${l.id===current?'active':''}" onclick="openLesson('${l.id}')">
-    ${state.done.includes(l.id)?"✅ ":""}${l.title}</button>`
-  ).join("")||"<p class='muted'>لم نجد درسًا بهذا الاسم.</p>";
+ $("#lessonList").innerHTML=lessons.map((l,i)=>{
+ const done=state.done.includes(i);
+ return `<article class="lesson ${done?"done":""}">
+ <div class="lesson-num">${done?"✓":String(i+1).padStart(2,"0")}</div>
+ <div class="lesson-info"><strong>${l.title}</strong><p>${l.desc}</p></div>
+ <button class="smallbtn" data-lesson="${i}">${done?"مراجعة الدرس":"ابدأ الدرس"}</button>
+ </article>`
+ }).join("")
 }
-function openLesson(id){current=id;renderLessons();renderLesson()}
-function renderLesson(){
-  const l=lessons.find(x=>x.id===current)||lessons[0];
-  const options=l.opts.map(o=>o.replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;"));
-  document.getElementById("lessonBody").innerHTML=`
-    <div class="lesson-header">
-      <span class="pill">${l.track.toUpperCase()}</span>
-      <span class="pill">⭐ ${l.xp} نقطة</span>
-    </div>
-    <h2 class="lesson-title">${l.title}</h2>
-    <div class="lesson-content">${l.body}</div>
-    <div class="quiz">
-      <h3>🧠 اختبر فهمك</h3><p>${l.q}</p>
-      ${options.map((o,i)=>`<label><input type="radio" name="answer" value="${i}"> ${o}</label>`).join("")}
-      <button onclick="checkAnswer('${l.id}')">تحقق من الإجابة</button>
-      <div id="feedback" class="feedback"></div>
-    </div>`;
+function escapeHtml(s){
+ return s.replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;")
 }
-function checkAnswer(id){
-  const l=lessons.find(x=>x.id===id);
-  const selected=document.querySelector('input[name="answer"]:checked');
-  const feedback=document.getElementById("feedback");
-  if(!selected){feedback.textContent="اختر إجابة أولًا 🙂";feedback.style.color="#ff8095";return}
-  if(Number(selected.value)===l.ans){
-    feedback.textContent="إجابة صحيحة! "+l.why;
-    feedback.style.color="var(--green)";
-    if(!state.done.includes(id)){
-      state.done.push(id);state.points+=l.xp;save();renderLessons();
-    }
-  }else{
-    feedback.textContent="حاول مرة أخرى. "+l.why;
-    feedback.style.color="#ff8095";
+function openLesson(i){
+ const l=lessons[i];
+ $("#modalTitle").textContent=`الدرس ${i+1}: ${l.title}`;
+ $("#modalContent").innerHTML=`
+ <p style="line-height:2;color:#c3d6f3">${l.body}</p>
+ <pre style="direction:ltr;text-align:left;white-space:pre-wrap;background:#020711;border:1px solid #294d7e;padding:15px;border-radius:12px;color:#8df1ff;overflow:auto">${escapeHtml(l.code)}</pre>
+ <h3>اختبار سريع</h3><p>${l.quiz}</p>
+ <div class="quiz-options">${l.answers.map((a,j)=>`<button data-answer="${j}" data-lessonquiz="${i}">${a}</button>`).join("")}</div>
+ <div class="notice" id="lessonFeedback">اختر الإجابة الصحيحة لتحصل على نقاط الخبرة.</div>`;
+ $("#modal").classList.add("show")
+}
+$("#lessonList").addEventListener("click",e=>{
+ const b=e.target.closest("[data-lesson]");
+ if(b)openLesson(Number(b.dataset.lesson))
+});
+$("#courseGrid").addEventListener("click",e=>{
+ const b=e.target.closest("[data-course]");if(!b)return;
+ const c=courses.find(x=>x.id===b.dataset.course);
+ if(c.id==="python"){
+  $("#lessons").scrollIntoView();toast("اختر درسًا من مسار Python")
+ }else if(c.id==="web"){
+  $("#lab").scrollIntoView();toast("جرّب HTML وCSS في المختبر")
+ }else{
+  $("#modalTitle").textContent="مسار "+c.title;
+  $("#modalContent").innerHTML=`
+  <p style="line-height:2">ابدأ بهذا المسار تدريجيًا: تعلّم المفاهيم، اقرأ الأمثلة، ثم طبّق في مشروع صغير.</p>
+  <h3>خطة التعلّم</h3>
+  <ol style="line-height:2.2;color:#c3d6f3">
+  <li>فهم المصطلحات الأساسية.</li><li>كتابة أمثلة قصيرة بنفسك.</li>
+  <li>حل تمارين بعد كل مفهوم.</li><li>بناء مشروع تطبيقي.</li>
+  <li>مراجعة الأخطاء وتحسين الكود.</li></ol>
+  <p class="notice">هذا المسار يعرض خطة بداية، ويحتاج إلى إضافة دروس تفصيلية أخرى.</p>`;
+  $("#modal").classList.add("show")
+ }
+});
+$("#modalContent").addEventListener("click",e=>{
+ const b=e.target.closest("[data-answer]");if(!b)return;
+ const i=Number(b.dataset.lessonquiz),answer=Number(b.dataset.answer);
+ const l=lessons[i],f=$("#lessonFeedback");
+ if(answer===l.correct){
+  if(!state.done.includes(i)){
+   state.done.push(i);state.xp+=25;save();
+   f.textContent="إجابة صحيحة! +25 XP. أحسنت!";
+  }else f.textContent="إجابة صحيحة! أنهيت هذا الدرس من قبل.";
+  f.style.color="var(--green)"
+ }else{
+  f.textContent="ليست الإجابة الصحيحة بعد. راجع الشرح وحاول مرة أخرى.";
+  f.style.color="#ffadad"
+ }
+});
+$("#closeModal").addEventListener("click",()=>$("#modal").classList.remove("show"));
+$("#modal").addEventListener("click",e=>{
+ if(e.target.id==="modal")$("#modal").classList.remove("show")
+});
+$("#continueBtn").addEventListener("click",()=>{
+ const next=lessons.findIndex((l,i)=>!state.done.includes(i));
+ openLesson(next<0?0:next)
+});
+$("#runWeb").addEventListener("click",()=>{
+ $("#webPreview").srcdoc=$("#webCode").value;
+ toast("تم تحديث معاينة الويب")
+});
+$("#challengeOptions").addEventListener("click",e=>{
+ const b=e.target.closest("button[data-correct]");if(!b)return;
+ const f=$("#challengeFeedback");
+ if(b.dataset.correct==="true"){
+  if(!state.challenge){state.challenge=true;state.xp+=50;save()}
+  f.textContent="صحيح! علامة = تسند القيمة للمتغير. +50 XP 🚀";
+  f.style.color="var(--green)"
+ }else{
+  f.textContent="جرّب مرة أخرى: أي سطر يضع قيمة داخل المتغير؟";
+  f.style.color="#ffb5b5"
+ }
+});
+document.querySelectorAll("[data-project]").forEach(b=>{
+ b.addEventListener("click",()=>{
+  const info={
+   site:"أنشئ عنوانًا وفقرة وزرًا، ثم نسّق الصفحة باستخدام CSS.",
+   game:"أنشئ رقمًا سريًا، واستقبل تخمين اللاعب، واستخدم if لمعرفة الإجابة.",
+   bot:"جهّز قائمة أسئلة وردود، ثم استخدم الشروط لاختيار الرد المناسب."
+  };
+  $("#modalTitle").textContent="ورشة المشروع";
+  $("#modalContent").innerHTML=`<p style="line-height:2">${info[b.dataset.project]}</p><p class="notice">ابدأ بنسخة صغيرة تعمل، ثم أضف ميزة واحدة كل مرة.</p><button class="btn" id="goLab">انتقل إلى المختبر</button>`;
+  $("#modal").classList.add("show");
+  $("#goLab").onclick=()=>{
+   $("#modal").classList.remove("show");$("#lab").scrollIntoView()
   }
-}
-function resetProgress(){
-  if(confirm("هل تريد تصفير التقدم والنقاط؟")){
-    state={done:[],points:0,track:"python"};current="p1";
-    save();renderLessons();renderLesson();
-  }
-}
-function runCode(){
-  document.getElementById("preview").srcdoc=document.getElementById("editor").value;
-}
-function resetEditor(){
-  document.getElementById("editor").value=defaultCode;
-  runCode();
-}
-updateStats();
+ })
+});
+$("#adLink").addEventListener("click",e=>{
+ e.preventDefault();
+ toast("هذه مساحة إعلانية تجريبية؛ اربطها بمعلن أو شبكة إعلانات عند الجاهزية.")
+});
+renderCourses();
 renderLessons();
-renderLesson();
-runCode();
+updateStats();
+$("#webPreview").srcdoc=$("#webCode").value;
 </script>
 </body>
 </html>
