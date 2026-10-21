@@ -4,950 +4,421 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#050510">
-<title>AMIRXTNA ∞ — Future Programming System</title>
-
+<title>AMIRXTNA ∞ | Future Developer OS</title>
 <style>
 :root{
- --bg:#050510;--panel:#0b0c1d;--panel2:#10122b;
- --line:#28294b;--cyan:#64f5ff;--blue:#5577ff;
- --purple:#bb67ff;--pink:#ff63ce;--green:#70ffbd;
- --text:#f6f5ff;--muted:#a3a7c9;
+  --bg:#070914;--panel:#101426;--panel2:#151b32;
+  --text:#f5f7ff;--muted:#929dbb;--line:#252d4b;
+  --purple:#9b72ff;--cyan:#4ce5ff;--green:#64ffc2;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:100px}
 body{
- margin:0;background:var(--bg);color:var(--text);
- font-family:Tahoma,Arial,sans-serif;overflow-x:hidden;
- background-image:
- radial-gradient(ellipse at 50% -15%,#34317b70,transparent 48%),
- radial-gradient(ellipse at 100% 35%,#6b2c8d18,transparent 30%),
- radial-gradient(ellipse at 0% 75%,#1c72a81c,transparent 30%);
-}
-body:before{
- content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
- background-image:linear-gradient(#7a83ff08 1px,transparent 1px),
- linear-gradient(90deg,#7a83ff08 1px,transparent 1px);
- background-size:48px 48px;
- mask-image:linear-gradient(to bottom,black,transparent 85%);
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Tahoma,Arial,sans-serif;min-height:100vh;
+  background-image:radial-gradient(ellipse at 80% 0%,#29205055,transparent 40%),
+  radial-gradient(ellipse at 5% 70%,#004b6550,transparent 35%);
 }
 button,input,textarea,select{font:inherit}
 button{cursor:pointer}
-a{color:inherit;text-decoration:none}
-button:focus-visible,a:focus-visible,input:focus-visible,
-textarea:focus-visible,select:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
-.topbar{
- position:sticky;top:0;z-index:50;min-height:72px;padding:12px 4%;
- display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;
- background:#070714eF;backdrop-filter:blur(25px);
- border-bottom:1px solid #49456a80;
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--cyan)}
+header{
+  height:76px;display:flex;align-items:center;justify-content:space-between;
+  gap:16px;padding:0 5%;border-bottom:1px solid var(--line);
+  background:#090b18eF;position:sticky;top:0;z-index:10;backdrop-filter:blur(18px)
 }
-.brand{display:flex;align-items:center;gap:10px;font-size:21px;font-weight:900;letter-spacing:1px}
-.brand-mark{
- width:42px;height:42px;display:grid;place-items:center;border-radius:13px;
- border:1px solid #64f5ff99;color:var(--cyan);font-size:30px;
- background:linear-gradient(135deg,#25285b,#111225);
- box-shadow:0 0 22px #64f5ff28,inset 0 0 18px #bb67ff1c;
+.logo{font-size:22px;font-weight:900;letter-spacing:1px}
+.logo span{color:var(--cyan)}
+.pill{border:1px solid #3d3766;color:#c6b7ff;border-radius:30px;padding:7px 12px;font-size:12px}
+.layout{display:grid;grid-template-columns:235px minmax(0,1fr);max-width:1600px;margin:auto;min-height:calc(100vh - 76px)}
+aside{padding:22px 15px;border-left:1px solid var(--line);background:#090c18aa}
+.nav-title{color:var(--muted);font-size:11px;margin:20px 12px 10px}
+.nav{
+  width:100%;border:1px solid transparent;background:transparent;color:#b7c0dc;
+  text-align:right;padding:13px 14px;border-radius:12px;margin:3px 0
 }
-.brand b{color:var(--cyan)}
-.brand small{display:block;font-size:8px;color:var(--muted);letter-spacing:2px;margin-top:3px}
-.nav{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
-.nav a{padding:9px 10px;color:var(--muted);font-size:12px;border-radius:8px}
-.nav a:hover{background:#171832;color:var(--cyan)}
-.status{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--green)}
-.dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 12px var(--green)}
-.wrap{width:min(1500px,94%);margin:auto}
-.btn{
- padding:11px 15px;border-radius:10px;border:1px solid #37395e;
- background:linear-gradient(135deg,#151630,#0b0c1c);color:white;
- transition:transform .2s,border-color .2s,box-shadow .2s;
+.nav:hover,.nav.active{background:linear-gradient(100deg,#7550dc35,#1b9cb51c);border-color:#54438a;color:white}
+main{padding:30px;min-width:0}
+.hero{
+  position:relative;overflow:hidden;border:1px solid #39355e;border-radius:25px;
+  padding:36px;background:linear-gradient(115deg,#17162d,#10172a 65%,#092535);
 }
-.btn:hover{transform:translateY(-2px);border-color:var(--cyan);box-shadow:0 7px 25px #64f5ff14}
-.btn.primary{
- border:1px solid #8f9bff;
- background:linear-gradient(115deg,#247ce9,#6847e9 58%,#a84cce);
- box-shadow:0 0 25px #6b67ff26;
+.hero:after{content:"∞";position:absolute;left:3%;top:-80px;font-size:260px;font-weight:bold;color:#a18aff0c;pointer-events:none}
+.eyebrow{color:var(--cyan);font-size:12px;letter-spacing:2px}
+h1{font-size:clamp(30px,4vw,52px);margin:15px 0}
+h1 span{color:var(--purple)}
+p{line-height:1.9;color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.btn{padding:12px 17px;border-radius:11px;border:1px solid var(--line);background:#171c32;color:white}
+.btn.primary{background:linear-gradient(110deg,#7751ed,#4e8cff);border:0;font-weight:bold}
+.btn:hover{filter:brightness(1.15)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin:20px 0}
+.stat,.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px}
+.stat strong{display:block;font-size:25px;margin-bottom:8px}
+.stat small{color:var(--muted)}
+.section{display:none;animation:enter .25s ease}
+.section.active{display:block}
+@keyframes enter{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.section-head{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin:0 0 20px}
+h2{margin:0;font-size:25px}
+h3{margin:10px 0}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.feature-icon{font-size:27px}
+.card{transition:.2s}
+.card:hover{border-color:#6655a5;transform:translateY(-2px)}
+.card p{font-size:13px}
+.label{display:block;font-size:12px;color:var(--muted);margin:14px 0 7px}
+input,textarea,select{
+  background:#080d1b;border:1px solid #2b3453;color:white;border-radius:10px;
+  padding:12px;width:100%;min-width:0
 }
-.btn.cyan{border-color:#64f5ff70;color:var(--cyan)}
-.btn.small{padding:8px 11px;font-size:12px}
-.eyebrow{font-size:11px;color:var(--cyan);letter-spacing:2px}
-.hero{padding:38px 0 22px;display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:center}
-.hero-copy{padding:15px 0}
-.hero h1{font-size:clamp(39px,6.4vw,83px);line-height:1.16;letter-spacing:-2px;margin:20px 0}
-.hero h1 .gradient{
- background:linear-gradient(100deg,#64f5ff 5%,#8a90ff 44%,#e18cff 80%);
- -webkit-background-clip:text;background-clip:text;color:transparent;
- filter:drop-shadow(0 0 25px #8c74ff25);
-}
-.hero p{color:var(--muted);line-height:2;font-size:15px;max-width:670px}
-.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:23px}
-.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:25px}
-.tag{font-size:10px;color:#d3d8f6;border:1px solid #37375e;background:#0d1023;padding:7px 10px;border-radius:20px}
-.portal-area{
- position:relative;min-height:425px;display:grid;place-items:center;isolation:isolate;
-}
-.portal-area:before,.portal-area:after{
- content:"";position:absolute;border-radius:50%;border:1px solid #7679ff28;
- width:360px;height:360px;animation:spin 32s linear infinite;z-index:-1;
-}
-.portal-area:after{width:300px;height:300px;border-color:#64f5ff3d;animation-direction:reverse;animation-duration:21s}
-.portal{
- width:min(290px,75vw);aspect-ratio:1;border-radius:50%;position:relative;display:grid;place-items:center;
- background:radial-gradient(circle,#22285a 0%,#101329 42%,#090a17 64%,transparent 70%);
- border:1px solid #9a92ff7a;
- box-shadow:0 0 45px #625cff25,inset 0 0 40px #64f5ff13,0 0 100px #bd67ff12;
-}
-.portal:before,.portal:after{
- content:"";position:absolute;inset:12px;border-radius:50%;
- border:2px dashed #64f5ff7d;animation:spin 20s linear infinite;
-}
-.portal:after{inset:27px;border:1px solid #c47bff90;animation-direction:reverse;animation-duration:14s}
-.portal-core{font-size:104px;color:var(--cyan);text-shadow:0 0 22px #64f5ff,0 0 65px #a56cff;animation:breathe 3s ease-in-out infinite}
-.float-card{
- position:absolute;padding:12px 14px;background:#0d1028dc;border:1px solid #40416b;
- border-radius:12px;backdrop-filter:blur(12px);box-shadow:0 12px 35px #0004;
- font-size:11px;min-width:130px;
-}
-.float-card strong{display:block;font-size:17px;color:var(--cyan);margin-bottom:5px}
-.float-one{top:22px;right:0}.float-two{bottom:30px;left:0}
-.float-three{top:100px;left:0}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes breathe{50%{transform:scale(1.08);filter:brightness(1.4)}}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin:22px 0}
-.stat{
- padding:16px;background:linear-gradient(140deg,#11142b,#090a18);
- border:1px solid var(--line);border-radius:13px;
-}
-.stat span{display:block;color:var(--muted);font-size:11px}
-.stat strong{display:block;font-size:24px;color:var(--cyan);margin-top:9px}
-.section{padding-top:36px;scroll-margin-top:85px}
-.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:17px}
-.section-head h2{font-size:24px;margin:0}
-.section-head p{font-size:12px;color:var(--muted);margin:7px 0 0}
-.panel{
- padding:21px;background:linear-gradient(145deg,#11142bdf,#090a18ed);
- border:1px solid var(--line);border-radius:17px;
- box-shadow:0 15px 55px #0002;
-}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
-.card{
- position:relative;overflow:hidden;padding:19px;border:1px solid #292b4c;
- border-radius:15px;background:linear-gradient(145deg,#12152d,#090b19);
- transition:transform .25s,border-color .25s;
-}
-.card:before{content:"";position:absolute;top:0;right:0;width:90px;height:2px;background:linear-gradient(90deg,transparent,var(--cyan))}
-.card:hover{transform:translateY(-4px);border-color:#6469b5}
-.card-icon{
- width:48px;height:48px;display:grid;place-items:center;border-radius:13px;
- background:linear-gradient(140deg,#232855,#13152b);border:1px solid #404776;
- font-size:25px;
-}
-.card h3{margin:15px 0 8px;font-size:17px}
-.card p{color:var(--muted);font-size:12px;line-height:1.9;min-height:45px}
-.badge{display:inline-block;font-size:10px;color:var(--green);background:#103328;border:1px solid #285e4c;padding:5px 8px;border-radius:6px}
-input,select,textarea{
- width:100%;padding:12px;background:#060816;color:#f2f2ff;
- border:1px solid #303354;border-radius:9px;outline:none;
-}
-input:focus,select:focus,textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 2px #64f5ff12}
-label{display:block;font-size:12px;color:var(--muted);margin:12px 0 7px}
-.toolbar{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
-.editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-#code{
- min-height:360px;resize:vertical;direction:ltr;text-align:left;
- font:14px/1.65 Consolas,monospace;tab-size:2;
-}
-.output-box{min-height:360px;background:#050611;border:1px solid #303354;border-radius:10px;padding:12px;overflow:auto}
-#preview{display:none;width:100%;height:320px;background:white;border:0;border-radius:7px}
-#console{white-space:pre-wrap;direction:ltr;text-align:left;color:var(--green);font:13px/1.6 Consolas,monospace}
-.note{color:#d5b983;font-size:11px;line-height:1.8}
-.progress{height:6px;background:#20213d;border-radius:10px;overflow:hidden;margin:12px 0}
-.progress div{height:100%;background:linear-gradient(90deg,var(--cyan),var(--purple));width:0;transition:width .3s}
-.lesson{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 0;border-bottom:1px solid #262845}
-.lesson:last-child{border:0}
-.lesson small{display:block;color:var(--muted);margin-top:5px}
-.ad-feature{
- border:1px solid #564c8d;
- background:radial-gradient(ellipse at 100% 0%,#402b7045,transparent 40%),linear-gradient(135deg,#13132a,#090b18);
-}
-.ad-banner{
- min-height:175px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:15px;
- border:1px solid #45417a;border-radius:15px;padding:22px;
- background:
- radial-gradient(ellipse at 10% 50%,#3e55a338,transparent 50%),
- linear-gradient(115deg,#11142c,#0a0b18);
-}
-.ad-banner h3{font-size:24px;margin:12px 0}
-.ad-banner p{font-size:12px;line-height:1.9;color:var(--muted)}
-.ad-symbol{font-size:65px;color:var(--cyan);text-shadow:0 0 35px #64f5ff40}
-.ad-label{display:inline-block;font-size:10px;color:#d7c9ff;border:1px solid #65558e;padding:6px 9px;border-radius:5px;letter-spacing:1px}
-.ad-slots{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:13px}
-.ad-slot{padding:16px;border:1px dashed #46466b;border-radius:12px;background:#0a0b19}
-.ad-slot strong{display:block;margin:10px 0;color:var(--cyan)}
-.ad-slot p{font-size:11px;line-height:1.8}
-.ad-slot small{color:var(--muted)}
-#game{display:block;width:100%;max-width:650px;height:auto;background:#050611;border:1px solid #34375e;border-radius:12px;margin:12px auto}
-footer{margin-top:50px;border-top:1px solid var(--line);padding:30px 10px;text-align:center;color:var(--muted);font-size:12px}
-footer .brand{justify-content:center}
-.mobile-ad{
- position:fixed;left:15px;bottom:15px;z-index:100;
- width:290px;min-height:165px;padding:14px;
- border:1px solid #7971d4;border-radius:14px;
- background:linear-gradient(145deg,#171633f7,#080916f7);
- box-shadow:0 0 30px #665bff25,0 15px 40px #0008;
- backdrop-filter:blur(20px);
-}
-.ad-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.ad-top small{font-size:9px;letter-spacing:1px;color:#a8a6d0}
-.ad-dismiss{padding:4px 9px;font-size:11px;border-radius:6px}
-.mobile-ad h4{font-size:15px;margin:12px 0 5px;color:var(--cyan)}
-.mobile-ad p{font-size:11px;line-height:1.7;margin:5px 0 12px;color:#b6bbd7}
-.mobile-ad .ad-cta{display:block;text-align:center;background:linear-gradient(100deg,#247ce9,#8c4be7);padding:9px;border-radius:8px;font-size:11px}
-.mobile-ad.collapsed{width:145px;min-height:0;padding:9px}
-.mobile-ad.collapsed .ad-content{display:none}
-.mobile-ad.collapsed .ad-top small{font-size:8px}
-@media(max-width:900px){
- .hero{grid-template-columns:1fr}.portal-area{min-height:350px}
+textarea{resize:vertical;min-height:180px;line-height:1.7;direction:ltr;text-align:left;font-family:Consolas,monospace}
+.editor{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:15px}
+.editor-pane{min-width:0}
+.editor-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+iframe.preview{width:100%;height:350px;background:white;border:1px solid var(--line);border-radius:12px}
+.console{white-space:pre-wrap;overflow-wrap:anywhere;background:#060913;border:1px solid var(--line);padding:12px;border-radius:10px;color:var(--green);min-height:44px;margin-top:10px}
+.lesson{border:1px solid var(--line);border-radius:12px;padding:15px;margin:10px 0;background:#0c1020}
+.lesson.done{border-color:#287e66}
+.lesson button{float:left}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#080d1b;border:1px solid var(--line);padding:14px;border-radius:10px;direction:ltr;text-align:left;overflow:auto}
+.game-wrap{background:#050914;border:1px solid var(--line);border-radius:15px;padding:12px;text-align:center}
+canvas{width:100%;max-width:600px;height:auto;border-radius:10px;background:#090f24;display:block;margin:auto}
+.ad-placeholder{border:1px dashed #56507c;padding:22px;border-radius:13px;text-align:center;color:var(--muted);margin:12px 0}
+footer{color:var(--muted);font-size:12px;text-align:center;padding:28px}
+.toast{position:fixed;bottom:20px;right:20px;background:#171f38;border:1px solid #51468a;border-radius:12px;padding:14px 18px;z-index:50;display:none;max-width:90vw}
+small.muted{color:var(--muted)}
+@media(max-width:950px){
+ .layout{grid-template-columns:1fr}
+ aside{border-left:0;border-bottom:1px solid var(--line);display:flex;overflow-x:auto;gap:6px;padding:10px}
+ .nav-title{display:none}.nav{white-space:nowrap;width:auto}
+ main{padding:17px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}
  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
- .editor-grid{grid-template-columns:1fr}
- .ad-slots{grid-template-columns:1fr}
 }
-@media(max-width:560px){
- .wrap{width:92%}.topbar{padding:11px 4%}.nav{width:100%;order:3}
- .nav a{font-size:10px;padding:7px}
- .brand{font-size:17px}.brand-mark{width:36px;height:36px}
- .hero{padding-top:20px}.hero h1{letter-spacing:-1px}
- .portal-area{min-height:310px}.portal{width:215px}
- .portal-core{font-size:78px}
- .portal-area:before{width:280px;height:280px}
- .portal-area:after{width:240px;height:240px}
- .float-card{min-width:105px;padding:9px;font-size:9px}
- .float-card strong{font-size:14px}
- .stats{grid-template-columns:repeat(2,1fr)}
- .grid{grid-template-columns:1fr}
- .panel{padding:15px}
- .ad-banner{grid-template-columns:1fr}.ad-symbol{display:none}
- .mobile-ad{left:7px;bottom:7px;width:180px;min-height:135px;padding:9px}
- .mobile-ad h4{font-size:12px;margin:8px 0 4px}
- .mobile-ad p{font-size:10px;margin:4px 0 7px}
- .mobile-ad .ad-cta{font-size:10px;padding:7px}
- .mobile-ad.collapsed{width:125px}
+@media(max-width:600px){
+ header{padding:0 14px;height:64px}.logo{font-size:18px}
+ .pill{font-size:10px}.hero{padding:23px}
+ .grid,.editor{grid-template-columns:1fr}
+ .stats{gap:8px}.stat{padding:13px}.stat strong{font-size:21px}
 }
 </style>
 </head>
-
 <body>
-
-<header class="topbar">
- <a class="brand" href="#home">
-  <span class="brand-mark">∞</span>
-  <span><b>AMIRX</b>TNA<small>FUTURE PROGRAMMING SYSTEM</small></span>
- </a>
- <nav class="nav">
-  <a href="#academy">الأكاديمية</a>
-  <a href="#lab">مختبر الأكواد</a>
-  <a href="#factory">مصنع المواقع</a>
-  <a href="#gameZone">الألعاب</a>
-  <a href="#advertising">الإعلانات</a>
- </nav>
- <div class="status"><span class="dot"></span> النظام جاهز</div>
+<header>
+  <div class="logo">AMIRX<span>TNA</span> ∞</div>
+  <span class="pill">FUTURE DEVELOPER OS</span>
+  <button class="btn" onclick="showPage('lab')">⌘ المختبر</button>
 </header>
 
-<main class="wrap" id="home">
-
- <section class="hero">
-  <div class="hero-copy">
-   <div class="eyebrow">WELCOME TO THE NEXT ERA</div>
-   <h1>المستقبل لا يُنتظر.<br><span class="gradient">المستقبل يُبرمج.</span></h1>
-   <p>AMIRXTNA ليست مجرد صفحة لكتابة الأكواد. إنها نقطة انطلاق للتعلّم، وتجربة الأفكار، وصناعة المواقع والألعاب، وبناء مشاريعك خطوة بخطوة.</p>
-   <div class="hero-actions">
-    <button class="btn primary" onclick="goTo('lab')">⌘ افتح مختبر البرمجة</button>
-    <button class="btn cyan" onclick="goTo('academy')">ابدأ التعلّم ←</button>
-   </div>
-   <div class="tags">
-    <span class="tag">∞ مسارات تعليمية</span>
-    <span class="tag">⌘ محرر أكواد</span>
-    <span class="tag">◇ مصنع مشاريع</span>
-    <span class="tag">◈ مساحة إعلانية</span>
-   </div>
-  </div>
-
-  <div class="portal-area">
-   <div class="float-card float-one"><strong>∞ FUTURE</strong>لا حدود للأفكار</div>
-   <div class="float-card float-two"><strong id="heroXP">0 XP</strong>رحلتك البرمجية</div>
-   <div class="float-card float-three"><strong>01 / BUILD</strong>اصنع شيئًا جديدًا</div>
-   <div class="portal"><div class="portal-core">∞</div></div>
-  </div>
- </section>
-
- <section class="stats">
-  <div class="stat"><span>نقاط الخبرة</span><strong id="xp">0 XP</strong></div>
-  <div class="stat"><span>الدروس المكتملة</span><strong id="done">0</strong></div>
-  <div class="stat"><span>مسارات التعلّم</span><strong>03</strong></div>
-  <div class="stat"><span>حالة النظام</span><strong style="color:var(--green)">ONLINE</strong></div>
- </section>
-
- <section class="section" id="academy">
-  <div class="section-head">
-   <div><h2>01 / أكاديمية المطوّر</h2><p>من أول أمر إلى بناء مشاريعك بنفسك.</p></div>
-   <span class="badge">LEARNING CORE</span>
-  </div>
-  <div class="grid">
-   <article class="card">
-    <div class="card-icon">🐍</div><h3>Python</h3>
-    <p>تعلّم المتغيرات والشروط والحلقات والدوال، ثم استخدمها في مشاريع عملية.</p>
-    <button class="btn cyan" onclick="selectCourse('python')">دخول المسار ↗</button>
-   </article>
-   <article class="card">
-    <div class="card-icon">🌐</div><h3>HTML + CSS</h3>
-    <p>أنشئ صفحات الويب وصمّم الواجهات والألوان والتخطيطات المتجاوبة.</p>
-    <button class="btn cyan" onclick="selectCourse('html')">دخول المسار ↗</button>
-   </article>
-   <article class="card">
-    <div class="card-icon">⚡</div><h3>JavaScript</h3>
-    <p>أضف التفاعل والحركة والمنطق البرمجي إلى صفحاتك ومشاريعك.</p>
-    <button class="btn cyan" onclick="selectCourse('js')">دخول المسار ↗</button>
-   </article>
-  </div>
-  <div class="panel" style="margin-top:14px">
-   <h3 id="courseTitle">مسار التعلّم</h3>
-   <p id="courseDesc">اختر مسارًا لتظهر دروسه هنا.</p>
-   <div class="progress"><div id="courseProgress"></div></div>
-   <div id="lessons"></div>
-  </div>
- </section>
-
- <section class="section" id="lab">
-  <div class="section-head">
-   <div><h2>02 / مختبر البرمجة</h2><p>اكتب الكود، جرّبه، واحتفظ بنسختك.</p></div>
-   <span class="badge">CODE LAB</span>
-  </div>
-  <div class="panel">
-   <div class="editor-grid">
-    <div>
-     <label for="language">لغة المشروع</label>
-     <select id="language" onchange="changeLanguage()">
-      <option value="html">HTML — صفحات الويب</option>
-      <option value="css">CSS — تصميم الواجهات</option>
-      <option value="javascript">JavaScript — التفاعل</option>
-      <option value="python">Python</option>
-      <option value="cpp">C++</option>
-      <option value="c">C</option>
-      <option value="java">Java</option>
-      <option value="csharp">C#</option>
-      <option value="php">PHP</option>
-      <option value="sql">SQL</option>
-      <option value="json">JSON</option>
-      <option value="typescript">TypeScript</option>
-      <option value="rust">Rust</option>
-      <option value="go">Go</option>
-      <option value="bash">Bash</option>
-     </select>
-     <div class="toolbar">
-      <button class="btn primary" onclick="runCode()">▶ تشغيل / معاينة</button>
-      <button class="btn" onclick="downloadCode()">↓ تنزيل الملف</button>
-      <button class="btn" onclick="copyCode()">نسخ الكود</button>
-      <button class="btn" onclick="resetCode()">إعادة المثال</button>
-     </div>
-     <textarea id="code" spellcheck="false" aria-label="محرر الكود"></textarea>
-     <p class="note">HTML وCSS يمكن معاينتهما، وJavaScript يعمل في بيئة معزولة نسبيًا. اللغات الأخرى قابلة للتحرير والتنزيل، لكنها تحتاج بيئة تشغيل أو مترجمًا مناسبًا.</p>
-    </div>
-    <div>
-     <label>نافذة النتائج</label>
-     <div class="output-box">
-      <div id="resultMessage">بانتظار تشغيل الكود...</div>
-      <iframe id="preview" title="معاينة الكود" sandbox="allow-scripts"></iframe>
-      <pre id="console"></pre>
-     </div>
-     <div class="toolbar"><button class="btn" onclick="clearOutput()">مسح النتائج</button></div>
-    </div>
-   </div>
-  </div>
- </section>
-
- <section class="section" id="factory">
-  <div class="section-head">
-   <div><h2>03 / مصنع المواقع</h2><p>أنشئ صفحة أولية من فكرتك ثم عدّلها.</p></div>
-   <span class="badge">SITE GENERATOR</span>
-  </div>
-  <div class="panel">
-   <div class="grid">
-    <div><label for="siteName">اسم الموقع</label><input id="siteName" value="موقعي المستقبلي"></div>
-    <div><label for="siteIdea">فكرة الموقع</label><input id="siteIdea" value="نحو مستقبل أفضل بالتقنية"></div>
-    <div><label for="siteColor">لون الواجهة</label><select id="siteColor"><option value="#64f5ff">نيون سماوي</option><option value="#bb67ff">بنفسجي</option><option value="#70ffbd">أخضر</option><option value="#ff63ce">وردي</option></select></div>
-   </div>
-   <div class="toolbar">
-    <button class="btn primary" onclick="buildSite()">✧ أنشئ الموقع</button>
-    <button class="btn" onclick="openGeneratedInLab()">افتح الكود بالمختبر</button>
-    <button class="btn" onclick="downloadSite()">↓ تنزيل الموقع</button>
-   </div>
-   <iframe id="sitePreview" title="معاينة الموقع" sandbox="allow-scripts"></iframe>
-   <label for="generatedSite">كود الموقع الناتج</label>
-   <textarea id="generatedSite" style="height:170px;direction:ltr;text-align:left"></textarea>
-  </div>
- </section>
-
- <section class="section" id="gameZone">
-  <div class="section-head">
-   <div><h2>04 / ورشة الألعاب</h2><p>ابدأ بلعبة بسيطة، ثم وسّعها بأفكارك.</p></div>
-   <span class="badge">GAME WORKSHOP</span>
-  </div>
-  <div class="grid">
-   <article class="card"><div class="card-icon">💎</div><h3>لعبة البلورات</h3><p>تحرّك واجمع البلورات باستخدام الأسهم أو WASD.</p><button class="btn primary" onclick="startGame()">ابدأ اللعب</button></article>
-   <article class="card"><div class="card-icon">🧩</div><h3>كود اللعبة</h3><p>افتح مثالًا في المحرر وابدأ بتعديله لتجربة أفكارك.</p><button class="btn" onclick="loadGameCode()">افتح الكود</button></article>
-   <article class="card"><div class="card-icon">🛠️</div><h3>مشاريع متقدمة</h3><p>لتطوير ألعاب ثلاثية الأبعاد، تعلّم محركًا مثل Godot.</p><button class="btn" onclick="selectCourse('js')">طوّر مهاراتك</button></article>
-  </div>
-  <div class="panel" style="margin-top:14px">
-   <canvas id="game" width="650" height="290"></canvas>
-   <p id="gameStatus">ابدأ اللعبة لتظهر البلورات.</p>
-   <div class="toolbar"><button class="btn primary" onclick="startGame()">▶ ابدأ / أعد اللعب</button><button class="btn" onclick="downloadGame()">تنزيل نسخة اللعبة</button></div>
-  </div>
- </section>
-
- <section class="section" id="advertising">
-  <div class="section-head">
-   <div><h2>05 / مركز الإعلانات</h2><p>واجهة مستقلة لإعداد أماكن الإعلانات التي يمكن ربطها بمزود إعلانات مستقبلًا.</p></div>
-   <span class="badge">AD CONTROL CENTER</span>
-  </div>
-
-  <div class="panel ad-feature">
-   <div class="ad-banner">
-    <div>
-     <span class="ad-label">AMIRXTNA AD NETWORK · PREVIEW</span>
-     <h3>مساحة إعلانية لمستقبل منصتك</h3>
-     <p>يمكن تخصيص مواضع الإعلانات للموقع لاحقًا وربطها بخدمة إعلانية مناسبة. هذه الواجهة حاليًا للمعاينة والتنظيم فقط.</p>
-     <div class="toolbar">
-      <button class="btn primary" onclick="goTo('adManager')">إدارة المساحات ↗</button>
-      <button class="btn" onclick="goTo('adSlots')">عرض المواضع</button>
-     </div>
-    </div>
-    <div class="ad-symbol">◈</div>
-   </div>
-
-   <div class="ad-slots" id="adSlots">
-    <div class="ad-slot">
-     <span class="ad-label">SLOT 01</span>
-     <strong>الإعلان الثابت</strong>
-     <p>مساحة صغيرة أسفل الشاشة أثناء تصفح الموقع.</p>
-     <small>الحالة: معاينة محلية</small>
-    </div>
-    <div class="ad-slot">
-     <span class="ad-label">SLOT 02</span>
-     <strong>إعلان داخل الصفحة</strong>
-     <p>موضع إعلاني بين أقسام الأكاديمية أو المشاريع.</p>
-     <small>الحالة: معاينة محلية</small>
-    </div>
-    <div class="ad-slot">
-     <span class="ad-label">SLOT 03</span>
-     <strong>مساحة ترويج المشاريع</strong>
-     <p>موضع مستقبلي للترويج لخدمات أو مشاريع مختارة.</p>
-     <small>الحالة: معاينة محلية</small>
-    </div>
-   </div>
-  </div>
-
-  <div class="panel" id="adManager" style="margin-top:14px">
-   <h3>إعداد معاينة الإعلان الثابت</h3>
-   <p>غيّر النص الذي يظهر في المساحة الإعلانية. الإعدادات تُحفظ في هذا المتصفح فقط.</p>
-   <label for="adTitle">عنوان الإعلان</label>
-   <input id="adTitle" value="أعلن في AMIRXTNA">
-   <label for="adDescription">وصف الإعلان</label>
-   <textarea id="adDescription" rows="2">مساحة مخصصة للتعريف بمشروعك أو خدمتك.</textarea>
-   <label for="adLink">رابط الوجهة الاختياري</label>
-   <input id="adLink" type="url" placeholder="https://example.com">
-   <div class="toolbar">
-    <button class="btn primary" onclick="saveAdSettings()">حفظ المعاينة</button>
-    <button class="btn" onclick="resetAdSettings()">إعادة الافتراضي</button>
-    <button class="btn" onclick="toggleFloatingAd()">إظهار / إخفاء المساحة الثابتة</button>
-   </div>
-   <p class="note">هذا ليس نظام بيع إعلانات ولا يستقبل مدفوعات ولا يسجل مشاهدات حقيقية. يلزم خادم وقاعدة بيانات وربط مزود إعلانات قبل استخدامه تجاريًا.</p>
-  </div>
- </section>
-
- <section class="section">
-  <div class="section-head"><div><h2>06 / نظام التقدم</h2><p>كل درس تنهيه يضيف نقاط خبرة إلى رحلتك.</p></div></div>
-  <div class="panel">
-   <div class="progress"><div id="overallProgress"></div></div>
-   <p id="overallText">ابدأ أول درس لتسجيل تقدمك.</p>
-   <button class="btn" onclick="resetProgress()">إعادة ضبط التقدم</button>
-  </div>
- </section>
-
-</main>
-
-<!-- المساحة الإعلانية الثابتة: جاهزة للمعاينة والتخصيص -->
-<aside class="mobile-ad" id="floatingAd">
- <div class="ad-top">
-  <small>ADVERTISEMENT · مساحة إعلانية</small>
-  <button class="ad-dismiss" id="adMinButton" onclick="toggleFloatingAd()">−</button>
- </div>
- <div class="ad-content">
-  <h4 id="floatingAdTitle">أعلن في AMIRXTNA</h4>
-  <p id="floatingAdDescription">مساحة مخصصة للتعريف بمشروعك أو خدمتك.</p>
-  <a href="#advertising" class="ad-cta" id="floatingAdLink" onclick="handleAdClick(event)">اكتشف المنصة ↗</a>
- </div>
+<div class="layout">
+<aside>
+  <div class="nav-title">مساحة العمل</div>
+  <button class="nav active" data-page="home" onclick="showPage('home')">◈ الرئيسية</button>
+  <button class="nav" data-page="lab" onclick="showPage('lab')">⌘ مختبر البرمجة</button>
+  <button class="nav" data-page="academy" onclick="showPage('academy')">✦ أكاديمية التعلم</button>
+  <button class="nav" data-page="sites" onclick="showPage('sites')">▧ صانع المواقع</button>
+  <button class="nav" data-page="games" onclick="showPage('games')">◉ مصنع الألعاب</button>
+  <div class="nav-title">الإدارة</div>
+  <button class="nav" data-page="projects" onclick="showPage('projects')">▤ مشاريعي</button>
+  <button class="nav" data-page="ads" onclick="showPage('ads')">◇ مركز الإعلانات</button>
 </aside>
 
-<footer>
- <div class="brand"><span class="brand-mark">∞</span><span><b>AMIRX</b>TNA<small>BEYOND CODE</small></span></div>
- <p>منصة للتعلّم والتجربة وصناعة المشاريع.</p>
- <small>واجهة تجريبية قابلة للتطوير — 2026</small>
-</footer>
+<main>
+<section id="home" class="section active">
+  <div class="hero">
+    <div class="eyebrow">BEYOND THE NEXT GENERATION</div>
+    <h1>اصنع فكرتك.<br>اكتب مستقبلك <span>∞</span></h1>
+    <p>مساحة عربية لتعلم البرمجة، وتجربة الأكواد، وبناء صفحات الويب والألعاب خطوة بخطوة.</p>
+    <div class="actions">
+      <button class="btn primary" onclick="showPage('lab')">ابدأ البرمجة ←</button>
+      <button class="btn" onclick="showPage('academy')">تعلم من الصفر</button>
+      <button class="btn" onclick="showPage('sites')">اصنع موقعًا</button>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="stat"><strong id="projectCount">0</strong><small>مشاريع محفوظة</small></div>
+    <div class="stat"><strong id="lessonCount">0</strong><small>دروس مكتملة</small></div>
+    <div class="stat"><strong>∞</strong><small>أفكار يمكنك تجربتها</small></div>
+    <div class="stat"><strong>01</strong><small>رحلتك تبدأ الآن</small></div>
+  </div>
+  <div class="section-head"><h2>بوابتك إلى عالم التطوير</h2></div>
+  <div class="grid">
+    <div class="card"><div class="feature-icon">⌘</div><h3>مختبر الأكواد</h3><p>اكتب HTML وCSS وJavaScript وشاهد نتيجة مشروعك.</p><button class="btn" onclick="showPage('lab')">افتح المختبر</button></div>
+    <div class="card"><div class="feature-icon">✦</div><h3>تعلم بالتطبيق</h3><p>ابدأ بالمفاهيم البسيطة ثم اختبر نفسك بمشاريع.</p><button class="btn" onclick="showPage('academy')">ابدأ التعلم</button></div>
+    <div class="card"><div class="feature-icon">◉</div><h3>جرب لعبة</h3><p>اجمع البلورات وتعلم كيف تعمل اللعبة باستخدام JavaScript.</p><button class="btn" onclick="showPage('games')">العب الآن</button></div>
+  </div>
+</section>
+
+<section id="lab" class="section">
+  <div class="section-head"><div><h2>⌘ مختبر البرمجة</h2><p>اكتب الكود وشاهد المعاينة أو احفظ مشروعك.</p></div><span class="pill">WEB LAB</span></div>
+  <label class="label" for="projectName">اسم المشروع</label>
+  <input id="projectName" value="مشروعي الأول" maxlength="80">
+  <label class="label" for="language">لغة المشروع</label>
+  <select id="language" onchange="loadExample()">
+    <option value="html">HTML — بناء الصفحات</option>
+    <option value="css">CSS — تصميم الواجهات</option>
+    <option value="js">JavaScript — التفاعل</option>
+    <option value="json">JSON — تنظيم البيانات</option>
+    <option value="python">Python — مثال تعليمي</option>
+  </select>
+  <div class="editor" style="margin-top:15px">
+    <div class="editor-pane">
+      <div class="editor-top"><strong>محرر الكود</strong><button class="btn" onclick="loadExample()">إعادة المثال</button></div>
+      <textarea id="code" spellcheck="false" aria-label="محرر الكود"></textarea>
+      <div class="actions">
+        <button class="btn primary" onclick="runCode()">▶ تشغيل / معاينة</button>
+        <button class="btn" onclick="saveProject()">حفظ المشروع</button>
+        <button class="btn" onclick="downloadCode()">تنزيل الملف</button>
+      </div>
+      <div id="console" class="console">جاهز. اختر لغة وابدأ الكتابة.</div>
+    </div>
+    <div class="editor-pane">
+      <div class="editor-top"><strong>المعاينة</strong><small class="muted">منفصلة عن الصفحة الرئيسية</small></div>
+      <iframe id="preview" class="preview" title="معاينة المشروع" sandbox="allow-scripts"></iframe>
+      <p class="muted">المعاينة تدعم صفحات الويب. Python هنا مثال نصي ولا يتم تشغيله داخل المتصفح.</p>
+    </div>
+  </div>
+</section>
+
+<section id="academy" class="section">
+  <div class="section-head"><div><h2>✦ أكاديمية البرمجة</h2><p>مسار بداية عملي. أكمل الدرس ثم اختبر فهمك.</p></div></div>
+  <div class="card">
+    <h3>المسار الأول: أساسيات الويب</h3>
+    <div class="lesson" id="lesson1"><strong>الدرس 1 — ما البرمجة؟</strong><p>البرمجة هي كتابة تعليمات ينفذها الكمبيوتر. نستخدم اللغات للتعبير عن هذه التعليمات.</p><pre>console.log("Hello, Amir X!");</pre><button class="btn primary" onclick="completeLesson(1)">أنهيت الدرس</button></div>
+    <div class="lesson" id="lesson2"><strong>الدرس 2 — المتغيرات</strong><p>المتغير اسم يخزن قيمة. في JavaScript نستخدم let لقيمة يمكن تغييرها.</p><pre>let score = 10;
+score = score + 5;
+console.log(score);</pre><button class="btn primary" onclick="completeLesson(2)">أنهيت الدرس</button></div>
+    <div class="lesson" id="lesson3"><strong>الدرس 3 — العمليات الحسابية</strong><p>علامة + للجمع، - للطرح، * للضرب، / للقسمة.</p><pre>let result = 8 + 4 * 2;
+console.log(result); // 16</pre><button class="btn primary" onclick="completeLesson(3)">أنهيت الدرس</button></div>
+  </div>
+  <div class="card" style="margin-top:15px">
+    <h3>اختبار قصير</h3>
+    <p>ما نتيجة العملية <code>10 + 2 * 3</code> في JavaScript؟</p>
+    <div class="actions">
+      <button class="btn" onclick="quiz(16)">16</button>
+      <button class="btn" onclick="quiz(36)">36</button>
+      <button class="btn" onclick="quiz(13)">13</button>
+    </div>
+    <p id="quizResult" role="status"></p>
+  </div>
+</section>
+
+<section id="sites" class="section">
+  <div class="section-head"><div><h2>▧ صانع المواقع</h2><p>أنشئ صفحة بداية قابلة للتعديل والتنزيل.</p></div></div>
+  <div class="card">
+    <label class="label" for="siteTitle">اسم الموقع</label><input id="siteTitle" value="موقعي الرائع" maxlength="80">
+    <label class="label" for="siteDesc">وصف الموقع</label><textarea id="siteDesc" style="direction:rtl;text-align:right;min-height:100px;font-family:Tahoma">هنا تبدأ رحلتنا نحو المستقبل.</textarea>
+    <label class="label" for="siteColor">لون التصميم</label><input id="siteColor" type="color" value="#7654ef" style="height:48px;padding:5px">
+    <div class="actions"><button class="btn primary" onclick="buildSite()">إنشاء الصفحة</button><button class="btn" onclick="downloadSite()">تنزيل الموقع</button></div>
+  </div>
+  <iframe id="sitePreview" class="preview" title="معاينة الموقع الناتج" sandbox="" style="margin-top:15px;height:440px"></iframe>
+</section>
+
+<section id="games" class="section">
+  <div class="section-head"><div><h2>◉ مصنع الألعاب</h2><p>لعبة بلورات صغيرة يمكنك لعبها الآن.</p></div></div>
+  <div class="game-wrap">
+    <canvas id="game" width="600" height="340" aria-label="لعبة جمع البلورات"></canvas>
+    <p>تحرك باستخدام WASD أو الأسهم واجمع البلورات. اضغط زر البدء للعب.</p>
+    <div class="actions" style="justify-content:center">
+      <button class="btn primary" onclick="startGame()">▶ بدء اللعبة</button>
+      <button class="btn" onclick="resetGame()">إعادة اللعبة</button>
+    </div>
+    <strong id="score">البلورات: 0</strong>
+  </div>
+  <div class="card" style="margin-top:15px"><h3>كيف تبني لعبتك؟</h3><p>ابدأ بتعديل كود JavaScript في المختبر، ثم أضف حركة أو نقاطًا أو تحديًا خاصًا بك.</p><button class="btn" onclick="showPage('lab')">افتح المختبر</button></div>
+</section>
+
+<section id="projects" class="section">
+  <div class="section-head"><div><h2>▤ مشاريعي</h2><p>المشاريع المحفوظة على هذا المتصفح.</p></div><button class="btn" onclick="renderProjects()">تحديث</button></div>
+  <div id="projectList"></div>
+  <p class="muted">تُحفظ المشاريع محليًا في هذا المتصفح فقط؛ لا تتم مزامنتها بين الأجهزة.</p>
+</section>
+
+<section id="ads" class="section">
+  <div class="section-head"><div><h2>◇ مركز الإعلانات</h2><p>تجهيز مساحة إعلانية تجريبية لموقعك.</p></div></div>
+  <div class="ad-placeholder"><strong>مساحة إعلانية</strong><p>يمكن تخصيص هذا المكان لاحقًا لمزود إعلانات معتمد.</p></div>
+  <div class="card">
+    <label class="label" for="adTitle">عنوان الإعلان التجريبي</label><input id="adTitle" value="مساحة إعلانية متاحة" maxlength="100">
+    <label class="label" for="adText">وصف الإعلان</label><input id="adText" value="يمكنك تخصيص هذا الإعلان." maxlength="200">
+    <label class="label" for="adUrl">رابط الإعلان الاختياري</label><input id="adUrl" placeholder="https://example.com" type="url">
+    <div class="actions"><button class="btn primary" onclick="saveAd()">حفظ إعدادات الإعلان</button><button class="btn" onclick="showAd()">معاينة الإعلان</button></div>
+  </div>
+  <div class="ad-placeholder" id="adPreview">ستظهر معاينة الإعلان هنا.</div>
+  <p class="muted">هذه الميزة لا تعرض إعلانات مدفوعة ولا تحقق أرباحًا تلقائيًا. يتطلب الربح ربط الموقع بخدمة إعلانات واستيفاء شروطها.</p>
+</section>
+
+<footer>AMIRXTNA ∞ · مساحة للتعلم والابتكار · الإصدار التجريبي</footer>
+</main>
+</div>
+<div id="toast" class="toast" role="status"></div>
 
 <script>
 "use strict";
 
 const examples = {
- html:`<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head><meta charset="UTF-8"><title>مشروعي</title></head>
-<body>
-<h1>أهلًا بك في موقعي!</h1>
-<p>هذا أول مشروع أصنعه بنفسي.</p>
-<button onclick="alert('نجحت!')">اضغط هنا</button>
-</body>
-</html>`,
- css:`body {
- background: #080d20;
- color: #64f5ff;
- font-family: Arial;
- text-align: center;
- padding: 40px;
+ html: '<!DOCTYPE html>\n<html lang="ar" dir="rtl">\n<head><meta charset="UTF-8"><title>تجربتي</title></head>\n<body style="font-family:Arial;text-align:center;padding:30px">\n<h1>أهلًا بك يا أمير X 🚀</h1>\n<p>هذه أول صفحة صنعتها!</p>\n<button onclick="document.querySelector(\\'p\\').textContent=\\'نجحت في البرمجة!\\'">اضغط هنا</button>\n</body>\n</html>',
+ css: 'body {\n  background: #101426;\n  color: white;\n  font-family: Arial;\n  text-align: center;\n  padding: 30px;\n}\nh1 { color: #4ce5ff; }\n',
+ js: 'console.log("أهلًا يا أمير X!");\nlet score = 10 + 5;\nconsole.log("النتيجة:", score);\n',
+ json: '{\n  "name": "AMIRXTNA",\n  "version": 1,\n  "future": true\n}',
+ python: 'name = "Amir X"\nscore = 10 + 5\nprint("أهلًا", name)\nprint("النتيجة:", score)\n'
+};
+
+function showPage(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===id));
+  document.querySelectorAll('.nav[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===id));
+  if(id==='projects') renderProjects();
+  window.scrollTo({top:0,behavior:'smooth'});
 }
-h1 { text-shadow: 0 0 15px #64f5ff; }`,
- javascript:`const name = "Amir X";
-const level = 1;
-console.log("أهلًا " + name);
-console.log("مستواك: " + level);`,
- python:`name = "Amir X"
-level = 1
-print("أهلًا", name)
-print("مستواك:", level)`,
- cpp:`#include <iostream>
-using namespace std;
-int main() {
-    cout << "Hello, Amir X!" << endl;
-    return 0;
-}`,
- c:`#include <stdio.h>
-int main(void) {
-    printf("Hello, Amir X!\\n");
-    return 0;
-}`,
- java:`public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello, Amir X!");
+function notify(message){
+  const t=document.getElementById('toast');
+  t.textContent=message;t.style.display='block';
+  clearTimeout(notify.timer);notify.timer=setTimeout(()=>t.style.display='none',2600);
+}
+function loadExample(){
+  document.getElementById('code').value=examples[document.getElementById('language').value]||'';
+  document.getElementById('console').textContent='تم تحميل مثال تعليمي.';
+}
+function runCode(){
+  const lang=document.getElementById('language').value;
+  const code=document.getElementById('code').value;
+  const output=document.getElementById('console');
+  if(lang==='html'){
+    document.getElementById('preview').srcdoc=code;
+    output.textContent='تم إرسال HTML إلى المعاينة المعزولة.';
+  }else if(lang==='css'){
+    document.getElementById('preview').srcdoc='<style>'+code.replace(/<\/style/gi,'')+'</style><main style="font-family:Arial;padding:20px"><h1>معاينة CSS</h1><p>عدّل الأنماط لرؤية التغييرات.</p></main>';
+    output.textContent='تمت معاينة CSS على صفحة تجريبية.';
+  }else if(lang==='js'){
+    const safeCode=JSON.stringify(code);
+    document.getElementById('preview').srcdoc='<pre id="out" style="white-space:pre-wrap;font:15px monospace"></pre><script>const log=(...a)=>document.getElementById("out").textContent+=a.join(" ")+"\\n";try{const old=console.log;console.log=(...a)=>{log(...a);old(...a)};new Function('+safeCode+')()}catch(e){document.getElementById("out").textContent+="خطأ: "+e.message}<\/script>';
+    output.textContent='تم تشغيل JavaScript في إطار معاينة منفصل. لا تضع بيانات سرية في الكود.';
+  }else if(lang==='json'){
+    try{JSON.parse(code);output.textContent='✓ JSON صحيح.'}
+    catch(e){output.textContent='خطأ في JSON: '+e.message}
+  }else{
+    output.textContent='هذا مثال Python للقراءة والتعديل فقط. تشغيل Python فعليًا يحتاج إلى بيئة Python أو خادم.';
+  }
+}
+function downloadText(name,text,type){
+  const blob=new Blob([text],{type});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');a.href=url;a.download=name;a.click();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+function downloadCode(){
+  const lang=document.getElementById('language').value;
+  const extensions={html:'html',css:'css',js:'js',json:'json',python:'py'};
+  downloadText((document.getElementById('projectName').value||'project').replace(/[\\/:*?"<>|]/g,'_')+'.'+extensions[lang],document.getElementById('code').value,'text/plain;charset=utf-8');
+}
+function getProjects(){try{return JSON.parse(localStorage.getItem('amirxtna_projects')||'[]')}catch{return []}}
+function saveProject(){
+  const p={id:Date.now(),name:document.getElementById('projectName').value||'مشروع بلا اسم',lang:document.getElementById('language').value,code:document.getElementById('code').value};
+  const list=getProjects();list.unshift(p);
+  try{localStorage.setItem('amirxtna_projects',JSON.stringify(list.slice(0,100)));notify('تم حفظ المشروع في هذا المتصفح.');updateStats()}
+  catch{notify('تعذر الحفظ. قد تكون مساحة التخزين ممتلئة.')}
+}
+function renderProjects(){
+  const list=getProjects(),root=document.getElementById('projectList');
+  root.replaceChildren();
+  if(!list.length){root.innerHTML='<div class="card">لا توجد مشاريع بعد. افتح المختبر واحفظ أول مشروع!</div>';return}
+  list.forEach(p=>{
+    const card=document.createElement('div');card.className='card';card.style.marginBottom='10px';
+    const title=document.createElement('h3');title.textContent=p.name;
+    const info=document.createElement('p');info.textContent='اللغة: '+p.lang.toUpperCase();
+    const open=document.createElement('button');open.className='btn primary';open.textContent='فتح المشروع';
+    open.onclick=()=>{document.getElementById('projectName').value=p.name;document.getElementById('language').value=p.lang;document.getElementById('code').value=p.code;showPage('lab')};
+    const del=document.createElement('button');del.className='btn';del.textContent='حذف';
+    del.onclick=()=>{try{localStorage.setItem('amirxtna_projects',JSON.stringify(getProjects().filter(x=>x.id!==p.id)));renderProjects();updateStats()}catch{notify('تعذر حذف المشروع.')}};
+    card.append(title,info,open,del);root.append(card);
+  });
+}
+function completeLesson(n){
+  const done=new Set(JSON.parse(localStorage.getItem('amirxtna_lessons')||'[]'));
+  done.add(n);localStorage.setItem('amirxtna_lessons',JSON.stringify([...done]));
+  document.getElementById('lesson'+n).classList.add('done');updateStats();notify('ممتاز! أكملت الدرس '+n);
+}
+function quiz(answer){
+  document.getElementById('quizResult').textContent=answer===16?'إجابة صحيحة! لأن الضرب يسبق الجمع. 🎉':'ليست صحيحة هذه المرة. احسب 2 × 3 أولًا ثم أضف 10.';
+}
+function updateStats(){
+  document.getElementById('projectCount').textContent=getProjects().length;
+  const done=JSON.parse(localStorage.getItem('amirxtna_lessons')||'[]');
+  document.getElementById('lessonCount').textContent=done.length;
+  done.forEach(n=>{const el=document.getElementById('lesson'+n);if(el)el.classList.add('done')});
+}
+let siteHtml='';
+function buildSite(){
+  const title=document.getElementById('siteTitle').value||'موقعي';
+  const desc=document.getElementById('siteDesc').value;
+  const color=document.getElementById('siteColor').value;
+  siteHtml='<!DOCTYPE html><html lang="ar" dir="rtl"><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+escapeHtml(title)+'</title><body style="margin:0;background:#101426;color:white;font-family:Arial;text-align:center;padding:50px"><h1 style="color:'+color+'">'+escapeHtml(title)+'</h1><p>'+escapeHtml(desc).replace(/\n/g,'<br>')+'</p><button onclick="alert(\\'أهلًا بك!\\')" style="padding:12px 22px;border:0;border-radius:10px;background:'+color+';color:white">ابدأ الآن</button></body></html>';
+  document.getElementById('sitePreview').srcdoc=siteHtml;notify('تم إنشاء معاينة الموقع!');
+}
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function downloadSite(){
+  if(!siteHtml)buildSite();
+  downloadText('my-website.html',siteHtml,'text/html;charset=utf-8');
+}
+let adSettings={title:'مساحة إعلانية متاحة',text:'يمكنك تخصيص هذا الإعلان.',url:''};
+function saveAd(){
+  adSettings={title:document.getElementById('adTitle').value,text:document.getElementById('adText').value,url:document.getElementById('adUrl').value};
+  try{localStorage.setItem('amirxtna_ad',JSON.stringify(adSettings));showAd();notify('تم حفظ إعدادات المعاينة.')}
+  catch{notify('تعذر حفظ الإعدادات.')}
+}
+function showAd(){
+  const root=document.getElementById('adPreview');root.replaceChildren();
+  const h=document.createElement('strong');h.textContent=adSettings.title;
+  const p=document.createElement('p');p.textContent=adSettings.text;
+  root.append(h,p);
+  if(adSettings.url){
+    try{
+      const u=new URL(adSettings.url);
+      if(!['http:','https:'].includes(u.protocol))throw new Error();
+      const a=document.createElement('a');a.href=u.href;a.target='_blank';a.rel='noopener noreferrer';a.textContent='فتح رابط الإعلان';a.style.color='var(--cyan)';root.append(a);
+    }catch{const msg=document.createElement('p');msg.textContent='الرابط غير صالح. استخدم رابط HTTP أو HTTPS.';root.append(msg)}
+  }
+}
+function loadAd(){
+  try{const saved=JSON.parse(localStorage.getItem('amirxtna_ad')||'null');if(saved){adSettings=saved;document.getElementById('adTitle').value=saved.title||'';document.getElementById('adText').value=saved.text||'';document.getElementById('adUrl').value=saved.url||''}}
+  catch{}
+}
+const canvas=document.getElementById('game'),ctx=canvas.getContext('2d');
+let player={x:60,y:170,size:18},crystal={x:350,y:160,size:10},score=0,running=false,keys={};
+function drawGame(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.strokeStyle='#18213d';
+  for(let x=0;x<600;x+=30){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,340);ctx.stroke()}
+  for(let y=0;y<340;y+=30){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(600,y);ctx.stroke()}
+  ctx.fillStyle='#4ce5ff';ctx.beginPath();ctx.arc(player.x,player.y,player.size,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#b78aff';ctx.save();ctx.translate(crystal.x,crystal.y);ctx.rotate(Math.PI/4);ctx.fillRect(-crystal.size/1.5,-crystal.size/1.5,crystal.size*1.4,crystal.size*1.4);ctx.restore();
+  ctx.fillStyle='#fff';ctx.font='13px Arial';ctx.fillText('AMIRXTNA MINI GAME',14,22);
+}
+function startGame(){running=true;notify('اللعبة بدأت! استخدم الأسهم أو WASD.');}
+function resetGame(){player={x:60,y:170,size:18};crystal={x:350,y:160,size:10};score=0;running=false;document.getElementById('score').textContent='البلورات: 0';drawGame()}
+function moveGame(e){
+  const k=e.key.toLowerCase();
+  if(['arrowup','arrowdown','arrowleft','arrowright',' '].includes(k))e.preventDefault();
+  keys[k]=true;
+}
+window.addEventListener('keydown',moveGame);
+window.addEventListener('keyup',e=>keys[e.key.toLowerCase()]=false);
+function gameLoop(){
+  if(running){
+    if(keys.arrowup||keys.w)player.y-=3;
+    if(keys.arrowdown||keys.s)player.y+=3;
+    if(keys.arrowleft||keys.a)player.x-=3;
+    if(keys.arrowright||keys.d)player.x+=3;
+    player.x=Math.max(player.size,Math.min(canvas.width-player.size,player.x));
+    player.y=Math.max(player.size,Math.min(canvas.height-player.size,player.y));
+    if(Math.hypot(player.x-crystal.x,player.y-crystal.y)<player.size+crystal.size){
+      score++;document.getElementById('score').textContent='البلورات: '+score;
+      crystal.x=30+Math.random()*(canvas.width-60);crystal.y=40+Math.random()*(canvas.height-80);
     }
-}`,
- csharp:`using System;
-class Program {
-    static void Main() {
-        Console.WriteLine("Hello, Amir X!");
-    }
-}`,
- php:`<?php
-$name = "Amir X";
-echo "Hello, " . $name;
-?>`,
- sql:`CREATE TABLE students (
-  id INTEGER PRIMARY KEY,
-  name VARCHAR(100)
-);
-SELECT * FROM students;`,
- json:`{
-  "name": "Amir X",
-  "level": 1,
-  "skills": ["HTML", "CSS", "JavaScript"]
-}`,
- typescript:`const name: string = "Amir X";
-const level: number = 1;
-console.log(name, level);`,
- rust:`fn main() {
-    println!("Hello, Amir X!");
-}`,
- go:`package main
-import "fmt"
-func main() {
-    fmt.Println("Hello, Amir X!")
-}`,
- bash:`#!/bin/bash
-echo "Hello, Amir X!"`
-};
-
-const extensions = {
- html:"html",css:"css",javascript:"js",python:"py",cpp:"cpp",
- c:"c",java:"java",csharp:"cs",php:"php",sql:"sql",json:"json",
- typescript:"ts",rust:"rs",go:"go",bash:"sh"
-};
-
-const courses = {
- python:{
-  title:"مسار Python",
-  desc:"تعلّم أساسيات البرمجة ثم طبّقها في مشاريع صغيرة.",
-  lessons:[
-   ["ما هي البرمجة؟","افهم وظيفة الكود.","print('Hello, world!')"],
-   ["المتغيرات","خزّن النصوص والأرقام.","name = 'Amir'\\nprint(name)"],
-   ["العمليات الحسابية","استخدم + و - و * و / و %.","print(10 + 5)\\nprint(10 % 3)"],
-   ["الشروط","اجعل البرنامج يتخذ قرارًا.","age = 15\\nif age >= 13:\\n    print('مرحبًا')"],
-   ["الحلقات","كرّر الأوامر.","for i in range(5):\\n    print(i)"],
-   ["القوائم","اجمع القيم في قائمة.","games = ['Minecraft', 'Clash']\\nprint(games[0])"],
-   ["الدوال","أنشئ أوامر قابلة لإعادة الاستخدام.","def greet(name):\\n    print('أهلًا', name)\\ngreet('Amir')"],
-   ["مشروع آلة حاسبة","اجمع ما تعلمته.","a = 12\\nb = 4\\nprint(a + b)\\nprint(a * b)"]
-  ]
- },
- html:{
-  title:"مسار HTML وCSS",
-  desc:"أنشئ صفحات ويب وصمّمها بنفسك.",
-  lessons:[
-   ["هيكل الصفحة","أنشئ عنوانًا وفقرة.","<h1>مرحبًا بالعالم</h1>"],
-   ["العناوين والفقرات","نظّم محتوى الصفحة.","<h1>عنوان</h1><p>فقرة</p>"],
-   ["الروابط","أضف رابطًا.","<a href='https://example.com'>افتح الرابط</a>"],
-   ["الألوان","غيّر شكل الصفحة.","body { color: cyan; background: #080d20; }"],
-   ["التخطيط","استخدم Flexbox.","display: flex; gap: 12px;"],
-   ["التجاوب","حسّن العرض على الهاتف.","@media(max-width:600px){h1{font-size:24px}}"],
-   ["النماذج","أضف حقل إدخال.","<input placeholder='اكتب اسمك'>"],
-   ["مشروع شخصي","اصنع صفحة تعريفية.","<h1>ملفي الشخصي</h1>"]
-  ]
- },
- js:{
-  title:"مسار JavaScript",
-  desc:"تعلّم المنطق والتفاعل في الويب.",
-  lessons:[
-   ["أول أمر","اطبع رسالة.","console.log('Hello!')"],
-   ["المتغيرات","خزّن القيم.","const score = 10;\\nconsole.log(score);"],
-   ["الحسابات","نفّذ العمليات.","console.log(10 + 5 * 2);"],
-   ["الشروط","تحقق من شرط.","if (10 > 5) console.log('صحيح');"],
-   ["الحلقات","كرّر الأوامر.","for(let i=0;i<5;i++) console.log(i);"],
-   ["الدوال","أنشئ وظيفة.","function add(a,b){return a+b}\\nconsole.log(add(2,3));"],
-   ["التفاعل","غيّر لون الخلفية.","document.body.style.background = 'black';"],
-   ["مشروع عداد","ابدأ بعدّاد بسيط.","let count = 0;\\ncount++;\\nconsole.log(count);"]
-  ]
- }
-};
-
-let completed = [];
-let xp = 0;
-let currentCourse = "python";
-let gameRunning = false;
-let keys = {};
-let player = {x:40,y:130,size:20};
-let crystals = [];
-let score = 0;
-let frameId = 0;
-let adCollapsed = false;
-let adHidden = false;
-
-try {
- completed = JSON.parse(localStorage.getItem("amx_done") || "[]");
- xp = Number(localStorage.getItem("amx_xp") || 0);
-} catch(e) {}
-
-function goTo(id) {
- document.getElementById(id).scrollIntoView({behavior:"smooth"});
-}
-function escapeHTML(s) {
- return String(s).replace(/[&<>"']/g,c=>({
-  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
- })[c]);
-}
-function updateStats() {
- document.getElementById("xp").textContent = xp+" XP";
- document.getElementById("heroXP").textContent = xp+" XP";
- document.getElementById("done").textContent = completed.length;
- const total = Object.values(courses).reduce((n,c)=>n+c.lessons.length,0);
- const pct = Math.min(100,Math.round(completed.length/total*100));
- document.getElementById("overallProgress").style.width = pct+"%";
- document.getElementById("courseProgress").style.width =
-  Math.min(100,Math.round(completed.filter(x=>x.startsWith(currentCourse+"-")).length/
-  courses[currentCourse].lessons.length*100))+"%";
- document.getElementById("overallText").textContent =
-  "أكملت "+completed.length+" درسًا من أصل "+total+" — تقدمك "+pct+"%.";
-}
-function selectCourse(id) {
- currentCourse = id;
- const c = courses[id];
- document.getElementById("courseTitle").textContent = c.title;
- document.getElementById("courseDesc").textContent = c.desc;
- document.getElementById("lessons").innerHTML = c.lessons.map((l,i)=>{
-  const done = completed.includes(id+"-"+i);
-  return `<div class="lesson"><div><b>${i+1}. ${escapeHTML(l[0])}</b><small>${escapeHTML(l[1])}</small></div><button class="btn small ${done?"cyan":""}" onclick="openLesson(${i})">${done?"✓ مكتمل":"افتح الدرس"}</button></div>`;
- }).join("");
- updateStats();
- goTo("academy");
-}
-function openLesson(i) {
- const lesson = courses[currentCourse].lessons[i];
- document.getElementById("language").value =
-  currentCourse==="python"?"python":currentCourse==="html"?"html":"javascript";
- document.getElementById("code").value = lesson[2];
- goTo("lab");
- const answer = confirm(
-  "الدرس: "+lesson[0]+"\n\n"+lesson[1]+
-  "\n\nتم وضع المثال في مختبر الأكواد. جرّبه، ثم اضغط موافق إذا أنهيت الدرس."
- );
- if(answer) {
-  const key = currentCourse+"-"+i;
-  if(!completed.includes(key)) {
-   completed.push(key);
-   xp += 25;
-   localStorage.setItem("amx_done",JSON.stringify(completed));
-   localStorage.setItem("amx_xp",String(xp));
   }
-  selectCourse(currentCourse);
- }
+  drawGame();requestAnimationFrame(gameLoop);
 }
-function changeLanguage() {
- document.getElementById("code").value = examples[document.getElementById("language").value];
- clearOutput();
-}
-function resetCode(){changeLanguage()}
-function clearOutput(){
- document.getElementById("console").textContent="";
- document.getElementById("resultMessage").textContent="بانتظار تشغيل الكود...";
- document.getElementById("preview").style.display="none";
-}
-function runCode() {
- const lang=document.getElementById("language").value;
- const code=document.getElementById("code").value;
- const con=document.getElementById("console");
- const msg=document.getElementById("resultMessage");
- const preview=document.getElementById("preview");
- clearOutput();
-
- if(lang==="html") {
-  preview.srcdoc=code;
-  preview.style.display="block";
-  msg.textContent="معاينة HTML";
- } else if(lang==="css") {
-  preview.srcdoc='<!DOCTYPE html><html><head><meta charset="UTF-8"><style>'+
-   code.replace(/<\/style/gi,"")+
-   '</style></head><body><h1>معاينة التصميم</h1><p>هذا نص تجريبي لتجربة CSS.</p><button>زر تجريبي</button></body></html>';
-  preview.style.display="block";
-  msg.textContent="معاينة CSS";
- } else if(lang==="javascript") {
-  const sandbox=document.createElement("iframe");
-  sandbox.sandbox="allow-scripts";
-  sandbox.style.display="none";
-  document.body.appendChild(sandbox);
-  const listener=e=>{
-   if(e.source===sandbox.contentWindow && e.data && e.data.type==="amx-console") {
-    con.textContent+=e.data.message+"\n";
-   }
-  };
-  window.addEventListener("message",listener);
-  const safeCode=code.replace(/<\/script/gi,"<\\/script");
-  sandbox.srcdoc=`<script>
-   console.log=(...a)=>parent.postMessage({type:"amx-console",message:a.map(v=>String(v)).join(" ")},"*");
-   console.error=console.log;
-   try{${safeCode}}catch(e){console.log("Error:",e.message)}
-   <\/script>`;
-  msg.textContent="نتائج JavaScript:";
-  setTimeout(()=>{window.removeEventListener("message",listener);sandbox.remove()},1500);
- } else if(lang==="json") {
-  try {
-   con.textContent="JSON صالح ✓\n\n"+JSON.stringify(JSON.parse(code),null,2);
-   msg.textContent="تم التحقق من JSON.";
-  } catch(e) {
-   con.textContent="خطأ في JSON: "+e.message;
-  }
- } else {
-  msg.textContent="تم تجهيز الكود للتنزيل.";
-  con.textContent="اللغة: "+lang+
-   "\n\nهذه النسخة لا تنفّذ هذه اللغة داخل المتصفح. نزّل الملف وافتحه في بيئة تشغيل مناسبة لتشغيله فعليًا.";
- }
-}
-function downloadBlob(name,content,type="text/plain;charset=utf-8") {
- const blob=new Blob([content],{type});
- const url=URL.createObjectURL(blob);
- const a=document.createElement("a");
- a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();
- setTimeout(()=>URL.revokeObjectURL(url),1000);
-}
-function downloadCode() {
- const lang=document.getElementById("language").value;
- downloadBlob("amirxtna-project."+extensions[lang],document.getElementById("code").value);
-}
-async function copyCode() {
- const area=document.getElementById("code");
- try {
-  await navigator.clipboard.writeText(area.value);
-  alert("تم نسخ الكود.");
- } catch(e) {
-  area.select();alert("تم تحديد الكود. اضغط Ctrl+C لنسخه.");
- }
-}
-function buildSite() {
- const name=escapeHTML(document.getElementById("siteName").value.trim()||"موقعي");
- const idea=escapeHTML(document.getElementById("siteIdea").value.trim()||"أهلًا بك");
- const color=document.getElementById("siteColor").value;
- const html=`<!DOCTYPE html>
-<html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${name}</title>
-<style>
-*{box-sizing:border-box}body{margin:0;background:#070914;color:#f7f7ff;font-family:Arial;text-align:center;padding:50px 18px}
-main{max-width:850px;margin:auto;padding:50px 20px;border:1px solid ${color};border-radius:24px;box-shadow:0 0 55px ${color}25}
-h1{font-size:clamp(35px,7vw,65px);color:${color}}p{line-height:2;color:#c8cbe0}
-button{padding:13px 22px;border:0;border-radius:9px;background:${color};cursor:pointer}
-</style></head><body><main><h1>${name}</h1><p>${idea}</p><button onclick="document.querySelector('p').textContent='ابدأ ببناء فكرتك!'">ابدأ الآن</button></main></body></html>`;
- document.getElementById("generatedSite").value=html;
- document.getElementById("sitePreview").srcdoc=html;
-}
-function openGeneratedInLab() {
- if(!document.getElementById("generatedSite").value)buildSite();
- document.getElementById("language").value="html";
- document.getElementById("code").value=document.getElementById("generatedSite").value;
- goTo("lab");
-}
-function downloadSite() {
- if(!document.getElementById("generatedSite").value)buildSite();
- downloadBlob("my-website.html",document.getElementById("generatedSite").value,"text/html;charset=utf-8");
-}
-function gameCode() {
- return `<!DOCTYPE html>
-<html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>لعبة البلورات</title>
-<style>body{background:#080b1c;color:white;text-align:center;font-family:Arial}canvas{max-width:95vw;background:#11162e;border:1px solid #64f5ff}</style></head>
-<body><h1>💎 لعبة البلورات</h1><p>حرّك المربع بالأسهم واجمع البلورات.</p><canvas id="c" width="600" height="300"></canvas>
-<script>
-const c=document.getElementById('c'),x=c.getContext('2d');
-let p={x:30,y:130},d={x:300,y:100},s=0,k={};
-onkeydown=e=>k[e.key]=true;onkeyup=e=>k[e.key]=false;
-function loop(){
- if(k.ArrowLeft)p.x-=3;if(k.ArrowRight)p.x+=3;
- if(k.ArrowUp)p.y-=3;if(k.ArrowDown)p.y+=3;
- p.x=Math.max(0,Math.min(580,p.x));p.y=Math.max(0,Math.min(280,p.y));
- if(Math.hypot(p.x-d.x,p.y-d.y)<20){s++;d={x:Math.random()*570,y:Math.random()*270}}
- x.clearRect(0,0,600,300);x.fillStyle='#bb67ff';x.fillRect(p.x,p.y,20,20);
- x.fillStyle='#64f5ff';x.beginPath();x.arc(d.x,d.y,9,0,Math.PI*2);x.fill();
- x.fillStyle='white';x.fillText('Score: '+s,10,20);requestAnimationFrame(loop)
-}loop();
-<\/script></body></html>`;
-}
-function loadGameCode() {
- document.getElementById("language").value="html";
- document.getElementById("code").value=gameCode();
- goTo("lab");
-}
-function downloadGame() {
- downloadBlob("amirxtna-game.html",gameCode(),"text/html;charset=utf-8");
-}
-function startGame() {
- if(frameId)cancelAnimationFrame(frameId);
- player={x:40,y:130,size:20};score=0;
- spawnCrystals();gameRunning=true;gameLoop();
-}
-function spawnCrystals() {
- crystals=Array.from({length:8},()=>({x:25+Math.random()*590,y:25+Math.random()*245,r:7}));
-}
-function drawGame() {
- const canvas=document.getElementById("game"),ctx=canvas.getContext("2d");
- ctx.fillStyle="#050611";ctx.fillRect(0,0,canvas.width,canvas.height);
- ctx.strokeStyle="#202344";
- for(let x=0;x<canvas.width;x+=30){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,canvas.height);ctx.stroke()}
- for(let y=0;y<canvas.height;y+=30){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(canvas.width,y);ctx.stroke()}
- crystals.forEach(c=>{
-  ctx.beginPath();ctx.moveTo(c.x,c.y-c.r);ctx.lineTo(c.x+c.r,c.y);
-  ctx.lineTo(c.x,c.y+c.r);ctx.lineTo(c.x-c.r,c.y);ctx.closePath();
-  ctx.fillStyle="#64f5ff";ctx.shadowColor="#64f5ff";ctx.shadowBlur=12;ctx.fill();ctx.shadowBlur=0;
- });
- ctx.fillStyle="#bb67ff";ctx.shadowColor="#bb67ff";ctx.shadowBlur=15;
- ctx.fillRect(player.x,player.y,player.size,player.size);ctx.shadowBlur=0;
- ctx.fillStyle="white";ctx.font="14px Arial";ctx.fillText("CRYSTALS: "+score,15,20);
-}
-function gameLoop() {
- if(!gameRunning)return;
- if(keys.ArrowLeft||keys.a)player.x-=3;
- if(keys.ArrowRight||keys.d)player.x+=3;
- if(keys.ArrowUp||keys.w)player.y-=3;
- if(keys.ArrowDown||keys.s)player.y+=3;
- player.x=Math.max(0,Math.min(630,player.x));
- player.y=Math.max(0,Math.min(270,player.y));
- crystals=crystals.filter(c=>{
-  const hit=Math.hypot(player.x+10-c.x,player.y+10-c.y)<18;
-  if(hit)score++;
-  return !hit;
- });
- if(!crystals.length)spawnCrystals();
- drawGame();
- document.getElementById("gameStatus").textContent="عدد البلورات: "+score;
- frameId=requestAnimationFrame(gameLoop);
-}
-window.addEventListener("keydown",e=>{
- if(["ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].includes(e.key))e.preventDefault();
- keys[e.key]=true;
-});
-window.addEventListener("keyup",e=>keys[e.key]=false);
-
-function toggleFloatingAd() {
- const ad=document.getElementById("floatingAd");
- const button=document.getElementById("adMinButton");
- adCollapsed=!adCollapsed;
- ad.classList.toggle("collapsed",adCollapsed);
- button.textContent=adCollapsed?"+":"−";
-}
-function saveAdSettings() {
- const title=document.getElementById("adTitle").value.trim()||"أعلن في AMIRXTNA";
- const description=document.getElementById("adDescription").value.trim()||"مساحة إعلانية تجريبية.";
- const link=document.getElementById("adLink").value.trim();
- if(link && !/^https?:\/\//i.test(link)) {
-  alert("اكتب رابطًا يبدأ بـ https:// أو http://");
-  return;
- }
- const settings={title,description,link};
- try{localStorage.setItem("amx_ad_settings",JSON.stringify(settings));}catch(e){}
- renderAd(settings);
- alert("تم حفظ إعدادات المعاينة في هذا المتصفح.");
-}
-function renderAd(settings) {
- document.getElementById("floatingAdTitle").textContent=settings.title;
- document.getElementById("floatingAdDescription").textContent=settings.description;
- const link=document.getElementById("floatingAdLink");
- link.href=settings.link||"#advertising";
- link.textContent=settings.link?"زيارة المعلن ↗":"اكتشف المنصة ↗";
- link.dataset.external=settings.link?"yes":"no";
-}
-function handleAdClick(e) {
- const link=document.getElementById("floatingAdLink");
- if(link.dataset.external==="yes") {
-  e.preventDefault();
-  window.open(link.href,"_blank","noopener,noreferrer");
- }
-}
-function resetAdSettings() {
- const settings={title:"أعلن في AMIRXTNA",description:"مساحة مخصصة للتعريف بمشروعك أو خدمتك.",link:""};
- document.getElementById("adTitle").value=settings.title;
- document.getElementById("adDescription").value=settings.description;
- document.getElementById("adLink").value="";
- try{localStorage.removeItem("amx_ad_settings");}catch(e){}
- renderAd(settings);
-}
-function toggleFloatingAd() {
- const ad=document.getElementById("floatingAd");
- adHidden=!adHidden;
- ad.style.display=adHidden?"none":"block";
-}
-function resetProgress() {
- if(!confirm("هل تريد إعادة ضبط تقدمك ونقاط الخبرة؟"))return;
- completed=[];xp=0;
- try{localStorage.removeItem("amx_done");localStorage.removeItem("amx_xp");}catch(e){}
- updateStats();selectCourse(currentCourse);
-}
-function initAd() {
- try {
-  const saved=localStorage.getItem("amx_ad_settings");
-  if(saved) {
-   const settings=JSON.parse(saved);
-   document.getElementById("adTitle").value=settings.title||"أعلن في AMIRXTNA";
-   document.getElementById("adDescription").value=settings.description||"مساحة إعلانية تجريبية.";
-   document.getElementById("adLink").value=settings.link||"";
-   renderAd(settings);
-  }
- } catch(e) {}
-}
-document.getElementById("code").value=examples.html;
-updateStats();
-selectCourse("python");
-buildSite();
-drawGame();
-initAd();
+loadExample();updateStats();loadAd();showAd();buildSite();gameLoop();
 </script>
 </body>
 </html>
