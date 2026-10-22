@@ -1,902 +1,123 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#050713">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>AMIRXTNA | كوكب الأسطورة</title>
 <style>
-:root{
- --c:#3df5ff;--v:#b06bff;--g:#5dffb0;--o:#ffb84d;
- --red:#ff5277;--bg:#03040d;--panel:#0b1128;--line:#253567;
- --muted:#a2afd6;--white:#eff7ff;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:100px}
-body{margin:0;background:var(--bg);color:var(--white);font-family:Tahoma,Arial,sans-serif;overflow-x:hidden}
-button,input,textarea,select{font:inherit}
-button{cursor:pointer}
-button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--c);outline-offset:3px}
-#stars{position:fixed;inset:0;width:100%;height:100%;z-index:-3;pointer-events:none}
-.ambient{position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(ellipse at 15% 20%,#17308022,transparent 42%),radial-gradient(ellipse at 85% 65%,#7d25b522,transparent 45%)}
-.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 4%;background:#050713eF;border-bottom:1px solid var(--line);backdrop-filter:blur(18px)}
-.logo{font-weight:1000;letter-spacing:2px;font-size:22px;cursor:pointer;white-space:nowrap}
-.logo b{color:var(--c);text-shadow:0 0 22px #3df5ff99}
-nav{display:flex;gap:6px;flex-wrap:wrap}
-.btn{border:1px solid var(--line);border-radius:10px;padding:10px 14px;background:#101a3a;color:white;transition:.2s}
-.btn:hover{border-color:var(--c);box-shadow:0 0 18px #3df5ff30;transform:translateY(-2px)}
-.btn:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
-.btn.active{border-color:var(--c);background:#123047}
-.primary{background:linear-gradient(110deg,#176aff,#923fff);border:0}
-.gold{background:linear-gradient(110deg,#ff9d2e,#ffe17b);color:#241500;border:0;font-weight:bold}
-.green{border-color:#286d58;background:#0d3029}
-.danger{border-color:#77344a;background:#32121d}
-main{max-width:1200px;margin:auto;padding:20px 4% 80px}
-.page{display:none;animation:appear .35s ease}
-.page.active{display:block}
-@keyframes appear{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-h1{font-size:clamp(35px,6vw,72px);line-height:1.2;margin:18px 0}
-h1 em{font-style:normal;background:linear-gradient(90deg,var(--o),var(--c),var(--v));color:transparent;background-clip:text}
-h2{margin-top:30px}
-p{color:var(--muted);line-height:1.9}
-.tag{color:var(--o);font:12px monospace;letter-spacing:2px}
-.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:center;padding:55px 0 35px}
-.planet{width:min(260px,70vw);aspect-ratio:1;border-radius:50%;margin:auto;position:relative;background:radial-gradient(circle at 30% 25%,#fff0a5 0%,#ffae45 17%,#f75c43 43%,#782c9f 72%,#110b2e 100%);box-shadow:0 0 70px #ff8a3d55,inset -35px -22px 55px #000b;animation:float 6s ease-in-out infinite}
-.planet:before{content:"";position:absolute;left:-25%;right:-25%;top:45%;height:25%;border:4px solid #3df5ffbb;border-radius:50%;transform:rotate(-23deg);box-shadow:0 0 22px #3df5ff66}
-.planet:after{content:"";position:absolute;inset:20%;border-radius:50%;background:radial-gradient(circle at 25% 20%,#fff5,transparent 65%)}
-@keyframes float{50%{transform:translateY(-13px) rotate(3deg)}}
-.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0}
-.card{background:linear-gradient(145deg,#111a3bcc,#080d21ed);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 10px 30px #0002}
-.stat strong{display:block;color:var(--c);font-size:27px;margin-bottom:7px}
-.stat span{color:var(--muted);font-size:13px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.stack{display:flex;flex-direction:column;gap:12px}
-.row{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
-.spread{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.muted{color:var(--muted)}
-.small{font-size:12px}
-.badge{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:5px 9px;color:var(--c);font-size:12px}
-.progress{height:8px;background:#1b2548;border-radius:10px;overflow:hidden;margin:12px 0}
-.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--o),var(--c),var(--v));transition:width .4s}
-.lesson-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:15px}
-.lesson{display:flex;align-items:center;gap:12px;text-align:right;width:100%;min-height:72px}
-.lesson .emoji{font-size:27px}
-.lesson.done{border-color:#3b9f7c;background:#0c2927}
-.lesson.locked{opacity:.55}
-.lesson-content{flex:1}
-.lesson-content small{display:block;color:var(--muted);margin-top:5px}
-input,textarea,select{width:100%;background:#030817;color:var(--white);border:1px solid var(--line);border-radius:10px;padding:12px}
-textarea{direction:ltr;text-align:left;font:14px/1.7 Consolas,monospace;resize:vertical}
-input::placeholder{color:#7584b1}
-.code-editor{min-height:300px}
-pre,.output{direction:ltr;text-align:left;white-space:pre-wrap;overflow-wrap:anywhere;background:#030817;border:1px solid var(--line);border-radius:12px;padding:14px;color:#baf8ff;min-height:45px;overflow:auto}
-iframe.preview{width:100%;height:360px;border:1px solid var(--line);border-radius:12px;background:white}
-.option{display:block;width:100%;text-align:right;padding:13px;margin:8px 0;border-radius:10px;border:1px solid var(--line);background:#111a37;color:white}
-.option.correct{border-color:var(--g);background:#103629}
-.option.wrong{border-color:var(--red);background:#3a1525}
-.challenge-grid{display:flex;flex-wrap:wrap;gap:8px;margin:15px 0}
-.achievement-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:10px}
-.achievement{text-align:center;opacity:.45}
-.achievement.earned{opacity:1;border-color:var(--o);box-shadow:0 0 18px #ffb84d22}
-.achievement span{font-size:30px;display:block;margin-bottom:8px}
-.notice{border-right:3px solid var(--c);padding:12px 15px;background:#0d1b31;border-radius:8px;color:#dbeaff;line-height:1.8}
-#toast{position:fixed;top:90px;left:50%;transform:translateX(-50%);z-index:100;display:none;max-width:90vw;background:#171333;border:1px solid var(--o);border-radius:12px;padding:14px 20px;box-shadow:0 0 30px #ffb84d33}
-#boot{position:fixed;inset:0;z-index:120;background:#010208;display:flex;align-items:center;justify-content:center;padding:20px;color:var(--g);font:14px/2 monospace;transition:opacity .5s}
-#bootText{white-space:pre-wrap;direction:ltr}
-#skipBoot{position:absolute;bottom:30px;right:30px}
-.ad{position:fixed;bottom:16px;left:16px;width:min(290px,calc(100vw - 32px));z-index:35;background:linear-gradient(140deg,#121b3b,#080d20);border:1px solid #5b4a9c;border-radius:14px;padding:14px;box-shadow:0 0 25px #6e45ff24}
-.ad .close{position:absolute;left:7px;top:5px;border:0;background:transparent;color:white;font-size:20px}
-.ad-title{color:var(--c);font-weight:bold;margin:8px 0}
-.ad p{font-size:12px;margin:5px 0 12px}
-#adOpen{position:fixed;bottom:16px;left:16px;z-index:34;display:none}
-footer{text-align:center;border-top:1px solid var(--line);padding:25px;color:var(--muted);font-size:12px}
-hr{border:0;border-top:1px solid var(--line);margin:20px 0}
-.modal{position:fixed;inset:0;z-index:80;background:#000b;display:none;align-items:center;justify-content:center;padding:18px}
-.modal.open{display:flex}
-.modal-box{width:min(650px,100%);max-height:85vh;overflow:auto;background:#0a1025;border:1px solid var(--v);border-radius:18px;padding:22px}
-@media(max-width:780px){
- .hero,.grid2{grid-template-columns:1fr}
- .hero{padding-top:35px}
- .planet{width:180px}
- .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
- .lesson-list{grid-template-columns:1fr}
- .top{align-items:flex-start}
- nav{width:100%}
- nav .btn{flex:1;padding:9px 7px;font-size:12px}
-}
-@media(prefers-reduced-motion:reduce){
- *,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
-}
+:root{--c:#3df5ff;--v:#b06bff;--g:#5dffb0;--o:#ffb84d;--b:#2a3470;--m:#93a3cf;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:#02030a;color:#eef4ff;font-family:Tahoma,Arial,sans-serif;overflow-x:hidden}
+#cv{position:fixed;inset:0;z-index:-1;width:100%;height:100%}
+p{color:var(--m);line-height:1.9}button{font:inherit;cursor:pointer}
+#intro{position:fixed;inset:0;z-index:99;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:#02030acc;transition:opacity 1s}
+#intro svg{width:170px;height:170px;filter:drop-shadow(0 0 22px var(--c))}
+.draw path,.draw polygon{stroke-dasharray:420;stroke-dashoffset:420;animation:dr 2.2s .3s forwards}
+@keyframes dr{to{stroke-dashoffset:0}}
+.orb{transform-origin:60px 60px;animation:sp 6s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
+.gl{position:relative;font-size:clamp(38px,10vw,84px);font-weight:900;letter-spacing:6px;margin:14px 0 4px;direction:ltr}
+.gl:before,.gl:after{content:attr(data-t);position:absolute;inset:0}
+.gl:before{color:#ff2bd6;animation:g1 2.4s infinite steps(1);clip-path:inset(0 0 55% 0)}
+.gl:after{color:var(--c);animation:g2 2.4s infinite steps(1);clip-path:inset(55% 0 0 0)}
+@keyframes g1{0%,90%{transform:none}92%{transform:translate(-5px,2px)}96%{transform:translate(4px,-2px)}}
+@keyframes g2{0%,88%{transform:none}91%{transform:translate(5px,-2px)}95%{transform:translate(-4px,2px)}}
+#ty{font:15px monospace;color:var(--g);min-height:24px;direction:ltr}
+.btn{border:1px solid var(--b);background:#101a40;color:#fff;padding:9px 14px;border-radius:10px;transition:.2s}
+.btn:hover,.btn.on{border-color:var(--c);box-shadow:0 0 20px #3df5ff44;transform:translateY(-2px)}
+.gold{background:linear-gradient(100deg,#ff9d2e,#ffd86b);color:#201000;border:0;font-weight:700}
+#go{opacity:0;margin-top:26px;font-size:18px;padding:13px 30px;transition:opacity 1s}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 5%;background:#03051acc;border-bottom:1px solid var(--b);backdrop-filter:blur(14px)}
+.logo{display:flex;align-items:center;gap:8px;font-weight:900;font-size:21px;letter-spacing:3px}.logo svg{width:38px;height:38px}.logo b{color:var(--c)}
+main{max-width:1100px;margin:auto;padding:20px 5% 80px}
+.pg{display:none}.pg.on{display:block;animation:in .5s}@keyframes in{from{opacity:0;transform:translateY(12px)}}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:center;padding:40px 0}
+.tag{color:var(--o);font:12px monospace;letter-spacing:3px}
+h1{font-size:clamp(32px,6vw,64px);line-height:1.2;margin:12px 0}
+h1 em{font-style:normal;background:linear-gradient(90deg,var(--o),var(--c),var(--v));-webkit-background-clip:text;background-clip:text;color:transparent}
+.planet{width:230px;height:230px;margin:auto;border-radius:50%;position:relative;background:radial-gradient(circle at 30% 30%,#ffd86b,#ff6a3d 40%,#5a1a8a 75%,#12062a);box-shadow:0 0 80px #ff8a3d66,inset -30px -20px 60px #000c;animation:fl 6s ease-in-out infinite}
+.planet:before{content:"";position:absolute;left:-60px;right:-60px;top:50%;height:60px;margin-top:-30px;border:3px solid #3df5ffaa;border-radius:50%;transform:rotate(-22deg)}
+@keyframes fl{50%{transform:translateY(-14px)}}
+.card{background:linear-gradient(150deg,#0f1738cc,#080c22cc);border:1px solid var(--b);border-radius:16px;padding:18px;margin-bottom:12px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stats strong{display:block;font-size:24px;color:var(--c)}
+.bar{height:7px;background:#1c2650;border-radius:9px;overflow:hidden;margin:8px 0}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--o),var(--c),var(--v));transition:width .5s}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.done{border-color:var(--g);color:var(--g)}
+pre{direction:ltr;text-align:left;background:#040717;border:1px solid var(--b);border-radius:10px;padding:12px;overflow-x:auto;color:#bff9ff;font-size:13px;white-space:pre-wrap}
+textarea,input{width:100%;background:#030615;color:#c8f7ff;border:1px solid var(--b);border-radius:12px;padding:12px;font:inherit}
+textarea{min-height:170px;direction:ltr;text-align:left;font:13px/1.6 Consolas,monospace}
+.stg{border-right:3px solid var(--o)}.lv{font:12px monospace;color:var(--o)}
+.dec{position:fixed;top:calc(80px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);background:#1a1030;border:2px solid var(--o);padding:12px 20px;border-radius:14px;z-index:60;display:none;max-width:90vw;text-align:center}
+footer{text-align:center;color:var(--m);font-size:12px;padding:25px}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.planet{width:170px;height:170px}}
 </style>
 </head>
 <body>
-<canvas id="stars"></canvas><div class="ambient"></div>
-
-<div id="boot">
- <div>
-  <div id="bootText">> INITIALIZING PLANET LEGENDARIA...</div>
-  <button class="btn" id="skipBoot">تخطّي المقدمة ←</button>
- </div>
+<canvas id="cv"></canvas>
+<div id="intro">
+<div id="lg" class="draw"></div>
+<div class="gl" data-t="AMIRXTNA">AMIRXTNA</div>
+<div id="ty"></div>
+<button class="btn gold" id="go">ادخل الكوكب ▶</button>
 </div>
-
-<header class="top">
- <div class="logo" data-page="home"><b>AMIR</b>XTNA</div>
- <nav id="nav">
-  <button class="btn active" data-page="home">العرش</button>
-  <button class="btn" data-page="academy">الأكاديمية</button>
-  <button class="btn" data-page="lab">المختبر</button>
-  <button class="btn" data-page="challenges">التحديات</button>
-  <button class="btn" data-page="arena">الساحة</button>
-  <button class="btn" data-page="empire">الإمبراطور</button>
- </nav>
-</header>
-
+<header class="top"><div class="logo" id="hl"></div>
+<nav id="nav" style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn on" data-p="home">العرش</button><button class="btn" data-p="lg2">اللغات</button><button class="btn" data-p="cc">التحديات</button><button class="btn" data-p="me">الإمبراطور</button></nav></header>
 <main>
-<section class="page active" id="home">
- <div class="hero">
-  <div>
-   <div class="tag">◆ PLANET LEGENDARIA · الإمبراطورية الأعظم</div>
-   <h1>أنا لا أتعلّم البرمجة.<br><em>أنا أحكمها.</em></h1>
-   <p>ابدأ من الصفر، تعلّم خطوة بخطوة، اكتب كودك بنفسك، وتقدّم حتى تبني مشاريعك الخاصة.</p>
-   <div class="row">
-    <button class="btn gold" data-page="academy">⚔ ابدأ رحلتك</button>
-    <button class="btn primary" data-page="challenges">🧪 تحديات الكود</button>
-   </div>
-  </div>
-  <div class="planet" aria-label="كوكب الأسطورة"></div>
- </div>
-
- <div class="cards">
-  <div class="card stat"><strong id="xpStat">0</strong><span>نقاط الخبرة XP</span></div>
-  <div class="card stat"><strong id="lessonStat">0/0</strong><span>الدروس المكتملة</span></div>
-  <div class="card stat"><strong id="streakStat">0</strong><span>أيام النشاط المتتالية</span></div>
-  <div class="card stat"><strong id="rankStat">مستكشف</strong><span>رتبتك الحالية</span></div>
- </div>
-
- <div class="card">
-  <div class="spread"><h2 style="margin:0">خريطة السيطرة</h2><span class="badge" id="percentStat">0%</span></div>
-  <div class="progress"><i id="overallProgress"></i></div>
-  <p>أكمل الدروس والتحديات لفتح مراتب جديدة. تقدمك محفوظ على هذا المتصفح.</p>
-  <div id="worldMap" class="stack"></div>
- </div>
-
- <div class="grid2" style="margin-top:16px">
-  <div class="card">
-   <h3>🎯 مهمتك التالية</h3>
-   <p id="nextTask">ابدأ أول درس في الأكاديمية.</p>
-   <button class="btn primary" data-page="academy">تابع التعلّم ←</button>
-  </div>
-  <div class="card">
-   <h3>⚡ تحدٍّ سريع</h3>
-   <p>اختبر فهمك للكود واكسب نقاطًا عند الإجابة الصحيحة.</p>
-   <button class="btn" data-page="arena">دخول الساحة ←</button>
-  </div>
- </div>
+<section id="home" class="pg on">
+<div class="hero"><div><div class="tag">◆ AMIRXTNA CORP · PLANET LEGENDARIA</div>
+<h1>أنا لا أتعلّم البرمجة.<br><em>أنا أحكمها.</em></h1>
+<p>ست لغات، وأربع مراحل لكل لغة: من الصفر إلى الاحتراف.</p>
+<div class="chips"><button class="btn gold" data-p="lg2">⚔ ابدأ الغزو</button><button class="btn" data-p="cc">🧪 تحدي الكود</button></div></div>
+<div class="planet"></div></div>
+<div class="stats"><div class="card"><strong id="s1">0</strong>XP</div><div class="card"><strong id="s2">0</strong>مراحل</div><div class="card"><strong id="s3">-</strong>اللقب</div></div>
+<h2>خريطة السيطرة</h2><div id="road"></div>
 </section>
 
-<section class="page" id="academy">
- <div class="tag">ACADEMY / 01</div>
- <h1 style="font-size:42px">أكاديمية الأباطرة</h1>
- <p>اختر درسًا، اقرأ الشرح، جرّب المثال، ثم اختبر فهمك. الدروس تتدرّج من البداية.</p>
- <input id="lessonSearch" placeholder="🔎 ابحث عن درس أو لغة..." aria-label="البحث عن درس">
- <div id="lessonList" class="lesson-list"></div>
+<section id="lg2" class="pg"><h2>أكاديمية اللغات</h2><div class="chips" id="lc"></div><div id="st"></div></section>
 
- <div id="lessonPanel" class="card" style="display:none;margin-top:18px">
-  <div class="spread"><span class="badge" id="lessonCategory"></span><button class="btn" id="closeLesson">إغلاق ×</button></div>
-  <h2 id="lessonTitle"></h2>
-  <div id="lessonBody"></div>
-  <h3>🧩 جرّب بنفسك</h3>
-  <p id="lessonExercise"></p>
-  <div class="row">
-   <button class="btn primary" id="tryLesson">افتح المختبر</button>
-   <button class="btn gold" id="completeLesson">أنهيت الدرس +25 XP</button>
-  </div>
-  <p class="small" id="lessonStatus"></p>
- </div>
-</section>
+<section id="cc" class="pg"><h2>تحديات الكود</h2><p>اكتب دالة JavaScript، وسيختبرها الموقع تلقائيًا.</p>
+<div class="chips" id="cl"></div>
+<div class="card"><h3 id="ct"></h3><p id="cd"></p><textarea id="ce" spellcheck="false" aria-label="كود التحدي"></textarea>
+<div class="chips"><button class="btn gold" id="ct2">▶ اختبر</button><button class="btn" id="ch">💡 تلميح</button></div><pre id="co">النتيجة هنا...</pre></div></section>
 
-<section class="page" id="lab">
- <div class="tag">REALITY CONTROL / 02</div>
- <h1 style="font-size:42px">مختبر التحكم بالواقع</h1>
- <p>اكتب الكود وشغّله وشاهد النتيجة. شغّل فقط كودًا تفهمه وتثق به.</p>
- <div class="card">
-  <div class="row" id="languageTabs">
-   <button class="btn active" data-lang="html">HTML</button>
-   <button class="btn" data-lang="css">CSS</button>
-   <button class="btn" data-lang="javascript">JavaScript</button>
-   <button class="btn" data-lang="python">Python</button>
-  </div>
-  <div class="spread" style="margin-top:14px">
-   <span class="badge" id="languageLabel">HTML · صفحة ويب</span>
-   <div class="row">
-    <button class="btn gold" id="runCode">▶ تشغيل</button>
-    <button class="btn" id="saveCode">حفظ</button>
-    <button class="btn" id="downloadCode">تنزيل</button>
-    <button class="btn" id="resetCode">استعادة المثال</button>
-   </div>
-  </div>
-  <textarea id="editor" class="code-editor" spellcheck="false" aria-label="محرر الكود"></textarea>
-  <div class="row" style="margin:12px 0">
-   <span class="muted small">النتيجة / رسائل التنفيذ</span>
-   <button class="btn" id="clearOutput">مسح النتائج</button>
-  </div>
-  <pre id="consoleOutput" class="output">جاهز للتشغيل.</pre>
-  <h3>المعاينة الحية</h3>
-  <iframe class="preview" id="preview" title="معاينة المشروع" sandbox="allow-scripts"></iframe>
-  <p class="notice" id="pythonNotice" style="display:none">تشغيل Python يحتاج إنترنت لتحميل محرك Pyodide أول مرة. لا ترسل كلمات مرور أو بيانات خاصة إلى المختبر.</p>
- </div>
-</section>
-
-<section class="page" id="challenges">
- <div class="tag">CODE TRIALS / 03</div>
- <h1 style="font-size:42px">تحديات الكود الحقيقية</h1>
- <p>اكتب دالة JavaScript واختبرها على مجموعة من الحالات. تحصل على المكافأة مرة واحدة لكل تحدٍّ.</p>
- <div id="challengeButtons" class="challenge-grid"></div>
- <div class="card">
-  <span class="badge" id="challengeNumber"></span>
-  <h2 id="challengeTitle"></h2>
-  <p id="challengeDescription"></p>
-  <textarea id="challengeEditor" style="min-height:190px" spellcheck="false" aria-label="كود التحدي"></textarea>
-  <div class="row">
-   <button class="btn gold" id="testChallenge">▶ اختبر الكود</button>
-   <button class="btn" id="showHint">💡 تلميح</button>
-   <button class="btn" id="resetChallenge">استعادة الكود</button>
-  </div>
-  <pre id="challengeOutput">النتيجة ستظهر هنا.</pre>
- </div>
-</section>
-
-<section class="page" id="arena">
- <div class="tag">THE ARENA / 04</div>
- <h1 style="font-size:42px">ساحة المعارك</h1>
- <p>أسئلة تعليمية قصيرة. اقرأ السؤال واختر الإجابة، ولا تحصل على النقاط مرتين للسؤال نفسه.</p>
- <div class="card">
-  <div class="spread"><span class="badge" id="quizNumber"></span><span class="badge" id="quizScore">0 إجابة صحيحة</span></div>
-  <h2 id="quizQuestion"></h2>
-  <div id="quizOptions"></div>
-  <p id="quizFeedback" role="status"></p>
-  <div class="row">
-   <button class="btn primary" id="nextQuestion" disabled>السؤال التالي ←</button>
-   <button class="btn" id="restartQuiz">إعادة التدريب</button>
-  </div>
- </div>
-</section>
-
-<section class="page" id="empire">
- <div class="tag">EMPEROR PROFILE / 05</div>
- <h1 style="font-size:42px">سجل الإمبراطور</h1>
- <div class="grid2">
-  <div class="card">
-   <h2 style="margin-top:0">ملفك المحلي</h2>
-   <label for="playerName">اسمك الإمبراطوري</label>
-   <input id="playerName" maxlength="30" placeholder="اكتب اسمك">
-   <div class="row" style="margin-top:12px">
-    <button class="btn gold" id="saveName">حفظ الاسم</button>
-    <button class="btn" id="exportProgress">تصدير التقدم</button>
-    <button class="btn" id="importProgress">استيراد التقدم</button>
-    <input id="importFile" type="file" accept="application/json,.json" hidden>
-   </div>
-   <hr>
-   <h3>رتبتك</h3>
-   <div class="progress"><i id="rankProgress"></i></div>
-   <p id="rankDescription"></p>
-   <button class="btn danger" id="resetProgress">إعادة التقدم</button>
-  </div>
-  <div class="card">
-   <h2 style="margin-top:0">الحسابات والتنافس</h2>
-   <p>هذه النسخة تحفظ تقدمك على جهازك فقط. الحسابات الحقيقية، ومزامنة الأجهزة، ولوحة المتصدرين المشتركة تحتاج خادمًا وقاعدة بيانات.</p>
-   <button class="btn primary" id="showBackendInfo">متطلبات النسخة المتصلة</button>
-   <div id="backendInfo" class="notice" style="display:none;margin-top:12px">
-    الخادم يحتاج إلى تسجيل دخول آمن، وتخزين كلمات المرور باستخدام تجزئة مناسبة، وصلاحيات إدارية تُفحص على الخادم، وقاعدة بيانات، وحدود للطلبات، وآلية موثوقة للتحقق من الشهادات.
-   </div>
-  </div>
- </div>
- <h2>🏆 أوسمتك</h2>
- <div class="achievement-grid" id="achievementList"></div>
- <h2>📜 الشهادات</h2>
- <div class="card">
-  <p>تظهر هنا شهادة إتمام محلية بعد إكمال جميع الدروس. هذه الشهادة ليست اعتمادًا رسميًا ولا يمكن التحقق منها عبر الإنترنت من دون خادم.</p>
-  <button class="btn gold" id="certificateButton">إنشاء شهادة إتمام محلية</button>
- </div>
- <h2>⚙️ أدوات الموقع</h2>
- <div class="card">
-  <p>لوحة الإدارة في هذه النسخة للمعاينة فقط، وليست لوحة آمنة ولا تتحكم بموقع منشور أو بحسابات مستخدمين.</p>
-  <button class="btn" id="openAdmin">فتح أدوات المعاينة</button>
- </div>
-</section>
+<section id="me" class="pg"><h2>سجل الإمبراطور</h2><div class="card">
+<label for="nm">اسمك</label><input id="nm" maxlength="30">
+<div class="chips"><button class="btn gold" id="sn">تتويج</button><button class="btn" id="rs">إعادة الحكم</button></div>
+<div class="bar"><i id="xb"></i></div><p id="xt"></p></div></section>
 </main>
-
-<footer>AMIRXTNA © كوكب الأسطورة — تعلّم، جرّب، ابنِ عالمك.</footer>
-
-<div id="toast" role="status"></div>
-<div class="ad" id="adBox">
- <button class="close" id="closeAd" aria-label="إغلاق الإعلان">×</button>
- <div class="tag">◆ TRANSMISSION / AD</div>
- <div class="ad-title">مساحة إعلانية</div>
- <p>يمكن تخصيص هذه المساحة لإعلان حقيقي عند ربط الموقع بمزوّد إعلانات مناسب.</p>
- <button class="btn" id="adDetails">تفاصيل المساحة</button>
-</div>
-<button class="btn" id="adOpen">إظهار الإعلان +</button>
-
-<div class="modal" id="adminModal">
- <div class="modal-box">
-  <div class="spread"><h2 style="margin:0">أدوات المعاينة</h2><button class="btn" id="closeAdmin">إغلاق ×</button></div>
-  <p class="notice">هذه الأدوات تعمل محليًا في متصفحك فقط. لا تضع كلمة مرور إدارية سرية داخل HTML؛ يستطيع الزائر قراءة كود الصفحة.</p>
-  <hr>
-  <h3>إعدادات الواجهة</h3>
-  <label for="accentColor">لون الإضاءة</label>
-  <select id="accentColor">
-   <option value="#3df5ff">سيان فضائي</option>
-   <option value="#b06bff">بنفسجي</option>
-   <option value="#5dffb0">أخضر</option>
-   <option value="#ffb84d">ذهبي</option>
-  </select>
-  <div class="row" style="margin-top:12px">
-   <button class="btn primary" id="applyAccent">تطبيق اللون</button>
-   <button class="btn" id="restoreAccent">استعادة اللون</button>
-  </div>
-  <hr>
-  <p id="adminStats"></p>
- </div>
-</div>
+<footer>AMIRXTNA © كوكب الأسطورة</footer>
+<div class="dec" id="dec" role="status"></div>
 
 <script>
-"use strict";
-
-/* AMIRXTNA — نسخة واجهة محلية.
-   لا تحتوي على خادم أو تسجيل دخول آمن أو قاعدة بيانات مشتركة. */
-
-const $ = s => document.querySelector(s);
-const $$ = s => [...document.querySelectorAll(s)];
-const STORE_KEY = "amirxtna_legendaria_v2";
-
-const lessons = [
- {cat:"Python · البداية",icon:"🐍",title:"أول أمر برمجي",level:0,
-  body:`<p>البرمجة هي إعطاء الحاسوب تعليمات واضحة. في Python نستخدم <code>print()</code> لعرض نص أو قيمة.</p><pre>print("مرحبًا بالعالم!")\nprint(2 + 3)</pre><p>السطر الأول يعرض النص، والثاني يحسب الناتج ويعرضه.</p>`,
-  exercise:"افتح مختبر Python، واطبع اسمك في سطر، ونتيجة 7 + 8 في سطر آخر.",
-  code:'print("مرحبًا بالعالم!")\nprint(2 + 3)'},
- {cat:"Python · البداية",icon:"📦",title:"المتغيرات وأنواع البيانات",level:0,
-  body:`<p>المتغير اسم نخزّن تحته قيمة. النصوص توضع بين علامات اقتباس، والأعداد لا تحتاج إليها.</p><pre>name = "Amir"\nage = 14\nprice = 12.5\nis_ready = True\nprint(name, age)</pre><p>أشهر الأنواع: <code>str</code> للنص، و<code>int</code> للعدد الصحيح، و<code>float</code> للعشري، و<code>bool</code> للقيمة المنطقية.</p>`,
-  exercise:"أنشئ متغيرًا للسعر وآخر للكمية، ثم اطبع السعر الإجمالي.",
-  code:'price = 12\nquantity = 3\nprint(price * quantity)'},
- {cat:"Python · البداية",icon:"➗",title:"العمليات الحسابية",level:0,
-  body:`<p>تستخدم Python العمليات <code>+</code> للجمع، و<code>-</code> للطرح، و<code>*</code> للضرب، و<code>/</code> للقسمة.</p><pre>a = 10\nb = 3\nprint(a + b)\nprint(a - b)\nprint(a * b)\nprint(a / b)\nprint(a // b)\nprint(a % b)</pre><p><code>//</code> للقسمة الصحيحة، و<code>%</code> لباقي القسمة، و<code>**</code> للأس.</p>`,
-  exercise:"احسب مجموع سعرين، ثم اطبع ناتج ضرب أحدهما في 4.",
-  code:'a = 10\nb = 3\nprint(a + b)\nprint(a * 4)'},
- {cat:"Python · البداية",icon:"🔀",title:"الشروط واتخاذ القرار",level:0,
-  body:`<p>تسمح الشروط بتنفيذ تعليمات حسب تحقق شرط. انتبه للمسافات البادئة في Python.</p><pre>score = 80\nif score >= 90:\n    print("ممتاز")\nelif score >= 60:\n    print("ناجح")\nelse:\n    print("تدرّب أكثر")</pre><p>تعرّف على <code>==</code> للمقارنة، و<code>and</code> و<code>or</code> للشروط المركبة.</p>`,
-  exercise:"اكتب شرطًا يطبع «بالغ» إذا كان age يساوي 18 أو أكثر، وإلا يطبع «أصغر».",
-  code:'age = 17\nif age >= 18:\n    print("بالغ")\nelse:\n    print("أصغر")'},
- {cat:"Python · الأساسيات",icon:"🔁",title:"الحلقات",level:0,
-  body:`<p>تكرّر حلقة <code>for</code> التعليمات على مجموعة قيم، وتناسب <code>range()</code> التكرار العددي.</p><pre>for i in range(1, 6):\n    print(i)</pre><p>تطبع الحلقة الأعداد من 1 إلى 5. حلقة <code>while</code> تستمر ما دام الشرط صحيحًا.</p>`,
-  exercise:"اطبع الأعداد من 1 إلى 10 باستخدام حلقة for.",
-  code:'for i in range(1, 11):\n    print(i)'},
- {cat:"Python · الأساسيات",icon:"🧰",title:"الدوال",level:0,
-  body:`<p>الدالة تجمع تعليمات تحت اسم يمكن استخدامه مرات عديدة. استخدم <code>return</code> لإرجاع نتيجة.</p><pre>def double(number):\n    return number * 2\n\nprint(double(5))</pre><p>المعامل <code>number</code> يستقبل القيمة التي تمرّرها إلى الدالة.</p>`,
-  exercise:"أنشئ دالة اسمها square ترجع مربع العدد.",
-  code:'def square(number):\n    return number * number\n\nprint(square(5))'},
- {cat:"Web · HTML",icon:"🌐",title:"بناء صفحة HTML",level:1,
-  body:`<p>HTML يحدد بنية الصفحة وعناصرها. العناوين والفقرات والأزرار أمثلة على عناصر HTML.</p><pre>&lt;h1&gt;موقعي&lt;/h1&gt;\n&lt;p&gt;أهلًا بك في موقعي.&lt;/p&gt;\n&lt;button&gt;اضغط هنا&lt;/button&gt;</pre><p>افتح المختبر واختر HTML لتجربة الصفحة.</p>`,
-  exercise:"أنشئ عنوانًا وفقرة وزرًا يحمل اسم مشروعك.",
-  code:'<!doctype html>\n<html lang="ar" dir="rtl">\n<body>\n<h1>موقعي الأول</h1>\n<p>أنا أتعلم البرمجة.</p>\n<button onclick="alert(\\'مرحبًا!\\')">اضغط هنا</button>\n</body>\n</html>'},
- {cat:"Web · CSS",icon:"🎨",title:"تنسيق الصفحة بـ CSS",level:1,
-  body:`<p>CSS تتحكم بالألوان والخطوط والمسافات وترتيب العناصر. يمكن استخدام محددات لاختيار عناصر HTML.</p><pre>body {\n  background: #080d20;\n  color: white;\n  font-family: Arial;\n}\nbutton {\n  border-radius: 12px;\n  padding: 12px;\n}</pre><p>جرّب تغيير اللون ونصف قطر الزوايا.</p>`,
-  exercise:"اجعل خلفية صفحتك داكنة، والعنوان بلون سيان.",
-  code:'body { background:#080d20; color:white; }\nh1 { color:#3df5ff; }'},
- {cat:"Web · JavaScript",icon:"⚡",title:"التفاعل باستخدام JavaScript",level:1,
-  body:`<p>JavaScript تضيف التفاعل إلى صفحات الويب. يمكن ربط زر بدالة تعمل عند النقر.</p><pre>document.querySelector("button")\n .addEventListener("click", () => {\n   document.querySelector("p").textContent = "تم الضغط!";\n });</pre><p>تعمل هذه الفكرة داخل صفحة HTML تحتوي زرًا وفقرة.</p>`,
-  exercise:"أنشئ زرًا يغيّر نص فقرة عند الضغط عليه.",
-  code:'<!doctype html><html lang="ar" dir="rtl"><body>\n<button id="b">اضغط</button><p id="p">قبل الضغط</p>\n<script>\ndocument.querySelector("#b").onclick = () => {\n document.querySelector("#p").textContent = "نجح التفاعل!";\n};\n<\/script></body></html>'},
- {cat:"المنطق والخوارزميات",icon:"🧠",title:"القوائم والمصفوفات",level:2,
-  body:`<p>القائمة تخزن عدة قيم في ترتيب واحد. في Python يمكن الوصول إلى عنصر باستخدام فهرسه، ويبدأ الفهرس من صفر.</p><pre>numbers = [5, 2, 9]\nnumbers.append(4)\nprint(numbers[0])\nprint(len(numbers))</pre><p>تعلّم الإضافة والحذف والبحث والترتيب.</p>`,
-  exercise:"أنشئ قائمة بثلاثة أعداد واطبع مجموعها.",
-  code:'numbers = [5, 2, 9]\nprint(sum(numbers))'},
- {cat:"المنطق والخوارزميات",icon:"🏛️",title:"الكائنات OOP",level:2,
-  body:`<p>الصنف قالب لبناء كائنات تحمل بيانات ودوالًا. هذا مثال بسيط في Python:</p><pre>class Player:\n    def __init__(self, name):\n        self.name = name\n        self.xp = 0\n\nplayer = Player("Amir")\nprint(player.name)</pre><p>بعد فهم هذا المثال تعلّم الأساليب والوراثة والتغليف.</p>`,
-  exercise:"أنشئ صنفًا باسم Pet يخزّن اسم الحيوان.",
-  code:'class Pet:\n    def __init__(self, name):\n        self.name = name\n\npet = Pet("Miko")\nprint(pet.name)'},
- {cat:"أدوات المطور",icon:"🌿",title:"Git وإدارة الإصدارات",level:3,
-  body:`<p>Git يساعدك على حفظ تاريخ التعديلات والرجوع إلى إصدارات سابقة.</p><pre>git init\ngit add .\ngit commit -m "first version"\ngit status</pre><p>تحتاج إلى تثبيت Git لتشغيل هذه الأوامر في جهازك.</p>`,
-  exercise:"ثبّت Git، أنشئ مجلد مشروع، وجرّب git init وgit status."},
- {cat:"أدوات المطور",icon:"🗄️",title:"مقدمة في SQL",level:3,
-  body:`<p>SQL لغة للتعامل مع البيانات المخزنة في جداول. هذا مثال على استعلام قراءة:</p><pre>SELECT name, score\nFROM players\nWHERE score >= 100\nORDER BY score DESC;</pre><p>تعلّم أيضًا الجداول والعلاقات والإدخال والتحديث والحذف الآمن.</p>`,
-  exercise:"عدّل شرط WHERE ليعرض اللاعبين الذين نتيجتهم أكبر من 50."},
- {cat:"المشاريع",icon:"🚀",title:"بناء مشروع متكامل",level:4,
-  body:`<p>المشروع يجمع المهارات التي تعلّمتها. ابدأ صغيرًا ثم أضف ميزات تدريجيًا.</p><ul><li>حدد هدف المشروع.</li><li>قسّمه إلى مهام.</li><li>اختبر كل ميزة.</li><li>وثّق طريقة التشغيل.</li><li>احفظ التعديلات باستخدام Git.</li></ul>`,
-  exercise:"خطّط لمشروعك الأول واكتب ثلاث ميزات تريد تنفيذها."}
-];
-
-const challenges = [
- {title:"1 · المضاعف",desc:"اكتب دالة double(n) تعيد n مضروبًا في 2.",fn:"double",starter:"function double(n) {\n  // اكتب الحل هنا\n}",hint:"استخدم return n * 2;",tests:[[[2],4],[[-3],-6],[[0],0]]},
- {title:"2 · العدد الأكبر",desc:"اكتب دالة max2(a,b) تعيد العدد الأكبر.",fn:"max2",starter:"function max2(a, b) {\n  // اكتب الحل هنا\n}",hint:"قارن a و b باستخدام >.",tests:[[[1,2],2],[[9,3],9],[[-1,-5],-1]]},
- {title:"3 · مجموع القائمة",desc:"اكتب دالة sum(arr) تعيد مجموع الأعداد في القائمة.",fn:"sum",starter:"function sum(arr) {\n  // اكتب الحل هنا\n}",hint:"يمكنك استخدام arr.reduce((a,b) => a+b, 0).",tests:[[[[1,2,3]],6],[[[]],0],[[[5,-5,10]],10]]},
- {title:"4 · عكس النص",desc:"اكتب دالة rev(s) تعيد النص معكوسًا.",fn:"rev",starter:"function rev(s) {\n  // اكتب الحل هنا\n}",hint:"جرّب split وreverse وjoin.",tests:[[["abc"],"cba"],[[""],""],[["amir"],"rima"]]},
- {title:"5 · المضروب",desc:"اكتب دالة fact(n) تحسب مضروب العدد n.",fn:"fact",starter:"function fact(n) {\n  // اكتب الحل هنا\n}",hint:"تذكّر أن مضروب صفر يساوي 1.",tests:[[[0],1],[[5],120],[[3],6]]}
-];
-
-const questions = [
- {q:"أي أمر يطبع نصًا في Python؟",a:["show()","print()","echo()"],correct:1,why:"print() تعرض النص أو القيمة."},
- {q:"ما الوسم المعتاد للعنوان الرئيسي في HTML؟",a:["<h1>","<p>","<top>"],correct:0,why:"يستخدم h1 للعنوان الأعلى مستوى."},
- {q:"ما وظيفة CSS؟",a:["تنسيق الصفحة","إنشاء قاعدة بيانات","تشغيل الخادم"],correct:0,why:"CSS تتحكم بالمظهر والتخطيط."},
- {q:"ما نوع بنية البيانات التي تستخدم أزواج مفتاح وقيمة في Python؟",a:["tuple","dict","range"],correct:1,why:"dict تخزن أزواج المفتاح والقيمة."},
- {q:"ما ناتج 10 % 3 في Python؟",a:["3","1","0"],correct:1,why:"% تعيد باقي القسمة."},
- {q:"أي أمر يستخدم لحفظ لقطة في تاريخ Git؟",a:["git commit","git run","git save"],correct:0,why:"git commit ينشئ سجلًا للتغييرات المجهزة."},
- {q:"أي أمر SQL يستخدم لاسترجاع بيانات؟",a:["GET","FETCH","SELECT"],correct:2,why:"SELECT يحدد البيانات المراد قراءتها."},
- {q:"ما ناتج typeof 5 في JavaScript؟",a:["number","int","float"],correct:0,why:"typeof 5 يعيد النص number."}
-];
-
-const ranks = ["مستكشف","متدرّب","مبرمج مبتدئ","محارب الكود","مهندس العوالم","قائد المجرة","إمبراطور الكون"];
-const achievements = [
- {id:"first",icon:"🥇",name:"أول انتصار",desc:"أكمل درسًا",test:s=>s.completed.length>=1},
- {id:"five",icon:"⚔️",name:"المحارب",desc:"أكمل 5 دروس",test:s=>s.completed.length>=5},
- {id:"all",icon:"🏰",name:"فاتح الأكاديمية",desc:"أكمل كل الدروس",test:s=>s.completed.length>=lessons.length},
- {id:"xp100",icon:"💯",name:"100 XP",desc:"اجمع 100 XP",test:s=>s.xp>=100},
- {id:"challenge",icon:"🧪",name:"حلّال التحديات",desc:"حل تحديًا",test:s=>s.solved.length>=1},
- {id:"allch",icon:"🧠",name:"عبقري الكود",desc:"حل كل التحديات",test:s=>s.solved.length>=challenges.length},
- {id:"quiz",icon:"👑",name:"خبير الساحة",desc:"أجب عن 5 أسئلة بشكل صحيح",test:s=>s.quizCorrect>=5}
-];
-
-function freshState(){
- return {xp:0,completed:[],solved:[],name:"",streak:0,lastDay:"",
-  quizCorrect:0,answered:[],code:{},badges:[],adHidden:false};
-}
-let state = freshState();
-let currentLesson = null, currentChallenge = 0, currentQuestion = 0;
-let questionAnswered = false, sessionCorrect = 0, activeLanguage = "html";
-let pythonReady = null;
-
-function loadState(){
- try{
-  const raw = JSON.parse(localStorage.getItem(STORE_KEY) || "null");
-  if(!raw || typeof raw !== "object") return;
-  const base = freshState();
-  state = {...base,...raw};
-  for(const key of ["completed","solved","answered","badges"])
-   if(!Array.isArray(state[key])) state[key]=[];
-  if(!state.code || typeof state.code!=="object") state.code={};
-  state.xp=Math.max(0,Number(state.xp)||0);
-  state.name=String(state.name||"").slice(0,30);
- }catch(e){state=freshState()}
-}
-function saveState(){
- try{localStorage.setItem(STORE_KEY,JSON.stringify(state))}
- catch(e){toast("تعذّر الحفظ؛ قد تكون مساحة التخزين ممتلئة.")}
-}
-function toast(message){
- const el=$("#toast");el.textContent=message;el.style.display="block";
- clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.style.display="none",2800);
-}
-function goPage(id){
- const page=$("#"+id);
- if(!page || !page.classList.contains("page")) return;
- $$(".page").forEach(p=>p.classList.toggle("active",p.id===id));
- $$("#nav [data-page]").forEach(b=>b.classList.toggle("active",b.dataset.page===id));
- window.scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
- if(id==="empire") renderAchievements();
-}
-document.addEventListener("click",e=>{
- const button=e.target.closest("[data-page]");
- if(button) goPage(button.dataset.page);
-});
-
-function currentRank(){return Math.min(ranks.length-1,Math.floor(state.xp/120))}
-function award(amount,message){
- state.xp+=amount;saveState();renderStats();checkAchievements();
- if(message)toast(message+" (+"+amount+" XP)");
-}
-function checkAchievements(){
- for(const a of achievements){
-  if(!state.badges.includes(a.id)&&a.test(state)){
-   state.badges.push(a.id);saveState();toast("وسام جديد: "+a.icon+" "+a.name);
-  }
- }
- renderAchievements();
-}
-function renderStats(){
- $("#xpStat").textContent=state.xp;
- $("#lessonStat").textContent=state.completed.length+"/"+lessons.length;
- $("#streakStat").textContent=state.streak;
- $("#rankStat").textContent=ranks[currentRank()];
- const percent=Math.round(state.completed.length/lessons.length*100);
- $("#percentStat").textContent=percent+"%";
- $("#overallProgress").style.width=percent+"%";
- $("#playerName").value=state.name;
- $("#rankProgress").style.width=(state.xp%120)/120*100+"%";
- $("#rankDescription").textContent="رتبتك: "+ranks[currentRank()]+" — تحتاج "+(120-state.xp%120)+" XP للترقية التالية.";
- const next=lessons.findIndex((l,i)=>!state.completed.includes(i));
- $("#nextTask").textContent=next<0?"أكملت كل الدروس! جرّب التحديات لبناء مهاراتك.":"الدرس التالي: "+lessons[next].title;
- $("#worldMap").innerHTML="";
- const groups=[...new Set(lessons.map(l=>l.cat))];
- groups.forEach(group=>{
-  const items=lessons.map((l,i)=>({l,i})).filter(x=>x.l.cat===group);
-  const done=items.filter(x=>state.completed.includes(x.i)).length;
-  const box=document.createElement("div");box.className="card";
-  const title=document.createElement("b");title.textContent=group;
-  const text=document.createElement("p");text.textContent=done+" من "+items.length+" دروس";
-  const bar=document.createElement("div");bar.className="progress";
-  const fill=document.createElement("i");fill.style.width=(done/items.length*100)+"%";bar.appendChild(fill);
-  box.append(title,text,bar);$("#worldMap").appendChild(box);
- });
-}
-function renderAchievements(){
- $("#achievementList").innerHTML="";
- achievements.forEach(a=>{
-  const div=document.createElement("div");
-  div.className="card achievement"+(state.badges.includes(a.id)?" earned":"");
-  const icon=document.createElement("span");icon.textContent=a.icon;
-  const title=document.createElement("b");title.textContent=a.name;
-  const desc=document.createElement("p");desc.textContent=a.desc;
-  div.append(icon,title,desc);$("#achievementList").appendChild(div);
- });
-}
-
-function renderLessons(){
- const q=$("#lessonSearch").value.trim().toLowerCase();
- const list=$("#lessonList");list.innerHTML="";
- lessons.forEach((lesson,i)=>{
-  if(!(lesson.title+" "+lesson.cat+" "+lesson.exercise).toLowerCase().includes(q))return;
-  const done=state.completed.includes(i);
-  const btn=document.createElement("button");
-  btn.className="btn lesson"+(done?" done":"");
-  const icon=document.createElement("span");icon.className="emoji";icon.textContent=lesson.icon;
-  const content=document.createElement("span");content.className="lesson-content";
-  const title=document.createElement("b");title.textContent=lesson.title;
-  const sub=document.createElement("small");sub.textContent=lesson.cat+(done?" · مكتمل ✓":"");
-  content.append(title,sub);btn.append(icon,content);
-  btn.addEventListener("click",()=>openLesson(i));list.appendChild(btn);
- });
- if(!list.children.length)list.innerHTML="<p>لا توجد دروس مطابقة للبحث.</p>";
-}
-function openLesson(i){
- currentLesson=i;const l=lessons[i];
- $("#lessonPanel").style.display="block";
- $("#lessonCategory").textContent=l.cat;
- $("#lessonTitle").textContent=l.icon+" "+l.title;
- $("#lessonBody").innerHTML=l.body||"<p>اقرأ المثال ثم جرّبه بنفسك.</p>";
- $("#lessonExercise").textContent=l.exercise;
- $("#lessonStatus").textContent=state.completed.includes(i)?"هذا الدرس مكتمل بالفعل.":"أكمل التمرين ثم اضغط زر الإنهاء.";
- $("#completeLesson").textContent=state.completed.includes(i)?"الدرس مكتمل ✓":"أنهيت الدرس +25 XP";
- $("#completeLesson").disabled=state.completed.includes(i);
- $("#lessonPanel").scrollIntoView({behavior:"smooth",block:"start"});
-}
-$("#lessonSearch").addEventListener("input",renderLessons);
-$("#closeLesson").onclick=()=>{$("#lessonPanel").style.display="none";currentLesson=null};
-$("#tryLesson").onclick=()=>{
- if(currentLesson===null)return;
- const l=lessons[currentLesson];
- if(l.code){
-  const lang=currentLesson<=5?"python":currentLesson===6?"html":currentLesson===7?"css":"html";
-  setLanguage(lang);
-  $("#editor").value=l.code;
-  if(lang==="html")runHTML();
-  goPage("lab");
- }else{
-  toast("جرّب التمرين ثم ارجع وأكمل الدرس.");
-  goPage("lab");
- }
-};
-$("#completeLesson").onclick=()=>{
- if(currentLesson===null||state.completed.includes(currentLesson))return;
- state.completed.push(currentLesson);
- saveState();renderLessons();renderStats();
- $("#completeLesson").disabled=true;$("#completeLesson").textContent="الدرس مكتمل ✓";
- $("#lessonStatus").textContent="تم حفظ إنجازك على هذا المتصفح.";
- award(25,"أحسنت! أنهيت الدرس");
-};
-
-const examples={
- html:'<!doctype html>\n<html lang="ar" dir="rtl">\n<body style="font-family:Tahoma;padding:25px;background:#0b1230;color:white">\n<h1 style="color:#3df5ff">مرحبًا بك في مختبر AMIRXTNA</h1>\n<p id="message">هذا مشروعك الأول.</p>\n<button onclick="document.querySelector(\\'#message\\').textContent=\\'نجح التفاعل!\\'">جرّب الزر</button>\n</body>\n</html>',
- css:'body { background:#080d20; color:white; font-family:Tahoma; }\nh1 { color:#3df5ff; text-shadow:0 0 15px #3df5ff; }\n.card { border:1px solid #3df5ff; border-radius:16px; padding:20px; }',
- javascript:'const numbers = [1, 2, 3, 4];\nconst doubled = numbers.map(n => n * 2);\nconsole.log("النتيجة:", doubled);\nconsole.log("مجموع الأعداد:", numbers.reduce((a,b) => a+b, 0));',
- python:'name = "Amir"\nnumbers = [1, 2, 3, 4]\nprint("مرحبًا", name)\nprint("المجموع:", sum(numbers))'
-};
-const langInfo={
- html:["HTML · صفحة ويب","html"],
- css:["CSS · تنسيق","css"],
- javascript:["JavaScript · منطق وتفاعل","js"],
- python:["Python · لغة عامة","py"]
-};
-function setLanguage(lang){
- if(!langInfo[lang])return;
- activeLanguage=lang;
- $$("#languageTabs [data-lang]").forEach(b=>b.classList.toggle("active",b.dataset.lang===lang));
- $("#languageLabel").textContent=langInfo[lang][0];
- $("#pythonNotice").style.display=lang==="python"?"block":"none";
- $("#editor").value=state.code[lang]||examples[lang];
- $("#consoleOutput").textContent="جاهز للتشغيل.";
-}
-function saveCurrentCode(){state.code[activeLanguage]=$("#editor").value;saveState()}
-function runHTML(){
- const code=$("#editor").value;
- const frame=$("#preview");
- const wrapped=activeLanguage==="html"?code:
- activeLanguage==="css"?
- '<!doctype html><html><head><style>'+code.replace(/<\/style/gi,"<\\/style")+'</style></head><body style="background:#0b1230;color:white;font-family:Tahoma;padding:20px"><h1>معاينة CSS</h1><p class="card">غيّر CSS في المحرر لمشاهدة التأثير.</p></body></html>':
- '<!doctype html><html><body style="background:#0b1230;color:white;font-family:Tahoma;padding:20px"><h2>JavaScript Console</h2><p>شغّل الكود لرؤية النتائج في نافذة النتائج.</p><script>try{console.log=function(...a){parent.postMessage({type:"amir-console",values:a.map(x=>String(x))},"*")};'+code.replace(/<\/script/gi,"<\\/script")+'}catch(e){parent.postMessage({type:"amir-error",message:e.message},"*")}<\/script></body></html>';
- frame.srcdoc=wrapped;
- $("#consoleOutput").textContent=activeLanguage==="html"?"تم تحديث المعاينة.":activeLanguage==="css"?"تم تطبيق CSS على صفحة المعاينة.":"تم إرسال JavaScript للتنفيذ في المعاينة.";
-}
-window.addEventListener("message",e=>{
- if(e.source!==$("#preview").contentWindow||!e.data)return;
- if(e.data.type==="amir-console")$("#consoleOutput").textContent+=
- "\n"+(e.data.values||[]).join(" ");
- if(e.data.type==="amir-error")$("#consoleOutput").textContent="خطأ: "+e.data.message;
-});
-async function runPython(){
- const code=$("#editor").value;
- $("#consoleOutput").textContent="جارٍ تحميل محرك Python لأول مرة... قد يستغرق ذلك بعض الوقت.";
- try{
-  if(!pythonReady){
-   pythonReady=(async()=>{
-    const script=document.createElement("script");
-    script.src="https://cdn.jsdelivr.net/pyodide/v0.27.7/full/pyodide.js";
-    document.head.appendChild(script);
-    await new Promise((resolve,reject)=>{script.onload=resolve;script.onerror=()=>reject(new Error("تعذر تحميل Pyodide. تحقق من اتصال الإنترنت."))});
-    return await loadPyodide();
-   })();
-  }
-  const py=await pythonReady;
-  let output="";
-  py.setStdout({batched:s=>output+=s+"\n"});
-  py.setStderr({batched:s=>output+="خطأ: "+s+"\n"});
-  await py.runPythonAsync(code);
-  $("#consoleOutput").textContent=output.trim()||"تم التنفيذ دون مخرجات.";
- }catch(err){
-  pythonReady=null;
-  $("#consoleOutput").textContent="تعذّر تشغيل Python:\n"+err.message;
- }
-}
-$("#languageTabs").addEventListener("click",e=>{
- const b=e.target.closest("[data-lang]");if(!b)return;
- saveCurrentCode();setLanguage(b.dataset.lang);
-});
-$("#runCode").onclick=()=>{
- if(activeLanguage==="python"){runPython();return}
- if(activeLanguage==="javascript"){runHTML();return}
- runHTML();
-};
-$("#saveCode").onclick=()=>{saveCurrentCode();toast("تم حفظ الكود محليًا.")};
-$("#downloadCode").onclick=()=>{
- const code=$("#editor").value;
- const ext=langInfo[activeLanguage][1];
- downloadFile(code,"amirxtna-project."+ext,"text/plain;charset=utf-8");
-};
-$("#resetCode").onclick=()=>{
- if(!confirm("استعادة المثال الافتراضي لهذه اللغة؟"))return;
- $("#editor").value=examples[activeLanguage];saveCurrentCode();
- if(activeLanguage!=="python")runHTML();
- toast("تمت استعادة المثال.");
-};
-$("#clearOutput").onclick=()=>$("#consoleOutput").textContent="";
-function downloadFile(content,name,type){
- const url=URL.createObjectURL(new Blob([content],{type}));
- const a=document.createElement("a");a.href=url;a.download=name;
- document.body.appendChild(a);a.click();a.remove();
- setTimeout(()=>URL.revokeObjectURL(url),1500);
-}
-
-function renderChallenges(){
- $("#challengeButtons").innerHTML="";
- challenges.forEach((c,i)=>{
-  const b=document.createElement("button");
-  b.className="btn"+(i===currentChallenge?" active":"")+(state.solved.includes(i)?" green":"");
-  b.textContent=(state.solved.includes(i)?"✓ ":"")+c.title;
-  b.onclick=()=>selectChallenge(i);
-  $("#challengeButtons").appendChild(b);
- });
-}
-function selectChallenge(i){
- currentChallenge=i;const c=challenges[i];
- $("#challengeNumber").textContent="التحدي "+(i+1)+" / "+challenges.length;
- $("#challengeTitle").textContent=c.title;
- $("#challengeDescription").textContent=c.desc;
- $("#challengeEditor").value=state.code["challenge"+i]||c.starter;
- $("#challengeOutput").textContent=state.solved.includes(i)?"تم حل هذا التحدي سابقًا. يمكنك التدرب عليه مجددًا.":"النتيجة ستظهر هنا.";
- renderChallenges();
-}
-function runChallenge(){
- const c=challenges[currentChallenge],source=$("#challengeEditor").value;
- state.code["challenge"+currentChallenge]=source;saveState();
- const frame=document.createElement("iframe");
- frame.style.display="none";frame.sandbox="allow-scripts";
- const token="challenge_"+Math.random().toString(36).slice(2);
- const tests=JSON.stringify(c.tests);
- const functionName=JSON.stringify(c.fn);
- const safeSource=source.replace(/<\/script/gi,"<\\/script");
- let finished=false;
- const cleanup=()=>{window.removeEventListener("message",handler);frame.remove();clearTimeout(timer)};
- const handler=e=>{
-  if(e.source!==frame.contentWindow||!e.data||e.data.token!==token)return;
-  finished=true;cleanup();
-  if(e.data.error){$("#challengeOutput").textContent="❌ خطأ في الكود: "+e.data.error;return}
-  const results=e.data.results||[];
-  const passed=results.filter(r=>r.ok).length;
-  $("#challengeOutput").textContent=results.map(r=>(r.ok?"✅":"❌")+" المدخلات: "+JSON.stringify(r.args)+" | المتوقع: "+JSON.stringify(r.expected)+" | الناتج: "+JSON.stringify(r.actual)).join("\n");
-  if(passed===results.length){
-   $("#challengeOutput").textContent+="\n\n🏆 نجحت جميع الاختبارات!";
-   if(!state.solved.includes(currentChallenge)){
-    state.solved.push(currentChallenge);award(40,"انتصار في التحدي");renderChallenges();
-   }else toast("كل الاختبارات صحيحة! حصلت على المكافأة مسبقًا.");
-  }else $("#challengeOutput").textContent+="\n\nنجح "+passed+" من "+results.length+" اختبارات. راجع النتيجة وحاول مجددًا.";
- };
- window.addEventListener("message",handler);
- frame.srcdoc=`<!doctype html><script>
- try {
-  ${safeSource}
-  const fn=window[${functionName}];
-  if(typeof fn!=="function")throw new Error("لم يتم العثور على الدالة المطلوبة: "+${functionName});
-  const tests=${tests};
-  const results=tests.map(t=>{
-   try{
-    const actual=fn(...t[0]);
-    return {args:t[0],expected:t[1],actual,ok:JSON.stringify(actual)===JSON.stringify(t[1])};
-   }catch(err){return {args:t[0],expected:t[1],actual:"خطأ: "+err.message,ok:false}}
-  });
-  parent.postMessage({token:${JSON.stringify(token)},results},"*");
- }catch(err){parent.postMessage({token:${JSON.stringify(token)},error:err.message},"*")}
- <\/script>`;
- document.body.appendChild(frame);
- const timer=setTimeout(()=>{
-  if(!finished){cleanup();$("#challengeOutput").textContent="انتهى وقت التنفيذ. تحقق من الكود وتأكد من عدم وجود حلقة لا نهائية."}
- },3000);
-}
-$("#testChallenge").onclick=runChallenge;
-$("#showHint").onclick=()=>$("#challengeOutput").textContent="💡 تلميح: "+challenges[currentChallenge].hint;
-$("#resetChallenge").onclick=()=>{
- $("#challengeEditor").value=challenges[currentChallenge].starter;
- $("#challengeOutput").textContent="تمت استعادة بداية التحدي.";
-};
-$("#challengeEditor").addEventListener("input",()=>{
- state.code["challenge"+currentChallenge]=$("#challengeEditor").value;saveState();
-});
-
-function renderQuiz(){
- const q=questions[currentQuestion%questions.length];
- questionAnswered=false;
- $("#quizNumber").textContent="السؤال "+(currentQuestion%questions.length+1)+" / "+questions.length;
- $("#quizScore").textContent=sessionCorrect+" إجابة صحيحة في هذه الجولة";
- $("#quizQuestion").textContent=q.q;
- $("#quizFeedback").textContent="";
- $("#nextQuestion").disabled=true;
- $("#quizOptions").innerHTML="";
- q.a.forEach((answer,i)=>{
-  const b=document.createElement("button");b.className="option";b.textContent=answer;
-  b.onclick=()=>{
-   if(questionAnswered)return;
-   questionAnswered=true;
-   const key=String(currentQuestion%questions.length);
-   const firstTime=!state.answered.includes(key);
-   $$("#quizOptions .option").forEach(x=>x.disabled=true);
-   if(i===q.correct){
-    b.classList.add("correct");
-    $("#quizFeedback").textContent="صحيح! "+q.why;
-    if(firstTime){state.answered.push(key);state.quizCorrect++;sessionCorrect++;saveState();award(10,"إجابة صحيحة");}
-    else toast("إجابة صحيحة! لقد حصلت على مكافأة هذا السؤال سابقًا.");
-   }else{
-    b.classList.add("wrong");
-    $$("#quizOptions .option")[q.correct].classList.add("correct");
-    $("#quizFeedback").textContent="ليست هذه الإجابة. "+q.why;
-   }
-   $("#nextQuestion").disabled=false;
-   $("#quizScore").textContent=sessionCorrect+" إجابة صحيحة في هذه الجولة";
-  };
-  $("#quizOptions").appendChild(b);
- });
-}
-$("#nextQuestion").onclick=()=>{currentQuestion=(currentQuestion+1)%questions.length;renderQuiz()};
-$("#restartQuiz").onclick=()=>{currentQuestion=0;sessionCorrect=0;renderQuiz()};
-
-$("#saveName").onclick=()=>{
- state.name=$("#playerName").value.trim().slice(0,30);saveState();renderStats();toast("تم حفظ الاسم محليًا.");
-};
-$("#exportProgress").onclick=()=>downloadFile(JSON.stringify(state,null,2),"amirxtna-progress.json","application/json");
-$("#importProgress").onclick=()=>$("#importFile").click();
-$("#importFile").addEventListener("change",async e=>{
- const file=e.target.files[0];if(!file)return;
- try{
-  const incoming=JSON.parse(await file.text());
-  if(!incoming||typeof incoming!=="object"||!Array.isArray(incoming.completed)||!Array.isArray(incoming.solved))throw new Error("تنسيق الملف غير صالح.");
-  const fresh=freshState();
-  state={...fresh,...incoming};
-  state.completed=state.completed.filter(i=>Number.isInteger(i)&&i>=0&&i<lessons.length);
-  state.solved=state.solved.filter(i=>Number.isInteger(i)&&i>=0&&i<challenges.length);
-  state.name=String(state.name||"").slice(0,30);
-  saveState();renderAll();toast("تم استيراد التقدم.");
- }catch(err){toast("تعذّر استيراد الملف: "+err.message)}
- e.target.value="";
-});
-$("#resetProgress").onclick=()=>{
- if(!confirm("هل تريد حذف تقدمك المحلي وإعادة البداية؟ لا يمكن التراجع عن ذلك."))return;
- state=freshState();saveState();renderAll();toast("تمت إعادة التقدم.");
-};
-$("#showBackendInfo").onclick=()=>$("#backendInfo").style.display=$("#backendInfo").style.display==="none"?"block":"none";
-
-$("#certificateButton").onclick=()=>{
- if(state.completed.length<lessons.length){
-  toast("أكمل جميع الدروس أولًا لإنشاء شهادة محلية.");return;
- }
- const name=state.name||"المتعلم";
- const date=new Date().toLocaleDateString("ar-SA");
- const html=`<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><title>شهادة AMIRXTNA</title><body style="font-family:Tahoma;text-align:center;background:#071024;color:#fff;padding:50px"><div style="border:4px double #3df5ff;padding:40px"><h1 style="color:#3df5ff">AMIRXTNA</h1><h2>شهادة إتمام محلية</h2><p>تشهد هذه الصفحة بأن</p><h1>${escapeHTML(name)}</h1><p>أكمل جميع دروس النسخة المحلية من أكاديمية كوكب الأسطورة.</p><p>التاريخ: ${escapeHTML(date)}</p><p>هذه شهادة محلية غير رسمية وغير موثقة من خادم.</p></div></body></html>`;
- downloadFile(html,"amirxtna-certificate.html","text/html;charset=utf-8");
-};
-function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-
-$("#openAdmin").onclick=()=>{
- $("#adminStats").textContent="الدروس المكتملة: "+state.completed.length+" | التحديات المحلولة: "+state.solved.length+" | XP: "+state.xp+" — هذه إحصاءات هذا المتصفح فقط.";
- $("#adminModal").classList.add("open");
-};
-$("#closeAdmin").onclick=()=>$("#adminModal").classList.remove("open");
-$("#adminModal").addEventListener("click",e=>{if(e.target===$("#adminModal"))$("#adminModal").classList.remove("open")});
-$("#applyAccent").onclick=()=>{
- document.documentElement.style.setProperty("--c",$("#accentColor").value);
- toast("تم تطبيق اللون لهذه الجلسة.");
-};
-$("#restoreAccent").onclick=()=>{
- document.documentElement.style.setProperty("--c","#3df5ff");$("#accentColor").value="#3df5ff";
-};
-
-$("#closeAd").onclick=()=>{
- $("#adBox").style.display="none";$("#adOpen").style.display="block";
- state.adHidden=true;saveState();
-};
-$("#adOpen").onclick=()=>{
- $("#adBox").style.display="block";$("#adOpen").style.display="none";
- state.adHidden=false;saveState();
-};
-$("#adDetails").onclick=()=>toast("هذه واجهة تجريبية؛ لم يُربط مزوّد إعلانات.");
-
-function renderAll(){
- renderStats();renderLessons();renderAchievements();renderChallenges();
- selectChallenge(currentChallenge);renderQuiz();
- $("#adBox").style.display=state.adHidden?"none":"block";
- $("#adOpen").style.display=state.adHidden?"block":"none";
-}
-
-function updateStreak(){
- const today=new Date().toLocaleDateString("en-CA");
- if(state.lastDay===today)return;
- const yesterday=new Date(Date.now()-86400000).toLocaleDateString("en-CA");
- state.streak=state.lastDay===yesterday?state.streak+1:1;
- state.lastDay=today;saveState();
-}
-
-/* خلفية النجوم */
 (function(){
- const canvas=$("#stars"),ctx=canvas.getContext("2d");
- let stars=[];
- function resize(){
-  const ratio=Math.min(window.devicePixelRatio||1,2);
-  canvas.width=Math.floor(innerWidth*ratio);canvas.height=Math.floor(innerHeight*ratio);
-  canvas.style.width=innerWidth+"px";canvas.style.height=innerHeight+"px";
-  ctx.setTransform(ratio,0,0,ratio,0,0);
-  stars=Array.from({length:Math.min(150,Math.floor(innerWidth/8))},()=>({
-   x:Math.random()*innerWidth,y:Math.random()*innerHeight,
-   size:Math.random()*1.6+.3,speed:Math.random()*.25+.05,alpha:Math.random()*.65+.2
-  }));
- }
- function draw(){
-  ctx.clearRect(0,0,innerWidth,innerHeight);
-  for(const s of stars){
-   ctx.globalAlpha=s.alpha;ctx.fillStyle="#b9eaff";
-   ctx.fillRect(s.x,s.y,s.size,s.size);
-   s.y+=s.speed;if(s.y>innerHeight){s.y=0;s.x=Math.random()*innerWidth}
-  }
-  ctx.globalAlpha=1;
-  if(!matchMedia("(prefers-reduced-motion: reduce)").matches)requestAnimationFrame(draw);
- }
- resize();draw();addEventListener("resize",resize);
-})();
-
-function finishBoot(){
- $("#boot").style.opacity="0";
- setTimeout(()=>$("#boot").remove(),550);
-}
-$("#skipBoot").onclick=finishBoot;
-setTimeout(finishBoot,1900);
-
-loadState();updateStreak();renderAll();setLanguage("html");runHTML();checkAchievements();
-</script>
-</body>
-</html>
+"use strict";
+const $=s=>document.querySelector(s);
+const LOGO=c=>`<svg viewBox="0 0 120 120" fill="none" stroke-linecap="round" stroke-linejoin="round" class="${c}"><polygon points="60,6 108,33 108,87 60,114 12,87 12,33" stroke="#3df5ff" stroke-width="3"/><path d="M40 84 L60 34 L80 84 M48 68 H72" stroke="#ffb84d" stroke-width="5"/><g class="orb"><ellipse cx="60" cy="60" rx="56" ry="18" stroke="#b06bff" stroke-width="2" transform="rotate(-30 60 60)"/><circle cx="108" cy="42" r="5" fill="#5dffb0"/></g></svg>`;
+$("#lg").innerHTML=LOGO("");$("#lg").className="draw";$("#hl").innerHTML=LOGO("")+"<span><b>AMIR</b>XTNA</span>";
+const LG=[
+["py","🐍","Python",[
+["0 · الصفر","أول أمر ومتغيرات.","name = 'Amir'\nage = 15\nprint('Hello', name, age)"],
+["1 · الأساسيات","شروط وحلقات ودوال.","def grade(x):\n    if x >= 90: return 'A'\n    return 'B'\nfor i in range(3):\n    print(i, grade(95))"],
+["2 · المتوسط","قوائم وقواميس وأصناف وملفات.","class Player:\n    def __init__(s, n): s.n, s.xp = n, 0\nusers = {p.n: p for p in [Player('A')]}\nwith open('a.txt','w') as f: f.write('hi')"],
+["3 · الاحتراف","Decorators وasync وtyping واختبارات وFastAPI.","from fastapi import FastAPI\napp = FastAPI()\n@app.get('/xp/{n}')\nasync def xp(n: int) -> dict:\n    return {'xp': n * 2}"]]],
+["js","⚡","JavaScript",[
+["0 · الصفر","متغيرات وطباعة.","const name = 'Amir';\nlet xp = 10;\nconsole.log(name, xp);"],
+["1 · الأساسيات","دوال ومصفوفات.","const sq = [1,2,3].map(n => n * n);\nconsole.log(sq);"],
+["2 · المتوسط","كائنات وPromises وDOM.","const wait = ms => new Promise(r => setTimeout(r, ms));\nwait(100).then(() => console.log('تم'));"],
+["3 · الاحتراف","async/await وNode وTypeScript وReact.","async function main(){\n  await new Promise(r => setTimeout(r, 50));\n  console.log('Legend');\n}\nmain();"]]],
+["web","🎨","HTML وCSS",[
+["0 · الصفر","هيكل الصفحة.","<h1>عرشي</h1>\n<p>مرحبًا</p>"],
+["1 · الأساسيات","وسوم دلالية وألوان.","<header><h1>AMIRXTNA</h1></header>\n<style>h1{color:#3df5ff}</style>"],
+["2 · المتوسط","Flexbox وGrid وتجاوب.",".grid{display:grid;gap:12px;\n  grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}"],
+["3 · الاحتراف","متغيرات CSS وحركات وأداء وإتاحة.",":root{--c:#3df5ff}\n@keyframes glow{50%{box-shadow:0 0 30px var(--c)}}\n.card{animation:glow 3s infinite}"]]],
+["cpp","⚙️","C++",[
+["0 · الصفر","أول برنامج.","#include <iostream>\nint main(){\n  std::cout << \"Hello\";\n}"],
+["1 · الأساسيات","متغيرات وحلقات.","for(int i=0;i<3;i++)\n  std::cout << i << \"\\n\";"],
+["2 · المتوسط","مؤشرات وأصناف وSTL.","std::vector<int> v{3,1,2};\nstd::sort(v.begin(), v.end());"],
+["3 · الاحتراف","إدارة الذاكرة وsmart pointers وtemplates.","auto p = std::make_unique<int>(5);\ntemplate<class T> T mx(T a, T b){return a>b?a:b;}"]]],
+["java","☕","Java",[
+["0 · الصفر","أول برنامج.","public class Main {\n  public static void main(String[] a){\n    System.out.println(\"Hello\");\n  }\n}"],
+["1 · الأساسيات","أنواع وشروط وحلقات.","int xp = 120;\nif (xp >= 100) System.out.println(\"قائد\");"],
+["2 · المتوسط","OOP وCollections.","List<String> l = new ArrayList<>();\nl.add(\"Amir\");\nfor (String s : l) System.out.println(s);"],
+["3 · الاحتراف","Streams وSpring Boot وخيوط.","users.stream()\n  .filter(u -> u.xp > 100)\n  .map(User::name)\n  .toList();"]]],
+["sql","🗄️","SQL",[
+["0 · الصفر","جدول واستعلام.","SELECT * FROM players;"],
+["1 · الأساسيات","WHERE وORDER BY.","SELECT
