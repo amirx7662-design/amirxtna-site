@@ -1,123 +1,162 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>AMIRXTNA | كوكب الأسطورة</title>
+<html lang="ar" dir="rtl"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AMIRXTNA | كوكب البرمجة</title>
 <style>
-:root{--c:#3df5ff;--v:#b06bff;--g:#5dffb0;--o:#ffb84d;--b:#2a3470;--m:#93a3cf;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:#02030a;color:#eef4ff;font-family:Tahoma,Arial,sans-serif;overflow-x:hidden}
-#cv{position:fixed;inset:0;z-index:-1;width:100%;height:100%}
+:root{--c:#3df5ff;--o:#ffb84d;--g:#5dffb0;--b:#2a3470;--m:#93a3cf;color-scheme:dark;padding-top:env(safe-area-inset-top,0)}
+*{box-sizing:border-box}body{margin:0;background:#02030a;color:#eef4ff;font:16px Tahoma,Arial,sans-serif;overflow-x:hidden}
 p{color:var(--m);line-height:1.9}button{font:inherit;cursor:pointer}
-#intro{position:fixed;inset:0;z-index:99;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:#02030acc;transition:opacity 1s}
-#intro svg{width:170px;height:170px;filter:drop-shadow(0 0 22px var(--c))}
-.draw path,.draw polygon{stroke-dasharray:420;stroke-dashoffset:420;animation:dr 2.2s .3s forwards}
-@keyframes dr{to{stroke-dashoffset:0}}
-.orb{transform-origin:60px 60px;animation:sp 6s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
-.gl{position:relative;font-size:clamp(38px,10vw,84px);font-weight:900;letter-spacing:6px;margin:14px 0 4px;direction:ltr}
-.gl:before,.gl:after{content:attr(data-t);position:absolute;inset:0}
-.gl:before{color:#ff2bd6;animation:g1 2.4s infinite steps(1);clip-path:inset(0 0 55% 0)}
-.gl:after{color:var(--c);animation:g2 2.4s infinite steps(1);clip-path:inset(55% 0 0 0)}
-@keyframes g1{0%,90%{transform:none}92%{transform:translate(-5px,2px)}96%{transform:translate(4px,-2px)}}
-@keyframes g2{0%,88%{transform:none}91%{transform:translate(5px,-2px)}95%{transform:translate(-4px,2px)}}
-#ty{font:15px monospace;color:var(--g);min-height:24px;direction:ltr}
-.btn{border:1px solid var(--b);background:#101a40;color:#fff;padding:9px 14px;border-radius:10px;transition:.2s}
-.btn:hover,.btn.on{border-color:var(--c);box-shadow:0 0 20px #3df5ff44;transform:translateY(-2px)}
-.gold{background:linear-gradient(100deg,#ff9d2e,#ffd86b);color:#201000;border:0;font-weight:700}
-#go{opacity:0;margin-top:26px;font-size:18px;padding:13px 30px;transition:opacity 1s}
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 5%;background:#03051acc;border-bottom:1px solid var(--b);backdrop-filter:blur(14px)}
-.logo{display:flex;align-items:center;gap:8px;font-weight:900;font-size:21px;letter-spacing:3px}.logo svg{width:38px;height:38px}.logo b{color:var(--c)}
-main{max-width:1100px;margin:auto;padding:20px 5% 80px}
-.pg{display:none}.pg.on{display:block;animation:in .5s}@keyframes in{from{opacity:0;transform:translateY(12px)}}
-.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:center;padding:40px 0}
-.tag{color:var(--o);font:12px monospace;letter-spacing:3px}
-h1{font-size:clamp(32px,6vw,64px);line-height:1.2;margin:12px 0}
-h1 em{font-style:normal;background:linear-gradient(90deg,var(--o),var(--c),var(--v));-webkit-background-clip:text;background-clip:text;color:transparent}
-.planet{width:230px;height:230px;margin:auto;border-radius:50%;position:relative;background:radial-gradient(circle at 30% 30%,#ffd86b,#ff6a3d 40%,#5a1a8a 75%,#12062a);box-shadow:0 0 80px #ff8a3d66,inset -30px -20px 60px #000c;animation:fl 6s ease-in-out infinite}
-.planet:before{content:"";position:absolute;left:-60px;right:-60px;top:50%;height:60px;margin-top:-30px;border:3px solid #3df5ffaa;border-radius:50%;transform:rotate(-22deg)}
-@keyframes fl{50%{transform:translateY(-14px)}}
-.card{background:linear-gradient(150deg,#0f1738cc,#080c22cc);border:1px solid var(--b);border-radius:16px;padding:18px;margin-bottom:12px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stats strong{display:block;font-size:24px;color:var(--c)}
-.bar{height:7px;background:#1c2650;border-radius:9px;overflow:hidden;margin:8px 0}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--o),var(--c),var(--v));transition:width .5s}
-.chips{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.done{border-color:var(--g);color:var(--g)}
-pre{direction:ltr;text-align:left;background:#040717;border:1px solid var(--b);border-radius:10px;padding:12px;overflow-x:auto;color:#bff9ff;font-size:13px;white-space:pre-wrap}
-textarea,input{width:100%;background:#030615;color:#c8f7ff;border:1px solid var(--b);border-radius:12px;padding:12px;font:inherit}
-textarea{min-height:170px;direction:ltr;text-align:left;font:13px/1.6 Consolas,monospace}
-.stg{border-right:3px solid var(--o)}.lv{font:12px monospace;color:var(--o)}
-.dec{position:fixed;top:calc(80px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);background:#1a1030;border:2px solid var(--o);padding:12px 20px;border-radius:14px;z-index:60;display:none;max-width:90vw;text-align:center}
-footer{text-align:center;color:var(--m);font-size:12px;padding:25px}
-@media(max-width:760px){.hero{grid-template-columns:1fr}.planet{width:170px;height:170px}}
-</style>
-</head>
-<body>
-<canvas id="cv"></canvas>
-<div id="intro">
-<div id="lg" class="draw"></div>
-<div class="gl" data-t="AMIRXTNA">AMIRXTNA</div>
-<div id="ty"></div>
-<button class="btn gold" id="go">ادخل الكوكب ▶</button>
-</div>
-<header class="top"><div class="logo" id="hl"></div>
-<nav id="nav" style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn on" data-p="home">العرش</button><button class="btn" data-p="lg2">اللغات</button><button class="btn" data-p="cc">التحديات</button><button class="btn" data-p="me">الإمبراطور</button></nav></header>
+.btn{border:1px solid var(--b);background:#101a40;color:#fff;padding:9px 13px;border-radius:10px}.btn:hover,.on{border-color:var(--c)}.gold{background:linear-gradient(100deg,#ff9d2e,#ffd86b);color:#201000;border:0;font-weight:700}
+.top{position:sticky;top:0;z-index:9;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:10px 5%;background:#03051aee;border-bottom:1px solid var(--b)}
+.logo{font-weight:900;letter-spacing:3px}.logo b{color:var(--c)}
+main{max-width:1050px;margin:auto;padding:16px 5% 130px}.pg{display:none}.pg.on{display:block}
+.card{background:#0b1230;border:1px solid var(--b);border-radius:14px;padding:14px;margin-bottom:12px}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.pl{text-align:center;cursor:pointer;animation:fl 5s ease-in-out infinite}.pl span{font-size:44px;display:block}
+.calm .pl,.calm #intro *{animation:none!important}@keyframes fl{50%{transform:translateY(-8px)}}
+.bar{height:7px;background:#1c2650;border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--o),var(--c));width:0}
+pre,textarea,input{direction:ltr;text-align:left;background:#040717;border:1px solid var(--b);border-radius:10px;color:#bff9ff;padding:10px;font:13px/1.6 Consolas,monospace;width:100%}
+pre{white-space:pre-wrap;overflow-x:auto}input{direction:rtl;font-family:inherit}
+.ed{display:flex;gap:0}.gut{background:#060a22;color:#556;padding:10px 6px;font:13px/1.6 Consolas,monospace;text-align:right;white-space:pre;border-radius:10px 0 0 10px;user-select:none;min-width:34px;direction:ltr}.ed textarea{min-height:240px;border-radius:0 10px 10px 0;resize:vertical}
+iframe{width:100%;height:240px;border:0;background:#fff;border-radius:10px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.opt{display:block;width:100%;text-align:right;margin:6px 0;padding:10px;border-radius:10px;border:1px solid var(--b);background:#0f1736;color:#fff}.ok{border-color:var(--g);background:#0f3a2b}.no{border-color:#ff5c7a;background:#3a1322}.lk{opacity:.4}
+.dec{position:fixed;top:70px;left:50%;transform:translateX(-50%);background:#1a1030;border:2px solid var(--o);padding:10px 16px;border-radius:12px;z-index:60;display:none;max-width:90vw;text-align:center}
+#ad{position:fixed;left:12px;bottom:12px;width:260px;height:80px;border:1px dashed var(--b);border-radius:12px;background:#0a1030ee;color:var(--m);font-size:11px;display:flex;align-items:center;justify-content:center;z-index:5}
+#intro{position:fixed;inset:0;background:#000;z-index:99;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .8s}
+#intro .r{width:150px;height:150px;border:3px solid var(--c);border-radius:50%;box-shadow:0 0 40px var(--c);animation:g 2.5s ease-out forwards}@keyframes g{from{transform:scale(.1);opacity:0}to{transform:scale(1);opacity:1}}
+#intro b{font-size:44px;letter-spacing:8px;margin-top:20px;opacity:0;animation:t 1.2s 2.5s forwards;direction:ltr}@keyframes t{to{opacity:1}}
+@media(max-width:760px){.two{grid-template-columns:1fr}#ad{width:170px;height:56px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style></head><body>
+<div id="intro"><div class="r"></div><b>AMIRXTNA</b><button class="btn" id="sk" style="position:absolute;top:16px;left:16px">تخطّي ›</button></div>
+<header class="top"><div class="logo"><b>AMIR</b>XTNA</div><nav class="row" id="nav" style="margin:0">
+<button class="btn on" data-p="home">الخريطة</button><button class="btn" data-p="ed">المحرر</button><button class="btn" data-p="lab">المختبر</button><button class="btn" data-p="wk">الموسوعة</button><button class="btn" data-p="me">حسابي</button></nav></header>
 <main>
-<section id="home" class="pg on">
-<div class="hero"><div><div class="tag">◆ AMIRXTNA CORP · PLANET LEGENDARIA</div>
-<h1>أنا لا أتعلّم البرمجة.<br><em>أنا أحكمها.</em></h1>
-<p>ست لغات، وأربع مراحل لكل لغة: من الصفر إلى الاحتراف.</p>
-<div class="chips"><button class="btn gold" data-p="lg2">⚔ ابدأ الغزو</button><button class="btn" data-p="cc">🧪 تحدي الكود</button></div></div>
-<div class="planet"></div></div>
-<div class="stats"><div class="card"><strong id="s1">0</strong>XP</div><div class="card"><strong id="s2">0</strong>مراحل</div><div class="card"><strong id="s3">-</strong>اللقب</div></div>
-<h2>خريطة السيطرة</h2><div id="road"></div>
-</section>
+<section id="home" class="pg on"><h2>🌌 خريطة كوكب البرمجة</h2>
+<div class="card"><b>🎓 مدرّبك: <span id="lvl"></span></b><p id="coach"></p><div class="bar"><i id="xb"></i></div><small id="xt"></small></div>
+<div class="grid" id="map"></div>
+<div class="card" style="margin-top:12px"><b>🎯 تحدي اليوم</b><p id="dq"></p><div id="dopts"></div></div></section>
 
-<section id="lg2" class="pg"><h2>أكاديمية اللغات</h2><div class="chips" id="lc"></div><div id="st"></div></section>
+<section id="pl" class="pg"><div class="row"><button class="btn" data-p="home">← الخريطة</button></div><h2 id="pt"></h2><div id="zs"></div><div id="boss"></div></section>
 
-<section id="cc" class="pg"><h2>تحديات الكود</h2><p>اكتب دالة JavaScript، وسيختبرها الموقع تلقائيًا.</p>
-<div class="chips" id="cl"></div>
-<div class="card"><h3 id="ct"></h3><p id="cd"></p><textarea id="ce" spellcheck="false" aria-label="كود التحدي"></textarea>
-<div class="chips"><button class="btn gold" id="ct2">▶ اختبر</button><button class="btn" id="ch">💡 تلميح</button></div><pre id="co">النتيجة هنا...</pre></div></section>
+<section id="ed" class="pg"><h2>المحرر</h2>
+<div class="row"><button class="btn gold" id="run">▶ تشغيل</button><button class="btn" id="chk">🔍 فحص قبل النشر</button><input id="pn" placeholder="اسم المشروع" style="width:150px" maxlength="30"><button class="btn" id="sv">💾 حفظ</button></div>
+<div class="two"><div class="ed"><div class="gut" id="gt">1</div><textarea id="code" spellcheck="false" aria-label="المحرر"></textarea></div>
+<div><iframe id="pv" sandbox="allow-scripts" title="النتيجة"></iframe><pre id="out">المخرجات...</pre></div></div>
+<div class="card"><b>🧱 من البلوكات إلى الكود</b><div class="row" id="blk"></div><pre id="bc">اضغط بلوكات لتركيبها</pre><div class="row"><button class="btn" id="bs">أرسل للمحرر</button><button class="btn" id="bx">مسح</button></div></div>
+<div id="chkout"></div></section>
 
-<section id="me" class="pg"><h2>سجل الإمبراطور</h2><div class="card">
-<label for="nm">اسمك</label><input id="nm" maxlength="30">
-<div class="chips"><button class="btn gold" id="sn">تتويج</button><button class="btn" id="rs">إعادة الحكم</button></div>
-<div class="bar"><i id="xb"></i></div><p id="xt"></p></div></section>
+<section id="lab" class="pg"><h2>🔬 لماذا فشل الكود؟</h2><div class="card"><pre>function sum(a){
+  let s = 0;
+  for (let i = 1; i <= a.length; i++) s += a[i];
+  return s;
+}
+sum([1,2,3]) // المتوقع 6</pre><div class="row"><button class="btn gold" id="st">خطوة ▶</button><button class="btn" id="sr">إعادة</button></div><pre id="tr">اضغط "خطوة" لتتبع التنفيذ</pre><div id="lq"></div></div></section>
+
+<section id="wk" class="pg"><h2>📚 الموسوعة</h2><input id="wq" placeholder="🔎 function, loop, API..."><div id="wl" style="margin-top:12px"></div></section>
+
+<section id="me" class="pg"><h2>🖼️ معرضي</h2><div class="card"><input id="nm" placeholder="اسمك" maxlength="30"><div id="pf"></div><div class="row"><button class="btn gold" id="cp">نسخ ملخص معرضي</button><button class="btn" id="rs">إعادة التقدم</button></div><p style="font-size:12px">رابط معرض عام حقيقي يحتاج حسابات وخادمًا.</p></div>
+<div class="card"><b>🎨 تخصيص العالم</b><div class="row"><label>الخط <input type="range" id="fs" min="14" max="22" style="width:120px"></label><label>اللون <input type="color" id="ac" style="width:50px;padding:2px"></label><label><input type="checkbox" id="calm" style="width:auto"> إيقاف الحركات</label></div></div></section>
 </main>
-<footer>AMIRXTNA © كوكب الأسطورة</footer>
-<div class="dec" id="dec" role="status"></div>
-
+<aside id="ad" aria-label="مساحة إعلانية">مساحة إعلانية<!-- كود الإعلان --></aside><div class="dec" id="dec" role="status"></div>
 <script>
-(function(){
-"use strict";
-const $=s=>document.querySelector(s);
-const LOGO=c=>`<svg viewBox="0 0 120 120" fill="none" stroke-linecap="round" stroke-linejoin="round" class="${c}"><polygon points="60,6 108,33 108,87 60,114 12,87 12,33" stroke="#3df5ff" stroke-width="3"/><path d="M40 84 L60 34 L80 84 M48 68 H72" stroke="#ffb84d" stroke-width="5"/><g class="orb"><ellipse cx="60" cy="60" rx="56" ry="18" stroke="#b06bff" stroke-width="2" transform="rotate(-30 60 60)"/><circle cx="108" cy="42" r="5" fill="#5dffb0"/></g></svg>`;
-$("#lg").innerHTML=LOGO("");$("#lg").className="draw";$("#hl").innerHTML=LOGO("")+"<span><b>AMIR</b>XTNA</span>";
-const LG=[
-["py","🐍","Python",[
-["0 · الصفر","أول أمر ومتغيرات.","name = 'Amir'\nage = 15\nprint('Hello', name, age)"],
-["1 · الأساسيات","شروط وحلقات ودوال.","def grade(x):\n    if x >= 90: return 'A'\n    return 'B'\nfor i in range(3):\n    print(i, grade(95))"],
-["2 · المتوسط","قوائم وقواميس وأصناف وملفات.","class Player:\n    def __init__(s, n): s.n, s.xp = n, 0\nusers = {p.n: p for p in [Player('A')]}\nwith open('a.txt','w') as f: f.write('hi')"],
-["3 · الاحتراف","Decorators وasync وtyping واختبارات وFastAPI.","from fastapi import FastAPI\napp = FastAPI()\n@app.get('/xp/{n}')\nasync def xp(n: int) -> dict:\n    return {'xp': n * 2}"]]],
-["js","⚡","JavaScript",[
-["0 · الصفر","متغيرات وطباعة.","const name = 'Amir';\nlet xp = 10;\nconsole.log(name, xp);"],
-["1 · الأساسيات","دوال ومصفوفات.","const sq = [1,2,3].map(n => n * n);\nconsole.log(sq);"],
-["2 · المتوسط","كائنات وPromises وDOM.","const wait = ms => new Promise(r => setTimeout(r, ms));\nwait(100).then(() => console.log('تم'));"],
-["3 · الاحتراف","async/await وNode وTypeScript وReact.","async function main(){\n  await new Promise(r => setTimeout(r, 50));\n  console.log('Legend');\n}\nmain();"]]],
-["web","🎨","HTML وCSS",[
-["0 · الصفر","هيكل الصفحة.","<h1>عرشي</h1>\n<p>مرحبًا</p>"],
-["1 · الأساسيات","وسوم دلالية وألوان.","<header><h1>AMIRXTNA</h1></header>\n<style>h1{color:#3df5ff}</style>"],
-["2 · المتوسط","Flexbox وGrid وتجاوب.",".grid{display:grid;gap:12px;\n  grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}"],
-["3 · الاحتراف","متغيرات CSS وحركات وأداء وإتاحة.",":root{--c:#3df5ff}\n@keyframes glow{50%{box-shadow:0 0 30px var(--c)}}\n.card{animation:glow 3s infinite}"]]],
-["cpp","⚙️","C++",[
-["0 · الصفر","أول برنامج.","#include <iostream>\nint main(){\n  std::cout << \"Hello\";\n}"],
-["1 · الأساسيات","متغيرات وحلقات.","for(int i=0;i<3;i++)\n  std::cout << i << \"\\n\";"],
-["2 · المتوسط","مؤشرات وأصناف وSTL.","std::vector<int> v{3,1,2};\nstd::sort(v.begin(), v.end());"],
-["3 · الاحتراف","إدارة الذاكرة وsmart pointers وtemplates.","auto p = std::make_unique<int>(5);\ntemplate<class T> T mx(T a, T b){return a>b?a:b;}"]]],
-["java","☕","Java",[
-["0 · الصفر","أول برنامج.","public class Main {\n  public static void main(String[] a){\n    System.out.println(\"Hello\");\n  }\n}"],
-["1 · الأساسيات","أنواع وشروط وحلقات.","int xp = 120;\nif (xp >= 100) System.out.println(\"قائد\");"],
-["2 · المتوسط","OOP وCollections.","List<String> l = new ArrayList<>();\nl.add(\"Amir\");\nfor (String s : l) System.out.println(s);"],
-["3 · الاحتراف","Streams وSpring Boot وخيوط.","users.stream()\n  .filter(u -> u.xp > 100)\n  .map(User::name)\n  .toList();"]]],
-["sql","🗄️","SQL",[
-["0 · الصفر","جدول واستعلام.","SELECT * FROM players;"],
-["1 · الأساسيات","WHERE وORDER BY.","SELECT
+(function(){"use strict";
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+/* [عنوان, شرح مبسّط, شرح متقدم, سؤال, خيارات, جواب] */
+const PL=[["🐍","Python",[
+["المتغيرات","المتغير اسم يحمل قيمة: x = 5","المتغيرات مراجع لكائنات، والنوع يتحدد وقت التشغيل.","أي سطر ينشئ متغيرًا؟",["x = 5","print x","5 -> x"],0],
+["الشروط والحلقات","if لاتخاذ قرار، وfor للتكرار.","تعبيرات الشرط تُقيَّم منطقيًا، وrange يولّد المتتالية كسولًا.","ماذا يطبع range(3)؟",["0 1 2","1 2 3","0 1 2 3"],0],
+["الدوال","def تجمّع كودًا لإعادة استخدامه.","الدوال كائنات من الدرجة الأولى وتُمرَّر كمعطيات.","كلمة تعريف الدالة؟",["def","fun","func"],0]],
+{d:"اكتب sumEven(arr) تجمع الأعداد الزوجية.",s:"function sumEven(arr){\n  \n}",f:"sumEven",T:[[[[1,2,3,4]],6],[[[]],0],[[[5,7]],0]]}],
+["🌐","الويب",[
+["HTML","HTML يبني هيكل الصفحة.","الوسوم الدلالية تحسّن الإتاحة والـSEO.","وسم العنوان الرئيسي؟",["<h1>","<p>","<top>"],0],
+["CSS","CSS يلوّن وينسّق.","Flexbox وGrid للتخطيط، وmedia queries للتجاوب.","من ينسّق الشكل؟",["CSS","SQL","Git"],0],
+["JavaScript","JS يضيف التفاعل.","الأحداث والـDOM وPromises أساس الويب الحديث.","من يضيف التفاعل؟",["JavaScript","CSS","HTML"],0]],
+{d:"اكتب esc(s) تحوّل < إلى &lt; و> إلى &gt; (حماية XSS).",s:"function esc(s){\n  \n}",f:"esc",T:[[["<b>"],"&lt;b&gt;"],[["a"],"a"]]}],
+["🎮","الألعاب",[
+["حلقة اللعبة","كل لعبة تكرّر: حدّث ثم ارسم.","requestAnimationFrame يزامن الحلقة مع الشاشة.","قلب اللعبة؟",["حلقة التحديث والرسم","الطابعة","الراوتر"],0],
+["الحركة والتصادم","نغيّر x وy كل إطار ونفحص التلامس.","التصادم بالمستطيلات AABB بسيط وسريع.","كيف نحرّك الشخصية؟",["نغيّر إحداثياتها كل إطار","نحذفها","نكبّر الشاشة"],0],
+["الحالة والنقاط","نخزّن النقاط والحياة في كائن حالة.","فصل الحالة عن الرسم يسهّل الاختبار.","أين نخزّن النقاط؟",["في متغير الحالة","في CSS","في الصورة"],0]],
+{d:"اكتب clamp(n,a,b) تحصر n بين a وb.",s:"function clamp(n,a,b){\n  \n}",f:"clamp",T:[[[5,0,3],3],[[-1,0,3],0],[[2,0,3],2]]}],
+["🤖","الذكاء الاصطناعي",[
+["البيانات","النموذج يتعلم من بيانات نظيفة.","جودة البيانات تحدد جودة النموذج أكثر من تعقيده.","أساس التعلّم؟",["البيانات","الشاشة","الكيبورد"],0],
+["النموذج","ندرّب النموذج ليتنبأ بنتيجة.","نضبط الأوزان بتقليل دالة الخسارة.","ماذا نضبط أثناء التدريب؟",["الأوزان","الألوان","الأسماء"],0],
+["التقييم","نختبر على بيانات لم يرها.","نتجنب فرط التعلّم بالتحقق المتقاطع.","لماذا نختبر على بيانات جديدة؟",["لقياس التعميم","للتزيين","لتوفير وقت"],0]],
+{d:"اكتب mean(arr) ترجع المتوسط.",s:"function mean(arr){\n  \n}",f:"mean",T:[[[[2,4,6]],4],[[[10]],10]]}],
+["🛡️","الأمن السيبراني",[
+["كلمات المرور","كلمة طويلة فريدة مع مدير كلمات مرور.","تُخزَّن مجزّأة مع salt بخوارزمية بطيئة (bcrypt/argon2).","أفضل كلمة مرور؟",["طويلة وفريدة","اسمك","123456"],0],
+["التصيّد","افحص الرابط والمرسل والاستعجال.","فعّل التحقق بخطوتين ومفاتيح الأمان.","تتصرف إذا وصلتك رسالة مستعجلة بـ؟",["أفتح الموقع بنفسي","أضغط الرابط","أرسل بياناتي"],0],
+["السجلات","السجلات تحكي ما حدث.","نربط أحداث السجلات لكشف الأنماط الشاذة.","علامة تخمين الكلمات؟",["فشل دخول متكرر","صفحة جديدة","ملف صغير"],0]],
+{d:"اكتب countFails(lines) تعدّ الأسطر التي فيها Failed.",s:"function countFails(lines){\n  \n}",f:"countFails",T:[[[["Failed a","ok","Failed b"]],2],[[[]],0]]}]];
+const WK=[["function","كود مسمّى تستدعيه متى شئت.","function hi(){return 1}","نسيان return فترجع undefined."],["loop","تكرار أمر عدة مرات.","for(let i=0;i<3;i++)","حلقة لا نهائية بسبب شرط خاطئ."],["API","واجهة تتحدث بها البرامج مع بعضها.","fetch('/data')","نسيان معالجة أخطاء الشبكة."],["variable","اسم يحمل قيمة.","let x = 5","استخدام اسم قبل تعريفه."],["array","قائمة مرتبة تبدأ من 0.","[10,20][0]","الخلط بين 0 و1."],["bug","خطأ في البرنامج يسبب نتيجة غير متوقعة.","console.log(x)","تخمين السبب دون طباعة القيم."]];
+const DQ=[["ناتج 2+3*2؟",["8","10","7"],0],["رقم أول عنصر في المصفوفة؟",["0","1","-1"],0],["أيها يطبع في JS؟",["console.log","print()","echo"],0],["HTTPS يستخدم المنفذ؟",["443","21","25"],0],["ماذا يعيد typeof 5؟",["number","int","float"],0]];
+const BL=[["اطبع",'console.log("مرحبًا");'],["كرّر 3",'for(let i=0;i<3;i++){ console.log(i); }'],["إذا",'if(5>3){ console.log("صحيح"); }'],["متغير","let x = 10;"]];
+const TRC=["i=1 → a[1]=2 → s=2","i=2 → a[2]=3 → s=5","i=3 → a[3]=undefined → s=NaN ⚠️","الناتج: NaN بدل 6"];
+const DEF={fs:16,ac:"#3df5ff",calm:false};
+let S={xp:0,done:[],wrong:{},boss:[],name:"",pr:{},day:"",last:"",streak:0,best:0,lab:0,dq:"",o:DEF},bl=[],ts=0,cp=0;
+try{const d=JSON.parse(localStorage.getItem("amir7")||"null");if(d)S=Object.assign(S,d,{o:Object.assign({},DEF,d.o)})}catch(e){}
+const sv=()=>{try{localStorage.setItem("amir7",JSON.stringify(S))}catch(e){}};
+const dec=t=>{const e=$("#dec");e.textContent=t;e.style.display="block";clearTimeout(dec.k);dec.k=setTimeout(()=>e.style.display="none",2600)};
+const td=new Date().toDateString();
+if(S.last!==td){const y=new Date(Date.now()-864e5).toDateString();S.streak=!S.last?1:S.last===y?S.streak+1:Math.max(1,Math.floor(S.streak/2));S.best=Math.max(S.best,S.streak);S.last=td;sv()}
+const gain=(n,m)=>{S.xp+=n;sv();dec("✅ "+m+" +"+n+" XP");draw()};
+const go=p=>{$$(".pg").forEach(x=>x.classList.toggle("on",x.id===p));$$("#nav .btn").forEach(b=>b.classList.toggle("on",b.dataset.p===p));scrollTo(0,0);draw()};
+const lvl=()=>S.done.length<4?0:S.done.length<9?1:2,LN=["مبتدئ","متوسط","متقدّم"];
+const k=(p,z)=>p+":"+z;
+function sbx(user,tail,cb){const id="m"+Math.random(),f=document.createElement("iframe");f.sandbox="allow-scripts";f.style.display="none";
+f.srcdoc="<script>let E=null,R=null;const L=[];onerror=(m,u,l)=>{E=m+' (سطر '+l+')'};console.log=(...a)=>L.push(a.join(' '))<\/script><script>\n"+user.replace(/<\/script/gi,"<\\/script")+"\n<\/script><script>try{"+tail+"}catch(x){}parent.postMessage({id:'"+id+"',E,L,R},'*')<\/script>";
+const h=e=>{if(e.source!==f.contentWindow||!e.data||e.data.id!==id)return;removeEventListener("message",h);f.remove();cb(e.data)};
+addEventListener("message",h);document.body.appendChild(f);setTimeout(()=>{if(f.isConnected){removeEventListener("message",h);f.remove();cb({E:"انتهى الوقت (حلقة لا نهائية؟)",L:[]})}},4000)}
+function draw(){
+const l=lvl();$("#lvl").textContent=LN[l];$("#xb").style.width=S.xp%150/150*100+"%";$("#xt").textContent="XP "+S.xp+" · سلسلتك "+S.streak+" 🔥 (أفضل "+S.best+")"+(S.name?" · "+S.name:"");
+let nx=null,rv=null;PL.forEach((p,i)=>p[2].forEach((z,j)=>{if(!nx&&!S.done.includes(k(i,j)))nx=[i,j];if(!rv&&S.wrong[k(i,j)])rv=[i,j]}));
+const pick=rv||nx;$("#coach").textContent=pick?(rv?"تحتاج مراجعة: ":"درس اليوم: ")+PL[pick[0]][1]+" ← "+PL[pick[0]][2][pick[1]][0]:"أنجزت كل الدروس! واجه زعماء الكواكب.";
+$("#map").innerHTML="";PL.forEach((p,i)=>{const d=p[2].filter((_,j)=>S.done.includes(k(i,j))).length,c=document.createElement("div");c.className="card pl";c.innerHTML="<span>"+p[0]+"</span><b>"+p[1]+"</b><div class='bar'><i style='width:"+d/3*100+"%'></i></div><small>"+d+"/3"+(S.boss.includes(i)?" 👑":"")+"</small>";c.onclick=()=>{cp=i;show()};$("#map").appendChild(c)});
+const q=DQ[new Date().getDate()%DQ.length];$("#dq").textContent=S.dq===td?"✅ أنجزت تحدي اليوم":q[0];$("#dopts").innerHTML="";
+if(S.dq!==td)q[1].forEach((o,i)=>{const b=document.createElement("button");b.className="opt";b.textContent=o;b.onclick=()=>{if(i===q[2]){S.dq=td;gain(15,"تحدي اليوم")}else{b.classList.add("no");dec("حاول مرة أخرى، لا شيء يضيع 💪")}};$("#dopts").appendChild(b)});
+$("#nm").value=S.name;$("#pf").innerHTML="";const pf=document.createElement("p");pf.textContent="XP "+S.xp+" · دروس "+S.done.length+"/15 · زعماء "+S.boss.length+"/5 · مشاريع: "+(Object.keys(S.pr).join("، ")||"لا يوجد");$("#pf").appendChild(pf);
+$("#fs").value=S.o.fs;$("#ac").value=S.o.ac;$("#calm").checked=S.o.calm;document.body.style.fontSize=S.o.fs+"px";document.documentElement.style.setProperty("--c",S.o.ac);document.body.classList.toggle("calm",S.o.calm);
+wiki()}
+function show(){go("pl");const p=PL[cp],l=lvl();$("#pt").textContent=p[0]+" كوكب "+p[1];const zs=$("#zs");zs.textContent="";
+p[2].forEach((z,j)=>{const open=j===0||S.done.includes(k(cp,j-1)),dn=S.done.includes(k(cp,j)),c=document.createElement("div");c.className="card"+(open?"":" lk");
+const h=document.createElement("h3");h.textContent=(dn?"✅ ":open?"🔓 ":"🔒 ")+z[0];c.appendChild(h);
+if(open){const t=document.createElement("p");t.textContent=l>0?z[2]:z[1];c.appendChild(t);const q=document.createElement("b");q.textContent="🧩 "+z[3];c.appendChild(q);
+z[4].forEach((o,i)=>{const b=document.createElement("button");b.className="opt";b.textContent=o;b.onclick=()=>{if(i===z[5]){b.classList.add("ok");delete S.wrong[k(cp,j)];if(!dn){S.done.push(k(cp,j));gain(30,z[0]);show()}}else{b.classList.add("no");S.wrong[k(cp,j)]=1;sv();dec("❌ راجع الشرح وحاول")}};c.appendChild(b)})}
+zs.appendChild(c)});
+const bs=$("#boss");bs.textContent="";if(p[2].every((_,j)=>S.done.includes(k(cp,j)))){const B=p[3],c=document.createElement("div");c.className="card";
+c.innerHTML="<h3>👑 زعيم "+p[1]+(S.boss.includes(cp)?" ✅":"")+"</h3><p></p><textarea id='bt' style='min-height:120px'></textarea><div class='row'><button class='btn gold' id='bg'>⚔ واجه الزعيم</button></div><pre id='bo'>...</pre>";
+c.querySelector("p").textContent=B.d;c.querySelector("textarea").value=B.s;bs.appendChild(c);
+$("#bg").onclick=()=>sbx($("#bt").value,"R=T.map(t=>{let v;try{v="+B.f+"(...t[0])}catch(x){v='خطأ'}return[JSON.stringify(t[0]),t[1],v,JSON.stringify(v)===JSON.stringify(t[1])]})".replace("T.map","JSON.parse('"+JSON.stringify(B.T).replace(/\\/g,"\\\\").replace(/'/g,"\\'")+"').map"),r=>{
+if(r.E&&!r.R){$("#bo").textContent="❌ "+r.E;return}const R=r.R||[],ok=R.length&&R.every(x=>x[3]);$("#bo").textContent=R.map(x=>(x[3]?"✅ ":"❌ ")+x[0]+" المتوقع "+JSON.stringify(x[1])+" والناتج "+JSON.stringify(x[2])).join("\n")+(ok?"\n\n👑 هزمت الزعيم!":"");
+if(ok&&!S.boss.includes(cp)){S.boss.push(cp);gain(60,"هزيمة الزعيم")}})}}
+/* المحرر */
+const ed=$("#code");const gt=()=>{$("#gt").textContent=ed.value.split("\n").map((_,i)=>i+1).join("\n")};
+ed.oninput=gt;ed.onscroll=()=>{$("#gt").style.transform="translateY("+-ed.scrollTop+"px)"};
+ed.onkeydown=e=>{if(e.key==="Tab"){e.preventDefault();const s=ed.selectionStart;ed.setRangeText("  ",s,ed.selectionEnd,"end");gt()}const pr={"(":")","[":"]","{":"}",'"':'"'};if(pr[e.key]){e.preventDefault();const s=ed.selectionStart;ed.setRangeText(e.key+pr[e.key],s,ed.selectionEnd,"start");ed.selectionStart=ed.selectionEnd=s+1}};
+$("#run").onclick=()=>{const v=ed.value;if(/^\s*</.test(v)){$("#pv").srcdoc=v;$("#out").textContent="(معاينة HTML)"}else{$("#pv").srcdoc="";sbx(v,"",r=>{$("#out").textContent=(r.E?"❌ "+r.E+"\n":"")+(r.L.join("\n")||"(لا مخرجات)")})}};
+$("#sv").onclick=()=>{const n=$("#pn").value.trim().slice(0,30);if(!n){dec("اكتب اسم المشروع");return}S.pr[n]=ed.value;sv();draw();dec("💾 حُفظ")};
+$("#chk").onclick=()=>{const d=new DOMParser().parseFromString(ed.value,"text/html"),m=[];
+if(!d.querySelector("title"))m.push("لا يوجد <title>");if(!d.documentElement.getAttribute("lang"))m.push("لا يوجد lang في وسم html");if(!d.querySelector("meta[name=viewport]"))m.push("لا يوجد viewport للجوال");
+d.querySelectorAll("img:not([alt])").forEach(()=>m.push("صورة بلا alt"));d.querySelectorAll("a").forEach(a=>{const h=a.getAttribute("href")||"";if(!h||h==="#")m.push("رابط فارغ: "+(a.textContent.trim()||"بلا نص"));if(a.target==="_blank"&&!/noopener/.test(a.rel))m.push("target=_blank بلا rel=noopener")});
+if(/\beval\s*\(|document\.write|innerHTML\s*=/.test(ed.value))m.push("⚠️ أمان: eval أو document.write أو innerHTML قد تفتح ثغرة XSS");if(/http:\/\//.test(ed.value))m.push("⚠️ موارد http غير آمنة، استخدم https");
+$("#chkout").innerHTML="";const c=document.createElement("div");c.className="card";c.textContent=(m.length?"مشكلات محتملة:\n• "+m.join("\n• "):"✅ لم أجد مشكلات في هذه الفحوصات")+"\n\nتنبيه: الفحص الآلي لا يضمن خلو مشروعك من الأخطاء.";c.style.whiteSpace="pre-wrap";$("#chkout").appendChild(c)};
+BL.forEach((b,i)=>{const e=document.createElement("button");e.className="btn";e.textContent="+ "+b[0];e.onclick=()=>{bl.push(b[1]);$("#bc").textContent=bl.join("\n")};$("#blk").appendChild(e)});
+$("#bx").onclick=()=>{bl=[];$("#bc").textContent="اضغط بلوكات لتركيبها"};$("#bs").onclick=()=>{ed.value=bl.join("\n");gt();dec("أُرسل للمحرر. هذا هو كود JavaScript الحقيقي")};
+/* المختبر */
+$("#st").onclick=()=>{if(ts<TRC.length){$("#tr").textContent=TRC.slice(0,++ts).join("\n")}if(ts===TRC.length&&!$("#lq b")){const q=$("#lq");q.innerHTML="<b>ما سبب الخطأ؟</b>";[["الحلقة تبدأ من 1 وتتجاوز آخر عنصر",1],["المصفوفة فارغة",0],["s ليست رقمًا",0]].forEach(o=>{const b=document.createElement("button");b.className="opt";b.textContent=o[0];b.onclick=()=>{if(o[1]){b.classList.add("ok");if(!S.lab){S.lab=1;gain(30,"اكتشفت السبب")}}else b.classList.add("no")};q.appendChild(b)})}};
+$("#sr").onclick=()=>{ts=0;$("#tr").textContent='اضغط "خطوة" لتتبع التنفيذ';$("#lq").textContent=""};
+function wiki(){const q=$("#wq").value.toLowerCase(),w=$("#wl");w.textContent="";WK.filter(x=>x.join(" ").toLowerCase().includes(q)).forEach(x=>{const c=document.createElement("div");c.className="card";const h=document.createElement("b");h.textContent=x[0];const p=document.createElement("p");p.textContent=x[1];const pr=document.createElement("pre");pr.textContent=x[2];const m=document.createElement("small");m.textContent="⚠️ خطأ شائع: "+x[3];c.append(h,p,pr,m);w.appendChild(c)})}
+$("#wq").oninput=wiki;
+/* الحساب والتخصيص */
+$("#nm").onchange=()=>{S.name=$("#nm").value.trim().slice(0,30);sv();draw()};
+$("#cp").onclick=()=>{const t="معرض AMIRXTNA"+(S.name?" — "+S.name:"")+"\nXP "+S.xp+" · دروس "+S.done.length+"/15 · زعماء "+S.boss.length+"/5";(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>dec("تم النسخ"),()=>dec(t))};
+$("#rs").onclick=()=>{if(confirm("إعادة كل التقدم؟")){S.xp=0;S.done=[];S.wrong={};S.boss=[];S.lab=0;sv();draw()}};
+$("#fs").oninput=e=>{S.o.fs=+e.target.value;sv();draw()};$("#ac").oninput=e=>{S.o.ac=e.target.value;sv();draw()};$("#calm").onchange=e=>{S.o.calm=e.target.checked;sv();draw()};
+$$("#nav [data-p]").forEach(b=>b.onclick=()=>go(b.dataset.p));
+/* المقدمة 5 ثوانٍ */
+const end=()=>{const i=$("#intro");if(!i)return;i.style.opacity=0;setTimeout(()=>i.remove(),850);try{sessionStorage.setItem("s","1")}catch(e){}};
+let seen=false;try{seen=sessionStorage.getItem("s")==="1"}catch(e){}if(seen)$("#intro").remove();else{$("#sk").onclick=end;setTimeout(end,5000)}
+ed.value="console.log('أهلًا بالأسطورة');";gt();draw();
+})();
+</script></body></html>
