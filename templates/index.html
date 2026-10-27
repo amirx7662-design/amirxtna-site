@@ -3,80 +3,234 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AMIRXTNA</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Tahoma, sans-serif;
-      background: #0b1020;
-      color: white;
-    }
-    .container {
-      width: min(1000px, 90%);
-      margin: 40px auto;
-    }
-    textarea, button {
-      width: 100%;
-      border-radius: 12px;
-      border: none;
-      padding: 16px;
-      margin-top: 14px;
-      font-size: 16px;
-    }
-    textarea {
-      min-height: 150px;
-      background: #121a2b;
-      color: white;
-      border: 1px solid #2a3654;
-    }
-    button {
-      background: linear-gradient(135deg, #7c3aed, #22c55e);
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .answer {
-      margin-top: 24px;
-      padding: 16px;
-      background: #111827;
-      border: 1px solid #2a3654;
-      border-radius: 12px;
-      white-space: pre-wrap;
-      line-height: 1.8;
-    }
-  </style>
+  <title>AMIRXTNA | AI Studio</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 </head>
 <body>
-  <div class="container">
-    <h1>AMIRXTNA</h1>
-    <textarea id="prompt" placeholder="اكتب فكرة أو سؤال..."></textarea>
-    <button onclick="sendPrompt()">إرسال</button>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <span class="brand-mark">A</span>
+        AMIRXTNA
+      </div>
 
-    <div class="answer" id="answer">الرد سيظهر هنا...</div>
-  </div>
+      <nav class="nav-links">
+        <a href="#chat">محادثة</a>
+        <a href="#image">صورة</a>
+        <a href="#video">فيديو</a>
+        <a href="#pricing">الأسعار</a>
+      </nav>
 
-  <script>
-    async function sendPrompt() {
-      const prompt = document.getElementById("prompt").value;
-      const answerBox = document.getElementById("answer");
+      <a href="#contact" class="btn primary">تواصل</a>
+    </div>
+  </header>
 
-      answerBox.textContent = "جاري الإرسال...";
+  <main class="container">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">
+          <span class="dot"></span>
+          AI Studio
+        </div>
 
-      const res = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt })
-      });
+        <h1>
+          أنشئ <span class="gradient-text">صورًا</span> و
+          <span class="gradient-text">فيديوهات</span>
+          بذكاء اصطناعي
+        </h1>
 
-      const data = await res.json();
+        <p>
+          AMIRXTNA يتيح لك إنشاء محادثات ذكية، صور حقيقية، ومقاطع فيديو تجريبية،
+          مع حصة يومية مجانية: 5 محادثات، 10 صور، 5 فيديوهات.
+        </p>
 
-      if (!res.ok) {
-        answerBox.textContent = data.error || "حدث خطأ";
-        return;
-      }
+        <div class="hero-actions">
+          <a href="#chat" class="btn primary">ابدأ الآن</a>
+          <a href="#pricing" class="btn">الخطط</a>
+        </div>
 
-      answerBox.textContent = data.answer;
-    }
-  </script>
+        <div class="stats-row">
+          <div class="stats-box">
+            <strong id="chatUsed">0</strong>
+            <span>محادثات</span>
+          </div>
+          <div class="stats-box">
+            <strong id="imageUsed">0</strong>
+            <span>صور</span>
+          </div>
+          <div class="stats-box">
+            <strong id="videoUsed">0</strong>
+            <span>فيديوهات</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass">
+        <div class="glass-head">
+          <div class="dots">
+            <span class="dot-red"></span>
+            <span class="dot-yellow"></span>
+            <span class="dot-green"></span>
+          </div>
+          <span class="ai-badge">AMIRXTNA</span>
+        </div>
+
+        <div class="glass-body">
+          <div class="prompt-box">
+            "فتاة أنيقة في مدينة المستقبل، إضاءة نيون، حركة بطيئة، فيديو سينمائي 20 ثانية"
+          </div>
+
+          <div class="preview-grid">
+            <div class="preview"></div>
+            <div class="preview orange"></div>
+            <div class="preview green full"></div>
+          </div>
+
+          <div class="mini-row">
+            <div class="mini-box">
+              <strong>5</strong>
+              <span>chat</span>
+            </div>
+            <div class="mini-box">
+              <strong>10</strong>
+              <span>images</span>
+            </div>
+            <div class="mini-box">
+              <strong>5</strong>
+              <span>video</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="chat" class="section">
+      <div class="section-heading">
+        <h2>المحادثة الذكية</h2>
+        <p>اكتب سؤالك أو فكرتك وسيتولّد لك إجابة مباشرة.</p>
+      </div>
+
+      <div class="panel">
+        <textarea id="chatPrompt" placeholder="اكتب فكرتك هنا ..."></textarea>
+        <button class="btn primary" id="chatBtn">إرسال</button>
+        <div id="chatResult" class="result-box">سيظهر الرد هنا...</div>
+      </div>
+    </section>
+
+    <section id="image" class="section">
+      <div class="section-heading">
+        <h2>توليد الصور</h2>
+        <p>اكتب وصف الصورة المطلوبة، وسيتم توليدها بشكل مباشر.</p>
+      </div>
+
+      <div class="panel">
+        <textarea id="imagePrompt" placeholder="مثل: فتاة عربية أنيقة في شوارع المستقبل، إضاءة نيون ..."></textarea>
+        <button class="btn primary" id="imageBtn">توليد صورة</button>
+        <div id="imageResult" class="result-box">سيظهر رابط الصورة هنا...</div>
+      </div>
+    </section>
+
+    <section id="video" class="section">
+      <div class="section-heading">
+        <h2>توليد الفيديو</h2>
+        <p>الفيديو يعمل كـ demo تجريبي، ويمكن ربط provider خارجي لاحقًا.</p>
+      </div>
+
+      <div class="panel">
+        <textarea id="videoPrompt" placeholder="مثل: شخص يتحرك في مدينة المستقبل، حركة سريعة، كاميرا حركة ..."></textarea>
+        <button class="btn primary" id="videoBtn">توليد فيديو</button>
+        <div id="videoResult" class="result-box">سيظهر رابط الفيديو هنا...</div>
+      </div>
+    </section>
+
+    <section id="pricing" class="section">
+      <div class="section-heading">
+        <h2>خطط التسعير</h2>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Free</h3>
+          <div class="price">0 <small>ريال</small></div>
+          <ul>
+            <li>5 محادثات يوميًا</li>
+            <li>10 صور يوميًا</li>
+            <li>5 فيديوهات يوميًا</li>
+            <li>إمكانية التجربة</li>
+          </ul>
+          <a href="#contact" class="btn">ابدأ الآن</a>
+        </div>
+
+        <div class="pricing-card featured">
+          <span class="badge">الأكثر شيوعًا</span>
+          <h3>Pro</h3>
+          <div class="price">149 <small>ريال/شهر</small></div>
+          <ul>
+            <li>محادثات غير محدودة</li>
+            <li>صور غير محدودة</li>
+            <li>فيديوهات متقدمة</li>
+            <li>دعم أسرع</li>
+          </ul>
+          <a href="#contact" class="btn primary">ابدأ الآن</a>
+        </div>
+
+        <div class="pricing-card">
+          <h3>Studio</h3>
+          <div class="price">399 <small>ريال/شهر</small></div>
+          <ul>
+            <li>كل مزايا Pro</li>
+            <li>إنتاج احترافي</li>
+            <li>مخزون خاص</li>
+            <li>دعم مخصص</li>
+          </ul>
+          <a href="#contact" class="btn">ابدأ الآن</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="section-heading">
+        <h2>تواصل معنا</h2>
+      </div>
+
+      <div class="contact-grid">
+        <div class="detail-box">
+          <div class="detail-item">
+            <div class="detail-icon">✉️</div>
+            <div>
+              <strong>Email</strong><br />
+              <span>amirx7662@gmail.com</span>
+            </div>
+          </div>
+
+          <div class="detail-item">
+            <div class="detail-icon">⚡</div>
+            <div>
+              <strong>الحصة اليومية</strong><br />
+              <span>5 محادثات • 10 صور • 5 فيديوهات</span>
+            </div>
+          </div>
+
+          <div class="detail-item">
+            <div class="detail-icon">📍</div>
+            <div>
+              <strong>الموقع</strong><br />
+              <span>السعودية / عن بعد</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-panel">
+          <input type="text" placeholder="الاسم الكامل" />
+          <input type="email" placeholder="البريد الإلكتروني" />
+          <input type="text" placeholder="اسم الشركة أو المشروع" />
+          <textarea placeholder="اكتب طلبك أو فكرتك ..."></textarea>
+          <button class="btn primary" type="button">إرسال الطلب</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
