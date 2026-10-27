@@ -3,119 +3,93 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Amir | Portfolio</title>
-  <meta name="description" content="Portfolio شخصي، يضم مشاريع GitHub، مهارات، خدمات، وتواصل." />
+  <title>AMIRXTNA | AI Studio</title>
+  <meta name="description" content="AMIRXTNA — منصة Generation AI لتوليد الصور والفيديوهات والمحتوى الإبداعي." />
   <style>
     :root {
-      --bg: #070b14;
-      --bg-2: #0f172a;
+      --bg: #060816;
+      --bg-2: #0b1020;
       --bg-3: #111827;
-      --panel: rgba(17, 24, 39, 0.84);
-      --panel-strong: rgba(15, 23, 42, 0.96);
-      --card: rgba(15, 23, 42, 0.86);
+      --panel: rgba(17, 24, 39, 0.78);
+      --panel-strong: rgba(15, 23, 42, 0.95);
       --text: #f8fafc;
       --muted: #cbd5e1;
-      --primary: #8b5cf6;
-      --primary-2: #7c3aed;
+      --primary: #7c3aed;
+      --primary-2: #a855f7;
       --secondary: #22c55e;
-      --accent: #f59e0b;
-      --border: rgba(148, 163, 184, 0.18);
-      --shadow: 0 22px 55px rgba(0, 0, 0, 0.35);
-      --soft-shadow: 0 16px 35px rgba(0, 0, 0, 0.18);
-      --code-bg: rgba(15, 23, 42, 0.9);
+      --accent: #38bdf8;
+      --pink: #ec4899;
+      --orange: #f59e0b;
       --danger: #ef4444;
-      --success: #22c55e;
+      --border: rgba(148, 163, 184, 0.18);
+      --shadow: 0 24px 60px rgba(0,0,0,0.38);
+      --soft-shadow: 0 16px 30px rgba(0,0,0,0.22);
     }
 
-    body.light {
-      --bg: #edf4ff;
-      --bg-2: #f8fafc;
-      --bg-3: #eef2ff;
-      --panel: rgba(255,255,255,0.8);
-      --panel-strong: rgba(255,255,255,0.96);
-      --card: rgba(255,255,255,0.96);
-      --text: #0f172a;
-      --muted: #475569;
-      --primary: #6d28d9;
-      --primary-2: #7c3aed;
-      --secondary: #16a34a;
-      --accent: #f59e0b;
-      --border: rgba(15, 23, 42, 0.08);
-      --shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
-      --soft-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
-      --code-bg: #eff6ff;
-    }
-
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; scroll-behavior: smooth; }
 
     html, body {
       margin: 0;
       padding: 0;
       font-family: "Tahoma", "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top, rgba(139, 92, 246, 0.15), transparent 28%),
+        radial-gradient(circle at top left, rgba(124, 58, 237, 0.28), transparent 30%),
+        radial-gradient(circle at top right, rgba(56, 189, 248, 0.15), transparent 32%),
         linear-gradient(135deg, var(--bg), var(--bg-2), var(--bg-3));
       color: var(--text);
       line-height: 1.7;
     }
 
-    body {
-      transition: background 0.25s ease, color 0.25s ease;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
 
     .container {
-      width: min(1180px, 92%);
+      width: min(1200px, 92%);
       margin: 0 auto;
     }
 
     header {
       position: sticky;
       top: 0;
-      z-index: 50;
-      backdrop-filter: blur(16px);
-      background: rgba(7, 11, 20, 0.35);
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-    }
-
-    body.light header {
-      background: rgba(255,255,255,0.42);
+      z-index: 100;
+      backdrop-filter: blur(18px);
+      background: rgba(6,8,22,0.45);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
     .nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      min-height: 72px;
-      gap: 22px;
+      min-height: 74px;
+      gap: 18px;
     }
 
     .brand {
-      font-size: 1.35rem;
-      font-weight: 800;
-      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      font-size: 1.5rem;
     }
 
-    .brand span {
-      color: var(--primary);
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: grid;
+      place-items: center;
+      box-shadow: 0 0 25px rgba(124, 58, 237, 0.8);
+      font-size: 0.9rem;
+      font-weight: 900;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 20px;
       flex-wrap: wrap;
     }
 
@@ -125,9 +99,7 @@
       transition: color 0.2s ease;
     }
 
-    .nav-links a:hover {
-      color: var(--text);
-    }
+    .nav-links a:hover { color: var(--text); }
 
     .nav-actions {
       display: flex;
@@ -140,14 +112,14 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 12px 18px;
+      padding: 12px 20px;
+      border-radius: 14px;
       border: 1px solid var(--border);
-      border-radius: 12px;
-      font-weight: 700;
-      color: var(--text);
       background: rgba(255,255,255,0.02);
+      color: var(--text);
+      font-weight: 700;
       cursor: pointer;
-      transition: 0.2s ease;
+      transition: 0.25s ease;
     }
 
     .btn:hover {
@@ -156,17 +128,9 @@
     }
 
     .btn.primary {
-      border: none;
       background: linear-gradient(135deg, var(--primary), var(--primary-2));
-      color: white;
-    }
-
-    .theme-toggle {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      padding: 0;
-      font-size: 1.2rem;
+      border: none;
+      box-shadow: 0 0 25px rgba(124, 58, 237, 0.45);
     }
 
     .section {
@@ -175,9 +139,9 @@
 
     .hero {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1.1fr 0.9fr;
       align-items: center;
-      gap: 32px;
+      gap: 30px;
       min-height: 82vh;
     }
 
@@ -191,36 +155,34 @@
       background: rgba(255,255,255,0.02);
       color: var(--muted);
       font-size: 0.82rem;
-      margin-bottom: 22px;
+      margin-bottom: 18px;
     }
 
     .dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
+      width: 9px; height: 9px; border-radius: 50%;
       background: var(--secondary);
-      box-shadow: 0 0 18px rgba(34,197,94,0.7);
+      box-shadow: 0 0 15px rgba(34,197,94,0.7);
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(2.5rem, 5vw, 5rem);
-      line-height: 1.08;
-      letter-spacing: -0.05em;
+      font-size: clamp(2.7rem, 6vw, 5rem);
+      line-height: 1.06;
+      letter-spacing: -0.06em;
     }
 
     .gradient-text {
-      background: linear-gradient(135deg, #a78bfa, #60a5fa);
+      background: linear-gradient(135deg, #a78bfa, #7dd3fc, #f9a8d4);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
 
     .hero p {
-      margin: 22px 0 28px;
       color: var(--muted);
-      font-size: 1.08rem;
       max-width: 680px;
+      margin: 22px 0 28px;
+      font-size: 1.08rem;
     }
 
     .hero-actions {
@@ -228,133 +190,186 @@
       align-items: center;
       gap: 14px;
       flex-wrap: wrap;
-      margin-bottom: 28px;
-    }
-
-    .socials {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .socials a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 42px;
-      height: 42px;
-      border: 1px solid var(--border);
-      border-radius: 50%;
-      background: rgba(255,255,255,0.03);
-      transition: 0.2s ease;
-    }
-
-    .socials a:hover {
-      transform: translateY(-3px);
-      border-color: rgba(139, 92, 246, 0.7);
-    }
-
-    .hero-card {
-      position: relative;
-      padding: 26px;
-      border-radius: 28px;
-      background: linear-gradient(180deg, rgba(139, 92, 246, 0.12), rgba(255,255,255,0.02));
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: 0 0 auto 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
-    }
-
-    .mini-card {
-      background: rgba(15, 23, 42, 0.88);
-      border: 1px solid rgba(148,163,184,0.16);
-      border-radius: 18px;
-      padding: 18px;
-      margin-bottom: 18px;
-    }
-
-    body.light .mini-card {
-      background: rgba(255,255,255,0.9);
-    }
-
-    .code-window {
-      background: var(--code-bg);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      overflow: hidden;
-    }
-
-    .code-head {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 14px;
-      border-bottom: 1px solid var(--border);
-      background: rgba(255,255,255,0.04);
-    }
-
-    .circle {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-    }
-
-    .circle.red { background: #ff5f56; }
-    .circle.yellow { background: #ffbd2e; }
-    .circle.green { background: #27c93f; }
-
-    pre {
-      margin: 0;
-      padding: 18px 16px 18px;
-      overflow: auto;
-      color: var(--text);
-      font-size: 0.9rem;
-      line-height: 1.8;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 24px;
-    }
-
-    .stat {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 22px 18px;
-      text-align: center;
-      box-shadow: var(--shadow);
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 1.8rem;
-      margin-bottom: 6px;
-      color: var(--text);
-    }
-
-    .stat span {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .section-heading {
       margin-bottom: 30px;
     }
 
+    .hero-stats {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .mini-stat {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px 14px;
+      min-width: 120px;
+    }
+
+    .mini-stat strong {
+      display: block;
+      font-size: 1.2rem;
+    }
+
+    .mini-stat span {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .hero-art {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 500px;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(10px);
+      opacity: 0.9;
+    }
+
+    .orb.one {
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(124,58,237,0.9), rgba(124,58,237,0.1));
+      top: 40px;
+      left: 80px;
+    }
+
+    .orb.two {
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(56,189,248,0.95), rgba(56,189,248,0.12));
+      bottom: 40px;
+      right: 60px;
+    }
+
+    .glass {
+      position: relative;
+      width: min(100%, 470px);
+      background: rgba(17, 24, 39, 0.56);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .glass-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .dots {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dot-red { width: 10px; height: 10px; border-radius: 50%; background: #ff5f56; }
+    .dot-yellow { width: 10px; height: 10px; border-radius: 50%; background: #ffbd2e; }
+    .dot-green { width: 10px; height: 10px; border-radius: 50%; background: #27c93f; }
+
+    .ai-chip {
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(56,189,248,0.12);
+      border: 1px solid rgba(56,189,248,0.25);
+      color: #a5f3fc;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .mock-panel {
+      padding: 18px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .prompt-box {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px 18px;
+      color: var(--muted);
+      min-height: 90px;
+      display: flex;
+      align-items: center;
+    }
+
+    .grid-preview {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .preview {
+      min-height: 180px;
+      border-radius: 18px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(124,58,237,0.48), rgba(56,189,248,0.35));
+    }
+
+    .preview::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(130deg, rgba(255,255,255,0.18), transparent 45%),
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.28), transparent 25%);
+    }
+
+    .preview.two {
+      background: linear-gradient(135deg, rgba(236,72,153,0.36), rgba(249,115,22,0.35));
+    }
+
+    .preview.three {
+      grid-column: 1 / -1;
+      min-height: 150px;
+      background: linear-gradient(135deg, rgba(34,197,94,0.38), rgba(59,130,246,0.32));
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .mini-box {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px 10px;
+      text-align: center;
+    }
+
+    .mini-box strong {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+
+    .mini-box span {
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .section-heading {
+      margin-bottom: 28px;
+    }
+
     .section-heading h2 {
+      margin: 0 0 10px;
       font-size: clamp(1.9rem, 4vw, 3rem);
-      margin: 0 0 8px;
     }
 
     .section-heading p {
@@ -363,264 +378,185 @@
       font-size: 1.02rem;
     }
 
-    .about-grid {
+    .feature-grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 26px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
     }
 
-    .card {
+    .feature-card {
       background: var(--panel);
       border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 28px;
+      border-radius: 22px;
+      padding: 22px 20px;
       box-shadow: var(--shadow);
+      transition: transform 0.24s ease, border-color 0.24s ease;
     }
 
-    .card p {
+    .feature-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(124,58,237,0.75);
+    }
+
+    .feature-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(124,58,237,0.14);
+      border: 1px solid rgba(124,58,237,0.3);
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+    }
+
+    .feature-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.3rem;
+    }
+
+    .feature-card p {
       margin: 0;
       color: var(--muted);
-      line-height: 1.9;
+      line-height: 1.8;
     }
 
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 22px;
-    }
-
-    .skill {
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(139, 92, 246, 0.12);
-      border: 1px solid rgba(139, 92, 246, 0.28);
-      color: var(--text);
-      font-weight: 700;
-      font-size: 0.92rem;
-    }
-
-    .services-grid {
+    .showcase-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 22px;
     }
 
-    .service-card {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 24px 22px;
-      box-shadow: var(--shadow);
-      transition: transform 0.25s ease, border-color 0.25s ease;
-    }
-
-    .service-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(139, 92, 246, 0.7);
-    }
-
-    .icon-box {
-      width: 52px;
-      height: 52px;
-      display: grid;
-      place-items: center;
-      border-radius: 14px;
-      background: rgba(139, 92, 246, 0.12);
-      border: 1px solid rgba(139, 92, 246, 0.24);
-      font-size: 1.35rem;
-      margin-bottom: 16px;
-    }
-
-    .service-card h3 {
-      margin: 0 0 12px;
-      font-size: 1.3rem;
-    }
-
-    .service-card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.8;
-    }
-
-    .projects-tools {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-      margin-bottom: 26px;
-    }
-
-    .search-box {
-      flex: 1;
-      min-width: 240px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 12px 14px;
-      box-shadow: var(--shadow);
-    }
-
-    .search-box input {
-      width: 100%;
-      border: none;
-      outline: none;
-      background: transparent;
-      color: var(--text);
-      font-size: 1rem;
-    }
-
-    .search-box input::placeholder {
-      color: var(--muted);
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 22px;
-    }
-
-    .project-card {
-      position: relative;
-      background: var(--card);
+    .showcase-card {
+      background: rgba(17,24,39,0.7);
       border: 1px solid var(--border);
       border-radius: 24px;
-      padding: 22px;
-      box-shadow: var(--shadow);
-      transition: transform 0.25s ease, border-color 0.25s ease;
       overflow: hidden;
-    }
-
-    .project-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
-    }
-
-    .project-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(139, 92, 246, 0.7);
-    }
-
-    .project-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 14px;
-    }
-
-    .project-name {
-      font-size: 1.35rem;
-      font-weight: 800;
-      margin: 0;
-    }
-
-    .project-language {
-      display: inline-flex;
-      align-items: center;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(34,197,94,0.10);
-      border: 1px solid rgba(34,197,94,0.20);
-      color: #8bffae;
-      font-size: 0.75rem;
-      font-weight: 700;
-    }
-
-    .project-desc {
-      margin: 12px 0 18px;
-      color: var(--muted);
-      min-height: 84px;
-      line-height: 1.8;
-    }
-
-    .project-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .stars {
-      color: #fbbf24;
-      font-weight: 800;
-    }
-
-    .links {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .project-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px 12px;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--border);
-      color: var(--text);
-      font-weight: 700;
-      transition: 0.2s ease;
-    }
-
-    .project-link:hover {
-      background: rgba(139, 92, 246, 0.13);
-    }
-
-    .empty-state {
-      display: none;
-      text-align: center;
-      color: var(--muted);
-      padding: 24px 0;
-      font-size: 1.05rem;
-    }
-
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .process-step {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 24px 20px;
       box-shadow: var(--shadow);
+    }
+
+    .showcase-image {
+      height: 240px;
+      background:
+        linear-gradient(135deg, rgba(124,58,237,0.7), rgba(34,197,94,0.34)),
+        url('https://images.unsplash.com/photo-1715520703953-2f85f0b2d0b8?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
       position: relative;
     }
 
-    .step-number {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: rgba(139, 92, 246, 0.12);
-      border: 1px solid rgba(139, 92, 246, 0.24);
-      font-weight: 800;
-      margin-bottom: 14px;
+    .showcase-image.orange {
+      background:
+        linear-gradient(135deg, rgba(244,63,94,0.7), rgba(249,115,22,0.45)),
+        url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
     }
 
-    .process-step h3 {
+    .showcase-image.blue {
+      background:
+        linear-gradient(135deg, rgba(59,130,246,0.6), rgba(14,165,233,0.4)),
+        url('https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
+    }
+
+    .showcase-body {
+      padding: 18px 18px 20px;
+    }
+
+    .showcase-body h3 {
       margin: 0 0 10px;
       font-size: 1.25rem;
     }
 
-    .process-step p {
+    .showcase-body p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .pricing-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px 22px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .pricing-card.featured {
+      background: linear-gradient(180deg, rgba(124,58,237,0.15), rgba(17,24,39,0.9));
+      border-color: rgba(167,139,250,0.7);
+      transform: scale(1.02);
+    }
+
+    .badge {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(34,197,94,0.12);
+      border: 1px solid rgba(34,197,94,0.25);
+      color: #9ae6b4;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .price {
+      font-size: 2.3rem;
+      font-weight: 900;
+      margin: 18px 0 8px;
+      letter-spacing: -0.05em;
+    }
+
+    .price small {
+      font-size: 1rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .pricing-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 18px 0 20px;
+      display: grid;
+      gap: 12px;
+      color: var(--muted);
+    }
+
+    .pricing-card li::before {
+      content: "✓ ";
+      color: var(--secondary);
+      font-weight: 900;
+    }
+
+    .cta {
+      display: block;
+      margin-top: 42px;
+      text-align: center;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .faq-item {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .faq-item h3 {
+      margin: 0 0 10px;
+      font-size: 1.12rem;
+    }
+
+    .faq-item p {
       margin: 0;
       color: var(--muted);
       line-height: 1.8;
@@ -655,49 +591,59 @@
       border-radius: 12px;
       display: grid;
       place-items: center;
-      background: rgba(139, 92, 246, 0.12);
-      border: 1px solid rgba(139, 92, 246, 0.25);
+      background: rgba(124,58,237,0.12);
+      border: 1px solid rgba(124,58,237,0.25);
       font-size: 1.2rem;
     }
 
     .form {
       display: grid;
       gap: 16px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--shadow);
     }
 
     .form input, .form textarea {
       width: 100%;
       border: 1px solid var(--border);
-      background: rgba(255,255,255,0.02);
       border-radius: 14px;
-      padding: 14px 16px;
+      background: rgba(255,255,255,0.02);
       color: var(--text);
+      padding: 14px 16px;
       font: inherit;
       outline: none;
     }
 
     .form textarea {
-      min-height: 160px;
+      min-height: 180px;
       resize: vertical;
     }
 
-    .form input::placeholder, .form textarea::placeholder {
+    .form input::placeholder,
+    .form textarea::placeholder {
       color: var(--muted);
     }
 
     footer {
       border-top: 1px solid var(--border);
-      padding: 28px 0 42px;
+      padding: 28px 0 40px;
       text-align: center;
       color: var(--muted);
     }
 
-    @media (max-width: 900px) {
-      .hero,
-      .about-grid,
-      .contact-grid,
-      .services-grid,
-      .process-grid {
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-grid,
+      .showcase-grid,
+      .pricing-grid,
+      .faq-grid,
+      .contact-grid {
         grid-template-columns: 1fr;
       }
 
@@ -709,10 +655,6 @@
         flex-wrap: wrap;
         justify-content: center;
         padding: 16px 0;
-      }
-
-      .nav-links {
-        justify-content: center;
       }
     }
 
@@ -730,9 +672,8 @@
         width: 100%;
       }
 
-      .projects-tools {
-        flex-direction: column;
-        align-items: stretch;
+      .nav-links {
+        justify-content: center;
       }
 
       .stats {
@@ -744,19 +685,21 @@
 <body>
   <header>
     <div class="container nav">
-      <div class="brand">Amir<span>.dev</span></div>
+      <div class="brand">
+        <span class="brand-mark">A</span>
+        AMIRXTNA
+      </div>
 
       <nav class="nav-links">
         <a href="#home">الرئيسية</a>
-        <a href="#about">من أنا</a>
-        <a href="#services">الخدمات</a>
-        <a href="#projects">المشاريع</a>
+        <a href="#features">المزايا</a>
+        <a href="#showcase">أعمالنا</a>
+        <a href="#pricing">التسعير</a>
         <a href="#contact">تواصل</a>
       </nav>
 
       <div class="nav-actions">
-        <button class="btn theme-toggle" id="themeToggle" aria-label="تبديل الثيم">☀️</button>
-        <a href="#contact" class="btn primary">اطلب خدمتي</a>
+        <a href="#contact" class="btn primary">ابدأ الآن</a>
       </div>
     </div>
   </header>
@@ -767,194 +710,234 @@
         <div>
           <div class="eyebrow">
             <span class="dot"></span>
-            متاح للتوظيف / العمل الحر
+            توليد صور وفيديوهات بالذكاء الاصطناعي
           </div>
 
           <h1>
-            أصمم مواقع <span class="gradient-text">احترافية</span>
-            وتطبيقات ذكية
+            أنشئ <span class="gradient-text">صورًا</span> و
+            <span class="gradient-text">فيديوهات</span>
+            في ثوانٍ
           </h1>
 
           <p>
-            أنا مطور ويب أُنشئ مواقع حديثة، سريعة، متجاوبة، ومُصممة بعناية لتجربة مستخدم ممتازة،
-            مع دمج المشاريع من GitHub، تطوير واجهات، وتحسين الأداء بشكل عملي ومريح.
+            AMIRXTNA يساعدك على إنتاج محتوى بصري احترافي بسرعة عالية:
+            صور جذابة، فيديوهات قصيرة، شخصيات متسقة، وجلسات إنشاء ذكية بالكامل.
           </p>
 
           <div class="hero-actions">
-            <a href="#projects" class="btn primary">عرض المشاريع</a>
-            <a href="#contact" class="btn">تواصل معي</a>
+            <a href="#pricing" class="btn primary">ابدأ الآن</a>
+            <a href="#showcase" class="btn">شاهد أمثلة</a>
           </div>
 
-          <div class="socials">
-            <a href="https://github.com/amirx7662-design" target="_blank" rel="noopener" aria-label="GitHub">🐙</a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">💼</a>
-            <a href="https://x.com" target="_blank" rel="noopener" aria-label="X">𝕏</a>
-            <a href="mailto:hello@amir.dev" aria-label="Email">✉️</a>
+          <div class="hero-stats">
+            <div class="mini-stat">
+              <strong>1.2M+</strong>
+              <span>توليد</span>
+            </div>
+            <div class="mini-stat">
+              <strong>20s</strong>
+              <span>فيديو</span>
+            </div>
+            <div class="mini-stat">
+              <strong>4K</strong>
+              <span>جودة</span>
+            </div>
           </div>
         </div>
 
-        <div class="hero-card">
-          <div class="mini-card">
-            <strong>الاهتمام:</strong> تطوير واجهات حديثة، تجربة مستخدم، ومواقع سريعة
-          </div>
+        <div class="hero-art">
+          <div class="orb one"></div>
+          <div class="orb two"></div>
 
-          <div class="code-window">
-            <div class="code-head">
-              <span class="circle red"></span>
-              <span class="circle yellow"></span>
-              <span class="circle green"></span>
+          <div class="glass">
+            <div class="glass-header">
+              <div class="dots">
+                <span class="dot-red"></span>
+                <span class="dot-yellow"></span>
+                <span class="dot-green"></span>
+              </div>
+              <span class="ai-chip">AI Studio</span>
             </div>
-            <pre><code>const profile = {
-  role: "Frontend Developer",
-  stack: ["HTML", "CSS", "JS", "React"],
-  focus: ["UX/UI", "Performance", "GitHub API"]
-};
 
-console.log("أنا أُصنع مواقع تليق بالمستقبل");</code></pre>
+            <div class="mock-panel">
+              <div class="prompt-box">
+                "فتاة أنيقة في مدينة المستقبل، إضاءة نيون، حركة بطيئة، فيديو سينمائي 20 ثانية"
+              </div>
+
+              <div class="grid-preview">
+                <div class="preview"></div>
+                <div class="preview two"></div>
+                <div class="preview three"></div>
+              </div>
+
+              <div class="stats-row">
+                <div class="mini-box">
+                  <strong>4K</strong>
+                  <span>جودة</span>
+                </div>
+                <div class="mini-box">
+                  <strong>20s</strong>
+                  <span>فيديو</span>
+                </div>
+                <div class="mini-box">
+                  <strong>AI</strong>
+                  <span>ذكي</span>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-heading">
+          <h2>ماذا يقدم AMIRXTNA؟</h2>
+          <p>حلول إبداعية للصور، الفيديو، والسياقات التسويقية.</p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🎨</div>
+            <h3>توليد الصور</h3>
+            <p>أنشئ صورًا عالية الجودة من أي فكرة أو نص، بأسلوب فني احترافي.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🎬</div>
+            <h3>توليد الفيديو</h3>
+            <p>اصنع فيديوهات قصيرة ومذهلة حتى 20 ثانية بتركيب بصري متقدم.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🧠</div>
+            <h3>محتوى ذكي</h3>
+            <p>استخدم نصوص قوية وملفات توضيحية لتوليد رسائل تسويقية أو فنية مخصصة.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>سرعة إنتاج</h3>
+            <p>تحويل الفكرة إلى إنتاج بصري في دقائق بدل ساعات طويلة من العمل اليدوي.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="showcase">
+      <div class="container">
+        <div class="section-heading">
+          <h2>أعمالنا ومشاريعنا</h2>
+          <p>نماذج من المحتوى الإبداعي الذي يمكن إنشاؤه.</p>
+        </div>
+
+        <div class="showcase-grid">
+          <div class="showcase-card">
+            <div class="showcase-image"></div>
+            <div class="showcase-body">
+              <h3>تصميم واقعي</h3>
+              <p>جرافيك سينمائي، إضاءة قوية، تفاصيل متعددة، ومرئيات احترافية.</p>
+            </div>
+          </div>
+
+          <div class="showcase-card">
+            <div class="showcase-image orange"></div>
+            <div class="showcase-body">
+              <h3>فيديو ماركات</h3>
+              <p>إعلانات قصيرة، فيديوهات للمنتجات، وترويج بصري كامل بأسلوب احترافي.</p>
+            </div>
+          </div>
+
+          <div class="showcase-card">
+            <div class="showcase-image blue"></div>
+            <div class="showcase-body">
+              <h3>تحريك بصري</h3>
+              <p>محتوى متحرك، لوحات فنية، رسومات مستقبلية، ومشاهد قصصية قوية.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="container">
+        <div class="section-heading">
+          <h2>خطط التسعير</h2>
+          <p>اختر الخطة المناسبة لاحتياجك.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <h3>Starter</h3>
+            <div class="price">49 <small>ريال/شهر</small></div>
+            <ul>
+              <li>500 صورة</li>
+              <li>20 فيديو قصير</li>
+              <li>مكتبة قوالب</li>
+              <li>دعم أساسي</li>
+            </ul>
+            <a href="#contact" class="btn">ابدأ الآن</a>
+          </div>
+
+          <div class="pricing-card featured">
+            <span class="badge">الأكثر شيوعًا</span>
+            <h3>Pro</h3>
+            <div class="price">149 <small>ريال/شهر</small></div>
+            <ul>
+              <li>5000 صورة</li>
+              <li>200 فيديو</li>
+              <li>توليد احترافي</li>
+              <li>دعم فوري</li>
+            </ul>
+            <a href="#contact" class="btn primary">ابدأ الآن</a>
+          </div>
+
+          <div class="pricing-card">
+            <h3>Studio</h3>
+            <div class="price">399 <small>ريال/شهر</small></div>
+            <ul>
+              <li>توليد غير محدود</li>
+              <li>فيديوهات طويلة</li>
+              <li>مخزون شخصي</li>
+              <li>مدير حساب</li>
+            </ul>
+            <a href="#contact" class="btn">ابدأ الآن</a>
+          </div>
+        </div>
+
+        <div class="cta">
+          <a href="#contact" class="btn primary">تحدث مع الفريق</a>
         </div>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <div class="stats">
-          <div class="stat">
-            <strong id="repoCount">0</strong>
-            <span>مشاريع منشورة</span>
-          </div>
-          <div class="stat">
-            <strong id="starCount">0</strong>
-            <span>نجوم GitHub</span>
-          </div>
-          <div class="stat">
-            <strong>4+</strong>
-            <span>سنوات خبرة</span>
-          </div>
-          <div class="stat">
-            <strong>100%</strong>
-            <span>تركيز على Details</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="about">
-      <div class="container">
         <div class="section-heading">
-          <h2>من أنا</h2>
-          <p>أبني مواقع سهلة، جذابة، مفيدة، وفعالة من حيث التنفيذ.</p>
+          <h2>الأسئلة الشائعة</h2>
+          <p>كل ما تريد معرفته عن AMIRXTNA.</p>
         </div>
 
-        <div class="about-grid">
-          <div class="card">
-            <p>
-              أعمل على تطوير المواقع وتقديم حلول ويب عملية تعتمد على التصميم الجيد،
-              تجربة المستخدم، وأداء سريع. أركز على تحويل الفكرة إلى واجهة متكاملة
-              ومميزة تساعدك في تحقيق الأهداف التشغيلية والتسويقية.
-            </p>
-
-            <div class="skills">
-              <span class="skill">HTML</span>
-              <span class="skill">CSS</span>
-              <span class="skill">JavaScript</span>
-              <span class="skill">React</span>
-              <span class="skill">Next.js</span>
-              <span class="skill">GitHub</span>
-              <span class="skill">Responsive</span>
-              <span class="skill">UI/UX</span>
-            </div>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h3>هل يمكن إنشاء صور من نص؟</h3>
+            <p>نعم، يمكنك كتابة وصف وتصميم، وبعدها يتم إنشاء صورة مناسبة للطلب.</p>
           </div>
 
-          <div class="card">
-            <p>
-              أستطيع بناء واجهات احترافية من الصفر، ربطها بـ APIs، تصميم صفحات
-              شخصية أو أعمال، أو تطوير موقع كامل لعرض خدماتك أو منتجاتك، مع تحسين
-              سهولة الاستخدام والهوية البصرية.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="services">
-      <div class="container">
-        <div class="section-heading">
-          <h2>الخدمات</h2>
-          <p>أقدم حلولاً تطويرية تناسب المشاريع الصغيرة والكبيرة.</p>
-        </div>
-
-        <div class="services-grid">
-          <div class="service-card">
-            <div class="icon-box">🌐</div>
-            <h3>تطوير المواقع</h3>
-            <p>بناء مواقع شخصية، شركات، خدمات، أو متجر صغير بتصميم أنيق ومتجاوب.</p>
+          <div class="faq-item">
+            <h3>هل الفيديو يكون بطول 20 ثانية؟</h3>
+            <p>نعم، يدعم النظام إنتاج فيديوهات قصيرة جدًا، بما في ذلك تنسيقات 10-20 ثانية.</p>
           </div>
 
-          <div class="service-card">
-            <div class="icon-box">⚡</div>
-            <h3>واجهة مستخدم</h3>
-            <p>تصميم صفحات جذابة، سهلة القراءة، وأزرار واضحة مع تجربة مستخدم مذهلة.</p>
+          <div class="faq-item">
+            <h3>هل مناسب للتسويق؟</h3>
+            <p>بالتأكيد، مناسب للإعلانات، محتوى السوشيال ميديا، المنتجات، والمؤسسات.</p>
           </div>
 
-          <div class="service-card">
-            <div class="icon-box">🧩</div>
-            <h3>تكاملات</h3>
-            <p>ربط واجهتك بـ APIs، GitHub، نماذج التواصل، ومكونات تفاعلية ذكية.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="projects">
-      <div class="container">
-        <div class="section-heading">
-          <h2>مشاريعي</h2>
-          <p>المشاريع المنشورة على GitHub يتم جلبها هنا تلقائيًا وعرضها بشكل أنيق.</p>
-        </div>
-
-        <div class="projects-tools">
-          <div class="search-box">
-            <span>🔍</span>
-            <input type="text" id="searchInput" placeholder="ابحث عن مشروع..." />
-          </div>
-        </div>
-
-        <div class="projects-grid" id="projectsGrid"></div>
-        <div class="empty-state" id="emptyState">لا توجد مشاريع مطابقة للبحث.</div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-heading">
-          <h2>كيف أعمل</h2>
-          <p>عملية واضحة وسريعة من الفكرة إلى التنفيذ.</p>
-        </div>
-
-        <div class="process-grid">
-          <div class="process-step">
-            <div class="step-number">1</div>
-            <h3>الفكرة</h3>
-            <p>أفهم هدفك، نوع الموقع، الجمهور، والنتيجة المرجوة من المشروع.</p>
-          </div>
-
-          <div class="process-step">
-            <div class="step-number">2</div>
-            <h3>التصميم</h3>
-            <p>أبني التخطيط البصري، الألوان، والخطوط حتى يليق بالمشروع.</p>
-          </div>
-
-          <div class="process-step">
-            <div class="step-number">3</div>
-            <h3>التطوير</h3>
-            <p>أكتب الكود، أضيف التفاعل، وأضمن أن الموقع يعمل بشكل متجاوب.</p>
-          </div>
-
-          <div class="process-step">
-            <div class="step-number">4</div>
-            <h3>الإطلاق</h3>
-            <p>أراجع، أحسن الأداء، وأجهز الموقع للنشر النهائي.</p>
+          <div class="faq-item">
+            <h3>هل الصور قابلة للاستخدام التجاري؟</h3>
+            <p>نعم، وفق سياسة الخطة المختارة، ويمكن استخدامها لتسويق العلامة التجارية.</p>
           </div>
         </div>
       </div>
@@ -963,17 +946,17 @@ console.log("أنا أُصنع مواقع تليق بالمستقبل");</code><
     <section class="section" id="contact">
       <div class="container">
         <div class="section-heading">
-          <h2>تواصل معي</h2>
-          <p>إذا لديك فكرة أو مشروع تحتاج إليه، تواصل معي الآن.</p>
+          <h2>تواصل معنا</h2>
+          <p>ابدأ مشروعك الذكي اليوم.</p>
         </div>
 
         <div class="contact-grid">
           <div class="details">
             <div class="detail-item">
-              <div class="detail-icon">📧</div>
+              <div class="detail-icon">✉️</div>
               <div>
                 <strong>Email</strong><br />
-                <span>hello@amir.dev</span>
+                <span>hello@amirxtna.com</span>
               </div>
             </div>
 
@@ -986,21 +969,20 @@ console.log("أنا أُصنع مواقع تليق بالمستقبل");</code><
             </div>
 
             <div class="detail-item">
-              <div class="detail-icon">🕒</div>
+              <div class="detail-icon">⚡</div>
               <div>
-                <strong>متاح</strong><br />
-                <span>للمشاريع الجديدة</span>
+                <strong>الإستجابة</strong><br />
+                <span>في أقل من 24 ساعة</span>
               </div>
             </div>
           </div>
 
-          <div class="card">
-            <form class="form" onsubmit="event.preventDefault();">
-              <input type="text" placeholder="الاسم" />
-              <input type="email" placeholder="البريد الإلكتروني" />
-              <textarea placeholder="اكتب مشروعك أو طلبك هنا..."></textarea>
-              <button class="btn primary" type="submit">إرسال الرسالة</button>
-            </form>
+          <div class="form">
+            <input type="text" placeholder="الاسم الكامل" />
+            <input type="email" placeholder="البريد الإلكتروني" />
+            <input type="text" placeholder="اسم الشركة أو المشروع" />
+            <textarea placeholder="وصف احتياجك ..."></textarea>
+            <button class="btn primary" type="button">إرسال الطلب</button>
           </div>
         </div>
       </div>
@@ -1009,147 +991,20 @@ console.log("أنا أُصنع مواقع تليق بالمستقبل");</code><
 
   <footer>
     <div class="container">
-      © 2026 | جميع الحقوق محفوظة
+      © 2026 AMIRXTNA — كل الحقوق محفوظة
     </div>
   </footer>
 
   <script>
-    const username = "amirx7662-design";
-    const projectsGrid = document.getElementById("projectsGrid");
-    const searchInput = document.getElementById("searchInput");
-    const emptyState = document.getElementById("emptyState");
-    const repoCount = document.getElementById("repoCount");
-    const starCount = document.getElementById("starCount");
     const themeToggle = document.getElementById("themeToggle");
-
-    let allRepos = [];
-
-    function setTheme(theme) {
-      const body = document.body;
-      if (theme === "light") {
-        body.classList.add("light");
-        themeToggle.textContent = "🌙";
-      } else {
-        body.classList.remove("light");
-        themeToggle.textContent = "☀️";
-      }
-      localStorage.setItem("theme", theme);
-    }
-
-    function initTheme() {
-      const savedTheme = localStorage.getItem("theme");
-      if (savedTheme) {
-        setTheme(savedTheme);
-      } else {
-        setTheme("dark");
-      }
-    }
-
-    themeToggle.addEventListener("click", () => {
-      const isLight = document.body.classList.contains("light");
-      setTheme(isLight ? "dark" : "light");
-    });
-
-    async function fetchUser() {
-      const res = await fetch(`https://api.github.com/users/${username}`);
-      if (!res.ok) throw new Error("اسم المستخدم غير صحيح أو هناك مشكلة في الاتصال.");
-      return await res.json();
-    }
-
-    async function fetchRepos() {
-      const res = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
-      if (!res.ok) throw new Error("تعذّر جلب المشاريع.");
-      const repos = await res.json();
-
-      const validRepos = repos
-        .filter(repo => !repo.fork)
-        .sort((a, b) => b.stargazers_count - a.stargazers_count);
-
-      return validRepos;
-    }
-
-    function renderProjects(repos) {
-      projectsGrid.innerHTML = "";
-
-      if (!repos.length) {
-        emptyState.style.display = "block";
-        return;
-      }
-
-      emptyState.style.display = "none";
-
-      repos.forEach(repo => {
-        const card = document.createElement("article");
-        card.className = "project-card";
-
-        const language = repo.language || "Multi";
-        const description = repo.description || "لا يوجد وصف لهذا المشروع بعد.";
-        const homepage = repo.homepage && repo.homepage.startsWith("http")
-          ? `<a class="project-link" href="${repo.homepage}" target="_blank" rel="noopener">رابط المشروع</a>`
-          : "";
-
-        const githubLink = `
-          <a class="project-link" href="${repo.html_url}" target="_blank" rel="noopener">GitHub</a>
-        `;
-
-        card.innerHTML = `
-          <div class="project-top">
-            <h3 class="project-name">${repo.name}</h3>
-            <span class="project-language">${language}</span>
-          </div>
-
-          <div class="project-desc">${description}</div>
-
-          <div class="project-meta">
-            <span class="stars">⭐ ${repo.stargazers_count}</span>
-            <div class="links">
-              ${homepage}
-              ${githubLink}
-            </div>
-          </div>
-        `;
-
-        projectsGrid.appendChild(card);
+    if (themeToggle) {
+      const saved = localStorage.getItem("amirxtna-theme");
+      if (saved === "light") document.body.classList.add("light");
+      themeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("light");
+        localStorage.setItem("amirxtna-theme", document.body.classList.contains("light") ? "light" : "dark");
       });
     }
-
-    function filterProjects(value) {
-      const term = value.trim().toLowerCase();
-      const filtered = allRepos.filter(repo => {
-        const text = `${repo.name} ${repo.description || ""} ${repo.language || ""}`.toLowerCase();
-        return text.includes(term);
-      });
-
-      renderProjects(filtered);
-    }
-
-    searchInput.addEventListener("input", (e) => {
-      filterProjects(e.target.value);
-    });
-
-    async function init() {
-      try {
-        const user = await fetchUser();
-        const repos = await fetchRepos();
-
-        allRepos = repos;
-        renderProjects(repos);
-
-        repoCount.textContent = repos.length;
-        starCount.textContent = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
-
-        document.title = `${user.name || "Amir"} | Portfolio`;
-      } catch (error) {
-        projectsGrid.innerHTML = `
-          <div class="card" style="grid-column: 1 / -1; text-align:center;">
-            <p style="margin:0; color: var(--muted);">${error.message}</p>
-          </div>
-        `;
-      }
-    }
-
-    initTheme();
-    init();
   </script>
 </body>
 </html>
