@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AMIRXTNA | AI Studio</title>
-  <meta name="description" content="AMIRXTNA — منصة إنشاء صور وفيديوهات ومحتوى ذكي بواسطة الذكاء الاصطناعي." />
   <style>
     :root {
       --bg: #060816;
@@ -17,40 +16,31 @@
       --primary-2: #a855f7;
       --secondary: #22c55e;
       --accent: #38bdf8;
-      --pink: #ec4899;
-      --orange: #f59e0b;
       --border: rgba(148, 163, 184, 0.18);
       --shadow: 0 24px 60px rgba(0,0,0,0.38);
-      --soft-shadow: 0 16px 30px rgba(0,0,0,0.22);
-      --code-bg: rgba(15, 23, 42, 0.9);
     }
 
-    * { box-sizing: border-box; scroll-behavior: smooth; }
-
+    * { box-sizing: border-box; }
     html, body {
       margin: 0;
       padding: 0;
       font-family: "Tahoma", "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(124, 58, 237, 0.24), transparent 30%),
-        radial-gradient(circle at top right, rgba(56, 189, 248, 0.16), transparent 32%),
-        linear-gradient(135deg, var(--bg), var(--bg-2), var(--bg-3));
+      background: radial-gradient(circle at top left, rgba(124,58,237,0.25), transparent 30%), linear-gradient(135deg, var(--bg), var(--bg-2), var(--bg-3));
       color: var(--text);
       line-height: 1.7;
     }
 
     a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
 
     .container {
-      width: min(1200px, 92%);
+      width: min(1180px, 92%);
       margin: 0 auto;
     }
 
     header {
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 20;
       backdrop-filter: blur(18px);
       background: rgba(6,8,22,0.45);
       border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -69,105 +59,59 @@
       align-items: center;
       gap: 10px;
       font-weight: 900;
-      letter-spacing: 0.06em;
       font-size: 1.5rem;
+      letter-spacing: 0.04em;
     }
 
     .brand-mark {
-      width: 38px;
-      height: 38px;
+      width: 38px; height: 38px;
       border-radius: 12px;
+      display: grid; place-items: center;
       background: linear-gradient(135deg, var(--primary), var(--accent));
-      display: grid;
-      place-items: center;
-      box-shadow: 0 0 25px rgba(124, 58, 237, 0.8);
-      font-size: 0.9rem;
-      font-weight: 900;
+      box-shadow: 0 0 25px rgba(124,58,237,0.8);
     }
 
     .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
+      display: flex; gap: 18px; align-items: center; flex-wrap: wrap;
     }
 
     .nav-links a {
       color: var(--muted);
       font-weight: 600;
-      transition: color 0.2s ease;
-    }
-
-    .nav-links a:hover { color: var(--text); }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
     }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 12px 20px;
-      border-radius: 14px;
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 700;
       border: 1px solid var(--border);
       background: rgba(255,255,255,0.02);
       color: var(--text);
-      font-weight: 700;
       cursor: pointer;
-      transition: 0.25s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--soft-shadow);
     }
 
     .btn.primary {
       background: linear-gradient(135deg, var(--primary), var(--primary-2));
       border: none;
-      box-shadow: 0 0 25px rgba(124, 58, 237, 0.45);
+      box-shadow: 0 0 25px rgba(124,58,237,0.45);
     }
 
     .section { padding: 90px 0; }
 
     .hero {
       display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
-      align-items: center;
+      grid-template-columns: 1fr 1fr;
       gap: 32px;
-      min-height: 82vh;
-    }
-
-    .eyebrow {
-      display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 8px 14px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      background: rgba(255,255,255,0.02);
-      color: var(--muted);
-      font-size: 0.82rem;
-      margin-bottom: 18px;
-    }
-
-    .dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--secondary);
-      box-shadow: 0 0 15px rgba(34,197,94,0.7);
+      min-height: 80vh;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(2.7rem, 6vw, 5rem);
-      line-height: 1.06;
-      letter-spacing: -0.06em;
+      font-size: clamp(2.7rem, 4vw, 5rem);
+      line-height: 1.1;
+      letter-spacing: -0.05em;
     }
 
     .gradient-text {
@@ -178,103 +122,64 @@
     }
 
     .hero p {
-      color: var(--muted);
-      max-width: 680px;
       margin: 22px 0 28px;
-      font-size: 1.08rem;
+      color: var(--muted);
+      font-size: 1.06rem;
+      max-width: 650px;
     }
 
     .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 30px;
+      display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 24px;
     }
 
-    .hero-stats {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
+    .stats-box {
+      display: flex; gap: 16px; flex-wrap: wrap;
     }
 
-    .mini-stat {
-      background: rgba(255,255,255,0.025);
+    .chip {
+      background: rgba(255,255,255,0.03);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 10px 14px;
       min-width: 120px;
     }
 
-    .mini-stat strong { display: block; font-size: 1.2rem; }
-    .mini-stat span { color: var(--muted); font-size: 0.85rem; }
+    .chip strong { display: block; font-size: 1.15rem; }
+    .chip span { color: var(--muted); font-size: 0.82rem; }
 
-    .hero-art {
-      position: relative;
-      display: grid;
-      place-items: center;
-      min-height: 500px;
-    }
-
-    .orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(10px);
-      opacity: 0.9;
-    }
-
-    .orb.one {
-      width: 260px;
-      height: 260px;
-      background: radial-gradient(circle, rgba(124,58,237,0.9), rgba(124,58,237,0.1));
-      top: 40px;
-      left: 80px;
-    }
-
-    .orb.two {
-      width: 320px;
-      height: 320px;
-      background: radial-gradient(circle, rgba(56,189,248,0.95), rgba(56,189,248,0.12));
-      bottom: 40px;
-      right: 60px;
-    }
-
-    .glass {
-      position: relative;
-      width: min(100%, 470px);
-      background: rgba(17, 24, 39, 0.56);
+    .preview-panel {
+      background: rgba(17,24,39,0.7);
       border: 1px solid var(--border);
-      border-radius: 30px;
+      border-radius: 28px;
       overflow: hidden;
+      position: relative;
       box-shadow: var(--shadow);
-      backdrop-filter: blur(16px);
     }
 
-    .glass-header {
+    .panel-head {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       padding: 18px 20px;
       border-bottom: 1px solid var(--border);
-      background: rgba(255,255,255,0.02);
     }
 
-    .dots { display: flex; align-items: center; gap: 8px; }
+    .dots { display: flex; gap: 8px; }
     .dot-red { width: 10px; height: 10px; border-radius: 50%; background: #ff5f56; }
     .dot-yellow { width: 10px; height: 10px; border-radius: 50%; background: #ffbd2e; }
     .dot-green { width: 10px; height: 10px; border-radius: 50%; background: #27c93f; }
 
-    .ai-chip {
+    .ai-badge {
       padding: 7px 12px;
       border-radius: 999px;
       background: rgba(56,189,248,0.12);
       border: 1px solid rgba(56,189,248,0.25);
       color: #a5f3fc;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 700;
     }
 
-    .mock-panel {
+    .panel-body {
       padding: 18px;
       display: grid;
       gap: 16px;
@@ -286,51 +191,49 @@
       border-radius: 18px;
       padding: 16px 18px;
       color: var(--muted);
-      min-height: 90px;
-      display: flex;
-      align-items: center;
+      min-height: 92px;
+      display: flex; align-items: center;
     }
 
-    .grid-preview {
+    .preview-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 14px;
+      gap: 12px;
     }
 
-    .preview {
+    .img-box {
       min-height: 180px;
       border-radius: 18px;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(124,58,237,0.7), rgba(56,189,248,0.35));
       position: relative;
       overflow: hidden;
-      border: 1px solid var(--border);
-      background: linear-gradient(135deg, rgba(124,58,237,0.48), rgba(56,189,248,0.35));
     }
 
-    .preview::before {
+    .img-box::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(130deg, rgba(255,255,255,0.18), transparent 45%),
-                  radial-gradient(circle at 30% 30%, rgba(255,255,255,0.28), transparent 25%);
+      background: linear-gradient(130deg, rgba(255,255,255,0.20), transparent 45%), radial-gradient(circle at 30% 30%, rgba(255,255,255,0.28), transparent 25%);
     }
 
-    .preview.two {
-      background: linear-gradient(135deg, rgba(236,72,153,0.36), rgba(249,115,22,0.35));
+    .img-box.orange {
+      background: linear-gradient(135deg, rgba(244,63,94,0.7), rgba(249,115,22,0.45));
     }
 
-    .preview.three {
+    .img-box.full {
       grid-column: 1 / -1;
       min-height: 150px;
       background: linear-gradient(135deg, rgba(34,197,94,0.38), rgba(59,130,246,0.32));
     }
 
-    .stats-row {
+    .quota-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
     }
 
-    .mini-box {
+    .quota-item {
       background: rgba(255,255,255,0.03);
       border: 1px solid var(--border);
       border-radius: 14px;
@@ -338,20 +241,15 @@
       text-align: center;
     }
 
-    .mini-box strong {
-      display: block;
-      font-size: 1.2rem;
-      font-weight: 800;
-    }
-
-    .mini-box span { color: var(--muted); font-size: 0.8rem; }
+    .quota-item strong { display: block; font-size: 1.15rem; }
+    .quota-item span { color: var(--muted); font-size: 0.8rem; }
 
     .section-heading {
-      margin-bottom: 28px;
+      margin-bottom: 26px;
     }
 
     .section-heading h2 {
-      margin: 0 0 10px;
+      margin: 0 0 8px;
       font-size: clamp(1.9rem, 4vw, 3rem);
     }
 
@@ -373,28 +271,20 @@
       border-radius: 22px;
       padding: 22px 20px;
       box-shadow: var(--shadow);
-      transition: transform 0.24s ease, border-color 0.24s ease;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(124,58,237,0.75);
     }
 
     .feature-icon {
-      width: 52px;
-      height: 52px;
+      width: 52px; height: 52px;
       border-radius: 14px;
-      display: grid;
-      place-items: center;
-      background: rgba(124,58,237,0.14);
-      border: 1px solid rgba(124,58,237,0.3);
+      display: grid; place-items: center;
+      background: rgba(124,58,237,0.12);
+      border: 1px solid rgba(124,58,237,0.25);
       font-size: 1.4rem;
       margin-bottom: 16px;
     }
 
     .feature-card h3 {
-      margin: 0 0 12px;
+      margin: 0 0 10px;
       font-size: 1.3rem;
     }
 
@@ -404,52 +294,43 @@
       line-height: 1.8;
     }
 
-    .showcase-grid {
+    .tool-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 22px;
+      gap: 20px;
     }
 
-    .showcase-card {
+    .tool-card {
       background: rgba(17,24,39,0.7);
       border: 1px solid var(--border);
-      border-radius: 24px;
+      border-radius: 22px;
+      padding: 22px 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .tool-card h3 { margin: 0 0 10px; }
+    .tool-card p { margin: 0; color: var(--muted); line-height: 1.8; }
+
+    .terminal {
+      background: rgba(15,23,42,0.9);
+      border: 1px solid var(--border);
+      border-radius: 20px;
       overflow: hidden;
       box-shadow: var(--shadow);
     }
 
-    .showcase-image {
-      height: 240px;
-      background:
-        linear-gradient(135deg, rgba(124,58,237,0.7), rgba(34,197,94,0.34)),
-        url('https://images.unsplash.com/photo-1715520703953-2f85f0b2d0b8?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
-      position: relative;
+    .terminal-head {
+      display: flex; align-items: center; gap: 8px;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
     }
 
-    .showcase-image.orange {
-      background:
-        linear-gradient(135deg, rgba(244,63,94,0.7), rgba(249,115,22,0.45)),
-        url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
-    }
-
-    .showcase-image.blue {
-      background:
-        linear-gradient(135deg, rgba(59,130,246,0.6), rgba(14,165,233,0.4)),
-        url('https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
-    }
-
-    .showcase-body {
-      padding: 18px 18px 20px;
-    }
-
-    .showcase-body h3 {
-      margin: 0 0 10px;
-      font-size: 1.25rem;
-    }
-
-    .showcase-body p {
-      margin: 0;
-      color: var(--muted);
+    .terminal-body {
+      padding: 18px 18px 22px;
+      font-family: Consolas, monospace;
+      color: #dbeafe;
+      line-height: 1.8;
     }
 
     .pricing-grid {
@@ -475,13 +356,12 @@
 
     .badge {
       position: absolute;
-      top: 18px;
-      left: 18px;
+      top: 18px; left: 18px;
       padding: 7px 10px;
       border-radius: 999px;
       background: rgba(34,197,94,0.12);
       border: 1px solid rgba(34,197,94,0.25);
-      color: #9ae6b4;
+      color: #b7f7c9;
       font-size: 0.78rem;
       font-weight: 700;
     }
@@ -493,19 +373,11 @@
       letter-spacing: -0.05em;
     }
 
-    .price small {
-      font-size: 1rem;
-      color: var(--muted);
-      font-weight: 600;
-    }
+    .price small { font-size: 1rem; color: var(--muted); font-weight: 600; }
 
     .pricing-card ul {
-      list-style: none;
-      padding: 0;
-      margin: 18px 0 20px;
-      display: grid;
-      gap: 12px;
-      color: var(--muted);
+      list-style: none; padding: 0; margin: 18px 0 20px;
+      display: grid; gap: 12px; color: var(--muted);
     }
 
     .pricing-card li::before {
@@ -534,80 +406,42 @@
       box-shadow: var(--shadow);
     }
 
-    .faq-item h3 {
-      margin: 0 0 10px;
-      font-size: 1.12rem;
-    }
+    .faq-item h3 { margin: 0 0 10px; font-size: 1.12rem; }
+    .faq-item p { margin: 0; color: var(--muted); line-height: 1.8; }
 
-    .faq-item p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.8;
-    }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; align-items: start; }
 
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 26px;
-      align-items: start;
-    }
-
-    .details {
-      display: grid;
-      gap: 18px;
-    }
+    .details { display: grid; gap: 18px; }
 
     .detail-item {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 16px 18px;
-      box-shadow: var(--shadow);
+      display: flex; align-items: center; gap: 14px;
+      background: var(--panel); border: 1px solid var(--border); border-radius: 18px;
+      padding: 16px 18px; box-shadow: var(--shadow);
     }
 
     .detail-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      background: rgba(124,58,237,0.12);
-      border: 1px solid rgba(124,58,237,0.25);
+      width: 44px; height: 44px; border-radius: 12px;
+      display: grid; place-items: center;
+      background: rgba(124,58,237,0.12); border: 1px solid rgba(124,58,237,0.25);
       font-size: 1.2rem;
     }
 
     .form {
-      display: grid;
-      gap: 16px;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 24px;
-      box-shadow: var(--shadow);
+      display: grid; gap: 16px;
+      background: var(--panel); border: 1px solid var(--border);
+      border-radius: 24px; padding: 24px; box-shadow: var(--shadow);
     }
 
     .form input, .form textarea {
-      width: 100%;
-      border: 1px solid var(--border);
+      width: 100%; border: 1px solid var(--border);
       border-radius: 14px;
       background: rgba(255,255,255,0.02);
       color: var(--text);
-      padding: 14px 16px;
-      font: inherit;
-      outline: none;
+      padding: 14px 16px; font: inherit; outline: none;
     }
 
-    .form textarea {
-      min-height: 180px;
-      resize: vertical;
-    }
-
-    .form input::placeholder, .form textarea::placeholder {
-      color: var(--muted);
-    }
+    .form textarea { min-height: 180px; resize: vertical; }
+    .form input::placeholder, .form textarea::placeholder { color: var(--muted); }
 
     footer {
       border-top: 1px solid var(--border);
@@ -617,7 +451,7 @@
     }
 
     @media (max-width: 980px) {
-      .hero, .feature-grid, .showcase-grid, .pricing-grid, .faq-grid, .contact-grid {
+      .hero, .contact-grid, .feature-grid, .tool-grid, .pricing-grid, .faq-grid {
         grid-template-columns: 1fr;
       }
 
@@ -635,9 +469,7 @@
         align-items: stretch;
       }
       .btn { width: 100%; }
-      .nav-links {
-        justify-content: center;
-      }
+      .nav-links { justify-content: center; }
     }
   </style>
 </head>
@@ -652,7 +484,7 @@
       <nav class="nav-links">
         <a href="#home">الرئيسية</a>
         <a href="#features">المزايا</a>
-        <a href="#showcase">أعمالنا</a>
+        <a href="#tools">الأدوات</a>
         <a href="#pricing">التسعير</a>
         <a href="#contact">تواصل</a>
       </nav>
@@ -679,69 +511,64 @@
           </h1>
 
           <p>
-            AMIRXTNA يساعدك على إنتاج محتوى بصري احترافي بسرعة عالية:
-            صور جذابة، فيديوهات قصيرة، شخصيات متسقة، وجلسات إنشاء ذكية بالكامل.
+            AMIRXTNA منصة ذكية لإنتاج الصور، الفيديوهات، والمحتوى الإبداعي من خلال أوامر نصية بسيطة
+            مع تجربة مستخدم سريعة، احترافية، وواجهة مستقبلية.
           </p>
 
           <div class="hero-actions">
             <a href="#pricing" class="btn primary">ابدأ الآن</a>
-            <a href="#showcase" class="btn">شاهد أمثلة</a>
+            <a href="#tools" class="btn">استكشف الأدوات</a>
           </div>
 
-          <div class="hero-stats">
-            <div class="mini-stat">
+          <div class="stats-box">
+            <div class="chip">
               <strong>1.2M+</strong>
               <span>توليد</span>
             </div>
-            <div class="mini-stat">
+            <div class="chip">
               <strong>20s</strong>
               <span>فيديو</span>
             </div>
-            <div class="mini-stat">
+            <div class="chip">
               <strong>4K</strong>
               <span>جودة</span>
             </div>
           </div>
         </div>
 
-        <div class="hero-art">
-          <div class="orb one"></div>
-          <div class="orb two"></div>
+        <div class="preview-panel">
+          <div class="panel-head">
+            <div class="dots">
+              <span class="dot-red"></span>
+              <span class="dot-yellow"></span>
+              <span class="dot-green"></span>
+            </div>
+            <span class="ai-badge">AI Studio</span>
+          </div>
 
-          <div class="glass">
-            <div class="glass-header">
-              <div class="dots">
-                <span class="dot-red"></span>
-                <span class="dot-yellow"></span>
-                <span class="dot-green"></span>
-              </div>
-              <span class="ai-chip">AI Studio</span>
+          <div class="panel-body">
+            <div class="prompt-box">
+              "فتاة أنيقة في مدينة المستقبل، إضاءة نيون، حركة بطيئة، فيديو سينمائي 20 ثانية"
             </div>
 
-            <div class="mock-panel">
-              <div class="prompt-box">
-                "فتاة أنيقة في مدينة المستقبل، إضاءة نيون، حركة بطيئة، فيديو سينمائي 20 ثانية"
-              </div>
+            <div class="preview-grid">
+              <div class="img-box"></div>
+              <div class="img-box orange"></div>
+              <div class="img-box full"></div>
+            </div>
 
-              <div class="grid-preview">
-                <div class="preview"></div>
-                <div class="preview two"></div>
-                <div class="preview three"></div>
+            <div class="quota-grid">
+              <div class="quota-item">
+                <strong>5</strong>
+                <span>محادثات</span>
               </div>
-
-              <div class="stats-row">
-                <div class="mini-box">
-                  <strong>4K</strong>
-                  <span>جودة</span>
-                </div>
-                <div class="mini-box">
-                  <strong>20s</strong>
-                  <span>فيديو</span>
-                </div>
-                <div class="mini-box">
-                  <strong>AI</strong>
-                  <span>ذكي</span>
-                </div>
+              <div class="quota-item">
+                <strong>10</strong>
+                <span>صور</span>
+              </div>
+              <div class="quota-item">
+                <strong>5</strong>
+                <span>فيديوهات</span>
               </div>
             </div>
           </div>
@@ -760,60 +587,74 @@
           <div class="feature-card">
             <div class="feature-icon">🎨</div>
             <h3>توليد الصور</h3>
-            <p>أنشئ صورًا عالية الجودة من أي فكرة أو نص، بأسلوب فني احترافي.</p>
+            <p>أنشئ صورًا عالية الجودة من أي فكرة أو نص بأسلوب فني احترافي.</p>
           </div>
 
           <div class="feature-card">
             <div class="feature-icon">🎬</div>
             <h3>توليد الفيديو</h3>
-            <p>اصنع فيديوهات قصيرة ومذهلة حتى 20 ثانية بتركيب بصري متقدم.</p>
+            <p>اصنع فيديوهات قصيرة ومذهلة حتى 20 ثانية باستخدام أوامر نصية.</p>
           </div>
 
           <div class="feature-card">
             <div class="feature-icon">🧠</div>
             <h3>محتوى ذكي</h3>
-            <p>استخدم نصوص قوية وملفات توضيحية لتوليد رسائل تسويقية أو فنية مخصصة.</p>
+            <p>استخرج أفكارًا، نصوصًا، ومقترحات تسويقية بدقة وسرعة.</p>
           </div>
 
           <div class="feature-card">
             <div class="feature-icon">⚡</div>
             <h3>سرعة إنتاج</h3>
-            <p>تحويل الفكرة إلى إنتاج بصري في دقائق بدل ساعات طويلة من العمل اليدوي.</p>
+            <p>تحويل الفكرة إلى إنتاج بصري في دقائق بدل ساعات طويلة من العمل.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="showcase">
+    <section class="section" id="tools">
       <div class="container">
         <div class="section-heading">
-          <h2>أعمالنا ومشاريعنا</h2>
-          <p>نماذج من المحتوى الإبداعي الذي يمكن إنشاؤه.</p>
+          <h2>الأدوات</h2>
+          <p>مناسب للأعمال، السوشيال ميديا، التسويق، والهوية البصرية.</p>
         </div>
 
-        <div class="showcase-grid">
-          <div class="showcase-card">
-            <div class="showcase-image"></div>
-            <div class="showcase-body">
-              <h3>تصميم واقعي</h3>
-              <p>جرافيك سينمائي، إضاءة قوية، تفاصيل متعددة، ومرئيات احترافية.</p>
-            </div>
+        <div class="tool-grid">
+          <div class="tool-card">
+            <h3>Chat AI</h3>
+            <p>أسئلة، أفكار، اقتراحات، وكتابة محتوى سريع مع توليد نصي ذكي.</p>
           </div>
 
-          <div class="showcase-card">
-            <div class="showcase-image orange"></div>
-            <div class="showcase-body">
-              <h3>فيديو ماركات</h3>
-              <p>إعلانات قصيرة، فيديوهات للمنتجات، وترويج بصري كامل بأسلوب احترافي.</p>
-            </div>
+          <div class="tool-card">
+            <h3>Image Generator</h3>
+            <p>توليد صور فنية، غلافات، شخصيات، واجهات، وتصاميم بصرية متقدمة.</p>
           </div>
 
-          <div class="showcase-card">
-            <div class="showcase-image blue"></div>
-            <div class="showcase-body">
-              <h3>تحريك بصري</h3>
-              <p>محتوى متحرك، لوحات فنية، رسومات مستقبلية، ومشاهد قصصية قوية.</p>
-            </div>
+          <div class="tool-card">
+            <h3>Video Generator</h3>
+            <p>إنشاء فيديوهات قصيرة من الأوامر النصية، ومشاهد مستقبلية قصيرة.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>واجهة التشغيل الذكي</h2>
+          <p>التجربة الأساسية جاهزة للتفعيل والتحقق للأدوات.</p>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-head">
+            <span class="dot-red"></span>
+            <span class="dot-yellow"></span>
+            <span class="dot-green"></span>
+          </div>
+          <div class="terminal-body">
+            <div>&gt; prompt: "صورة امرأة عربية بأسلوب فني حديث"</div>
+            <div>&gt; mode: image</div>
+            <div>&gt; quota: 10 / 10 remaining</div>
+            <div>&gt; status: ready</div>
           </div>
         </div>
       </div>
@@ -823,7 +664,7 @@
       <div class="container">
         <div class="section-heading">
           <h2>خطط التسعير</h2>
-          <p>اختر الخطة المناسبة لاحتياجك.</p>
+          <p>اختر الخطة المناسبة لك.</p>
         </div>
 
         <div class="pricing-grid">
@@ -835,7 +676,6 @@
               <li>10 صور يوميًا</li>
               <li>5 فيديوهات يوميًا</li>
               <li>إمكانية التجربة الأساسية</li>
-              <li>بدء الاستخدام فورًا</li>
             </ul>
             <a href="#contact" class="btn">ابدأ الآن</a>
           </div>
@@ -849,7 +689,6 @@
               <li>صور غير محدودة</li>
               <li>فيديوهات متقدمة</li>
               <li>دعم أسرع</li>
-              <li>تجربة احترافية</li>
             </ul>
             <a href="#contact" class="btn primary">ابدأ الآن</a>
           </div>
@@ -862,7 +701,6 @@
               <li>إنتاج احترافي منسق</li>
               <li>مخزون شخصي</li>
               <li>دعم مخصص</li>
-              <li>تجهيز المشاريع الكبيرة</li>
             </ul>
             <a href="#contact" class="btn">ابدأ الآن</a>
           </div>
@@ -884,22 +722,22 @@
         <div class="faq-grid">
           <div class="faq-item">
             <h3>هل يمكن إنشاء صور من نص؟</h3>
-            <p>نعم، يمكنك كتابة وصف وتصميم، وبعدها يتم إنشاء صورة مناسبة للطلب.</p>
+            <p>نعم، يمكنك كتابة وصف وتعليمات، ثم النظام يولّد لك صورًا مناسبة للطلب.</p>
           </div>
 
           <div class="faq-item">
             <h3>هل الفيديو يكون بطول 20 ثانية؟</h3>
-            <p>نعم، يدعم النظام إنتاج فيديوهات قصيرة جدًا، بما في ذلك تنسيقات 10-20 ثانية.</p>
+            <p>نعم، يدعم النظام فيديوهات قصيرة جدًا مثل 10-20 ثانية بمرونة عالية.</p>
           </div>
 
           <div class="faq-item">
             <h3>هل مناسب للتسويق؟</h3>
-            <p>بالتأكيد، مناسب للإعلانات، محتوى السوشيال ميديا، المنتجات، والمؤسسات.</p>
+            <p>بالتأكيد، مناسب للإعلانات، السوشيال ميديا، المنتجات والمؤسسات.</p>
           </div>
 
           <div class="faq-item">
             <h3>هل الصور قابلة للاستخدام التجاري؟</h3>
-            <p>نعم، وفق سياسة الخطة المختارة، ويمكن استخدامها لتسويق العلامة التجارية.</p>
+            <p>نعم، وفق الخطة المختارة وسياسة الاستخدام المتفق عليها.</p>
           </div>
         </div>
       </div>
