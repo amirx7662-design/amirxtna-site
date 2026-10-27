@@ -4,14 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AMIRXTNA | AI Studio</title>
-  <meta name="description" content="AMIRXTNA — منصة Generation AI لتوليد الصور والفيديوهات والمحتوى الإبداعي." />
+  <meta name="description" content="AMIRXTNA — منصة إنشاء صور وفيديوهات ومحتوى ذكي بواسطة الذكاء الاصطناعي." />
   <style>
     :root {
       --bg: #060816;
       --bg-2: #0b1020;
       --bg-3: #111827;
-      --panel: rgba(17, 24, 39, 0.78);
-      --panel-strong: rgba(15, 23, 42, 0.95);
+      --panel: rgba(17, 24, 39, 0.82);
       --text: #f8fafc;
       --muted: #cbd5e1;
       --primary: #7c3aed;
@@ -20,10 +19,10 @@
       --accent: #38bdf8;
       --pink: #ec4899;
       --orange: #f59e0b;
-      --danger: #ef4444;
       --border: rgba(148, 163, 184, 0.18);
       --shadow: 0 24px 60px rgba(0,0,0,0.38);
       --soft-shadow: 0 16px 30px rgba(0,0,0,0.22);
+      --code-bg: rgba(15, 23, 42, 0.9);
     }
 
     * { box-sizing: border-box; scroll-behavior: smooth; }
@@ -33,8 +32,8 @@
       padding: 0;
       font-family: "Tahoma", "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(124, 58, 237, 0.28), transparent 30%),
-        radial-gradient(circle at top right, rgba(56, 189, 248, 0.15), transparent 32%),
+        radial-gradient(circle at top left, rgba(124, 58, 237, 0.24), transparent 30%),
+        radial-gradient(circle at top right, rgba(56, 189, 248, 0.16), transparent 32%),
         linear-gradient(135deg, var(--bg), var(--bg-2), var(--bg-3));
       color: var(--text);
       line-height: 1.7;
@@ -133,15 +132,13 @@
       box-shadow: 0 0 25px rgba(124, 58, 237, 0.45);
     }
 
-    .section {
-      padding: 90px 0;
-    }
+    .section { padding: 90px 0; }
 
     .hero {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.08fr 0.92fr;
       align-items: center;
-      gap: 30px;
+      gap: 32px;
       min-height: 82vh;
     }
 
@@ -159,7 +156,9 @@
     }
 
     .dot {
-      width: 9px; height: 9px; border-radius: 50%;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
       background: var(--secondary);
       box-shadow: 0 0 15px rgba(34,197,94,0.7);
     }
@@ -207,15 +206,8 @@
       min-width: 120px;
     }
 
-    .mini-stat strong {
-      display: block;
-      font-size: 1.2rem;
-    }
-
-    .mini-stat span {
-      color: var(--muted);
-      font-size: 0.85rem;
-    }
+    .mini-stat strong { display: block; font-size: 1.2rem; }
+    .mini-stat span { color: var(--muted); font-size: 0.85rem; }
 
     .hero-art {
       position: relative;
@@ -267,12 +259,7 @@
       background: rgba(255,255,255,0.02);
     }
 
-    .dots {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
+    .dots { display: flex; align-items: center; gap: 8px; }
     .dot-red { width: 10px; height: 10px; border-radius: 50%; background: #ff5f56; }
     .dot-yellow { width: 10px; height: 10px; border-radius: 50%; background: #ffbd2e; }
     .dot-green { width: 10px; height: 10px; border-radius: 50%; background: #27c93f; }
@@ -323,9 +310,8 @@
       content: "";
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(130deg, rgba(255,255,255,0.18), transparent 45%),
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.28), transparent 25%);
+      background: linear-gradient(130deg, rgba(255,255,255,0.18), transparent 45%),
+                  radial-gradient(circle at 30% 30%, rgba(255,255,255,0.28), transparent 25%);
     }
 
     .preview.two {
@@ -358,10 +344,7 @@
       font-weight: 800;
     }
 
-    .mini-box span {
-      color: var(--muted);
-      font-size: 0.8rem;
-    }
+    .mini-box span { color: var(--muted); font-size: 0.8rem; }
 
     .section-heading {
       margin-bottom: 28px;
@@ -547,7 +530,7 @@
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 18px;
-      padding: 18px 18px;
+      padding: 18px;
       box-shadow: var(--shadow);
     }
 
@@ -622,8 +605,7 @@
       resize: vertical;
     }
 
-    .form input::placeholder,
-    .form textarea::placeholder {
+    .form input::placeholder, .form textarea::placeholder {
       color: var(--muted);
     }
 
@@ -635,20 +617,8 @@
     }
 
     @media (max-width: 980px) {
-      .hero {
+      .hero, .feature-grid, .showcase-grid, .pricing-grid, .faq-grid, .contact-grid {
         grid-template-columns: 1fr;
-      }
-
-      .feature-grid,
-      .showcase-grid,
-      .pricing-grid,
-      .faq-grid,
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .stats {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .nav {
@@ -659,25 +629,14 @@
     }
 
     @media (max-width: 560px) {
-      .section {
-        padding: 72px 0;
-      }
-
+      .section { padding: 72px 0; }
       .hero-actions {
         flex-direction: column;
         align-items: stretch;
       }
-
-      .btn {
-        width: 100%;
-      }
-
+      .btn { width: 100%; }
       .nav-links {
         justify-content: center;
-      }
-
-      .stats {
-        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -869,13 +828,14 @@
 
         <div class="pricing-grid">
           <div class="pricing-card">
-            <h3>Starter</h3>
-            <div class="price">49 <small>ريال/شهر</small></div>
+            <h3>Free</h3>
+            <div class="price">0 <small>ريال</small></div>
             <ul>
-              <li>500 صورة</li>
-              <li>20 فيديو قصير</li>
-              <li>مكتبة قوالب</li>
-              <li>دعم أساسي</li>
+              <li>5 محادثات يوميًا</li>
+              <li>10 صور يوميًا</li>
+              <li>5 فيديوهات يوميًا</li>
+              <li>إمكانية التجربة الأساسية</li>
+              <li>بدء الاستخدام فورًا</li>
             </ul>
             <a href="#contact" class="btn">ابدأ الآن</a>
           </div>
@@ -885,10 +845,11 @@
             <h3>Pro</h3>
             <div class="price">149 <small>ريال/شهر</small></div>
             <ul>
-              <li>5000 صورة</li>
-              <li>200 فيديو</li>
-              <li>توليد احترافي</li>
-              <li>دعم فوري</li>
+              <li>محادثات غير محدودة</li>
+              <li>صور غير محدودة</li>
+              <li>فيديوهات متقدمة</li>
+              <li>دعم أسرع</li>
+              <li>تجربة احترافية</li>
             </ul>
             <a href="#contact" class="btn primary">ابدأ الآن</a>
           </div>
@@ -897,10 +858,11 @@
             <h3>Studio</h3>
             <div class="price">399 <small>ريال/شهر</small></div>
             <ul>
-              <li>توليد غير محدود</li>
-              <li>فيديوهات طويلة</li>
+              <li>كل مزايا Pro</li>
+              <li>إنتاج احترافي منسق</li>
               <li>مخزون شخصي</li>
-              <li>مدير حساب</li>
+              <li>دعم مخصص</li>
+              <li>تجهيز المشاريع الكبيرة</li>
             </ul>
             <a href="#contact" class="btn">ابدأ الآن</a>
           </div>
@@ -956,7 +918,7 @@
               <div class="detail-icon">✉️</div>
               <div>
                 <strong>Email</strong><br />
-                <span>hello@amirxtna.com</span>
+                <span>amirx7662@gmail.com</span>
               </div>
             </div>
 
@@ -971,8 +933,8 @@
             <div class="detail-item">
               <div class="detail-icon">⚡</div>
               <div>
-                <strong>الإستجابة</strong><br />
-                <span>في أقل من 24 ساعة</span>
+                <strong>الحصة اليومية</strong><br />
+                <span>5 محادثات • 10 صور • 5 فيديوهات</span>
               </div>
             </div>
           </div>
@@ -994,17 +956,5 @@
       © 2026 AMIRXTNA — كل الحقوق محفوظة
     </div>
   </footer>
-
-  <script>
-    const themeToggle = document.getElementById("themeToggle");
-    if (themeToggle) {
-      const saved = localStorage.getItem("amirxtna-theme");
-      if (saved === "light") document.body.classList.add("light");
-      themeToggle.addEventListener("click", () => {
-        document.body.classList.toggle("light");
-        localStorage.setItem("amirxtna-theme", document.body.classList.contains("light") ? "light" : "dark");
-      });
-    }
-  </script>
 </body>
 </html>
