@@ -3,110 +3,261 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>موقعي - مشاريع GitHub</title>
+  <title>موقعي | Portfolio</title>
+  <meta name="description" content="موقع شخصي يضم مشاريع GitHub، مهارات، وسيرة ذاتية." />
   <style>
     :root {
-      --bg: #0f172a;
-      --bg2: #111827;
-      --card: #1f2937;
-      --card2: #374151;
-      --text: #f9fafb;
+      --bg: #0b1020;
+      --bg-soft: #111827;
+      --panel: rgba(17, 24, 39, 0.85);
+      --panel-2: rgba(30, 41, 59, 0.8);
+      --card: rgba(15, 23, 42, 0.85);
+      --text: #f8fafc;
       --muted: #cbd5e1;
       --primary: #8b5cf6;
+      --primary-2: #7c3aed;
       --secondary: #22c55e;
       --accent: #f59e0b;
-      --shadow: 0 12px 30px rgba(0,0,0,0.25);
+      --border: rgba(148, 163, 184, 0.2);
+      --shadow: 0 20px 45px rgba(0,0,0,0.35);
+      --glow: rgba(139, 92, 246, 0.4);
+      --code-bg: rgba(15, 23, 42, 0.9);
     }
 
-    * { box-sizing: border-box; }
-    body {
+    body.light {
+      --bg: #f4f7fb;
+      --bg-soft: #edf2f7;
+      --panel: rgba(255, 255, 255, 0.8);
+      --panel-2: rgba(255,255,255,0.8);
+      --card: rgba(255,255,255,0.96);
+      --text: #0f172a;
+      --muted: #475569;
+      --primary: #6d28d9;
+      --primary-2: #7c3aed;
+      --secondary: #16a34a;
+      --accent: #f59e0b;
+      --border: rgba(15, 23, 42, 0.08);
+      --shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+      --glow: rgba(109, 40, 217, 0.15);
+      --code-bg: #eff6ff;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    html, body {
       margin: 0;
-      font-family: "Tahoma", sans-serif;
-      background: linear-gradient(135deg, var(--bg), var(--bg2));
+      padding: 0;
+      background: radial-gradient(circle at top, rgba(139, 92, 246, 0.12), transparent 30%),
+                  linear-gradient(135deg, var(--bg), var(--bg-soft));
       color: var(--text);
+      font-family: "Tahoma", "Segoe UI", sans-serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
     }
 
     .container {
-      width: min(1200px, 90%);
+      width: min(1180px, 92%);
       margin: 0 auto;
-      padding: 40px 0 80px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(11, 16, 32, 0.4);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    body.light header {
+      background: rgba(255,255,255,0.4);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 72px;
+      gap: 22px;
+    }
+
+    .brand {
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .brand span {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      transition: color 0.2s ease;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s ease;
+      background: rgba(255,255,255,0.02);
+      color: var(--text);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      border: none;
+      color: white;
+    }
+
+    .theme-toggle {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      padding: 0;
+      font-size: 1.2rem;
+    }
+
+    .section {
+      padding: 90px 0;
     }
 
     .hero {
-      text-align: center;
-      padding: 60px 20px 30px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 30px;
+      min-height: 80vh;
     }
 
-    .hero h1 {
-      font-size: clamp(2rem, 5vw, 4rem);
-      margin: 0 0 15px;
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin-bottom: 20px;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      background: var(--secondary);
+      border-radius: 50%;
+      box-shadow: 0 0 18px rgba(34,197,94,0.7);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 5vw, 5rem);
+      line-height: 1.1;
+      letter-spacing: -0.05em;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #a78bfa, #60a5fa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .hero p {
       color: var(--muted);
-      font-size: 1.1rem;
-      margin-bottom: 25px;
+      font-size: 1.08rem;
+      margin: 22px 0 30px;
+      max-width: 640px;
     }
 
-    .controls {
+    .hero-actions {
       display: flex;
-      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+
+    .socials {
+      display: flex;
+      align-items: center;
       gap: 12px;
       flex-wrap: wrap;
-      margin-bottom: 30px;
     }
 
-    input, button {
-      border: none;
-      border-radius: 12px;
-      font-size: 1rem;
-    }
-
-    input {
-      width: min(500px, 80vw);
-      padding: 14px 18px;
-      background: rgba(255,255,255,0.05);
+    .socials a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
       color: var(--text);
-      outline: none;
-      border: 1px solid rgba(255,255,255,0.08);
+      transition: 0.2s ease;
     }
 
-    button {
-      padding: 14px 22px;
-      background: linear-gradient(135deg, var(--primary), #7c3aed);
-      color: white;
-      cursor: pointer;
-      box-shadow: var(--shadow);
-      transition: transform 0.2s ease;
+    .socials a:hover {
+      transform: translateY(-3px);
+      border-color: rgba(139, 92, 246, 0.7);
     }
 
-    button:hover { transform: translateY(-1px); }
-
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 22px;
-      margin-top: 30px;
-    }
-
-    .project-card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.04));
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 18px;
-      padding: 22px;
-      min-height: 220px;
-      box-shadow: var(--shadow);
-      transition: transform 0.25s ease, border-color 0.25s ease;
+    .hero-card {
       position: relative;
+      padding: 24px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(139, 92, 246, 0.12), rgba(255,255,255,0.02));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
       overflow: hidden;
     }
 
-    .project-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(139, 92, 246, 0.8);
-    }
-
-    .project-card::before {
+    .hero-card::before {
       content: "";
       position: absolute;
       inset: 0 0 auto 0;
@@ -114,40 +265,246 @@
       background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
     }
 
-    .project-card h3 {
-      margin: 8px 0 10px;
-      font-size: 1.4rem;
+    .mini-card {
+      background: rgba(15, 23, 42, 0.88);
+      border: 1px solid rgba(148,163,184,0.16);
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 18px;
     }
 
-    .lang {
-      display: inline-block;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(34,197,94,0.12);
-      color: #7ef0a2;
-      font-size: 0.82rem;
-      margin-bottom: 12px;
+    body.light .mini-card {
+      background: rgba(255,255,255,0.9);
     }
 
-    .desc {
+    .code-window {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .code-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .circle {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .circle.red { background: #ff5f56; }
+    .circle.yellow { background: #ffbd2e; }
+    .circle.green { background: #27c93f; }
+
+    pre {
+      margin: 0;
+      padding: 18px 16px 18px;
+      overflow: auto;
+      color: var(--text);
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .stat {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px 18px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.8rem;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .stat span {
       color: var(--muted);
-      line-height: 1.7;
-      font-size: 0.96rem;
-      min-height: 80px;
+      font-size: 0.95rem;
     }
 
-    .meta {
+    .section-heading {
+      margin-bottom: 30px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      margin: 0 0 8px;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+      align-items: start;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .card p {
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.8;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .skill {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(139, 92, 246, 0.12);
+      border: 1px solid rgba(139, 92, 246, 0.28);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    .projects-tools {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 18px;
-      gap: 10px;
+      gap: 18px;
       flex-wrap: wrap;
+      margin-bottom: 26px;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 240px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px 14px;
+      box-shadow: var(--shadow);
+    }
+
+    .search-box input {
+      width: 100%;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    .search-box input::placeholder {
+      color: var(--muted);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+      gap: 22px;
+    }
+
+    .project-card {
+      position: relative;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s ease, border-color 0.25s ease;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(139, 92, 246, 0.7);
+    }
+
+    .project-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .project-name {
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin: 0;
+    }
+
+    .project-language {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(34,197,94,0.1);
+      border: 1px solid rgba(34,197,94,0.2);
+      color: #8bffae;
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+
+    .project-desc {
+      color: var(--muted);
+      margin: 12px 0 18px;
+      min-height: 78px;
+      line-height: 1.8;
+    }
+
+    .project-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
     }
 
     .stars {
       color: #fbbf24;
-      font-weight: bold;
+      font-weight: 800;
     }
 
     .links {
@@ -156,132 +513,475 @@
       flex-wrap: wrap;
     }
 
-    .links a {
-      text-decoration: none;
-      color: white;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 10px;
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
       padding: 8px 12px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--text);
       transition: 0.2s ease;
     }
 
-    .links a:hover {
-      background: rgba(139, 92, 246, 0.2);
+    .project-link:hover {
+      background: rgba(139, 92, 246, 0.13);
     }
 
-    .loading {
-      text-align: center;
-      color: var(--muted);
-      font-size: 1.1rem;
-      margin-top: 30px;
-    }
-
-    .empty {
-      text-align: center;
-      color: var(--muted);
-      margin-top: 25px;
+    .empty-state {
       display: none;
+      text-align: center;
+      color: var(--muted);
+      padding: 24px 0;
+      font-size: 1.05rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+      align-items: start;
+    }
+
+    .details {
+      display: grid;
+      gap: 18px;
+    }
+
+    .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .detail-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+      background: rgba(139, 92, 246, 0.12);
+      border: 1px solid rgba(139, 92, 246, 0.25);
+    }
+
+    .form {
+      display: grid;
+      gap: 16px;
+    }
+
+    .form input, .form textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      border-radius: 14px;
+      padding: 14px 16px;
+      color: var(--text);
+      font: inherit;
+      outline: none;
+    }
+
+    .form input::placeholder,
+    .form textarea::placeholder {
+      color: var(--muted);
+    }
+
+    .form textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0 40px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 16px 0;
+      }
+
+      .nav-links {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .section {
+        padding: 72px 0;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .projects-tools {
+        flex-direction: column;
+        align-items: stretch;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header class="hero">
-      <h1>مشاريعي على GitHub</h1>
-      <p>كل المواقع والمشاريع اللي صنعتها متجمعة في صفحة واحدة</p>
-    </header>
+  <header>
+    <div class="container nav">
+      <div class="brand">أحمد<span> .dev</span></div>
 
-    <div class="controls">
-      <input type="text" id="searchInput" placeholder="ابحث عن مشروع..." />
-      <button id="loadBtn">تحديث المشاريع</button>
+      <nav class="nav-links">
+        <a href="#home">الرئيسية</a>
+        <a href="#about">من أنا</a>
+        <a href="#projects">المشاريع</a>
+        <a href="#contact">تواصل</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn theme-toggle" aria-label="تبديل الثيم" id="themeToggle">☀️</button>
+        <a class="btn primary" href="#contact">اطلب خدمتي</a>
+      </div>
     </div>
+  </header>
 
-    <div id="projects" class="projects"></div>
-    <div id="loading" class="loading">جاري تحميل المشاريع...</div>
-    <div id="empty" class="empty">لا يوجد مشروع يطابق البحث.</div>
-  </div>
+  <main>
+    <section class="section" id="home">
+      <div class="container hero">
+        <div>
+          <div class="eyebrow">
+            <span class="dot"></span>
+            متاح للتوظيف / العمل الحر
+          </div>
+          <h1>
+            أبدع مواقع <span class="gradient-text">احترافية</span>
+            ومشاريع ذكية
+          </h1>
+          <p>
+            أنا مطور ويب أُنشئ مواقع حديثة، سريعة، ومتجاوبة، وأدمج فيها أشياء ذكية
+            مثل المشاريع من GitHub، أنظمة تواصل، ولوحات تحكم، وتجربة مستخدم ممتازة.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#projects">عرض المشاريع</a>
+            <a class="btn" href="#contact">تواصل معي</a>
+          </div>
+
+          <div class="socials">
+            <a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub">🐙</a>
+            <a href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">💼</a>
+            <a href="https://x.com/" target="_blank" rel="noopener" aria-label="X">𝕏</a>
+            <a href="mailto:hello@example.com" aria-label="Email">✉️</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="mini-card">
+            <strong>الاهتمام:</strong> تطوير واجهات حديثة، تجربة مستخدم، ومواقع سريعة
+          </div>
+
+          <div class="code-window">
+            <div class="code-head">
+              <span class="circle red"></span>
+              <span class="circle yellow"></span>
+              <span class="circle green"></span>
+            </div>
+            <pre><code>const profile = {
+  role: "Frontend Developer",
+  stack: ["HTML", "CSS", "JS", "React"],
+  focus: ["UX/UI", "Performance", "API"]
+};
+
+console.log("أنا أُصنع مواقع تليق بالمستقبل");</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="stats">
+          <div class="stat">
+            <strong id="repoCount">0</strong>
+            <span>مشروع منشور</span>
+          </div>
+          <div class="stat">
+            <strong id="starCount">0</strong>
+            <span>نجوم في GitHub</span>
+          </div>
+          <div class="stat">
+            <strong>100%</strong>
+            <span>تجربة مستخدم</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-heading">
+          <h2>من أنا</h2>
+          <p>أعمل على بناء مواقع سهلة، جذابة، وسريعة تحقق الهدف.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="card">
+            <p>
+              أطور مواقع ومشاريع ويب باستخدام أحدث الأدوات وأفضل الممارسات.
+              أركز على جودة التصميم، سرعة الأداء، وسهولة الاستخدام، لأن الموقع
+              الناجح ليس فقط جميلًا، بل أيضًا عمليًا وفعالًا.
+            </p>
+            <div class="skills">
+              <span class="skill">HTML</span>
+              <span class="skill">CSS</span>
+              <span class="skill">JavaScript</span>
+              <span class="skill">React</span>
+              <span class="skill">Next.js</span>
+              <span class="skill">GitHub</span>
+              <span class="skill">UI/UX</span>
+              <span class="skill">Responsive</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <p>
+              أستطيع إنشاء واجهات احترافية من الصفر، ربطها بـ APIs، دمج المشاريع
+              من GitHub في صفحة واحدة، إضافة بحث وتصنيف، وتحويل الفكرة إلى موقع
+              جاهز للإطلاق.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <h2>مشاريعي</h2>
+          <p>كل المشاريع المنشورة في GitHub تعرض هنا بشكل أنيق وسهل للبحث.</p>
+        </div>
+
+        <div class="projects-tools">
+          <div class="search-box">
+            <span>🔍</span>
+            <input type="text" id="searchInput" placeholder="ابحث عن مشروع..." />
+          </div>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid"></div>
+        <div class="empty-state" id="emptyState">لا توجد مشاريع مطابقة للبحث.</div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <h2>تواصل معي</h2>
+          <p>إذا لديك فكرة، مشروع، أو تحتاج موقعًا احترافيًا، أستطيع مساعدتك.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="details">
+            <div class="detail-item">
+              <div class="detail-icon">📧</div>
+              <div>
+                <strong>Email</strong><br />
+                <span>hello@example.com</span>
+              </div>
+            </div>
+
+            <div class="detail-item">
+              <div class="detail-icon">📍</div>
+              <div>
+                <strong>الموقع</strong><br />
+                <span>السعودية / عن بعد</span>
+              </div>
+            </div>
+
+            <div class="detail-item">
+              <div class="detail-icon">🕒</div>
+              <div>
+                <strong>متاح</strong><br />
+                <span>للمشاريع الجديدة</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <form class="form">
+              <input type="text" placeholder="الاسم" />
+              <input type="email" placeholder="البريد الإلكتروني" />
+              <textarea placeholder="اكتب مشروعك أو طلبك هنا..."></textarea>
+              <button class="btn primary" type="button">إرسال الرسالة</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 | جميع الحقوق محفوظة
+    </div>
+  </footer>
 
   <script>
     const username = "YOUR_GITHUB_USERNAME"; // مثال: amirx7662-design
-    const projectsEl = document.getElementById("projects");
-    const loadingEl = document.getElementById("loading");
-    const emptyEl = document.getElementById("empty");
+    const projectsGrid = document.getElementById("projectsGrid");
     const searchInput = document.getElementById("searchInput");
-    const loadBtn = document.getElementById("loadBtn");
+    const emptyState = document.getElementById("emptyState");
+    const repoCount = document.getElementById("repoCount");
+    const starCount = document.getElementById("starCount");
+    const themeToggle = document.getElementById("themeToggle");
 
-    async function loadRepos() {
-      loadingEl.style.display = "block";
-      projectsEl.innerHTML = "";
-      emptyEl.style.display = "none";
+    let allRepos = [];
 
-      try {
-        const res = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
-        if (!res.ok) throw new Error("فشل في جلب البيانات");
+    function setTheme(theme) {
+      const body = document.body;
+      if (theme === "light") {
+        body.classList.add("light");
+        themeToggle.textContent = "🌙";
+      } else {
+        body.classList.remove("light");
+        themeToggle.textContent = "☀️";
+      }
+      localStorage.setItem("theme", theme);
+    }
 
-        const repos = await res.json();
-
-        const filtered = repos.filter(repo => !repo.fork); // نزيل fork
-        renderRepos(filtered);
-      } catch (err) {
-        loadingEl.textContent = "حدث خطأ أثناء تحميل المشاريع: " + err.message;
+    function initTheme() {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme) {
+        setTheme(savedTheme);
+      } else {
+        setTheme("dark");
       }
     }
 
-    function renderRepos(repos) {
-      loadingEl.style.display = "none";
+    themeToggle.addEventListener("click", () => {
+      const isLight = document.body.classList.contains("light");
+      setTheme(isLight ? "dark" : "light");
+    });
+
+    async function fetchUser() {
+      const res = await fetch(`https://api.github.com/users/${username}`);
+      if (!res.ok) throw new Error("اسم المستخدم غير صحيح أو هناك مشكلة في الاتصال.");
+      return await res.json();
+    }
+
+    async function fetchRepos() {
+      const res = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
+      if (!res.ok) throw new Error("تعذّر جلب المشاريع.");
+      const repos = await res.json();
+      return repos
+        .filter(repo => !repo.fork)
+        .sort((a, b) => b.stargazers_count - a.stargazers_count);
+    }
+
+    function renderProjects(repos) {
+      projectsGrid.innerHTML = "";
 
       if (!repos.length) {
-        emptyEl.style.display = "block";
+        emptyState.style.display = "block";
         return;
       }
+
+      emptyState.style.display = "none";
 
       repos.forEach(repo => {
         const card = document.createElement("article");
         card.className = "project-card";
 
+        const language = repo.language || "Multi";
+        const description = repo.description || "لا يوجد وصف لهذا المشروع بعد.";
         const homepage = repo.homepage && repo.homepage.startsWith("http")
-          ? `<a href="${repo.homepage}" target="_blank" rel="noopener">رابط المشروع</a>`
+          ? `<a class="project-link" href="${repo.homepage}" target="_blank" rel="noopener">رابط المشروع</a>`
           : "";
 
-        const siteLink = repo.html_url
-          ? `<a href="${repo.html_url}" target="_blank" rel="noopener">GitHub</a>`
-          : "";
+        const githubLink = `
+          <a class="project-link" href="${repo.html_url}" target="_blank" rel="noopener">GitHub</a>
+        `;
 
         card.innerHTML = `
-          <h3>${repo.name}</h3>
-          <span class="lang">${repo.language || "Multi"}</span>
-          <div class="desc">${repo.description || "لا يوجد وصف لهذا المشروع بعد."}</div>
-          <div class="meta">
+          <div class="project-top">
+            <h3 class="project-name">${repo.name}</h3>
+            <span class="project-language">${language}</span>
+          </div>
+
+          <div class="project-desc">${description}</div>
+
+          <div class="project-meta">
             <span class="stars">⭐ ${repo.stargazers_count}</span>
             <div class="links">
               ${homepage}
-              ${siteLink}
+              ${githubLink}
             </div>
           </div>
         `;
 
-        projectsEl.appendChild(card);
+        projectsGrid.appendChild(card);
       });
     }
 
-    searchInput.addEventListener("input", () => {
-      const term = searchInput.value.trim().toLowerCase();
-      const cards = [...document.querySelectorAll(".project-card")];
-
-      cards.forEach(card => {
-        const text = card.textContent.toLowerCase();
-        const match = text.includes(term);
-        card.style.display = match ? "block" : "none";
+    function filterProjects(value) {
+      const term = value.trim().toLowerCase();
+      const filtered = allRepos.filter(repo => {
+        const text = `${repo.name} ${repo.description || ""} ${repo.language || ""}`.toLowerCase();
+        return text.includes(term);
       });
 
-      const visible = cards.some(card => card.style.display !== "none");
-      emptyEl.style.display = visible ? "none" : "block";
+      renderProjects(filtered);
+    }
+
+    searchInput.addEventListener("input", (e) => {
+      filterProjects(e.target.value);
     });
 
-    loadBtn.addEventListener("click", loadRepos);
+    async function init() {
+      try {
+        const user = await fetchUser();
+        const repos = await fetchRepos();
 
-    loadRepos();
+        allRepos = repos;
+        renderProjects(repos);
+
+        repoCount.textContent = repos.length;
+        starCount.textContent = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
+
+        document.title = `${user.name || "Portfolio"} | Projects`;
+      } catch (error) {
+        projectsGrid.innerHTML = `
+          <div class="card" style="grid-column: 1 / -1; text-align:center;">
+            <p style="margin:0; color: var(--muted);">${error.message}</p>
+          </div>
+        `;
+      }
+    }
+
+    initTheme();
+    init();
   </script>
 </body>
 </html>
