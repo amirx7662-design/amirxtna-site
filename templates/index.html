@@ -4,29 +4,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Amir | Portfolio</title>
-  <meta name="description" content="Portfolio شخصي يضم مشاريع GitHub ومهارات وخدمات تطوير مواقع." />
+  <meta name="description" content="Portfolio شخصي، يضم مشاريع GitHub، مهارات، خدمات، وتواصل." />
   <style>
     :root {
-      --bg: #0b1020;
-      --bg-2: #111827;
-      --panel: rgba(17, 24, 39, 0.78);
+      --bg: #070b14;
+      --bg-2: #0f172a;
+      --bg-3: #111827;
+      --panel: rgba(17, 24, 39, 0.84);
       --panel-strong: rgba(15, 23, 42, 0.96);
+      --card: rgba(15, 23, 42, 0.86);
       --text: #f8fafc;
       --muted: #cbd5e1;
       --primary: #8b5cf6;
       --primary-2: #7c3aed;
       --secondary: #22c55e;
       --accent: #f59e0b;
-      --border: rgba(148, 163, 184, 0.2);
-      --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      --border: rgba(148, 163, 184, 0.18);
+      --shadow: 0 22px 55px rgba(0, 0, 0, 0.35);
+      --soft-shadow: 0 16px 35px rgba(0, 0, 0, 0.18);
       --code-bg: rgba(15, 23, 42, 0.9);
+      --danger: #ef4444;
+      --success: #22c55e;
     }
 
     body.light {
-      --bg: #f4f7fb;
-      --bg-2: #edf2f7;
-      --panel: rgba(255, 255, 255, 0.82);
-      --panel-strong: rgba(255, 255, 255, 0.95);
+      --bg: #edf4ff;
+      --bg-2: #f8fafc;
+      --bg-3: #eef2ff;
+      --panel: rgba(255,255,255,0.8);
+      --panel-strong: rgba(255,255,255,0.96);
+      --card: rgba(255,255,255,0.96);
       --text: #0f172a;
       --muted: #475569;
       --primary: #6d28d9;
@@ -34,7 +41,8 @@
       --secondary: #16a34a;
       --accent: #f59e0b;
       --border: rgba(15, 23, 42, 0.08);
-      --shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+      --shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+      --soft-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
       --code-bg: #eff6ff;
     }
 
@@ -46,11 +54,11 @@
     html, body {
       margin: 0;
       padding: 0;
-      background:
-        radial-gradient(circle at top, rgba(139, 92, 246, 0.10), transparent 28%),
-        linear-gradient(135deg, var(--bg), var(--bg-2));
-      color: var(--text);
       font-family: "Tahoma", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(139, 92, 246, 0.15), transparent 28%),
+        linear-gradient(135deg, var(--bg), var(--bg-2), var(--bg-3));
+      color: var(--text);
       line-height: 1.7;
     }
 
@@ -78,12 +86,12 @@
       top: 0;
       z-index: 50;
       backdrop-filter: blur(16px);
-      background: rgba(11, 16, 32, 0.35);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      background: rgba(7, 11, 20, 0.35);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
     }
 
     body.light header {
-      background: rgba(255, 255, 255, 0.38);
+      background: rgba(255,255,255,0.42);
     }
 
     .nav {
@@ -91,13 +99,13 @@
       justify-content: space-between;
       align-items: center;
       min-height: 72px;
-      gap: 20px;
+      gap: 22px;
     }
 
     .brand {
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       font-weight: 800;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
     }
 
     .brand span {
@@ -106,8 +114,8 @@
 
     .nav-links {
       display: flex;
-      gap: 20px;
       align-items: center;
+      gap: 18px;
       flex-wrap: wrap;
     }
 
@@ -133,23 +141,23 @@
       justify-content: center;
       gap: 8px;
       padding: 12px 18px;
-      border-radius: 12px;
       border: 1px solid var(--border);
+      border-radius: 12px;
       font-weight: 700;
+      color: var(--text);
+      background: rgba(255,255,255,0.02);
       cursor: pointer;
       transition: 0.2s ease;
-      background: rgba(255,255,255,0.02);
-      color: var(--text);
     }
 
     .btn:hover {
       transform: translateY(-2px);
-      box-shadow: var(--shadow);
+      box-shadow: var(--soft-shadow);
     }
 
     .btn.primary {
-      background: linear-gradient(135deg, var(--primary), var(--primary-2));
       border: none;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
       color: white;
     }
 
@@ -168,9 +176,9 @@
     .hero {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
-      gap: 32px;
-      min-height: 80vh;
       align-items: center;
+      gap: 32px;
+      min-height: 82vh;
     }
 
     .eyebrow {
@@ -196,8 +204,8 @@
 
     h1 {
       margin: 0;
-      font-size: clamp(2.4rem, 5vw, 5rem);
-      line-height: 1.1;
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      line-height: 1.08;
       letter-spacing: -0.05em;
     }
 
@@ -236,9 +244,9 @@
       justify-content: center;
       width: 42px;
       height: 42px;
+      border: 1px solid var(--border);
       border-radius: 50%;
       background: rgba(255,255,255,0.03);
-      border: 1px solid var(--border);
       transition: 0.2s ease;
     }
 
@@ -249,8 +257,8 @@
 
     .hero-card {
       position: relative;
-      padding: 24px;
-      border-radius: 26px;
+      padding: 26px;
+      border-radius: 28px;
       background: linear-gradient(180deg, rgba(139, 92, 246, 0.12), rgba(255,255,255,0.02));
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
@@ -314,7 +322,7 @@
 
     .stats {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 18px;
       margin-top: 24px;
     }
@@ -331,7 +339,7 @@
     .stat strong {
       display: block;
       font-size: 1.8rem;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
       color: var(--text);
     }
 
@@ -345,7 +353,7 @@
     }
 
     .section-heading h2 {
-      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-size: clamp(1.9rem, 4vw, 3rem);
       margin: 0 0 8px;
     }
 
@@ -357,9 +365,8 @@
 
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.15fr 0.85fr;
       gap: 26px;
-      align-items: start;
     }
 
     .card {
@@ -371,9 +378,9 @@
     }
 
     .card p {
-      color: var(--muted);
       margin: 0;
-      line-height: 1.8;
+      color: var(--muted);
+      line-height: 1.9;
     }
 
     .skills {
@@ -393,12 +400,55 @@
       font-size: 0.92rem;
     }
 
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .service-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 24px 22px;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(139, 92, 246, 0.7);
+    }
+
+    .icon-box {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: rgba(139, 92, 246, 0.12);
+      border: 1px solid rgba(139, 92, 246, 0.24);
+      font-size: 1.35rem;
+      margin-bottom: 16px;
+    }
+
+    .service-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.3rem;
+    }
+
+    .service-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
     .projects-tools {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
       gap: 18px;
+      flex-wrap: wrap;
       margin-bottom: 26px;
     }
 
@@ -417,9 +467,9 @@
 
     .search-box input {
       width: 100%;
-      background: transparent;
       border: none;
       outline: none;
+      background: transparent;
       color: var(--text);
       font-size: 1rem;
     }
@@ -436,7 +486,7 @@
 
     .project-card {
       position: relative;
-      background: var(--panel);
+      background: var(--card);
       border: 1px solid var(--border);
       border-radius: 24px;
       padding: 22px;
@@ -487,18 +537,18 @@
     }
 
     .project-desc {
-      color: var(--muted);
       margin: 12px 0 18px;
-      min-height: 80px;
+      color: var(--muted);
+      min-height: 84px;
       line-height: 1.8;
     }
 
     .project-meta {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      align-items: center;
       flex-wrap: wrap;
+      gap: 10px;
       margin-top: 18px;
     }
 
@@ -538,6 +588,44 @@
       font-size: 1.05rem;
     }
 
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .process-step {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 24px 20px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .step-number {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(139, 92, 246, 0.12);
+      border: 1px solid rgba(139, 92, 246, 0.24);
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .process-step h3 {
+      margin: 0 0 10px;
+      font-size: 1.25rem;
+    }
+
+    .process-step p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -567,9 +655,9 @@
       border-radius: 12px;
       display: grid;
       place-items: center;
-      font-size: 1.2rem;
       background: rgba(139, 92, 246, 0.12);
       border: 1px solid rgba(139, 92, 246, 0.25);
+      font-size: 1.2rem;
     }
 
     .form {
@@ -588,18 +676,18 @@
       outline: none;
     }
 
+    .form textarea {
+      min-height: 160px;
+      resize: vertical;
+    }
+
     .form input::placeholder, .form textarea::placeholder {
       color: var(--muted);
     }
 
-    .form textarea {
-      min-height: 150px;
-      resize: vertical;
-    }
-
     footer {
       border-top: 1px solid var(--border);
-      padding: 24px 0 40px;
+      padding: 28px 0 42px;
       text-align: center;
       color: var(--muted);
     }
@@ -607,12 +695,14 @@
     @media (max-width: 900px) {
       .hero,
       .about-grid,
-      .contact-grid {
+      .contact-grid,
+      .services-grid,
+      .process-grid {
         grid-template-columns: 1fr;
       }
 
       .stats {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .nav {
@@ -644,24 +734,29 @@
         flex-direction: column;
         align-items: stretch;
       }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="container nav">
-      <div class="brand">Amir<span> .dev</span></div>
+      <div class="brand">Amir<span>.dev</span></div>
 
       <nav class="nav-links">
         <a href="#home">الرئيسية</a>
         <a href="#about">من أنا</a>
+        <a href="#services">الخدمات</a>
         <a href="#projects">المشاريع</a>
         <a href="#contact">تواصل</a>
       </nav>
 
       <div class="nav-actions">
         <button class="btn theme-toggle" id="themeToggle" aria-label="تبديل الثيم">☀️</button>
-        <a class="btn primary" href="#contact">اطلب خدمتي</a>
+        <a href="#contact" class="btn primary">اطلب خدمتي</a>
       </div>
     </div>
   </header>
@@ -676,13 +771,13 @@
           </div>
 
           <h1>
-            أبدع مواقع <span class="gradient-text">احترافية</span>
-            ومشاريع ذكية
+            أصمم مواقع <span class="gradient-text">احترافية</span>
+            وتطبيقات ذكية
           </h1>
 
           <p>
-            أنا مطور ويب أُنشئ مواقع حديثة، سريعة، ومتجاوبة، وأدمج فيها مشاريع GitHub،
-            تقنيات حديثة، وتجربة مستخدم مميزة تجعل كل موقع يبرز ويحقق الهدف.
+            أنا مطور ويب أُنشئ مواقع حديثة، سريعة، متجاوبة، ومُصممة بعناية لتجربة مستخدم ممتازة،
+            مع دمج المشاريع من GitHub، تطوير واجهات، وتحسين الأداء بشكل عملي ومريح.
           </p>
 
           <div class="hero-actions">
@@ -700,7 +795,7 @@
 
         <div class="hero-card">
           <div class="mini-card">
-            <strong>الاهتمام:</strong> تطوير واجهات حديثة، تجربة مستخدم، ومواقع عالية الأداء
+            <strong>الاهتمام:</strong> تطوير واجهات حديثة، تجربة مستخدم، ومواقع سريعة
           </div>
 
           <div class="code-window">
@@ -726,15 +821,19 @@ console.log("أنا أُصنع مواقع تليق بالمستقبل");</code><
         <div class="stats">
           <div class="stat">
             <strong id="repoCount">0</strong>
-            <span>مشروع منشور</span>
+            <span>مشاريع منشورة</span>
           </div>
           <div class="stat">
             <strong id="starCount">0</strong>
             <span>نجوم GitHub</span>
           </div>
           <div class="stat">
+            <strong>4+</strong>
+            <span>سنوات خبرة</span>
+          </div>
+          <div class="stat">
             <strong>100%</strong>
-            <span>تجربة مستخدم</span>
+            <span>تركيز على Details</span>
           </div>
         </div>
       </div>
@@ -744,15 +843,15 @@ console.log("أنا أُصنع مواقع تليق بالمستقبل");</code><
       <div class="container">
         <div class="section-heading">
           <h2>من أنا</h2>
-          <p>أبني مواقع سهلة، جذابة، وسريعة وتحقيق هدف واضح.</p>
+          <p>أبني مواقع سهلة، جذابة، مفيدة، وفعالة من حيث التنفيذ.</p>
         </div>
 
         <div class="about-grid">
           <div class="card">
             <p>
-              أعمل على تصميم وتطوير مواقع إلكترونية باستخدام أحدث الأدوات،
-              مع تركيز على جودة التصميم، سرعة الموقع، وتجربة المستخدم.
-              أؤمن أن الموقع الناجح ليس فقط جميلًا، بل أيضًا عمليًا وذكيًا.
+              أعمل على تطوير المواقع وتقديم حلول ويب عملية تعتمد على التصميم الجيد،
+              تجربة المستخدم، وأداء سريع. أركز على تحويل الفكرة إلى واجهة متكاملة
+              ومميزة تساعدك في تحقيق الأهداف التشغيلية والتسويقية.
             </p>
 
             <div class="skills">
@@ -762,16 +861,46 @@ console.log("أنا أُصنع مواقع تليق بالمستقبل");</code><
               <span class="skill">React</span>
               <span class="skill">Next.js</span>
               <span class="skill">GitHub</span>
-              <span class="skill">UI/UX</span>
               <span class="skill">Responsive</span>
+              <span class="skill">UI/UX</span>
             </div>
           </div>
 
           <div class="card">
             <p>
-              أستطيع بناء واجهات احترافية من الصفر، ربطها بـ APIs، دمج المشاريع من GitHub
-              في صفحة واحدة، إضافة بحث وتصنيف، وتحويل الفكرة إلى موقع جاهز للإطلاق.
+              أستطيع بناء واجهات احترافية من الصفر، ربطها بـ APIs، تصميم صفحات
+              شخصية أو أعمال، أو تطوير موقع كامل لعرض خدماتك أو منتجاتك، مع تحسين
+              سهولة الاستخدام والهوية البصرية.
             </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-heading">
+          <h2>الخدمات</h2>
+          <p>أقدم حلولاً تطويرية تناسب المشاريع الصغيرة والكبيرة.</p>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="icon-box">🌐</div>
+            <h3>تطوير المواقع</h3>
+            <p>بناء مواقع شخصية، شركات، خدمات، أو متجر صغير بتصميم أنيق ومتجاوب.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="icon-box">⚡</div>
+            <h3>واجهة مستخدم</h3>
+            <p>تصميم صفحات جذابة، سهلة القراءة، وأزرار واضحة مع تجربة مستخدم مذهلة.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="icon-box">🧩</div>
+            <h3>تكاملات</h3>
+            <p>ربط واجهتك بـ APIs، GitHub، نماذج التواصل، ومكونات تفاعلية ذكية.</p>
           </div>
         </div>
       </div>
@@ -781,7 +910,7 @@ console.log("أنا أُصنع مواقع تليق بالمستقبل");</code><
       <div class="container">
         <div class="section-heading">
           <h2>مشاريعي</h2>
-          <p>جميع المشاريع المنشورة على GitHub تظهر هنا بشكل أنيق وسهل للبحث.</p>
+          <p>المشاريع المنشورة على GitHub يتم جلبها هنا تلقائيًا وعرضها بشكل أنيق.</p>
         </div>
 
         <div class="projects-tools">
@@ -796,11 +925,46 @@ console.log("أنا أُصنع مواقع تليق بالمستقبل");</code><
       </div>
     </section>
 
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>كيف أعمل</h2>
+          <p>عملية واضحة وسريعة من الفكرة إلى التنفيذ.</p>
+        </div>
+
+        <div class="process-grid">
+          <div class="process-step">
+            <div class="step-number">1</div>
+            <h3>الفكرة</h3>
+            <p>أفهم هدفك، نوع الموقع، الجمهور، والنتيجة المرجوة من المشروع.</p>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">2</div>
+            <h3>التصميم</h3>
+            <p>أبني التخطيط البصري، الألوان، والخطوط حتى يليق بالمشروع.</p>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">3</div>
+            <h3>التطوير</h3>
+            <p>أكتب الكود، أضيف التفاعل، وأضمن أن الموقع يعمل بشكل متجاوب.</p>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">4</div>
+            <h3>الإطلاق</h3>
+            <p>أراجع، أحسن الأداء، وأجهز الموقع للنشر النهائي.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="contact">
       <div class="container">
         <div class="section-heading">
           <h2>تواصل معي</h2>
-          <p>إذا لديك فكرة، مشروع، أو تحتاج موقعًا احترافيًا، أستطيع مساعدتك.</p>
+          <p>إذا لديك فكرة أو مشروع تحتاج إليه، تواصل معي الآن.</p>
         </div>
 
         <div class="contact-grid">
@@ -896,9 +1060,12 @@ console.log("أنا أُصنع مواقع تليق بالمستقبل");</code><
       const res = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
       if (!res.ok) throw new Error("تعذّر جلب المشاريع.");
       const repos = await res.json();
-      return repos
+
+      const validRepos = repos
         .filter(repo => !repo.fork)
         .sort((a, b) => b.stargazers_count - a.stargazers_count);
+
+      return validRepos;
     }
 
     function renderProjects(repos) {
@@ -971,7 +1138,7 @@ console.log("أنا أُصنع مواقع تليق بالمستقبل");</code><
         repoCount.textContent = repos.length;
         starCount.textContent = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
 
-        document.title = `${user.name || "Amir"} | Projects`;
+        document.title = `${user.name || "Amir"} | Portfolio`;
       } catch (error) {
         projectsGrid.innerHTML = `
           <div class="card" style="grid-column: 1 / -1; text-align:center;">
