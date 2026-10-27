@@ -4,12 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Amir | Portfolio</title>
-  <meta name="description" content="موقع شخصي يضم مشاريع GitHub، مهارات، وسيرة ذاتية." />
+  <meta name="description" content="Portfolio شخصي يضم مشاريع GitHub ومهارات وخدمات تطوير مواقع." />
   <style>
     :root {
       --bg: #0b1020;
-      --bg-soft: #111827;
-      --panel: rgba(17, 24, 39, 0.85);
+      --bg-2: #111827;
+      --panel: rgba(17, 24, 39, 0.78);
+      --panel-strong: rgba(15, 23, 42, 0.96);
       --text: #f8fafc;
       --muted: #cbd5e1;
       --primary: #8b5cf6;
@@ -17,14 +18,15 @@
       --secondary: #22c55e;
       --accent: #f59e0b;
       --border: rgba(148, 163, 184, 0.2);
-      --shadow: 0 20px 45px rgba(0,0,0,0.35);
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
       --code-bg: rgba(15, 23, 42, 0.9);
     }
 
     body.light {
       --bg: #f4f7fb;
-      --bg-soft: #edf2f7;
-      --panel: rgba(255, 255, 255, 0.8);
+      --bg-2: #edf2f7;
+      --panel: rgba(255, 255, 255, 0.82);
+      --panel-strong: rgba(255, 255, 255, 0.95);
       --text: #0f172a;
       --muted: #475569;
       --primary: #6d28d9;
@@ -44,16 +46,26 @@
     html, body {
       margin: 0;
       padding: 0;
-      background: radial-gradient(circle at top, rgba(139, 92, 246, 0.12), transparent 30%),
-                  linear-gradient(135deg, var(--bg), var(--bg-soft));
+      background:
+        radial-gradient(circle at top, rgba(139, 92, 246, 0.10), transparent 28%),
+        linear-gradient(135deg, var(--bg), var(--bg-2));
       color: var(--text);
       font-family: "Tahoma", "Segoe UI", sans-serif;
       line-height: 1.7;
     }
 
+    body {
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+
     a {
       color: inherit;
       text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
     }
 
     .container {
@@ -65,13 +77,13 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      backdrop-filter: blur(14px);
-      background: rgba(11, 16, 32, 0.4);
-      border-bottom: 1px solid rgba(255,255,255,0.04);
+      backdrop-filter: blur(16px);
+      background: rgba(11, 16, 32, 0.35);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     }
 
     body.light header {
-      background: rgba(255,255,255,0.4);
+      background: rgba(255, 255, 255, 0.38);
     }
 
     .nav {
@@ -79,13 +91,13 @@
       justify-content: space-between;
       align-items: center;
       min-height: 72px;
-      gap: 22px;
+      gap: 20px;
     }
 
     .brand {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       font-weight: 800;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
     }
 
     .brand span {
@@ -94,15 +106,15 @@
 
     .nav-links {
       display: flex;
+      gap: 20px;
       align-items: center;
-      gap: 18px;
       flex-wrap: wrap;
     }
 
     .nav-links a {
       color: var(--muted);
-      transition: color 0.2s ease;
       font-weight: 600;
+      transition: color 0.2s ease;
     }
 
     .nav-links a:hover {
@@ -156,9 +168,9 @@
     .hero {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
-      align-items: center;
-      gap: 30px;
+      gap: 32px;
       min-height: 80vh;
+      align-items: center;
     }
 
     .eyebrow {
@@ -167,18 +179,18 @@
       gap: 10px;
       padding: 8px 14px;
       border: 1px solid var(--border);
-      background: rgba(255,255,255,0.02);
       border-radius: 999px;
+      background: rgba(255,255,255,0.02);
       color: var(--muted);
       font-size: 0.82rem;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
 
     .dot {
       width: 9px;
       height: 9px;
-      background: var(--secondary);
       border-radius: 50%;
+      background: var(--secondary);
       box-shadow: 0 0 18px rgba(34,197,94,0.7);
     }
 
@@ -197,18 +209,18 @@
     }
 
     .hero p {
+      margin: 22px 0 28px;
       color: var(--muted);
       font-size: 1.08rem;
-      margin: 22px 0 30px;
-      max-width: 640px;
+      max-width: 680px;
     }
 
     .hero-actions {
       display: flex;
       align-items: center;
-      flex-wrap: wrap;
       gap: 14px;
-      margin-bottom: 26px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
     }
 
     .socials {
@@ -227,7 +239,6 @@
       border-radius: 50%;
       background: rgba(255,255,255,0.03);
       border: 1px solid var(--border);
-      color: var(--text);
       transition: 0.2s ease;
     }
 
@@ -239,7 +250,7 @@
     .hero-card {
       position: relative;
       padding: 24px;
-      border-radius: 28px;
+      border-radius: 26px;
       background: linear-gradient(180deg, rgba(139, 92, 246, 0.12), rgba(255,255,255,0.02));
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
@@ -303,7 +314,7 @@
 
     .stats {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
       margin-top: 24px;
     }
@@ -386,8 +397,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 18px;
       flex-wrap: wrap;
+      gap: 18px;
       margin-bottom: 26px;
     }
 
@@ -406,9 +417,9 @@
 
     .search-box input {
       width: 100%;
+      background: transparent;
       border: none;
       outline: none;
-      background: transparent;
       color: var(--text);
       font-size: 1rem;
     }
@@ -419,7 +430,7 @@
 
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 22px;
     }
 
@@ -468,17 +479,17 @@
       align-items: center;
       padding: 6px 10px;
       border-radius: 999px;
-      background: rgba(34,197,94,0.1);
-      border: 1px solid rgba(34,197,94,0.2);
+      background: rgba(34,197,94,0.10);
+      border: 1px solid rgba(34,197,94,0.20);
       color: #8bffae;
-      font-size: 0.76rem;
+      font-size: 0.75rem;
       font-weight: 700;
     }
 
     .project-desc {
       color: var(--muted);
       margin: 12px 0 18px;
-      min-height: 78px;
+      min-height: 80px;
       line-height: 1.8;
     }
 
@@ -506,12 +517,12 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-weight: 700;
       padding: 8px 12px;
       border-radius: 10px;
       background: rgba(255,255,255,0.04);
       border: 1px solid var(--border);
       color: var(--text);
+      font-weight: 700;
       transition: 0.2s ease;
     }
 
@@ -577,8 +588,7 @@
       outline: none;
     }
 
-    .form input::placeholder,
-    .form textarea::placeholder {
+    .form input::placeholder, .form textarea::placeholder {
       color: var(--muted);
     }
 
@@ -650,7 +660,7 @@
       </nav>
 
       <div class="nav-actions">
-        <button class="btn theme-toggle" aria-label="تبديل الثيم" id="themeToggle">☀️</button>
+        <button class="btn theme-toggle" id="themeToggle" aria-label="تبديل الثيم">☀️</button>
         <a class="btn primary" href="#contact">اطلب خدمتي</a>
       </div>
     </div>
@@ -664,18 +674,20 @@
             <span class="dot"></span>
             متاح للتوظيف / العمل الحر
           </div>
+
           <h1>
             أبدع مواقع <span class="gradient-text">احترافية</span>
             ومشاريع ذكية
           </h1>
+
           <p>
-            أنا مطور ويب أُنشئ مواقع حديثة، سريعة، ومتجاوبة، وأدمج فيها أشياء ذكية
-            مثل المشاريع من GitHub، أنظمة تواصل، ولوحات تحكم، وتجربة مستخدم ممتازة.
+            أنا مطور ويب أُنشئ مواقع حديثة، سريعة، ومتجاوبة، وأدمج فيها مشاريع GitHub،
+            تقنيات حديثة، وتجربة مستخدم مميزة تجعل كل موقع يبرز ويحقق الهدف.
           </p>
 
           <div class="hero-actions">
-            <a class="btn primary" href="#projects">عرض المشاريع</a>
-            <a class="btn" href="#contact">تواصل معي</a>
+            <a href="#projects" class="btn primary">عرض المشاريع</a>
+            <a href="#contact" class="btn">تواصل معي</a>
           </div>
 
           <div class="socials">
@@ -688,7 +700,7 @@
 
         <div class="hero-card">
           <div class="mini-card">
-            <strong>الاهتمام:</strong> تطوير واجهات حديثة، تجربة مستخدم، ومواقع سريعة
+            <strong>الاهتمام:</strong> تطوير واجهات حديثة، تجربة مستخدم، ومواقع عالية الأداء
           </div>
 
           <div class="code-window">
@@ -700,7 +712,7 @@
             <pre><code>const profile = {
   role: "Frontend Developer",
   stack: ["HTML", "CSS", "JS", "React"],
-  focus: ["UX/UI", "Performance", "API"]
+  focus: ["UX/UI", "Performance", "GitHub API"]
 };
 
 console.log("أنا أُصنع مواقع تليق بالمستقبل");</code></pre>
@@ -718,7 +730,7 @@ console.log("أنا أُصنع مواقع تليق بالمستقبل");</code><
           </div>
           <div class="stat">
             <strong id="starCount">0</strong>
-            <span>نجوم في GitHub</span>
+            <span>نجوم GitHub</span>
           </div>
           <div class="stat">
             <strong>100%</strong>
@@ -732,16 +744,17 @@ console.log("أنا أُصنع مواقع تليق بالمستقبل");</code><
       <div class="container">
         <div class="section-heading">
           <h2>من أنا</h2>
-          <p>أعمل على بناء مواقع سهلة، جذابة، وسريعة تحقق الهدف.</p>
+          <p>أبني مواقع سهلة، جذابة، وسريعة وتحقيق هدف واضح.</p>
         </div>
 
         <div class="about-grid">
           <div class="card">
             <p>
-              أطور مواقع ومشاريع ويب باستخدام أحدث الأدوات وأفضل الممارسات.
-              أركز على جودة التصميم، سرعة الأداء، وسهولة الاستخدام، لأن الموقع
-              الناجح ليس فقط جميلًا، بل أيضًا عمليًا وفعالًا.
+              أعمل على تصميم وتطوير مواقع إلكترونية باستخدام أحدث الأدوات،
+              مع تركيز على جودة التصميم، سرعة الموقع، وتجربة المستخدم.
+              أؤمن أن الموقع الناجح ليس فقط جميلًا، بل أيضًا عمليًا وذكيًا.
             </p>
+
             <div class="skills">
               <span class="skill">HTML</span>
               <span class="skill">CSS</span>
@@ -756,9 +769,8 @@ console.log("أنا أُصنع مواقع تليق بالمستقبل");</code><
 
           <div class="card">
             <p>
-              أستطيع إنشاء واجهات احترافية من الصفر، ربطها بـ APIs، دمج المشاريع
-              من GitHub في صفحة واحدة، إضافة بحث وتصنيف، وتحويل الفكرة إلى موقع
-              جاهز للإطلاق.
+              أستطيع بناء واجهات احترافية من الصفر، ربطها بـ APIs، دمج المشاريع من GitHub
+              في صفحة واحدة، إضافة بحث وتصنيف، وتحويل الفكرة إلى موقع جاهز للإطلاق.
             </p>
           </div>
         </div>
@@ -769,7 +781,7 @@ console.log("أنا أُصنع مواقع تليق بالمستقبل");</code><
       <div class="container">
         <div class="section-heading">
           <h2>مشاريعي</h2>
-          <p>كل المشاريع المنشورة في GitHub تعرض هنا بشكل أنيق وسهل للبحث.</p>
+          <p>جميع المشاريع المنشورة على GitHub تظهر هنا بشكل أنيق وسهل للبحث.</p>
         </div>
 
         <div class="projects-tools">
@@ -819,11 +831,11 @@ console.log("أنا أُصنع مواقع تليق بالمستقبل");</code><
           </div>
 
           <div class="card">
-            <form class="form">
+            <form class="form" onsubmit="event.preventDefault();">
               <input type="text" placeholder="الاسم" />
               <input type="email" placeholder="البريد الإلكتروني" />
               <textarea placeholder="اكتب مشروعك أو طلبك هنا..."></textarea>
-              <button class="btn primary" type="button">إرسال الرسالة</button>
+              <button class="btn primary" type="submit">إرسال الرسالة</button>
             </form>
           </div>
         </div>
